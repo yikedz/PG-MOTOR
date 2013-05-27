@@ -1,7 +1,7 @@
 
 
 HI-TECH Software LITE Macro Assembler (PIC18) V9.66 build 8870 
-                                                       Mon May 27 14:45:42 2013
+                                                       Mon May 27 16:40:41 2013
 
 HI-TECH Software Omniscient Code Generator build 8870
      1  000000                     opt subtitle "HI-TECH Software Omniscient Code G
@@ -152,7 +152,7 @@ HI-TECH Software Omniscient Code Generator build 8870
    140                           ; *************** function _main ***************
                                  **
    141                           ; Defined at:
-   142                           ;		line 29 in file "../modbus_rtu.c"
+   142                           ;		line 33 in file "../modbus_rtu.c"
    143                           ; Parameters:
    144                           ;		None
    145                           ; Auto variables:
@@ -185,55 +185,55 @@ HI-TECH Software Omniscient Code Generator build 8870
    170                           
    171                           	opt lm
    172                           	file	"../modbus_rtu.c"
-   173                           	line	29
+   173                           	line	33
    174  000000                     	__size_of_main	equ	__end_of_main-_main
-   175                           ;modbus_rtu.c: 23: RX_STATE rx_state = RX_STATE_
+   175                           ;modbus_rtu.c: 27: RX_STATE rx_state = RX_STATE_
                                  INIT;
-   176                           ;modbus_rtu.c: 25: unsigned int modbus_reg[100];
-   177                           ;modbus_rtu.c: 28: void main(void)
-   178                           ;modbus_rtu.c: 29: {
+   176                           ;modbus_rtu.c: 29: unsigned int modbus_reg[100];
+   177                           ;modbus_rtu.c: 32: void main(void)
+   178                           ;modbus_rtu.c: 33: {
    179                           	
    180  000796                     _main:		; BSR set to: ?
    181                           
    182                           	opt stack 28
-   183                           	line	32
-   184                           ;modbus_rtu.c: 30: unsigned int md_keep;
-   185                           ;modbus_rtu.c: 32: ANSELC = 0;
+   183                           	line	36
+   184                           ;modbus_rtu.c: 34: unsigned int md_keep;
+   185                           ;modbus_rtu.c: 36: ANSELC = 0;
    186  000796  0E00               	movlw	low(0)
    187  000798  010F               	movlb	15	; () banked
    188  00079A  010F               	movlb	15	; () banked
    189  00079C  6F3A               	movwf	((3898))&0ffh	;volatile
-   190                           	line	33
-   191                           ;modbus_rtu.c: 33: TRISC = 0x00;
+   190                           	line	37
+   191                           ;modbus_rtu.c: 37: TRISC = 0x00;
    192  00079E  0E00               	movlw	low(0)
    193  0007A0  6E94               	movwf	((c:3988)),c	;volatile
-   194                           	line	34
-   195                           ;modbus_rtu.c: 34: PORTC = 0xc0;
+   194                           	line	38
+   195                           ;modbus_rtu.c: 38: PORTC = 0xc0;
    196  0007A2  0EC0               	movlw	low(0C0h)
    197  0007A4  6E82               	movwf	((c:3970)),c	;volatile
-   198                           	line	36
-   199                           ;modbus_rtu.c: 36: init_timer35();
+   198                           	line	40
+   199                           ;modbus_rtu.c: 40: init_timer35();
    200  0007A6  ECF5  F003         	call	_init_timer35	;wreg free
-   201                           	line	37
-   202                           ;modbus_rtu.c: 37: PEIE = 1;
+   201                           	line	41
+   202                           ;modbus_rtu.c: 41: PEIE = 1;
    203  0007AA  8CF2               	bsf	c:(32662/8),(32662)&7	;volatile
-   204                           	line	38
-   205                           ;modbus_rtu.c: 38: GIE = 1;
+   204                           	line	42
+   205                           ;modbus_rtu.c: 42: GIE = 1;
    206  0007AC  8EF2               	bsf	c:(32663/8),(32663)&7	;volatile
-   207                           	line	39
-   208                           ;modbus_rtu.c: 39: init_uart();
+   207                           	line	43
+   208                           ;modbus_rtu.c: 43: init_uart();
    209  0007AE  EC03  F004         	call	_init_uart	;wreg free
-   210                           	line	40
-   211                           ;modbus_rtu.c: 40: while(1)
+   210                           	line	44
+   211                           ;modbus_rtu.c: 44: while(1)
    212                           	
    213  0007B2                     l358:		; BSR set to: ?
    214                           
-   215                           	line	42
-   216                           ;modbus_rtu.c: 41: {
-   217                           ;modbus_rtu.c: 42: modbus_receive();
+   215                           	line	46
+   216                           ;modbus_rtu.c: 45: {
+   217                           ;modbus_rtu.c: 46: modbus_receive();
    218  0007B2  EC50  F001         	call	_modbus_receive	;wreg free
-   219                           	line	43
-   220                           ;modbus_rtu.c: 43: if(modbus_reg[0]!=md_keep)
+   219                           	line	47
+   220                           ;modbus_rtu.c: 47: if(modbus_reg[0]!=md_keep)
    221  0007B6  0102               	movlb	2	; () banked
    222  0007B8  0102               	movlb	2	; () banked
    223  0007BA  5101               	movf	((main@md_keep+1))&0ffh,w
@@ -251,23 +251,23 @@ HI-TECH Software Omniscient Code Generator build 8870
    235  0007D2                     u1051:
    236  0007D2  EFF1  F003         	goto	l357
    237  0007D6                     u1050:
-   238                           	line	45
-   239                           ;modbus_rtu.c: 44: {
-   240                           ;modbus_rtu.c: 45: md_keep = modbus_reg[0];
+   238                           	line	49
+   239                           ;modbus_rtu.c: 48: {
+   240                           ;modbus_rtu.c: 49: md_keep = modbus_reg[0];
    241  0007D6  C035 F200          	movff	(c:53),(main@md_keep)
    242  0007DA  C036 F201          	movff	(c:53+1),(main@md_keep+1)
-   243                           	line	46
-   244                           ;modbus_rtu.c: 46: PORTC = md_keep;
+   243                           	line	50
+   244                           ;modbus_rtu.c: 50: PORTC = md_keep;
    245  0007DE  C200  FF82         	movff	(main@md_keep),(c:3970)	;volatile
-   246                           	line	47
+   246                           	line	51
    247                           	
    248  0007E2                     l360:		; BSR set to: ?
    249                           
-   250                           	line	48
+   250                           	line	52
    251                           	
    252  0007E2                     l357:		; BSR set to: ?
    253                           
-   254                           	line	40
+   254                           	line	44
    255  0007E2  EFD9  F003         	goto	l358
    256                           	global	start
    257  0007E6  EF0C  F000         	goto	start
@@ -279,7 +279,7 @@ HI-TECH Software Omniscient Code Generator build 8870
                                  ==
    263                           
    264                                   psect   text1,class=CODE,space=0,reloc=2
-   265                           	line	49
+   265                           	line	53
    266                           
    267                           	opt lm
    268                           	signat	_main,88
@@ -290,7 +290,7 @@ HI-TECH Software Omniscient Code Generator build 8870
    273                           ; *************** function _init_uart **********
                                  *******
    274                           ; Defined at:
-   275                           ;		line 166 in file "../modbus_rtu.c"
+   275                           ;		line 168 in file "../modbus_rtu.c"
    276                           ; Parameters:
    277                           ;		None
    278                           ; Auto variables:
@@ -316,40 +316,40 @@ HI-TECH Software Omniscient Code Generator build 8870
    298                           ; This function uses a non-reentrant model
    299                           ; 
    300                           	file	"../modbus_rtu.c"
-   301                           	line	166
+   301                           	line	168
    302  000000                     	__size_of_init_uart	equ	__end_of_init_uart-_ini
                                  t_uart
-   303                           ;modbus_rtu.c: 165: void init_uart(void)
-   304                           ;modbus_rtu.c: 166: {
+   303                           ;modbus_rtu.c: 167: void init_uart(void)
+   304                           ;modbus_rtu.c: 168: {
    305                           	
    306  000806                     _init_uart:		; BSR set to: ?
    307                           
    308                           	opt stack 27
-   309                           	line	167
-   310                           ;modbus_rtu.c: 167: SPEN2 = 1;
+   309                           	line	169
+   310                           ;modbus_rtu.c: 169: SPEN2 = 1;
    311  000806  8E71               	bsf	c:(31631/8),(31631)&7	;volatile
-   312                           	line	168
-   313                           ;modbus_rtu.c: 168: SYNC2 = 0;
+   312                           	line	170
+   313                           ;modbus_rtu.c: 170: SYNC2 = 0;
    314  000808  9872               	bcf	c:(31636/8),(31636)&7	;volatile
-   315                           	line	169
-   316                           ;modbus_rtu.c: 169: SPBRG2 = 11059200/64*(1*3+1)
+   315                           	line	171
+   316                           ;modbus_rtu.c: 171: SPBRG2 = 11059200/64*(1*3+1)
                                  /9600-1;
    317  00080A  0E47               	movlw	low(047h)
    318  00080C  6E75               	movwf	((c:3957)),c	;volatile
-   319                           	line	170
-   320                           ;modbus_rtu.c: 170: BRGH2 = 1;
+   319                           	line	172
+   320                           ;modbus_rtu.c: 172: BRGH2 = 1;
    321  00080E  8472               	bsf	c:(31634/8),(31634)&7	;volatile
-   322                           	line	171
-   323                           ;modbus_rtu.c: 171: CREN2 = 1;
+   322                           	line	173
+   323                           ;modbus_rtu.c: 173: CREN2 = 1;
    324  000810  8871               	bsf	c:(31628/8),(31628)&7	;volatile
-   325                           	line	172
-   326                           ;modbus_rtu.c: 172: TXEN2 = 1;
+   325                           	line	174
+   326                           ;modbus_rtu.c: 174: TXEN2 = 1;
    327  000812  8A72               	bsf	c:(31637/8),(31637)&7	;volatile
-   328                           	line	173
-   329                           ;modbus_rtu.c: 173: RC2IE = 1;
+   328                           	line	175
+   329                           ;modbus_rtu.c: 175: RC2IE = 1;
    330  000814  8AA3               	bsf	c:(32029/8),(32029)&7	;volatile
-   331                           	line	174
-   332                           ;modbus_rtu.c: 174: }
+   331                           	line	176
+   332                           ;modbus_rtu.c: 176: }
    333  000816                     l383:
    334                           			; BSR set to: ?
    335                           
@@ -369,7 +369,7 @@ HI-TECH Software Omniscient Code Generator build 8870
    348                           ; *************** function _modbus_receive *****
                                  ************
    349                           ; Defined at:
-   350                           ;		line 197 in file "../modbus_rtu.c"
+   350                           ;		line 199 in file "../modbus_rtu.c"
    351                           ; Parameters:
    352                           ;		None
    353                           ; Auto variables:
@@ -402,17 +402,17 @@ HI-TECH Software Omniscient Code Generator build 8870
    378                           
    379                           	opt lm
    380                           	file	"../modbus_rtu.c"
-   381                           	line	197
+   381                           	line	199
    382  000000                     	__size_of_modbus_receive	equ	__end_of_modbus_re
                                  ceive-_modbus_receive
-   383+                          ;modbus_rtu.c: 196: void modbus_receive(void)
-   384+                          ;modbus_rtu.c: 197: {
+   383+                          ;modbus_rtu.c: 198: void modbus_receive(void)
+   384+                          ;modbus_rtu.c: 199: {
    385+                          	
    386+ 0002A0                     _modbus_receive:		; BSR set to: ?
    387                           
    388                           	opt stack 27
-   389                           	line	198
-   390                           ;modbus_rtu.c: 198: if(rx_buf.frame_ok==1)
+   389                           	line	200
+   390                           ;modbus_rtu.c: 200: if(rx_buf.frame_ok==1)
    391  0002A0  0400               	decf	((c:0)),c,w
    392                           
    393  0002A2  A4D8               	btfss	status,2
@@ -421,17 +421,17 @@ HI-TECH Software Omniscient Code Generator build 8870
    396  0002AC                     u1101:
    397  0002AC  EF9D  F001         	goto	l387
    398  0002B0                     u1100:
-   399                           	line	200
-   400                           ;modbus_rtu.c: 199: {
-   401                           ;modbus_rtu.c: 200: rx_buf.frame_ok = 0;
+   399                           	line	202
+   400                           ;modbus_rtu.c: 201: {
+   401                           ;modbus_rtu.c: 202: rx_buf.frame_ok = 0;
    402  0002B0  0102               	movlb	2	; () banked
    403  0002B2  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
    404  0002B4  0E00               	movlw	low(0)
    405  0002B6  6E00               	movwf	((c:0)),c
    406  0002B8  0102               	movlb	2	; () banked
    407  0002BA  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
-   408                           	line	202
-   409                           ;modbus_rtu.c: 202: if(modbus_crc16(rx_buf.data_
+   408                           	line	204
+   409                           ;modbus_rtu.c: 204: if(modbus_crc16(rx_buf.data_
                                  buf,rx_buf.rec_count)==0)
    410  0002BC  0102               	movlb	2	; () banked
    411  0002BE  C002 F213          	movff	0+((c:0)+02h),0+(?_modbus_crc16+02h)
@@ -456,9 +456,9 @@ HI-TECH Software Omniscient Code Generator build 8870
    430  0002EA                     u1111:
    431  0002EA  EF97  F001         	goto	l388
    432  0002EE                     u1110:
-   433                           	line	204
-   434                           ;modbus_rtu.c: 203: {
-   435                           ;modbus_rtu.c: 204: if((1 ==rx_buf.data_buf[0])|
+   433                           	line	206
+   434                           ;modbus_rtu.c: 205: {
+   435                           ;modbus_rtu.c: 206: if((1 ==rx_buf.data_buf[0])|
                                  |(255==rx_buf.data_buf[0]))
    436  0002EE  0403               	decf	(0+((c:0)+03h)),c,w
    437                           
@@ -479,66 +479,66 @@ HI-TECH Software Omniscient Code Generator build 8870
    452                           	
    453  00030E                     l600000198:		; BSR set to: ?
    454                           
-   455                           	line	206
-   456                           ;modbus_rtu.c: 205: {
-   457                           ;modbus_rtu.c: 206: rx_buf.data_valid = 1;
+   455                           	line	208
+   456                           ;modbus_rtu.c: 207: {
+   457                           ;modbus_rtu.c: 208: rx_buf.data_valid = 1;
    458  00030E  0102               	movlb	2	; () banked
    459  000310  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
    460  000312  0E01               	movlw	low(01h)
    461  000314  6E01               	movwf	(0+((c:0)+01h)),c
    462  000316  0102               	movlb	2	; () banked
    463  000318  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
-   464                           	line	207
-   465                           ;modbus_rtu.c: 207: }
+   464                           	line	209
+   465                           ;modbus_rtu.c: 209: }
    466  00031A  EF95  F001         	goto	l390
-   467                           	line	208
+   467                           	line	210
    468                           	
    469  00031E                     l389:		; BSR set to: ?
    470                           
-   471                           	line	210
-   472                           ;modbus_rtu.c: 208: else
-   473                           ;modbus_rtu.c: 209: {
-   474                           ;modbus_rtu.c: 210: rx_buf.rec_count = 0;
+   471                           	line	212
+   472                           ;modbus_rtu.c: 210: else
+   473                           ;modbus_rtu.c: 211: {
+   474                           ;modbus_rtu.c: 212: rx_buf.rec_count = 0;
    475  00031E  0102               	movlb	2	; () banked
    476  000320  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
    477  000322  0E00               	movlw	low(0)
    478  000324  6E02               	movwf	(0+((c:0)+02h)),c
    479  000326  0102               	movlb	2	; () banked
    480  000328  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
-   481                           	line	211
+   481                           	line	213
    482                           	
    483  00032A                     l390:		; BSR set to: ?
    484                           
-   485                           	line	212
-   486                           ;modbus_rtu.c: 211: }
-   487                           ;modbus_rtu.c: 212: }
+   485                           	line	214
+   486                           ;modbus_rtu.c: 213: }
+   487                           ;modbus_rtu.c: 214: }
    488  00032A  EF9D  F001         	goto	l387
-   489                           	line	213
+   489                           	line	215
    490                           	
    491  00032E                     l388:		; BSR set to: ?
    492                           
-   493                           	line	215
-   494                           ;modbus_rtu.c: 213: else
-   495                           ;modbus_rtu.c: 214: {
-   496                           ;modbus_rtu.c: 215: rx_buf.rec_count = 0;
+   493                           	line	217
+   494                           ;modbus_rtu.c: 215: else
+   495                           ;modbus_rtu.c: 216: {
+   496                           ;modbus_rtu.c: 217: rx_buf.rec_count = 0;
    497  00032E  0102               	movlb	2	; () banked
    498  000330  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
    499  000332  0E00               	movlw	low(0)
    500  000334  6E02               	movwf	(0+((c:0)+02h)),c
    501  000336  0102               	movlb	2	; () banked
    502  000338  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
-   503                           	line	216
+   503                           	line	218
    504                           	
    505  00033A                     l391:		; BSR set to: ?
    506                           
-   507                           	line	217
+   507                           	line	219
    508                           	
    509  00033A                     l387:		; BSR set to: ?
    510                           
-   511                           	line	219
-   512                           ;modbus_rtu.c: 216: }
-   513                           ;modbus_rtu.c: 217: }
-   514                           ;modbus_rtu.c: 219: if(rx_buf.data_valid)
+   511                           	line	221
+   512                           ;modbus_rtu.c: 218: }
+   513                           ;modbus_rtu.c: 219: }
+   514                           ;modbus_rtu.c: 221: if(rx_buf.data_valid)
    515  00033A  5001               	movf	(0+((c:0)+01h)),c,w
    516  00033C  B4D8               	btfsc	status,2
    517  00033E  EFA3  F001         	goto	u1141
@@ -546,82 +546,82 @@ HI-TECH Software Omniscient Code Generator build 8870
    519  000346                     u1141:
    520  000346  EFD4  F001         	goto	l392
    521  00034A                     u1140:
-   522                           	line	221
-   523                           ;modbus_rtu.c: 220: {
-   524                           ;modbus_rtu.c: 221: rx_buf.data_valid = 0;
+   522                           	line	223
+   523                           ;modbus_rtu.c: 222: {
+   524                           ;modbus_rtu.c: 223: rx_buf.data_valid = 0;
    525  00034A  0102               	movlb	2	; () banked
    526  00034C  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
    527  00034E  0E00               	movlw	low(0)
    528  000350  6E01               	movwf	(0+((c:0)+01h)),c
    529  000352  0102               	movlb	2	; () banked
    530  000354  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
-   531                           	line	222
-   532                           ;modbus_rtu.c: 222: switch(rx_buf.data_buf[1])
+   531                           	line	224
+   532                           ;modbus_rtu.c: 224: switch(rx_buf.data_buf[1])
    533  000356  EFCB  F001         	goto	l394
-   534                           	line	224
-   535                           ;modbus_rtu.c: 223: {
-   536                           ;modbus_rtu.c: 224: case 0x03:
+   534                           	line	226
+   535                           ;modbus_rtu.c: 225: {
+   536                           ;modbus_rtu.c: 226: case 0x03:
    537                           	
    538  00035A                     l395:		; BSR set to: ?
    539                           
-   540                           	line	225
-   541                           ;modbus_rtu.c: 225: read_holding_regs();
+   540                           	line	227
+   541                           ;modbus_rtu.c: 227: read_holding_regs();
    542  00035A  EC23  F000         	call	_read_holding_regs	;wreg free
-   543                           	line	226
-   544                           ;modbus_rtu.c: 226: break;
+   543                           	line	228
+   544                           ;modbus_rtu.c: 228: break;
    545  00035E  EFD4  F001         	goto	l392
-   546                           	line	227
-   547                           ;modbus_rtu.c: 227: case 0x06:
+   546                           	line	229
+   547                           ;modbus_rtu.c: 229: case 0x06:
    548                           	
    549  000362                     l396:		; BSR set to: ?
    550                           
-   551                           	line	228
-   552                           ;modbus_rtu.c: 228: write_single_holding_reg();
+   551                           	line	230
+   552                           ;modbus_rtu.c: 230: write_single_holding_reg();
    553  000362  EC53  F002         	call	_write_single_holding_reg	;wreg free
-   554                           	line	229
-   555                           ;modbus_rtu.c: 229: break;
+   554                           	line	231
+   555                           ;modbus_rtu.c: 231: break;
    556  000366  EFD4  F001         	goto	l392
-   557                           	line	230
-   558                           ;modbus_rtu.c: 230: case 0x16:
+   557                           	line	232
+   558                           ;modbus_rtu.c: 232: case 0x16:
    559                           	
    560  00036A                     l397:		; BSR set to: ?
    561                           
-   562                           	line	232
-   563                           ;modbus_rtu.c: 232: break;
+   562                           	line	234
+   563                           ;modbus_rtu.c: 234: break;
    564  00036A  EFD4  F001         	goto	l392
-   565                           	line	233
-   566                           ;modbus_rtu.c: 233: default:
+   565                           	line	235
+   566                           ;modbus_rtu.c: 235: default:
    567                           	
    568  00036E                     l398:		; BSR set to: ?
    569                           
-   570                           	line	234
-   571                           ;modbus_rtu.c: 234: rx_buf.data_valid = 0;
+   570                           	line	236
+   571                           ;modbus_rtu.c: 236: rx_buf.data_valid = 0;
    572  00036E  0102               	movlb	2	; () banked
    573  000370  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
    574  000372  0E00               	movlw	low(0)
    575  000374  6E01               	movwf	(0+((c:0)+01h)),c
    576  000376  0102               	movlb	2	; () banked
    577  000378  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
-   578                           	line	235
-   579                           ;modbus_rtu.c: 235: rx_buf.rec_count = 0;
+   578                           	line	237
+   579                           ;modbus_rtu.c: 237: rx_buf.rec_count = 0;
    580  00037A  0102               	movlb	2	; () banked
    581  00037C  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
    582  00037E  0E00               	movlw	low(0)
    583  000380  6E02               	movwf	(0+((c:0)+02h)),c
    584  000382  0102               	movlb	2	; () banked
    585  000384  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
-   586                           	line	236
-   587                           ;modbus_rtu.c: 236: rx_buf.frame_ok = 0;
+   586                           	line	238
+   587                           ;modbus_rtu.c: 238: rx_buf.frame_ok = 0;
    588  000386  0102               	movlb	2	; () banked
    589  000388  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
    590  00038A  0E00               	movlw	low(0)
    591  00038C  6E00               	movwf	((c:0)),c
    592  00038E  0102               	movlb	2	; () banked
    593  000390  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
-   594                           	line	237
-   595                           ;modbus_rtu.c: 237: break;
+   594                           	line	239
+   595                           ;modbus_rtu.c: 239: break;
    596  000392  EFD4  F001         	goto	l392
-   597                           	line	222
+   597                           	line	224
    598                           	
    599  000396                     l394:		; BSR set to: ?
    600                           
@@ -634,13 +634,13 @@ HI-TECH Software Omniscient Code Generator build 8870
    607  0003A2  E0E3               	bz	l397
    608  0003A4  EFB7  F001         	goto	l398
    609                           
-   610                           	line	239
+   610                           	line	241
    611                           	
    612  0003A8                     l392:		; BSR set to: ?
    613                           
-   614                           	line	240
-   615                           ;modbus_rtu.c: 239: }
-   616                           ;modbus_rtu.c: 240: }
+   614                           	line	242
+   615                           ;modbus_rtu.c: 241: }
+   616                           ;modbus_rtu.c: 242: }
    617  0003A8                     l386:
    618                           			; BSR set to: ?
    619                           
@@ -660,7 +660,7 @@ HI-TECH Software Omniscient Code Generator build 8870
    632                           ; *************** function _init_timer35 *******
                                  **********
    633                           ; Defined at:
-   634                           ;		line 148 in file "../modbus_rtu.c"
+   634                           ;		line 150 in file "../modbus_rtu.c"
    635                           ; Parameters:
    636                           ;		None
    637                           ; Auto variables:
@@ -689,47 +689,47 @@ HI-TECH Software Omniscient Code Generator build 8870
    660                           
    661                           	opt lm
    662                           	file	"../modbus_rtu.c"
-   663                           	line	148
+   663                           	line	150
    664  000000                     	__size_of_init_timer35	equ	__end_of_init_timer3
                                  5-_init_timer35
-   665                           ;modbus_rtu.c: 147: void init_timer35(void)
-   666                           ;modbus_rtu.c: 148: {
+   665                           ;modbus_rtu.c: 149: void init_timer35(void)
+   666                           ;modbus_rtu.c: 150: {
    667                           	
    668  0007EA                     _init_timer35:		; BSR set to: ?
    669                           
    670                           	opt stack 27
-   671                           	line	149
-   672                           ;modbus_rtu.c: 149: TMR1ON = 0;
+   671                           	line	151
+   672                           ;modbus_rtu.c: 151: TMR1ON = 0;
    673  0007EA  90CD               	bcf	c:(32360/8),(32360)&7	;volatile
-   674                           	line	150
-   675                           ;modbus_rtu.c: 150: TMR1CS0 = 1;
+   674                           	line	152
+   675                           ;modbus_rtu.c: 152: TMR1CS0 = 1;
    676  0007EC  8CCD               	bsf	c:(32366/8),(32366)&7	;volatile
-   677                           	line	151
-   678                           ;modbus_rtu.c: 151: TMR1CS1 = 0;
+   677                           	line	153
+   678                           ;modbus_rtu.c: 153: TMR1CS1 = 0;
    679  0007EE  9ECD               	bcf	c:(32367/8),(32367)&7	;volatile
-   680                           	line	152
-   681                           ;modbus_rtu.c: 152: T1CKPS0 = 0;
+   680                           	line	154
+   681                           ;modbus_rtu.c: 154: T1CKPS0 = 0;
    682  0007F0  98CD               	bcf	c:(32364/8),(32364)&7	;volatile
-   683                           	line	153
-   684                           ;modbus_rtu.c: 153: T1CKPS1 = 0;
+   683                           	line	155
+   684                           ;modbus_rtu.c: 155: T1CKPS1 = 0;
    685  0007F2  9ACD               	bcf	c:(32365/8),(32365)&7	;volatile
-   686                           	line	155
-   687                           ;modbus_rtu.c: 155: TMR1 = 65535-40320;
+   686                           	line	157
+   687                           ;modbus_rtu.c: 157: TMR1 = 65535-40320;
    688  0007F4  0E7F               	movlw	low(0627Fh)
    689  0007F6  6ECE               	movwf	((c:4046)),c	;volatile
    690  0007F8  0E62               	movlw	high(0627Fh)
    691  0007FA  6ECF               	movwf	((c:4046+1)),c	;volatile
-   692                           	line	156
-   693                           ;modbus_rtu.c: 156: TMR1IF=0;
+   692                           	line	158
+   693                           ;modbus_rtu.c: 158: TMR1IF=0;
    694  0007FC  909E               	bcf	c:(31984/8),(31984)&7	;volatile
-   695                           	line	157
-   696                           ;modbus_rtu.c: 157: TMR1IE=1;
+   695                           	line	159
+   696                           ;modbus_rtu.c: 159: TMR1IE=1;
    697  0007FE  809D               	bsf	c:(31976/8),(31976)&7	;volatile
-   698                           	line	158
-   699                           ;modbus_rtu.c: 158: restart_timer35();
+   698                           	line	160
+   699                           ;modbus_rtu.c: 160: restart_timer35();
    700  000800  EC0C  F004         	call	_restart_timer35	;wreg free
-   701                           	line	160
-   702                           ;modbus_rtu.c: 160: }
+   701                           	line	162
+   702                           ;modbus_rtu.c: 162: }
    703  000804                     l382:
    704                           			; BSR set to: ?
    705                           
@@ -749,7 +749,7 @@ HI-TECH Software Omniscient Code Generator build 8870
    718                           ; *************** function _read_holding_regs **
                                  ***************
    719                           ; Defined at:
-   720                           ;		line 243 in file "../modbus_rtu.c"
+   720                           ;		line 245 in file "../modbus_rtu.c"
    721                           ; Parameters:
    722                           ;		None
    723                           ; Auto variables:
@@ -783,17 +783,17 @@ HI-TECH Software Omniscient Code Generator build 8870
    749                           
    750                           	opt lm
    751                           	file	"../modbus_rtu.c"
-   752                           	line	243
+   752                           	line	245
    753  000000                     	__size_of_read_holding_regs	equ	__end_of_read_h
                                  olding_regs-_read_holding_regs
-   754                           ;modbus_rtu.c: 242: void read_holding_regs(void)
-   755                           ;modbus_rtu.c: 243: {
+   754                           ;modbus_rtu.c: 244: void read_holding_regs(void)
+   755                           ;modbus_rtu.c: 245: {
    756                           	
    757  000046                     _read_holding_regs:		; BSR set to: ?
    758                           
    759                           	opt stack 26
-   760                           	line	244
-   761                           ;modbus_rtu.c: 244: unsigned int num = 0;
+   760                           	line	246
+   761                           ;modbus_rtu.c: 246: unsigned int num = 0;
    762  000046  0E00               	movlw	low(0)
    763  000048  0102               	movlb	2	; () banked
    764  00004A  0102               	movlb	2	; () banked
@@ -801,9 +801,9 @@ HI-TECH Software Omniscient Code Generator build 8870
    766  00004E  0E00               	movlw	high(0)
    767  000050  0102               	movlb	2	; () banked
    768  000052  6F09               	movwf	((read_holding_regs@num+1))&0ffh
-   769                           	line	246
-   770                           ;modbus_rtu.c: 245: unsigned int start_addr;
-   771                           ;modbus_rtu.c: 246: unsigned int data_crc=0;
+   769                           	line	248
+   770                           ;modbus_rtu.c: 247: unsigned int start_addr;
+   771                           ;modbus_rtu.c: 248: unsigned int data_crc=0;
    772  000054  0E00               	movlw	low(0)
    773  000056  0102               	movlb	2	; () banked
    774  000058  0102               	movlb	2	; () banked
@@ -811,8 +811,8 @@ HI-TECH Software Omniscient Code Generator build 8870
    776  00005C  0E00               	movlw	high(0)
    777  00005E  0102               	movlb	2	; () banked
    778  000060  6F07               	movwf	((read_holding_regs@data_crc+1))&0ffh
-   779                           	line	247
-   780                           ;modbus_rtu.c: 247: unsigned char i = 0 ;
+   779                           	line	249
+   780                           ;modbus_rtu.c: 249: unsigned char i = 0 ;
    781  000062  0102               	movlb	2	; () banked
    782  000064  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
    783  000066  0E00               	movlw	low(0)
@@ -821,8 +821,8 @@ HI-TECH Software Omniscient Code Generator build 8870
    786  00006C  6F03               	movwf	((read_holding_regs@i))&0ffh
    787  00006E  0102               	movlb	2	; () banked
    788  000070  510A               	movf	(??_read_holding_regs+7+0)&0ffh,w
-   789                           	line	249
-   790                           ;modbus_rtu.c: 249: start_addr = ((rx_buf.data_b
+   789                           	line	251
+   790                           ;modbus_rtu.c: 251: start_addr = ((rx_buf.data_b
                                  uf[2])<<8)|(rx_buf.data_buf[3]);
    791  000072  5005               	movf	(0+((c:0)+05h)),c,w
    792  000074  0102               	movlb	2	; () banked
@@ -831,8 +831,8 @@ HI-TECH Software Omniscient Code Generator build 8870
    795  00007A  5006               	movf	(0+((c:0)+06h)),c,w
    796  00007C  0102               	movlb	2	; () banked
    797  00007E  6F04               	movwf	((read_holding_regs@start_addr))&0ffh
-   798                           	line	251
-   799                           ;modbus_rtu.c: 251: num = ((rx_buf.data_buf[4])<
+   798                           	line	253
+   799                           ;modbus_rtu.c: 253: num = ((rx_buf.data_buf[4])<
                                  <8)|(rx_buf.data_buf[5]);
    800  000080  5007               	movf	(0+((c:0)+07h)),c,w
    801  000082  0102               	movlb	2	; () banked
@@ -841,8 +841,8 @@ HI-TECH Software Omniscient Code Generator build 8870
    804  000088  5008               	movf	(0+((c:0)+08h)),c,w
    805  00008A  0102               	movlb	2	; () banked
    806  00008C  6F08               	movwf	((read_holding_regs@num))&0ffh
-   807                           	line	253
-   808                           ;modbus_rtu.c: 253: tx_buf.data_buf[0] = 1;
+   807                           	line	255
+   808                           ;modbus_rtu.c: 255: tx_buf.data_buf[0] = 1;
    809  00008E  0102               	movlb	2	; () banked
    810  000090  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
    811  000092  0E01               	movlw	low(01h)
@@ -851,8 +851,8 @@ HI-TECH Software Omniscient Code Generator build 8870
    814  000098  6F01               	movwf	(0+(256+01h))&0ffh
    815  00009A  0102               	movlb	2	; () banked
    816  00009C  510A               	movf	(??_read_holding_regs+7+0)&0ffh,w
-   817                           	line	254
-   818                           ;modbus_rtu.c: 254: tx_buf.data_buf[1] = 0x03;
+   817                           	line	256
+   818                           ;modbus_rtu.c: 256: tx_buf.data_buf[1] = 0x03;
    819  00009E  0102               	movlb	2	; () banked
    820  0000A0  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
    821  0000A2  0E03               	movlw	low(03h)
@@ -861,8 +861,8 @@ HI-TECH Software Omniscient Code Generator build 8870
    824  0000A8  6F02               	movwf	(0+(256+02h))&0ffh
    825  0000AA  0102               	movlb	2	; () banked
    826  0000AC  510A               	movf	(??_read_holding_regs+7+0)&0ffh,w
-   827                           	line	255
-   828                           ;modbus_rtu.c: 255: tx_buf.data_buf[2] = 2*num;
+   827                           	line	257
+   828                           ;modbus_rtu.c: 257: tx_buf.data_buf[2] = 2*num;
    829  0000AE  0102               	movlb	2	; () banked
    830  0000B0  0102               	movlb	2	; () banked
    831  0000B2  5108               	movf	((read_holding_regs@num))&0ffh,w
@@ -871,8 +871,8 @@ HI-TECH Software Omniscient Code Generator build 8870
    834  0000B8  0101               	movlb	1	; () banked
    835  0000BA  0101               	movlb	1	; () banked
    836  0000BC  6F03               	movwf	(0+(256+03h))&0ffh
-   837                           	line	257
-   838                           ;modbus_rtu.c: 257: for(i=0;i<num;i++)
+   837                           	line	259
+   838                           ;modbus_rtu.c: 259: for(i=0;i<num;i++)
    839  0000BE  0102               	movlb	2	; () banked
    840  0000C0  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
    841  0000C2  0E00               	movlw	low(0)
@@ -882,13 +882,13 @@ HI-TECH Software Omniscient Code Generator build 8870
    845  0000CA  0102               	movlb	2	; () banked
    846  0000CC  510A               	movf	(??_read_holding_regs+7+0)&0ffh,w
    847  0000CE  EFDF  F000         	goto	l403
-   848                           	line	258
+   848                           	line	260
    849                           	
    850  0000D2                     l400:		; BSR set to: ?
    851                           
-   852                           	line	259
-   853                           ;modbus_rtu.c: 258: {
-   854                           ;modbus_rtu.c: 259: tx_buf.data_buf[3+2*i] = mod
+   852                           	line	261
+   853                           ;modbus_rtu.c: 260: {
+   854                           ;modbus_rtu.c: 261: tx_buf.data_buf[3+2*i] = mod
                                  bus_reg[i+start_addr]>>8;
    855  0000D2  0102               	movlb	2	; () banked
    856  0000D4  0102               	movlb	2	; () banked
@@ -951,8 +951,8 @@ HI-TECH Software Omniscient Code Generator build 8870
    911  00014A  510F               	movf	(??_read_holding_regs+12+0)&0ffh,w
    912  00014C  6EEF               	movwf	indf0
    913                           
-   914                           	line	260
-   915                           ;modbus_rtu.c: 260: tx_buf.data_buf[3+2*i+1] = m
+   914                           	line	262
+   915                           ;modbus_rtu.c: 262: tx_buf.data_buf[3+2*i+1] = m
                                  odbus_reg[i+start_addr];
    916  00014E  0102               	movlb	2	; () banked
    917  000150  0102               	movlb	2	; () banked
@@ -1006,7 +1006,7 @@ HI-TECH Software Omniscient Code Generator build 8870
    964  0001B0  0E01               	movlw	high(256)
    965  0001B2  22E2               	addwfc	1+c:fsr1l
    966  0001B4  CFEF FFE7          	movff	indf0,indf1
-   967                           	line	257
+   967                           	line	259
    968  0001B8  0102               	movlb	2	; () banked
    969  0001BA  0102               	movlb	2	; () banked
    970  0001BC  2B03               	incf	((read_holding_regs@i))&0ffh
@@ -1037,9 +1037,9 @@ HI-TECH Software Omniscient Code Generator build 8870
    994                           	
    995  0001EA                     l401:		; BSR set to: ?
    996                           
-   997                           	line	262
-   998                           ;modbus_rtu.c: 261: }
-   999                           ;modbus_rtu.c: 262: data_crc = modbus_crc16(tx_b
+   997                           	line	264
+   998                           ;modbus_rtu.c: 263: }
+   999                           ;modbus_rtu.c: 264: data_crc = modbus_crc16(tx_b
                                  uf.data_buf,(2*num+3));
   1000  0001EA  90D8               	bcf	status,0
   1001  0001EC  0102               	movlb	2	; () banked
@@ -1078,8 +1078,8 @@ HI-TECH Software Omniscient Code Generator build 8870
                                  crc)
   1034  000230  C212  F207         	movff	1+?_modbus_crc16,(read_holding_regs@data_
                                  crc+1)
-  1035                           	line	264
-  1036                           ;modbus_rtu.c: 264: tx_buf.data_buf[3+2*num] = d
+  1035                           	line	266
+  1036                           ;modbus_rtu.c: 266: tx_buf.data_buf[3+2*num] = d
                                  ata_crc;
   1037  000234  0102               	movlb	2	; () banked
   1038  000236  90D8               	bcf	status,0
@@ -1102,8 +1102,8 @@ HI-TECH Software Omniscient Code Generator build 8870
   1055  000258  0102               	movlb	2	; () banked
   1056  00025A  C206  FFEF         	movff	(read_holding_regs@data_crc),indf0
   1057                           
-  1058                           	line	265
-  1059                           ;modbus_rtu.c: 265: tx_buf.data_buf[4+2*num] = d
+  1058                           	line	267
+  1059                           ;modbus_rtu.c: 267: tx_buf.data_buf[4+2*num] = d
                                  ata_crc>>8;
   1060  00025E  0102               	movlb	2	; () banked
   1061  000260  90D8               	bcf	status,0
@@ -1128,8 +1128,8 @@ HI-TECH Software Omniscient Code Generator build 8870
   1080  000286  5107               	movf	((read_holding_regs@data_crc+1))&0ffh,w
   1081  000288  6EEF               	movwf	indf0
   1082                           
-  1083                           	line	266
-  1084                           ;modbus_rtu.c: 266: tx_buf.tx_count = 5+2*num;
+  1083                           	line	268
+  1084                           ;modbus_rtu.c: 268: tx_buf.tx_count = 5+2*num;
   1085  00028A  0102               	movlb	2	; () banked
   1086  00028C  0102               	movlb	2	; () banked
   1087  00028E  5108               	movf	((read_holding_regs@num))&0ffh,w
@@ -1139,11 +1139,11 @@ HI-TECH Software Omniscient Code Generator build 8870
   1091  000296  0101               	movlb	1	; () banked
   1092  000298  0101               	movlb	1	; () banked
   1093  00029A  6F00               	movwf	((256))&0ffh
-  1094                           	line	268
-  1095                           ;modbus_rtu.c: 268: TX2IE = 1;
+  1094                           	line	270
+  1095                           ;modbus_rtu.c: 270: TX2IE = 1;
   1096  00029C  88A3               	bsf	c:(32028/8),(32028)&7	;volatile
-  1097                           	line	269
-  1098                           ;modbus_rtu.c: 269: }
+  1097                           	line	271
+  1098                           ;modbus_rtu.c: 271: }
   1099  00029E                     l399:
   1100                           			; BSR set to: ?
   1101                           
@@ -1163,7 +1163,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   1114                           ; *************** function _write_single_holding
                                  _reg *****************
   1115                           ; Defined at:
-  1116                           ;		line 272 in file "../modbus_rtu.c"
+  1116                           ;		line 274 in file "../modbus_rtu.c"
   1117                           ; Parameters:
   1118                           ;		None
   1119                           ; Auto variables:
@@ -1194,21 +1194,21 @@ HI-TECH Software Omniscient Code Generator build 8870
   1143                           
   1144                           	opt lm
   1145                           	file	"../modbus_rtu.c"
-  1146                           	line	272
+  1146                           	line	274
   1147  000000                     	__size_of_write_single_holding_reg	equ	__end_of
                                  _write_single_holding_reg-_write_single_holding_
                                  reg
-  1148                           ;modbus_rtu.c: 271: void write_single_holding_re
+  1148                           ;modbus_rtu.c: 273: void write_single_holding_re
                                  g(void)
-  1149                           ;modbus_rtu.c: 272: {
+  1149                           ;modbus_rtu.c: 274: {
   1150                           	
   1151  0004A6                     _write_single_holding_reg:		; BSR set to: ?
   1152                           
   1153                           	opt stack 26
-  1154                           	line	276
-  1155                           ;modbus_rtu.c: 273: unsigned int start_addr;
-  1156                           ;modbus_rtu.c: 274: unsigned char i;
-  1157                           ;modbus_rtu.c: 276: start_addr = ((rx_buf.data_b
+  1154                           	line	278
+  1155                           ;modbus_rtu.c: 275: unsigned int start_addr;
+  1156                           ;modbus_rtu.c: 276: unsigned char i;
+  1157                           ;modbus_rtu.c: 278: start_addr = ((rx_buf.data_b
                                  uf[2])<<8)|(rx_buf.data_buf[3]);
   1158  0004A6  5005               	movf	(0+((c:0)+05h)),c,w
   1159  0004A8  0102               	movlb	2	; () banked
@@ -1219,8 +1219,8 @@ HI-TECH Software Omniscient Code Generator build 8870
   1163  0004B0  0102               	movlb	2	; () banked
   1164  0004B2  6F04               	movwf	((write_single_holding_reg@start_addr))&0
                                  ffh
-  1165                           	line	278
-  1166                           ;modbus_rtu.c: 278: modbus_reg[start_addr] = (rx
+  1165                           	line	280
+  1166                           ;modbus_rtu.c: 280: modbus_reg[start_addr] = (rx
                                  _buf.data_buf[5])|((rx_buf.data_buf[4])<<8);
   1167  0004B4  5007               	movf	(0+((c:0)+07h)),c,w
   1168  0004B6  0102               	movlb	2	; () banked
@@ -1254,8 +1254,8 @@ HI-TECH Software Omniscient Code Generator build 8870
   1194  0004EA  C206  FFEE         	movff	??_write_single_holding_reg+3+0,postinc0
   1195  0004EE  C207  FFED         	movff	??_write_single_holding_reg+3+1,postdec0
   1196                           
-  1197                           	line	280
-  1198                           ;modbus_rtu.c: 280: for(i=0;i<rx_buf.rec_count;i
+  1197                           	line	282
+  1198                           ;modbus_rtu.c: 282: for(i=0;i<rx_buf.rec_count;i
                                  ++)
   1199  0004F2  0102               	movlb	2	; () banked
   1200  0004F4  6F06               	movwf	(??_write_single_holding_reg+3+0)&0ffh
@@ -1266,13 +1266,13 @@ HI-TECH Software Omniscient Code Generator build 8870
   1205  0004FE  0102               	movlb	2	; () banked
   1206  000500  5106               	movf	(??_write_single_holding_reg+3+0)&0ffh,w
   1207  000502  EFA2  F002         	goto	l408
-  1208                           	line	281
+  1208                           	line	283
   1209                           	
   1210  000506                     l405:		; BSR set to: ?
   1211                           
-  1212                           	line	282
-  1213                           ;modbus_rtu.c: 281: {
-  1214                           ;modbus_rtu.c: 282: tx_buf.data_buf[i] = rx_buf.
+  1212                           	line	284
+  1213                           ;modbus_rtu.c: 283: {
+  1214                           ;modbus_rtu.c: 284: tx_buf.data_buf[i] = rx_buf.
                                  data_buf[i];
   1215  000506  C203  F206         	movff	(write_single_holding_reg@i),??_write_sin
                                  gle_holding_reg+3+0
@@ -1301,7 +1301,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   1237  000536  0E01               	movlw	high(256)
   1238  000538  22E2               	addwfc	1+c:fsr1l
   1239  00053A  CFEF FFE7          	movff	indf0,indf1
-  1240                           	line	280
+  1240                           	line	282
   1241  00053E  0102               	movlb	2	; () banked
   1242  000540  0102               	movlb	2	; () banked
   1243  000542  2B03               	incf	((write_single_holding_reg@i))&0ffh
@@ -1321,16 +1321,16 @@ HI-TECH Software Omniscient Code Generator build 8870
   1257                           	
   1258  00055A                     l406:		; BSR set to: ?
   1259                           
-  1260                           	line	284
-  1261                           ;modbus_rtu.c: 283: }
-  1262                           ;modbus_rtu.c: 284: tx_buf.tx_count = rx_buf.rec
+  1260                           	line	286
+  1261                           ;modbus_rtu.c: 285: }
+  1262                           ;modbus_rtu.c: 286: tx_buf.tx_count = rx_buf.rec
                                  _count;
   1263  00055A  C002 F100          	movff	0+((c:0)+02h),(256)
-  1264                           	line	287
-  1265                           ;modbus_rtu.c: 287: TX2IE = 1;
+  1264                           	line	289
+  1265                           ;modbus_rtu.c: 289: TX2IE = 1;
   1266  00055E  88A3               	bsf	c:(32028/8),(32028)&7	;volatile
-  1267                           	line	288
-  1268                           ;modbus_rtu.c: 288: }
+  1267                           	line	290
+  1268                           ;modbus_rtu.c: 290: }
   1269  000560                     l404:
   1270                           			; BSR set to: ?
   1271                           
@@ -1350,7 +1350,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   1284                           ; *************** function _restart_timer35 ****
                                  *************
   1285                           ; Defined at:
-  1286                           ;		line 180 in file "../modbus_rtu.c"
+  1286                           ;		line 182 in file "../modbus_rtu.c"
   1287                           ; Parameters:
   1288                           ;		None
   1289                           ; Auto variables:
@@ -1380,34 +1380,34 @@ HI-TECH Software Omniscient Code Generator build 8870
   1313                           
   1314                           	opt lm
   1315                           	file	"../modbus_rtu.c"
-  1316                           	line	180
+  1316                           	line	182
   1317  000000                     	__size_of_restart_timer35	equ	__end_of_restart_
                                  timer35-_restart_timer35
-  1318                           ;modbus_rtu.c: 179: void restart_timer35(void)
-  1319                           ;modbus_rtu.c: 180: {
+  1318                           ;modbus_rtu.c: 181: void restart_timer35(void)
+  1319                           ;modbus_rtu.c: 182: {
   1320                           	
   1321  000818                     _restart_timer35:		; BSR set to: ?
   1322                           
   1323                           	opt stack 26
-  1324                           	line	181
+  1324                           	line	183
   1325  000818  90CD               	bcf	c:(32360/8),(32360)&7	;volatile
-  1326                           	line	182
-  1327                           ;modbus_rtu.c: 182: TMR1 = 65535-40320;
+  1326                           	line	184
+  1327                           ;modbus_rtu.c: 184: TMR1 = 65535-40320;
   1328  00081A  0E7F               	movlw	low(0627Fh)
   1329  00081C  6ECE               	movwf	((c:4046)),c	;volatile
   1330  00081E  0E62               	movlw	high(0627Fh)
   1331  000820  6ECF               	movwf	((c:4046+1)),c	;volatile
-  1332                           	line	183
-  1333                           ;modbus_rtu.c: 183: TMR1IF=0;
+  1332                           	line	185
+  1333                           ;modbus_rtu.c: 185: TMR1IF=0;
   1334  000822  909E               	bcf	c:(31984/8),(31984)&7	;volatile
-  1335                           	line	184
-  1336                           ;modbus_rtu.c: 184: TMR1IE=1;
+  1335                           	line	186
+  1336                           ;modbus_rtu.c: 186: TMR1IE=1;
   1337  000824  809D               	bsf	c:(31976/8),(31976)&7	;volatile
-  1338                           	line	185
-  1339                           ;modbus_rtu.c: 185: TMR1ON = 1;
+  1338                           	line	187
+  1339                           ;modbus_rtu.c: 187: TMR1ON = 1;
   1340  000826  80CD               	bsf	c:(32360/8),(32360)&7	;volatile
-  1341                           	line	186
-  1342                           ;modbus_rtu.c: 186: }
+  1341                           	line	188
+  1342                           ;modbus_rtu.c: 188: }
   1343  000828                     l384:
   1344                           			; BSR set to: ?
   1345                           
@@ -1619,7 +1619,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   1535                           ; *************** function _my_isr *************
                                  ****
   1536                           ; Defined at:
-  1537                           ;		line 291 in file "../modbus_rtu.c"
+  1537                           ;		line 293 in file "../modbus_rtu.c"
   1538                           ; Parameters:
   1539                           ;		None
   1540                           ; Auto variables:
@@ -1651,10 +1651,10 @@ HI-TECH Software Omniscient Code Generator build 8870
   1565                           
   1566                           	opt lm
   1567                           	file	"../modbus_rtu.c"
-  1568                           	line	291
+  1568                           	line	293
   1569  000000                     	__size_of_my_isr	equ	__end_of_my_isr-_my_isr
-  1570                           ;modbus_rtu.c: 290: void interrupt my_isr(void)
-  1571                           ;modbus_rtu.c: 291: {
+  1570                           ;modbus_rtu.c: 292: void interrupt my_isr(void)
+  1571                           ;modbus_rtu.c: 293: {
   1572                           	
   1573  000724                     _my_isr:		; BSR set to: ?
   1574                           
@@ -1680,17 +1680,17 @@ HI-TECH Software Omniscient Code Generator build 8870
   1593  000744  CFF7 F225          	movff	tblptrh+0,??_my_isr+11
   1594  000748  CFF8 F226          	movff	tblptru+0,??_my_isr+12
   1595  00074C  CFF5 F227          	movff	tablat+0,??_my_isr+13
-  1596                           	line	292
-  1597                           ;modbus_rtu.c: 292: rec_isr();
+  1596                           	line	294
+  1597                           ;modbus_rtu.c: 294: rec_isr();
   1598  000750  ECD5  F001         	call	_rec_isr	;wreg free
-  1599                           	line	293
-  1600                           ;modbus_rtu.c: 293: tx_isr();
+  1599                           	line	295
+  1600                           ;modbus_rtu.c: 295: tx_isr();
   1601  000754  EC0A  F003         	call	_tx_isr	;wreg free
-  1602                           	line	294
-  1603                           ;modbus_rtu.c: 294: timer35_isr();
+  1602                           	line	296
+  1603                           ;modbus_rtu.c: 296: timer35_isr();
   1604  000758  EC59  F003         	call	_timer35_isr	;wreg free
-  1605                           	line	295
-  1606                           ;modbus_rtu.c: 295: }
+  1605                           	line	297
+  1606                           ;modbus_rtu.c: 297: }
   1607  00075C                     i2l409:
   1608                           			; BSR set to: ?
   1609                           
@@ -1729,7 +1729,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   1641                           ; *************** function _tx_isr *************
                                  ****
   1642                           ; Defined at:
-  1643                           ;		line 123 in file "../modbus_rtu.c"
+  1643                           ;		line 125 in file "../modbus_rtu.c"
   1644                           ; Parameters:
   1645                           ;		None
   1646                           ; Auto variables:
@@ -1755,18 +1755,18 @@ HI-TECH Software Omniscient Code Generator build 8870
   1666                           ; This function uses a non-reentrant model
   1667                           ; 
   1668                           	file	"../modbus_rtu.c"
-  1669                           	line	123
+  1669                           	line	125
   1670  000000                     	__size_of_tx_isr	equ	__end_of_tx_isr-_tx_isr
-  1671                           ;modbus_rtu.c: 122: void tx_isr(void)
-  1672                           ;modbus_rtu.c: 123: {
+  1671                           ;modbus_rtu.c: 124: void tx_isr(void)
+  1672                           ;modbus_rtu.c: 125: {
   1673                           	
   1674  000614                     _tx_isr:		; BSR set to: ?
   1675                           
   1676                           	opt stack 30
-  1677                           	line	126
-  1678                           ;modbus_rtu.c: 124: static unsigned char current
+  1677                           	line	128
+  1678                           ;modbus_rtu.c: 126: static unsigned char current
                                  _need_send = 0;
-  1679                           ;modbus_rtu.c: 126: if(TX2IE&&TX2IF)
+  1679                           ;modbus_rtu.c: 128: if(TX2IE&&TX2IF)
   1680  000614  A8A3               	btfss	c:(32028/8),(32028)&7	;volatile
   1681  000616  EF0F  F003         	goto	i2u1061
   1682  00061A  EF11  F003         	goto	i2u1060
@@ -1779,9 +1779,9 @@ HI-TECH Software Omniscient Code Generator build 8870
   1689  00062C                     i2u1071:
   1690  00062C  EF58  F003         	goto	i2l379
   1691  000630                     i2u1070:
-  1692                           	line	128
-  1693                           ;modbus_rtu.c: 127: {
-  1694                           ;modbus_rtu.c: 128: if(tx_buf.tx_count>0)
+  1692                           	line	130
+  1693                           ;modbus_rtu.c: 129: {
+  1694                           ;modbus_rtu.c: 130: if(tx_buf.tx_count>0)
   1695  000630  0101               	movlb	1	; () banked
   1696  000632  0101               	movlb	1	; () banked
   1697  000634  5100               	movf	((256))&0ffh,w
@@ -1791,7 +1791,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   1701  000640                     i2u1081:
   1702  000640  EF58  F003         	goto	i2l379
   1703  000644                     i2u1080:
-  1704                           	line	130
+  1704                           	line	132
   1705  000644  C0FE F228          	movff	(254),??_tx_isr+0+0
   1706  000648  0E01               	movlw	01h
   1707  00064A  0102               	movlb	2	; () banked
@@ -1807,14 +1807,14 @@ HI-TECH Software Omniscient Code Generator build 8870
   1717  00065E  22EA               	addwfc	1+c:fsr0l
   1718  000660  50EF               	movf	indf0,w
   1719  000662  6E73               	movwf	((c:3955)),c	;volatile
-  1720                           ;modbus_rtu.c: 129: {
-  1721                           ;modbus_rtu.c: 130: TX2REG = tx_buf.data_buf[cur
+  1720                           ;modbus_rtu.c: 131: {
+  1721                           ;modbus_rtu.c: 132: TX2REG = tx_buf.data_buf[cur
                                  rent_need_send++];
   1722  000664  0100               	movlb	0	; () banked
   1723  000666  0100               	movlb	0	; () banked
   1724  000668  2BFE               	incf	((254))&0ffh
-  1725                           	line	131
-  1726                           ;modbus_rtu.c: 131: if(current_need_send==tx_buf
+  1725                           	line	133
+  1726                           ;modbus_rtu.c: 133: if(current_need_send==tx_buf
                                  .tx_count)
   1727  00066A  0101               	movlb	1	; () banked
   1728  00066C  0101               	movlb	1	; () banked
@@ -1827,12 +1827,12 @@ HI-TECH Software Omniscient Code Generator build 8870
   1735  00067E                     i2u1091:
   1736  00067E  EF58  F003         	goto	i2l379
   1737  000682                     i2u1090:
-  1738                           	line	133
-  1739                           ;modbus_rtu.c: 132: {
-  1740                           ;modbus_rtu.c: 133: TX2IE = 0;
+  1738                           	line	135
+  1739                           ;modbus_rtu.c: 134: {
+  1740                           ;modbus_rtu.c: 135: TX2IE = 0;
   1741  000682  98A3               	bcf	c:(32028/8),(32028)&7	;volatile
-  1742                           	line	134
-  1743                           ;modbus_rtu.c: 134: current_need_send = 0;
+  1742                           	line	136
+  1743                           ;modbus_rtu.c: 136: current_need_send = 0;
   1744  000684  0102               	movlb	2	; () banked
   1745  000686  6F28               	movwf	(??_tx_isr+0+0)&0ffh
   1746  000688  0E00               	movlw	low(0)
@@ -1841,8 +1841,8 @@ HI-TECH Software Omniscient Code Generator build 8870
   1749  00068E  6FFE               	movwf	((254))&0ffh
   1750  000690  0102               	movlb	2	; () banked
   1751  000692  5128               	movf	(??_tx_isr+0+0)&0ffh,w
-  1752                           	line	135
-  1753                           ;modbus_rtu.c: 135: tx_buf.tx_count = 0;
+  1752                           	line	137
+  1753                           ;modbus_rtu.c: 137: tx_buf.tx_count = 0;
   1754  000694  0102               	movlb	2	; () banked
   1755  000696  6F28               	movwf	(??_tx_isr+0+0)&0ffh
   1756  000698  0E00               	movlw	low(0)
@@ -1851,31 +1851,31 @@ HI-TECH Software Omniscient Code Generator build 8870
   1759  00069E  6F00               	movwf	((256))&0ffh
   1760  0006A0  0102               	movlb	2	; () banked
   1761  0006A2  5128               	movf	(??_tx_isr+0+0)&0ffh,w
-  1762                           	line	136
-  1763                           ;modbus_rtu.c: 136: rx_buf.rec_count = 0;
+  1762                           	line	138
+  1763                           ;modbus_rtu.c: 138: rx_buf.rec_count = 0;
   1764  0006A4  0102               	movlb	2	; () banked
   1765  0006A6  6F28               	movwf	(??_tx_isr+0+0)&0ffh
   1766  0006A8  0E00               	movlw	low(0)
   1767  0006AA  6E02               	movwf	(0+((c:0)+02h)),c
   1768  0006AC  0102               	movlb	2	; () banked
   1769  0006AE  5128               	movf	(??_tx_isr+0+0)&0ffh,w
-  1770                           	line	138
+  1770                           	line	140
   1771                           	
   1772  0006B0                     i2l381:		; BSR set to: ?
   1773                           
-  1774                           	line	139
+  1774                           	line	141
   1775                           	
   1776  0006B0                     i2l380:		; BSR set to: ?
   1777                           
-  1778                           	line	140
+  1778                           	line	142
   1779                           	
   1780  0006B0                     i2l379:		; BSR set to: ?
   1781                           
-  1782                           	line	141
-  1783                           ;modbus_rtu.c: 138: }
-  1784                           ;modbus_rtu.c: 139: }
-  1785                           ;modbus_rtu.c: 140: }
-  1786                           ;modbus_rtu.c: 141: }
+  1782                           	line	143
+  1783                           ;modbus_rtu.c: 140: }
+  1784                           ;modbus_rtu.c: 141: }
+  1785                           ;modbus_rtu.c: 142: }
+  1786                           ;modbus_rtu.c: 143: }
   1787  0006B0                     i2l378:
   1788                           			; BSR set to: ?
   1789                           
@@ -1901,7 +1901,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   1807                           ; *************** function _timer35_isr ********
                                  *********
   1808                           ; Defined at:
-  1809                           ;		line 96 in file "../modbus_rtu.c"
+  1809                           ;		line 98 in file "../modbus_rtu.c"
   1810                           ; Parameters:
   1811                           ;		None
   1812                           ; Auto variables:
@@ -1927,17 +1927,17 @@ HI-TECH Software Omniscient Code Generator build 8870
   1832                           ; This function uses a non-reentrant model
   1833                           ; 
   1834                           	file	"../modbus_rtu.c"
-  1835                           	line	96
+  1835                           	line	98
   1836  000000                     	__size_of_timer35_isr	equ	__end_of_timer35_isr-
                                  _timer35_isr
-  1837                           ;modbus_rtu.c: 95: void timer35_isr(void)
-  1838                           ;modbus_rtu.c: 96: {
+  1837                           ;modbus_rtu.c: 97: void timer35_isr(void)
+  1838                           ;modbus_rtu.c: 98: {
   1839                           	
   1840  0006B2                     _timer35_isr:		; BSR set to: ?
   1841                           
   1842                           	opt stack 30
-  1843                           	line	97
-  1844                           ;modbus_rtu.c: 97: if(TMR1IF&&TMR1IE)
+  1843                           	line	99
+  1844                           ;modbus_rtu.c: 99: if(TMR1IF&&TMR1IE)
   1845  0006B2  A09E               	btfss	c:(31984/8),(31984)&7	;volatile
   1846  0006B4  EF5E  F003         	goto	i2u1181
   1847  0006B8  EF60  F003         	goto	i2u1180
@@ -1950,18 +1950,18 @@ HI-TECH Software Omniscient Code Generator build 8870
   1854  0006CA                     i2u1191:
   1855  0006CA  EF91  F003         	goto	i2l372
   1856  0006CE                     i2u1190:
-  1857                           	line	100
-  1858                           ;modbus_rtu.c: 98: {
-  1859                           ;modbus_rtu.c: 100: switch(rx_state)
+  1857                           	line	102
+  1858                           ;modbus_rtu.c: 100: {
+  1859                           ;modbus_rtu.c: 102: switch(rx_state)
   1860  0006CE  EF85  F003         	goto	i2l374
-  1861                           	line	102
-  1862                           ;modbus_rtu.c: 101: {
-  1863                           ;modbus_rtu.c: 102: case RX_STATE_INIT:
+  1861                           	line	104
+  1862                           ;modbus_rtu.c: 103: {
+  1863                           ;modbus_rtu.c: 104: case RX_STATE_INIT:
   1864                           	
   1865  0006D2                     i2l375:		; BSR set to: ?
   1866                           
-  1867                           	line	103
-  1868                           ;modbus_rtu.c: 103: rx_state = RX_STATE_IDLE;
+  1867                           	line	105
+  1868                           ;modbus_rtu.c: 105: rx_state = RX_STATE_IDLE;
   1869  0006D2  0102               	movlb	2	; () banked
   1870  0006D4  6F28               	movwf	(??_timer35_isr+0+0)&0ffh
   1871  0006D6  0E01               	movlw	low(01h)
@@ -1970,16 +1970,16 @@ HI-TECH Software Omniscient Code Generator build 8870
   1874  0006DC  6FFD               	movwf	((253))&0ffh
   1875  0006DE  0102               	movlb	2	; () banked
   1876  0006E0  5128               	movf	(??_timer35_isr+0+0)&0ffh,w
-  1877                           	line	104
-  1878                           ;modbus_rtu.c: 104: break;
+  1877                           	line	106
+  1878                           ;modbus_rtu.c: 106: break;
   1879  0006E2  EF8E  F003         	goto	i2l373
-  1880                           	line	105
-  1881                           ;modbus_rtu.c: 105: case RX_STATE_RECEIVE:
+  1880                           	line	107
+  1881                           ;modbus_rtu.c: 107: case RX_STATE_RECEIVE:
   1882                           	
   1883  0006E6                     i2l376:		; BSR set to: ?
   1884                           
-  1885                           	line	106
-  1886                           ;modbus_rtu.c: 106: rx_state = RX_STATE_IDLE;
+  1885                           	line	108
+  1886                           ;modbus_rtu.c: 108: rx_state = RX_STATE_IDLE;
   1887  0006E6  0102               	movlb	2	; () banked
   1888  0006E8  6F28               	movwf	(??_timer35_isr+0+0)&0ffh
   1889  0006EA  0E01               	movlw	low(01h)
@@ -1988,26 +1988,26 @@ HI-TECH Software Omniscient Code Generator build 8870
   1892  0006F0  6FFD               	movwf	((253))&0ffh
   1893  0006F2  0102               	movlb	2	; () banked
   1894  0006F4  5128               	movf	(??_timer35_isr+0+0)&0ffh,w
-  1895                           	line	107
-  1896                           ;modbus_rtu.c: 107: rx_buf.frame_ok = 1;
+  1895                           	line	109
+  1896                           ;modbus_rtu.c: 109: rx_buf.frame_ok = 1;
   1897  0006F6  0102               	movlb	2	; () banked
   1898  0006F8  6F28               	movwf	(??_timer35_isr+0+0)&0ffh
   1899  0006FA  0E01               	movlw	low(01h)
   1900  0006FC  6E00               	movwf	((c:0)),c
   1901  0006FE  0102               	movlb	2	; () banked
   1902  000700  5128               	movf	(??_timer35_isr+0+0)&0ffh,w
-  1903                           	line	108
-  1904                           ;modbus_rtu.c: 108: break;
+  1903                           	line	110
+  1904                           ;modbus_rtu.c: 110: break;
   1905  000702  EF8E  F003         	goto	i2l373
-  1906                           	line	109
-  1907                           ;modbus_rtu.c: 109: default:
+  1906                           	line	111
+  1907                           ;modbus_rtu.c: 111: default:
   1908                           	
   1909  000706                     i2l377:		; BSR set to: ?
   1910                           
-  1911                           	line	110
-  1912                           ;modbus_rtu.c: 110: break;
+  1911                           	line	112
+  1912                           ;modbus_rtu.c: 112: break;
   1913  000706  EF8E  F003         	goto	i2l373
-  1914                           	line	100
+  1914                           	line	102
   1915                           	
   1916  00070A                     i2l374:		; BSR set to: ?
   1917                           
@@ -2020,23 +2020,23 @@ HI-TECH Software Omniscient Code Generator build 8870
   1924  000716  E0E7               	bz	i2l376
   1925  000718  EF83  F003         	goto	i2l377
   1926                           
-  1927                           	line	111
+  1927                           	line	113
   1928                           	
   1929  00071C                     i2l373:		; BSR set to: ?
   1930                           
-  1931                           	line	112
-  1932                           ;modbus_rtu.c: 112: disable_timer35();
+  1931                           	line	114
+  1932                           ;modbus_rtu.c: 114: disable_timer35();
   1933  00071C  EC1E  F004         	call	_disable_timer35	;wreg free
-  1934                           	line	114
-  1935                           ;modbus_rtu.c: 114: TMR1IF=0;
+  1934                           	line	116
+  1935                           ;modbus_rtu.c: 116: TMR1IF=0;
   1936  000720  909E               	bcf	c:(31984/8),(31984)&7	;volatile
-  1937                           	line	115
+  1937                           	line	117
   1938                           	
   1939  000722                     i2l372:		; BSR set to: ?
   1940                           
-  1941                           	line	118
-  1942                           ;modbus_rtu.c: 115: }
-  1943                           ;modbus_rtu.c: 118: }
+  1941                           	line	120
+  1942                           ;modbus_rtu.c: 117: }
+  1943                           ;modbus_rtu.c: 120: }
   1944  000722                     i2l371:
   1945                           			; BSR set to: ?
   1946                           
@@ -2062,7 +2062,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   1964                           ; *************** function _rec_isr ************
                                  *****
   1965                           ; Defined at:
-  1966                           ;		line 57 in file "../modbus_rtu.c"
+  1966                           ;		line 61 in file "../modbus_rtu.c"
   1967                           ; Parameters:
   1968                           ;		None
   1969                           ; Auto variables:
@@ -2089,16 +2089,16 @@ HI-TECH Software Omniscient Code Generator build 8870
   1989                           ; This function uses a non-reentrant model
   1990                           ; 
   1991                           	file	"../modbus_rtu.c"
-  1992                           	line	57
+  1992                           	line	61
   1993  000000                     	__size_of_rec_isr	equ	__end_of_rec_isr-_rec_isr
-  1994                           ;modbus_rtu.c: 56: void rec_isr(void)
-  1995                           ;modbus_rtu.c: 57: {
+  1994                           ;modbus_rtu.c: 60: void rec_isr(void)
+  1995                           ;modbus_rtu.c: 61: {
   1996                           	
   1997  0003AA                     _rec_isr:		; BSR set to: ?
   1998                           
   1999                           	opt stack 30
-  2000                           	line	58
-  2001                           ;modbus_rtu.c: 58: unsigned char rec_data = 0;
+  2000                           	line	62
+  2001                           ;modbus_rtu.c: 62: unsigned char rec_data = 0;
   2002  0003AA  0102               	movlb	2	; () banked
   2003  0003AC  6F29               	movwf	(??_rec_isr+1+0)&0ffh
   2004  0003AE  0E00               	movlw	low(0)
@@ -2107,8 +2107,8 @@ HI-TECH Software Omniscient Code Generator build 8870
   2007  0003B4  6F28               	movwf	((rec_isr@rec_data))&0ffh
   2008  0003B6  0102               	movlb	2	; () banked
   2009  0003B8  5129               	movf	(??_rec_isr+1+0)&0ffh,w
-  2010                           	line	59
-  2011                           ;modbus_rtu.c: 59: if((RC2IE)&&(RC2IF))
+  2010                           	line	63
+  2011                           ;modbus_rtu.c: 63: if(((RC2IE)&&(RC2IF)))
   2012  0003BA  AAA3               	btfss	c:(32029/8),(32029)&7	;volatile
   2013  0003BC  EFE2  F001         	goto	i2u1021
   2014  0003C0  EFE4  F001         	goto	i2u1020
@@ -2121,48 +2121,48 @@ HI-TECH Software Omniscient Code Generator build 8870
   2021  0003D2                     i2u1031:
   2022  0003D2  EF52  F002         	goto	i2l362
   2023  0003D6                     i2u1030:
-  2024                           	line	61
-  2025                           ;modbus_rtu.c: 60: {
-  2026                           ;modbus_rtu.c: 61: rec_data = RC2REG;
+  2024                           	line	65
+  2025                           ;modbus_rtu.c: 64: {
+  2026                           ;modbus_rtu.c: 65: rec_data = (RC2REG);
   2027  0003D6  CF74 F228          	movff	(c:3956),(rec_isr@rec_data)	;volatile
-  2028                           	line	62
-  2029                           ;modbus_rtu.c: 62: switch(rx_state)
+  2028                           	line	66
+  2029                           ;modbus_rtu.c: 66: switch(rx_state)
   2030  0003DA  EF47  F002         	goto	i2l364
-  2031                           	line	64
-  2032                           ;modbus_rtu.c: 63: {
-  2033                           ;modbus_rtu.c: 64: case RX_STATE_INIT:
+  2031                           	line	68
+  2032                           ;modbus_rtu.c: 67: {
+  2033                           ;modbus_rtu.c: 68: case RX_STATE_INIT:
   2034                           	
   2035  0003DE                     i2l365:		; BSR set to: ?
   2036                           
-  2037                           	line	65
-  2038                           ;modbus_rtu.c: 65: restart_timer35();
+  2037                           	line	69
+  2038                           ;modbus_rtu.c: 69: restart_timer35();
   2039  0003DE  EC15  F004         	call	i2_restart_timer35	;wreg free
-  2040                           	line	66
-  2041                           ;modbus_rtu.c: 66: rx_buf.rec_count = 0;
+  2040                           	line	70
+  2041                           ;modbus_rtu.c: 70: rx_buf.rec_count = 0;
   2042  0003E2  0102               	movlb	2	; () banked
   2043  0003E4  6F29               	movwf	(??_rec_isr+1+0)&0ffh
   2044  0003E6  0E00               	movlw	low(0)
   2045  0003E8  6E02               	movwf	(0+((c:0)+02h)),c
   2046  0003EA  0102               	movlb	2	; () banked
   2047  0003EC  5129               	movf	(??_rec_isr+1+0)&0ffh,w
-  2048                           	line	67
-  2049                           ;modbus_rtu.c: 67: rx_buf.frame_ok = 0;
+  2048                           	line	71
+  2049                           ;modbus_rtu.c: 71: rx_buf.frame_ok = 0;
   2050  0003EE  0102               	movlb	2	; () banked
   2051  0003F0  6F29               	movwf	(??_rec_isr+1+0)&0ffh
   2052  0003F2  0E00               	movlw	low(0)
   2053  0003F4  6E00               	movwf	((c:0)),c
   2054  0003F6  0102               	movlb	2	; () banked
   2055  0003F8  5129               	movf	(??_rec_isr+1+0)&0ffh,w
-  2056                           	line	68
-  2057                           ;modbus_rtu.c: 68: break;
+  2056                           	line	72
+  2057                           ;modbus_rtu.c: 72: break;
   2058  0003FA  EF52  F002         	goto	i2l362
-  2059                           	line	69
-  2060                           ;modbus_rtu.c: 69: case RX_STATE_IDLE:
+  2059                           	line	73
+  2060                           ;modbus_rtu.c: 73: case RX_STATE_IDLE:
   2061                           	
   2062  0003FE                     i2l366:		; BSR set to: ?
   2063                           
-  2064                           	line	70
-  2065                           ;modbus_rtu.c: 70: rx_buf.data_buf[rx_buf.rec_co
+  2064                           	line	74
+  2065                           ;modbus_rtu.c: 74: rx_buf.data_buf[rx_buf.rec_co
                                  unt++] = rec_data;
   2066  0003FE  EE00 F002          	lfsr	0,(c:0)+02h
   2067  000402  CFEF F229          	movff	indf0,??_rec_isr+1+0
@@ -2181,8 +2181,8 @@ HI-TECH Software Omniscient Code Generator build 8870
   2080  00041E  0102               	movlb	2	; () banked
   2081  000420  C228  FFEF         	movff	(rec_isr@rec_data),indf0
   2082                           
-  2083                           	line	71
-  2084                           ;modbus_rtu.c: 71: rx_state = RX_STATE_RECEIVE;
+  2083                           	line	75
+  2084                           ;modbus_rtu.c: 75: rx_state = RX_STATE_RECEIVE;
   2085  000424  0102               	movlb	2	; () banked
   2086  000426  6F29               	movwf	(??_rec_isr+1+0)&0ffh
   2087  000428  0E02               	movlw	low(02h)
@@ -2191,19 +2191,19 @@ HI-TECH Software Omniscient Code Generator build 8870
   2090  00042E  6FFD               	movwf	((253))&0ffh
   2091  000430  0102               	movlb	2	; () banked
   2092  000432  5129               	movf	(??_rec_isr+1+0)&0ffh,w
-  2093                           	line	72
-  2094                           ;modbus_rtu.c: 72: restart_timer35();
+  2093                           	line	76
+  2094                           ;modbus_rtu.c: 76: restart_timer35();
   2095  000434  EC15  F004         	call	i2_restart_timer35	;wreg free
-  2096                           	line	73
-  2097                           ;modbus_rtu.c: 73: break;
+  2096                           	line	77
+  2097                           ;modbus_rtu.c: 77: break;
   2098  000438  EF52  F002         	goto	i2l362
-  2099                           	line	74
-  2100                           ;modbus_rtu.c: 74: case RX_STATE_RECEIVE:
+  2099                           	line	78
+  2100                           ;modbus_rtu.c: 78: case RX_STATE_RECEIVE:
   2101                           	
   2102  00043C                     i2l367:		; BSR set to: ?
   2103                           
-  2104                           	line	75
-  2105                           ;modbus_rtu.c: 75: if(rx_buf.rec_count<250)
+  2104                           	line	79
+  2105                           ;modbus_rtu.c: 79: if(rx_buf.rec_count<250)
   2106  00043C  0EFA               	movlw	(0FAh)&0ffh
   2107  00043E  6002               	cpfslt	(0+((c:0)+02h)),c
   2108  000440  EF24  F002         	goto	i2u1041
@@ -2211,9 +2211,9 @@ HI-TECH Software Omniscient Code Generator build 8870
   2110  000448                     i2u1041:
   2111  000448  EF3D  F002         	goto	i2l368
   2112  00044C                     i2u1040:
-  2113                           	line	77
-  2114                           ;modbus_rtu.c: 76: {
-  2115                           ;modbus_rtu.c: 77: rx_buf.data_buf[rx_buf.rec_co
+  2113                           	line	81
+  2114                           ;modbus_rtu.c: 80: {
+  2115                           ;modbus_rtu.c: 81: rx_buf.data_buf[rx_buf.rec_co
                                  unt++] = rec_data;
   2116  00044C  EE00 F002          	lfsr	0,(c:0)+02h
   2117  000450  CFEF F229          	movff	indf0,??_rec_isr+1+0
@@ -2232,20 +2232,20 @@ HI-TECH Software Omniscient Code Generator build 8870
   2130  00046C  0102               	movlb	2	; () banked
   2131  00046E  C228  FFEF         	movff	(rec_isr@rec_data),indf0
   2132                           
-  2133                           	line	78
-  2134                           ;modbus_rtu.c: 78: restart_timer35();
+  2133                           	line	82
+  2134                           ;modbus_rtu.c: 82: restart_timer35();
   2135  000472  EC15  F004         	call	i2_restart_timer35	;wreg free
-  2136                           	line	79
-  2137                           ;modbus_rtu.c: 79: }
+  2136                           	line	83
+  2137                           ;modbus_rtu.c: 83: }
   2138  000476  EF45  F002         	goto	i2l369
-  2139                           	line	80
+  2139                           	line	84
   2140                           	
   2141  00047A                     i2l368:		; BSR set to: ?
   2142                           
-  2143                           	line	82
-  2144                           ;modbus_rtu.c: 80: else
-  2145                           ;modbus_rtu.c: 81: {
-  2146                           ;modbus_rtu.c: 82: rx_state = RX_STATE_INIT;
+  2143                           	line	86
+  2144                           ;modbus_rtu.c: 84: else
+  2145                           ;modbus_rtu.c: 85: {
+  2146                           ;modbus_rtu.c: 86: rx_state = RX_STATE_INIT;
   2147  00047A  0102               	movlb	2	; () banked
   2148  00047C  6F29               	movwf	(??_rec_isr+1+0)&0ffh
   2149  00047E  0E00               	movlw	low(0)
@@ -2254,15 +2254,15 @@ HI-TECH Software Omniscient Code Generator build 8870
   2152  000484  6FFD               	movwf	((253))&0ffh
   2153  000486  0102               	movlb	2	; () banked
   2154  000488  5129               	movf	(??_rec_isr+1+0)&0ffh,w
-  2155                           	line	83
+  2155                           	line	87
   2156                           	
   2157  00048A                     i2l369:		; BSR set to: ?
   2158                           
-  2159                           	line	84
-  2160                           ;modbus_rtu.c: 83: }
-  2161                           ;modbus_rtu.c: 84: break;
+  2159                           	line	88
+  2160                           ;modbus_rtu.c: 87: }
+  2161                           ;modbus_rtu.c: 88: break;
   2162  00048A  EF52  F002         	goto	i2l362
-  2163                           	line	62
+  2163                           	line	66
   2164                           	
   2165  00048E                     i2l364:		; BSR set to: ?
   2166                           
@@ -2277,13 +2277,13 @@ HI-TECH Software Omniscient Code Generator build 8870
   2175  00049E  E0CE               	bz	i2l367
   2176  0004A0  EF45  F002         	goto	i2l369
   2177                           
-  2178                           	line	88
+  2178                           	line	92
   2179                           	
   2180  0004A4                     i2l362:		; BSR set to: ?
   2181                           
-  2182                           	line	91
-  2183                           ;modbus_rtu.c: 88: }
-  2184                           ;modbus_rtu.c: 91: }
+  2182                           	line	93
+  2183                           ;modbus_rtu.c: 92: }
+  2184                           ;modbus_rtu.c: 93: }
   2185  0004A4                     i2l361:
   2186                           			; BSR set to: ?
   2187                           
@@ -2309,7 +2309,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   2205                           ; *************** function _disable_timer35 ****
                                  *************
   2206                           ; Defined at:
-  2207                           ;		line 192 in file "../modbus_rtu.c"
+  2207                           ;		line 194 in file "../modbus_rtu.c"
   2208                           ; Parameters:
   2209                           ;		None
   2210                           ; Auto variables:
@@ -2335,20 +2335,20 @@ HI-TECH Software Omniscient Code Generator build 8870
   2230                           ; This function uses a non-reentrant model
   2231                           ; 
   2232                           	file	"../modbus_rtu.c"
-  2233                           	line	192
+  2233                           	line	194
   2234  000000                     	__size_of_disable_timer35	equ	__end_of_disable_
                                  timer35-_disable_timer35
-  2235                           ;modbus_rtu.c: 191: void disable_timer35(void)
-  2236                           ;modbus_rtu.c: 192: {
+  2235                           ;modbus_rtu.c: 193: void disable_timer35(void)
+  2236                           ;modbus_rtu.c: 194: {
   2237                           	
   2238  00083C                     _disable_timer35:		; BSR set to: ?
   2239                           
   2240                           	opt stack 29
-  2241                           	line	193
-  2242                           ;modbus_rtu.c: 193: TMR1ON = 0;
+  2241                           	line	195
+  2242                           ;modbus_rtu.c: 195: TMR1ON = 0;
   2243  00083C  90CD               	bcf	c:(32360/8),(32360)&7	;volatile
-  2244                           	line	194
-  2245                           ;modbus_rtu.c: 194: }
+  2244                           	line	196
+  2245                           ;modbus_rtu.c: 196: }
   2246  00083E                     i2l385:
   2247                           			; BSR set to: ?
   2248                           
@@ -2375,7 +2375,7 @@ HI-TECH Software Omniscient Code Generator build 8870
   2267                           ; *************** function i2_restart_timer35 **
                                  ***************
   2268                           ; Defined at:
-  2269                           ;		line 180 in file "../modbus_rtu.c"
+  2269                           ;		line 182 in file "../modbus_rtu.c"
   2270                           ; Parameters:
   2271                           ;		None
   2272                           ; Auto variables:
@@ -2402,29 +2402,29 @@ HI-TECH Software Omniscient Code Generator build 8870
   2293                           ; This function uses a non-reentrant model
   2294                           ; 
   2295                           	file	"../modbus_rtu.c"
-  2296                           	line	180
+  2296                           	line	182
   2297  000000                     	__size_ofi2_restart_timer35	equ	__end_ofi2_rest
                                  art_timer35-i2_restart_timer35
-  2298                           ;modbus_rtu.c: 179: void restart_timer35(void)
-  2299                           ;modbus_rtu.c: 180: {
+  2298                           ;modbus_rtu.c: 181: void restart_timer35(void)
+  2299                           ;modbus_rtu.c: 182: {
   2300                           	
   2301  00082A                     i2_restart_timer35:		; BSR set to: ?
   2302                           
   2303                           	opt stack 29
-  2304                           	line	181
+  2304                           	line	183
   2305  00082A  90CD               	bcf	c:(32360/8),(32360)&7	;volatile
-  2306                           	line	182
+  2306                           	line	184
   2307  00082C  0E7F               	movlw	low(0627Fh)
   2308  00082E  6ECE               	movwf	((c:4046)),c	;volatile
   2309  000830  0E62               	movlw	high(0627Fh)
   2310  000832  6ECF               	movwf	((c:4046+1)),c	;volatile
-  2311                           	line	183
+  2311                           	line	185
   2312  000834  909E               	bcf	c:(31984/8),(31984)&7	;volatile
-  2313                           	line	184
+  2313                           	line	186
   2314  000836  809D               	bsf	c:(31976/8),(31976)&7	;volatile
-  2315                           	line	185
+  2315                           	line	187
   2316  000838  80CD               	bsf	c:(32360/8),(32360)&7	;volatile
-  2317                           	line	186
+  2317                           	line	188
   2318  00083A                     i2l384:
   2319                           			; BSR set to: ?
   2320                           
@@ -3072,7 +3072,7 @@ HI-TECH Software Omniscient Code Generator build 8870
 
 
 HI-TECH Software PICC-18 Macro Assembler V9.66 build 8870 
-Symbol Table                                           Mon May 27 14:45:42 2013
+Symbol Table                                           Mon May 27 16:40:41 2013
 
                                  l1 0612  
                                  l2 05D8  

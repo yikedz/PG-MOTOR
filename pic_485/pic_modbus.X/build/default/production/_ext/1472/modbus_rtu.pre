@@ -1,9 +1,6 @@
 
 # 1 "../modbus_rtu.c"
 
-# 34 "../mbcrc.h"
-unsigned int modbus_crc16( unsigned char * pucFrame, unsigned int usLen );
-
 # 315 "D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h"
 extern volatile unsigned char ANSELA @ 0xF38;
 
@@ -3692,6 +3689,9 @@ volatile unsigned InternalTMR : 16;
 
 extern volatile unsigned char TMR3_Prescale @ 0x1009;
 
+# 34 "../mbcrc.h"
+unsigned int modbus_crc16( unsigned char * pucFrame, unsigned int usLen );
+
 # 1376 "D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18.h"
 extern unsigned char idloc_read(unsigned char reg_no);
 extern void idloc_write(unsigned char reg_no,unsigned char data);
@@ -3733,7 +3733,7 @@ extern void _delay(unsigned long);
 #pragma inline(_delay3)
 extern void _delay3(unsigned char);
 
-# 5 "../modbus_rtu.h"
+# 6 "../modbus_rtu.h"
 typedef enum
 {
 RX_STATE_INIT,
@@ -3766,7 +3766,7 @@ void modbus_receive(void);
 void read_holding_regs(void);
 void write_single_holding_reg(void);
 
-# 19 "../modbus_rtu.c"
+# 23 "../modbus_rtu.c"
 TX_BUF tx_buf;
 
 RX_BUF rx_buf;
@@ -3799,13 +3799,13 @@ PORTC = md_keep;
 }
 }
 
-# 56
+# 60
 void rec_isr(void)
 {
 unsigned char rec_data = 0;
-if((RC2IE)&&(RC2IF))
+if(((RC2IE)&&(RC2IF)))
 {
-rec_data = RC2REG;
+rec_data = (RC2REG);
 switch(rx_state)
 {
 case RX_STATE_INIT:
@@ -3833,11 +3833,9 @@ default:
 break;
 }
 }
-
-
 }
 
-# 95
+# 97
 void timer35_isr(void)
 {
 if(TMR1IF&&TMR1IE)
@@ -3863,7 +3861,7 @@ TMR1IF=0;
 
 }
 
-# 122
+# 124
 void tx_isr(void)
 {
 static unsigned char current_need_send = 0;
@@ -3885,7 +3883,7 @@ rx_buf.rec_count = 0;
 }
 }
 
-# 147
+# 149
 void init_timer35(void)
 {
 TMR1ON = 0;
@@ -3901,7 +3899,7 @@ restart_timer35();
 
 }
 
-# 165
+# 167
 void init_uart(void)
 {
 SPEN2 = 1;
@@ -3913,7 +3911,7 @@ TXEN2 = 1;
 RC2IE = 1;
 }
 
-# 179
+# 181
 void restart_timer35(void)
 {
 TMR1ON = 0;
@@ -3923,7 +3921,7 @@ TMR1IE=1;
 TMR1ON = 1;
 }
 
-# 191
+# 193
 void disable_timer35(void)
 {
 TMR1ON = 0;

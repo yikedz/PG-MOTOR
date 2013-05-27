@@ -11,13 +11,18 @@
  *
 */
 
+#include<pic18f25k22.h>
 #include "mbcrc.h"
 #include<htc.h>
 #include"modbus_rtu.h"
 #include"modbus_rtu_config.h"
-#include<pic18f25k22.h>
+
 #define REC_INTERRUPT_FLG ((RC2IE)&&(RC2IF))
+#define TXD_INTERRUPT_FLG (TX2IE&&TX2IF)
+
 #define REC_BUFFER (RC2REG)
+#define TXD_BUFFER (TX2REG)
+#define TXD_INTERRUPT_EN (TX2IE)
 
 TX_BUF tx_buf;
 
@@ -89,8 +94,6 @@ void rec_isr(void)
             break;
         }
     }
-
-
 }
 /*
  * 属于底层函数，与单片机相关
@@ -126,14 +129,14 @@ void tx_isr(void)
 {
 	static unsigned char current_need_send = 0;
 	
-	if(TX2IE&&TX2IF)
+	if(TXD_INTERRUPT_FLG)
 	{
 		if(tx_buf.tx_count>0)
 		{
-			TX2REG = tx_buf.data_buf[current_need_send++];
+			TXD_BUFFER  = tx_buf.data_buf[current_need_send++];
 			if(current_need_send==tx_buf.tx_count)
 			{
-				TX2IE = 0;//禁止发送中断
+				TXD_INTERRUPT_EN = 0;//禁止发送中断
 				current_need_send = 0;
 				tx_buf.tx_count = 0;
 				rx_buf.rec_count = 0;
@@ -268,7 +271,7 @@ void read_holding_regs(void)
 	tx_buf.data_buf[4+2*num] = data_crc>>8;
 	tx_buf.tx_count = 5+2*num;
 	//发送数据
-	TX2IE = 1;//发送数据	
+	TXD_INTERRUPT_EN = 1;//发送数据	
 }
 
 void write_single_holding_reg(void)
@@ -287,7 +290,7 @@ void write_single_holding_reg(void)
 	tx_buf.tx_count = rx_buf.rec_count;
 	//转到发送数据状态
 	//发送数据
-	TX2IE = 1;//发送数据	
+	TXD_INTERRUPT_EN = 1;//发送数据
 }
 
 void interrupt my_isr(void)

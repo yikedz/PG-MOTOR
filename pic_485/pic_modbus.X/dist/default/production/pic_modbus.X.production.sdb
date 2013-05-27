@@ -3,56 +3,56 @@
 [d edition pro ]
 [d chip 18F25K22 ]
 [s S29 . 51 `uc 1 tx_count 1 0 `[50]uc 1 data_buf 50 1 ]
-"19 ../modbus_rtu.c
+"23 ../modbus_rtu.c
 [s S33 . 53 `uc 1 frame_ok 1 0 `uc 1 data_valid 1 1 `uc 1 rec_count 1 2 `[50]uc 1 data_buf 50 3 ]
-"21
+"25
 [e E3832 . `uc
 RX_STATE_INIT 0
 RX_STATE_IDLE 1
 RX_STATE_RECEIVE 2
 RX_STATE_DONE 3
 ]
-"291
+"293
 [v F3895 `(v  1 t 0 ]
 "53 ../mbcrc.c
 [v _modbus_crc16 `(ui  1 e 2 0 ]
-"29 ../modbus_rtu.c
+"33 ../modbus_rtu.c
 [v _main `(v  1 e 0 0 ]
-"57
+"61
 [v _rec_isr `(v  1 e 0 0 ]
-"96
+"98
 [v _timer35_isr `(v  1 e 0 0 ]
-"123
+"125
 [v _tx_isr `(v  1 e 0 0 ]
-"148
+"150
 [v _init_timer35 `(v  1 e 0 0 ]
-"166
+"168
 [v _init_uart `(v  1 e 0 0 ]
-"180
+"182
 [v _restart_timer35 `(v  1 e 0 0 ]
-"192
+"194
 [v _disable_timer35 `(v  1 e 0 0 ]
-"197
+"199
 [v _modbus_receive `(v  1 e 0 0 ]
-"243
+"245
 [v _read_holding_regs `(v  1 e 0 0 ]
-"272
+"274
 [v _write_single_holding_reg `(v  1 e 0 0 ]
-"291
+"293
 [v _my_isr `I(v  1 e 0 0 ]
 "2 ../mbcrc.c
 [v _aucCRCHi `DC[256]uc  1 s 256 _aucCRCHi ]
 "27
 [v _aucCRCLo `DC[256]uc  1 s 256 _aucCRCLo ]
-"19 ../modbus_rtu.c
+"23 ../modbus_rtu.c
 [v _tx_buf `S29  1 e 51 @256 ]
-"21
-[v _rx_buf `S33  1 e 53 @0 ]
-"23
-[v _rx_state `E3832  1 e 1 @253 ]
 "25
+[v _rx_buf `S33  1 e 53 @0 ]
+"27
+[v _rx_state `E3832  1 e 1 @253 ]
+"29
 [v _modbus_reg `[100]ui  1 e 200 @53 ]
-"124
+"126
 [v F3879 `uc  1 s 1 @254 ]
 "367 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _ANSELC `Vuc  1 e 1 @3898 ]
@@ -104,54 +104,54 @@ RX_STATE_DONE 3
 [v _PEIE `Vb  1 e 0 @32662 ]
 "3954
 [v _GIE `Vb  1 e 0 @32663 ]
-"29 ../modbus_rtu.c
+"33 ../modbus_rtu.c
 [v _main `(v  1 e 0 0 ]
 {
-"30
+"34
 [v _md_keep `ui  1 a 2 0 ]
-"49
+"53
 } 2
-"166
+"168
 [v _init_uart `(v  1 e 0 0 ]
 {
-"174
+"176
 } 0
-"197
+"199
 [v _modbus_receive `(v  1 e 0 0 ]
 {
-"240
+"242
 } 0
-"148
+"150
 [v _init_timer35 `(v  1 e 0 0 ]
 {
-"160
+"162
 } 0
-"243
+"245
 [v _read_holding_regs `(v  1 e 0 0 ]
 {
-"247
+"249
 [v _i `uc  1 a 1 0 ]
-"245
+"247
 [v _start_addr `ui  1 a 2 1 ]
-"246
+"248
 [v _data_crc `ui  1 a 2 3 ]
-"244
+"246
 [v _num `ui  1 a 2 5 ]
-"269
+"271
 } 7
-"272
+"274
 [v _write_single_holding_reg `(v  1 e 0 0 ]
 {
-"274
+"276
 [v _i `uc  1 a 1 0 ]
-"273
+"275
 [v _start_addr `ui  1 a 2 1 ]
-"288
+"290
 } 3
-"180
+"182
 [v _restart_timer35 `(v  1 e 0 0 ]
 {
-"186
+"188
 } 0
 "53 ../mbcrc.c
 [v _modbus_crc16 `(ui  1 e 2 0 ]
@@ -167,35 +167,35 @@ RX_STATE_DONE 3
 [v _usLen `ui  1 p 2 2 ]
 "65
 } 4
-"291 ../modbus_rtu.c
+"293 ../modbus_rtu.c
 [v _my_isr `I(v  1 e 0 0 ]
 {
-"295
+"297
 } 0
-"123
+"125
 [v _tx_isr `(v  1 e 0 0 ]
 {
-"141
+"143
 } 0
-"96
+"98
 [v _timer35_isr `(v  1 e 0 0 ]
 {
-"118
+"120
 } 0
-"57
+"61
 [v _rec_isr `(v  1 e 0 0 ]
 {
-"58
+"62
 [v _rec_data `uc  1 a 1 0 ]
-"91
+"93
 } 1
-"192
+"194
 [v _disable_timer35 `(v  1 e 0 0 ]
 {
-"194
+"196
 } 0
-"180
+"182
 [v _restart_timer35 `(v  1 e 0 0 ]
 {
-"186
+"188
 } 0

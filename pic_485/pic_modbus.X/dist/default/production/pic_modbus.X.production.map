@@ -19,7 +19,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
-  C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s7js.obj \
+  C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s6mc.obj \
   dist/default/production\pic_modbus.X.production.obj 
 
 Object code version is 3.10
@@ -52,7 +52,7 @@ Estimated maximum call depth: 3
 
 
                 Name          Link     Load   Length Selector Space Scale
-C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s7js.obj
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s6mc.obj
                 init            18       18       18       4     0
                 reset_vec        0        0        4       0     0
                 end_init        30       30       16       4     0

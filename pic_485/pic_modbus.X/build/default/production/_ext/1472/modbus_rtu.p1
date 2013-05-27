@@ -1,17 +1,17 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [s S351 `uc 1 `uc -> 50 `i ]
 [n S351 . tx_count data_buf ]
-"19 ../modbus_rtu.c
+"23 ../modbus_rtu.c
 [v _tx_buf `S351 1 e ]
 [s S350 `uc 1 `uc 1 `uc 1 `uc -> 50 `i ]
 [n S350 . frame_ok data_valid rec_count data_buf ]
-"21 ../modbus_rtu.c
+"25 ../modbus_rtu.c
 [v _rx_buf `S350 1 e ]
 [c E3832 0 1 2 3 .. ]
 [n E3832 . RX_STATE_INIT RX_STATE_IDLE RX_STATE_RECEIVE RX_STATE_DONE  ]
-"23 ../modbus_rtu.c
+"27 ../modbus_rtu.c
 [v _rx_state `E3832 1 e ]
-"25 ../modbus_rtu.c
+"29 ../modbus_rtu.c
 [v _modbus_reg `ui -> 100 `i e ]
 [p mainexit ]
 "367 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
@@ -20,15 +20,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC `Vuc 0 e@3988 ]
 "2013 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _PORTC `Vuc 0 e@3970 ]
-"29 ../modbus_rtu.h
+"30 ../modbus_rtu.h
 [v _init_timer35 `(v 0 ef ]
 "3953 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _PEIE `Vb 0 e@32662 ]
 "3954 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _GIE `Vb 0 e@32663 ]
-"26 ../modbus_rtu.h
+"27 ../modbus_rtu.h
 [v _init_uart `(v 0 ef ]
-"33 ../modbus_rtu.h
+"34 ../modbus_rtu.h
 [v _modbus_receive `(v 0 ef ]
 "2658 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _RC2IE `Vb 0 e@32029 ]
@@ -36,13 +36,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RC2IF `Vb 0 e@32037 ]
 "1584 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _RC2REG `Vuc 0 e@3956 ]
-"31 ../modbus_rtu.h
+"32 ../modbus_rtu.h
 [v _restart_timer35 `(v 0 ef ]
 "2496 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _TMR1IF `Vb 0 e@31984 ]
 "2464 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _TMR1IE `Vb 0 e@31976 ]
-"32 ../modbus_rtu.h
+"33 ../modbus_rtu.h
 [v _disable_timer35 `(v 0 ef ]
 "2657 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _TX2IE `Vb 0 e@32028 ]
@@ -76,11 +76,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TXEN2 `Vb 0 e@31637 ]
 "34 ../mbcrc.h
 [v _modbus_crc16 `(ui 0 ef2`*uc`ui ]
-"34 ../modbus_rtu.h
-[v _read_holding_regs `(v 0 ef ]
 "35 ../modbus_rtu.h
+[v _read_holding_regs `(v 0 ef ]
+"36 ../modbus_rtu.h
 [v _write_single_holding_reg `(v 0 ef ]
-[; ;mbcrc.h: 34: unsigned int modbus_crc16( unsigned char * pucFrame, unsigned int usLen );
 [; ;pic18f25k22.h: 315: extern volatile unsigned char ANSELA @ 0xF38;
 [; ;pic18f25k22.h: 318: extern volatile bit ANSA0 @ ((unsigned)&ANSELA*8)+0;
 [; ;pic18f25k22.h: 320: extern volatile bit ANSA1 @ ((unsigned)&ANSELA*8)+1;
@@ -3075,6 +3074,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18f25k22.h: 4166: };
 [; ;pic18f25k22.h: 4167: } TMR3_Internalbits @ 0x1007;
 [; ;pic18f25k22.h: 4170: extern volatile unsigned char TMR3_Prescale @ 0x1009;
+[; ;mbcrc.h: 34: unsigned int modbus_crc16( unsigned char * pucFrame, unsigned int usLen );
 [; ;pic18.h: 1376: extern unsigned char idloc_read(unsigned char reg_no);
 [; ;pic18.h: 1377: extern void idloc_write(unsigned char reg_no,unsigned char data);
 [; ;pic18.h: 1498: extern unsigned char eeprom_read(unsigned int address);
@@ -3091,763 +3091,763 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 1556: extern unsigned long checksum32(unsigned long startAddr, unsigned long length);
 [; ;pic18.h: 1569: extern void _delay(unsigned long);
 [; ;pic18.h: 1571: extern void _delay3(unsigned char);
-[; ;modbus_rtu.h: 5: typedef enum
-[; ;modbus_rtu.h: 6: {
-[; ;modbus_rtu.h: 7: RX_STATE_INIT,
-[; ;modbus_rtu.h: 8: RX_STATE_IDLE,
-[; ;modbus_rtu.h: 9: RX_STATE_RECEIVE,
-[; ;modbus_rtu.h: 10: RX_STATE_DONE
-[; ;modbus_rtu.h: 11: }RX_STATE;
-[; ;modbus_rtu.h: 12: typedef struct
-[; ;modbus_rtu.h: 13: {
-[; ;modbus_rtu.h: 14: unsigned char frame_ok;
-[; ;modbus_rtu.h: 15: unsigned char data_valid;
-[; ;modbus_rtu.h: 16: unsigned char rec_count;
-[; ;modbus_rtu.h: 17: unsigned char data_buf[50];
-[; ;modbus_rtu.h: 18: } RX_BUF;
-[; ;modbus_rtu.h: 19: typedef struct
-[; ;modbus_rtu.h: 20: {
-[; ;modbus_rtu.h: 22: unsigned char tx_count;
-[; ;modbus_rtu.h: 23: unsigned char data_buf[50];
-[; ;modbus_rtu.h: 24: } TX_BUF;
-[; ;modbus_rtu.h: 26: void init_uart(void);
-[; ;modbus_rtu.h: 27: void rec_isr(void);
-[; ;modbus_rtu.h: 28: void tx_isr(void);
-[; ;modbus_rtu.h: 29: void init_timer35(void);
-[; ;modbus_rtu.h: 30: void timer35_isr(void);
-[; ;modbus_rtu.h: 31: void restart_timer35(void);
-[; ;modbus_rtu.h: 32: void disable_timer35(void);
-[; ;modbus_rtu.h: 33: void modbus_receive(void);
-[; ;modbus_rtu.h: 34: void read_holding_regs(void);
-[; ;modbus_rtu.h: 35: void write_single_holding_reg(void);
-[; ;modbus_rtu.c: 19: TX_BUF tx_buf;
-[; ;modbus_rtu.c: 21: RX_BUF rx_buf;
+[; ;modbus_rtu.h: 6: typedef enum
+[; ;modbus_rtu.h: 7: {
+[; ;modbus_rtu.h: 8: RX_STATE_INIT,
+[; ;modbus_rtu.h: 9: RX_STATE_IDLE,
+[; ;modbus_rtu.h: 10: RX_STATE_RECEIVE,
+[; ;modbus_rtu.h: 11: RX_STATE_DONE
+[; ;modbus_rtu.h: 12: }RX_STATE;
+[; ;modbus_rtu.h: 13: typedef struct
+[; ;modbus_rtu.h: 14: {
+[; ;modbus_rtu.h: 15: unsigned char frame_ok;
+[; ;modbus_rtu.h: 16: unsigned char data_valid;
+[; ;modbus_rtu.h: 17: unsigned char rec_count;
+[; ;modbus_rtu.h: 18: unsigned char data_buf[50];
+[; ;modbus_rtu.h: 19: } RX_BUF;
+[; ;modbus_rtu.h: 20: typedef struct
+[; ;modbus_rtu.h: 21: {
+[; ;modbus_rtu.h: 23: unsigned char tx_count;
+[; ;modbus_rtu.h: 24: unsigned char data_buf[50];
+[; ;modbus_rtu.h: 25: } TX_BUF;
+[; ;modbus_rtu.h: 27: void init_uart(void);
+[; ;modbus_rtu.h: 28: void rec_isr(void);
+[; ;modbus_rtu.h: 29: void tx_isr(void);
+[; ;modbus_rtu.h: 30: void init_timer35(void);
+[; ;modbus_rtu.h: 31: void timer35_isr(void);
+[; ;modbus_rtu.h: 32: void restart_timer35(void);
+[; ;modbus_rtu.h: 33: void disable_timer35(void);
+[; ;modbus_rtu.h: 34: void modbus_receive(void);
+[; ;modbus_rtu.h: 35: void read_holding_regs(void);
+[; ;modbus_rtu.h: 36: void write_single_holding_reg(void);
+[; ;modbus_rtu.c: 23: TX_BUF tx_buf;
+[; ;modbus_rtu.c: 25: RX_BUF rx_buf;
 [i _rx_state
-"23 ../modbus_rtu.c
+"27 ../modbus_rtu.c
 . `E3832 0
 ]
-[; ;modbus_rtu.c: 23: RX_STATE rx_state = RX_STATE_INIT;
-[; ;modbus_rtu.c: 25: unsigned int modbus_reg[100];
-"29
+[; ;modbus_rtu.c: 27: RX_STATE rx_state = RX_STATE_INIT;
+[; ;modbus_rtu.c: 29: unsigned int modbus_reg[100];
+"33
 [v _main `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 28: void main(void)
-[; ;modbus_rtu.c: 29: {
+[; ;modbus_rtu.c: 32: void main(void)
+[; ;modbus_rtu.c: 33: {
 [e :U _main ]
 [f ]
-"30
-[v _md_keep `ui 1 a ]
-[; ;modbus_rtu.c: 30: unsigned int md_keep;
-[; ;modbus_rtu.c: 32: ANSELC = 0;
-"32
-[e = _ANSELC -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 33: TRISC = 0x00;
-"33
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 34: PORTC = 0xc0;
 "34
-[e = _PORTC -> -> 192 `i `uc ]
-[; ;modbus_rtu.c: 36: init_timer35();
+[v _md_keep `ui 1 a ]
+[; ;modbus_rtu.c: 34: unsigned int md_keep;
+[; ;modbus_rtu.c: 36: ANSELC = 0;
 "36
-[e ( _init_timer35 ..  ]
-[; ;modbus_rtu.c: 37: PEIE = 1;
+[e = _ANSELC -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 37: TRISC = 0x00;
 "37
-[e = _PEIE -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 38: GIE = 1;
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 38: PORTC = 0xc0;
 "38
-[e = _GIE -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 39: init_uart();
-"39
-[e ( _init_uart ..  ]
-[; ;modbus_rtu.c: 40: while(1)
+[e = _PORTC -> -> 192 `i `uc ]
+[; ;modbus_rtu.c: 40: init_timer35();
 "40
-[e :U 354 ]
-[; ;modbus_rtu.c: 41: {
+[e ( _init_timer35 ..  ]
+[; ;modbus_rtu.c: 41: PEIE = 1;
 "41
-{
-[; ;modbus_rtu.c: 42: modbus_receive();
+[e = _PEIE -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 42: GIE = 1;
 "42
-[e ( _modbus_receive ..  ]
-[; ;modbus_rtu.c: 43: if(modbus_reg[0]!=md_keep)
+[e = _GIE -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 43: init_uart();
 "43
-[e $ ! != *U + &U _modbus_reg * -> -> -> 0 `i `ui `ux -> -> # *U &U _modbus_reg `ui `ux _md_keep 356  ]
-[; ;modbus_rtu.c: 44: {
+[e ( _init_uart ..  ]
+[; ;modbus_rtu.c: 44: while(1)
 "44
-{
-[; ;modbus_rtu.c: 45: md_keep = modbus_reg[0];
+[e :U 354 ]
+[; ;modbus_rtu.c: 45: {
 "45
-[e = _md_keep *U + &U _modbus_reg * -> -> -> 0 `i `ui `ux -> -> # *U &U _modbus_reg `ui `ux ]
-[; ;modbus_rtu.c: 46: PORTC = md_keep;
+{
+[; ;modbus_rtu.c: 46: modbus_receive();
 "46
-[e = _PORTC -> _md_keep `uc ]
+[e ( _modbus_receive ..  ]
+[; ;modbus_rtu.c: 47: if(modbus_reg[0]!=md_keep)
 "47
+[e $ ! != *U + &U _modbus_reg * -> -> -> 0 `i `ui `ux -> -> # *U &U _modbus_reg `ui `ux _md_keep 356  ]
+[; ;modbus_rtu.c: 48: {
+"48
+{
+[; ;modbus_rtu.c: 49: md_keep = modbus_reg[0];
+"49
+[e = _md_keep *U + &U _modbus_reg * -> -> -> 0 `i `ui `ux -> -> # *U &U _modbus_reg `ui `ux ]
+[; ;modbus_rtu.c: 50: PORTC = md_keep;
+"50
+[e = _PORTC -> _md_keep `uc ]
+"51
 }
 [e :U 356 ]
-"48
+"52
 }
 [e :U 353 ]
-"40
+"44
 [e $U 354  ]
 [e :U 355 ]
-[; ;modbus_rtu.c: 47: }
-[; ;modbus_rtu.c: 48: }
-[; ;modbus_rtu.c: 49: }
-"49
+[; ;modbus_rtu.c: 51: }
+[; ;modbus_rtu.c: 52: }
+[; ;modbus_rtu.c: 53: }
+"53
 [e :UE 352 ]
 }
-"57
+"61
 [v _rec_isr `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 56: void rec_isr(void)
-[; ;modbus_rtu.c: 57: {
+[; ;modbus_rtu.c: 60: void rec_isr(void)
+[; ;modbus_rtu.c: 61: {
 [e :U _rec_isr ]
 [f ]
-"58
-[v _rec_data `uc 1 a ]
-[; ;modbus_rtu.c: 58: unsigned char rec_data = 0;
-[e = _rec_data -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 59: if((RC2IE)&&(RC2IF))
-"59
-[e $ ! && _RC2IE _RC2IF 358  ]
-[; ;modbus_rtu.c: 60: {
-"60
-{
-[; ;modbus_rtu.c: 61: rec_data = RC2REG;
-"61
-[e = _rec_data _RC2REG ]
-[; ;modbus_rtu.c: 62: switch(rx_state)
 "62
-[e $U 360  ]
-[; ;modbus_rtu.c: 63: {
+[v _rec_data `uc 1 a ]
+[; ;modbus_rtu.c: 62: unsigned char rec_data = 0;
+[e = _rec_data -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 63: if(((RC2IE)&&(RC2IF)))
 "63
-{
-[; ;modbus_rtu.c: 64: case RX_STATE_INIT:
+[e $ ! && _RC2IE _RC2IF 358  ]
+[; ;modbus_rtu.c: 64: {
 "64
-[e :U 361 ]
-[; ;modbus_rtu.c: 65: restart_timer35();
+{
+[; ;modbus_rtu.c: 65: rec_data = (RC2REG);
 "65
-[e ( _restart_timer35 ..  ]
-[; ;modbus_rtu.c: 66: rx_buf.rec_count = 0;
+[e = _rec_data _RC2REG ]
+[; ;modbus_rtu.c: 66: switch(rx_state)
 "66
-[e = . _rx_buf 2 -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 67: rx_buf.frame_ok = 0;
+[e $U 360  ]
+[; ;modbus_rtu.c: 67: {
 "67
-[e = . _rx_buf 0 -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 68: break;
+{
+[; ;modbus_rtu.c: 68: case RX_STATE_INIT:
 "68
-[e $U 359  ]
-[; ;modbus_rtu.c: 69: case RX_STATE_IDLE:
+[e :U 361 ]
+[; ;modbus_rtu.c: 69: restart_timer35();
 "69
-[e :U 362 ]
-[; ;modbus_rtu.c: 70: rx_buf.data_buf[rx_buf.rec_count++] = rec_data;
+[e ( _restart_timer35 ..  ]
+[; ;modbus_rtu.c: 70: rx_buf.rec_count = 0;
 "70
-[e = *U + &U . _rx_buf 3 * -> ++ . _rx_buf 2 -> -> 1 `i `uc `ux -> -> # *U &U . _rx_buf 3 `ui `ux _rec_data ]
-[; ;modbus_rtu.c: 71: rx_state = RX_STATE_RECEIVE;
+[e = . _rx_buf 2 -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 71: rx_buf.frame_ok = 0;
 "71
-[e = _rx_state . `E3832 2 ]
-[; ;modbus_rtu.c: 72: restart_timer35();
+[e = . _rx_buf 0 -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 72: break;
 "72
-[e ( _restart_timer35 ..  ]
-[; ;modbus_rtu.c: 73: break;
-"73
 [e $U 359  ]
-[; ;modbus_rtu.c: 74: case RX_STATE_RECEIVE:
+[; ;modbus_rtu.c: 73: case RX_STATE_IDLE:
+"73
+[e :U 362 ]
+[; ;modbus_rtu.c: 74: rx_buf.data_buf[rx_buf.rec_count++] = rec_data;
 "74
-[e :U 363 ]
-[; ;modbus_rtu.c: 75: if(rx_buf.rec_count<250)
-"75
-[e $ ! < -> . _rx_buf 2 `i -> 250 `i 364  ]
-[; ;modbus_rtu.c: 76: {
-"76
-{
-[; ;modbus_rtu.c: 77: rx_buf.data_buf[rx_buf.rec_count++] = rec_data;
-"77
 [e = *U + &U . _rx_buf 3 * -> ++ . _rx_buf 2 -> -> 1 `i `uc `ux -> -> # *U &U . _rx_buf 3 `ui `ux _rec_data ]
-[; ;modbus_rtu.c: 78: restart_timer35();
-"78
+[; ;modbus_rtu.c: 75: rx_state = RX_STATE_RECEIVE;
+"75
+[e = _rx_state . `E3832 2 ]
+[; ;modbus_rtu.c: 76: restart_timer35();
+"76
 [e ( _restart_timer35 ..  ]
+[; ;modbus_rtu.c: 77: break;
+"77
+[e $U 359  ]
+[; ;modbus_rtu.c: 78: case RX_STATE_RECEIVE:
+"78
+[e :U 363 ]
+[; ;modbus_rtu.c: 79: if(rx_buf.rec_count<250)
 "79
-}
-[; ;modbus_rtu.c: 79: }
-[e $U 365  ]
+[e $ ! < -> . _rx_buf 2 `i -> 250 `i 364  ]
+[; ;modbus_rtu.c: 80: {
 "80
-[e :U 364 ]
-[; ;modbus_rtu.c: 80: else
-[; ;modbus_rtu.c: 81: {
-"81
 {
-[; ;modbus_rtu.c: 82: rx_state = RX_STATE_INIT;
+[; ;modbus_rtu.c: 81: rx_buf.data_buf[rx_buf.rec_count++] = rec_data;
+"81
+[e = *U + &U . _rx_buf 3 * -> ++ . _rx_buf 2 -> -> 1 `i `uc `ux -> -> # *U &U . _rx_buf 3 `ui `ux _rec_data ]
+[; ;modbus_rtu.c: 82: restart_timer35();
 "82
-[e = _rx_state . `E3832 0 ]
+[e ( _restart_timer35 ..  ]
 "83
 }
-[e :U 365 ]
 [; ;modbus_rtu.c: 83: }
-[; ;modbus_rtu.c: 84: break;
+[e $U 365  ]
 "84
-[e $U 359  ]
-[; ;modbus_rtu.c: 85: default:
+[e :U 364 ]
+[; ;modbus_rtu.c: 84: else
+[; ;modbus_rtu.c: 85: {
 "85
-[e :U 366 ]
-[; ;modbus_rtu.c: 86: break;
+{
+[; ;modbus_rtu.c: 86: rx_state = RX_STATE_INIT;
 "86
-[e $U 359  ]
+[e = _rx_state . `E3832 0 ]
 "87
 }
+[e :U 365 ]
 [; ;modbus_rtu.c: 87: }
+[; ;modbus_rtu.c: 88: break;
+"88
 [e $U 359  ]
-"62
+[; ;modbus_rtu.c: 89: default:
+"89
+[e :U 366 ]
+[; ;modbus_rtu.c: 90: break;
+"90
+[e $U 359  ]
+"91
+}
+[; ;modbus_rtu.c: 91: }
+[e $U 359  ]
+"66
 [e :U 360 ]
 [e [\ _rx_state , $ . `E3832 0 361
  , $ . `E3832 1 362
  , $ . `E3832 2 363
  366 ]
-"87
+"91
 [e :U 359 ]
-"88
+"92
 }
 [e :U 358 ]
-[; ;modbus_rtu.c: 88: }
-[; ;modbus_rtu.c: 91: }
-"91
+[; ;modbus_rtu.c: 92: }
+[; ;modbus_rtu.c: 93: }
+"93
 [e :UE 357 ]
 }
-"96
+"98
 [v _timer35_isr `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 95: void timer35_isr(void)
-[; ;modbus_rtu.c: 96: {
+[; ;modbus_rtu.c: 97: void timer35_isr(void)
+[; ;modbus_rtu.c: 98: {
 [e :U _timer35_isr ]
 [f ]
-[; ;modbus_rtu.c: 97: if(TMR1IF&&TMR1IE)
-"97
+[; ;modbus_rtu.c: 99: if(TMR1IF&&TMR1IE)
+"99
 [e $ ! && _TMR1IF _TMR1IE 368  ]
-[; ;modbus_rtu.c: 98: {
-"98
-{
-[; ;modbus_rtu.c: 100: switch(rx_state)
+[; ;modbus_rtu.c: 100: {
 "100
-[e $U 370  ]
-[; ;modbus_rtu.c: 101: {
-"101
 {
-[; ;modbus_rtu.c: 102: case RX_STATE_INIT:
+[; ;modbus_rtu.c: 102: switch(rx_state)
 "102
-[e :U 371 ]
-[; ;modbus_rtu.c: 103: rx_state = RX_STATE_IDLE;
+[e $U 370  ]
+[; ;modbus_rtu.c: 103: {
 "103
-[e = _rx_state . `E3832 1 ]
-[; ;modbus_rtu.c: 104: break;
+{
+[; ;modbus_rtu.c: 104: case RX_STATE_INIT:
 "104
-[e $U 369  ]
-[; ;modbus_rtu.c: 105: case RX_STATE_RECEIVE:
+[e :U 371 ]
+[; ;modbus_rtu.c: 105: rx_state = RX_STATE_IDLE;
 "105
-[e :U 372 ]
-[; ;modbus_rtu.c: 106: rx_state = RX_STATE_IDLE;
-"106
 [e = _rx_state . `E3832 1 ]
-[; ;modbus_rtu.c: 107: rx_buf.frame_ok = 1;
-"107
-[e = . _rx_buf 0 -> -> 1 `i `uc ]
-[; ;modbus_rtu.c: 108: break;
-"108
+[; ;modbus_rtu.c: 106: break;
+"106
 [e $U 369  ]
-[; ;modbus_rtu.c: 109: default:
+[; ;modbus_rtu.c: 107: case RX_STATE_RECEIVE:
+"107
+[e :U 372 ]
+[; ;modbus_rtu.c: 108: rx_state = RX_STATE_IDLE;
+"108
+[e = _rx_state . `E3832 1 ]
+[; ;modbus_rtu.c: 109: rx_buf.frame_ok = 1;
 "109
-[e :U 373 ]
+[e = . _rx_buf 0 -> -> 1 `i `uc ]
 [; ;modbus_rtu.c: 110: break;
 "110
 [e $U 369  ]
+[; ;modbus_rtu.c: 111: default:
 "111
-}
-[; ;modbus_rtu.c: 111: }
+[e :U 373 ]
+[; ;modbus_rtu.c: 112: break;
+"112
 [e $U 369  ]
-"100
+"113
+}
+[; ;modbus_rtu.c: 113: }
+[e $U 369  ]
+"102
 [e :U 370 ]
 [e [\ _rx_state , $ . `E3832 0 371
  , $ . `E3832 2 372
  373 ]
-"111
+"113
 [e :U 369 ]
-[; ;modbus_rtu.c: 112: disable_timer35();
-"112
-[e ( _disable_timer35 ..  ]
-[; ;modbus_rtu.c: 114: TMR1IF=0;
+[; ;modbus_rtu.c: 114: disable_timer35();
 "114
+[e ( _disable_timer35 ..  ]
+[; ;modbus_rtu.c: 116: TMR1IF=0;
+"116
 [e = _TMR1IF -> -> 0 `i `b ]
-"115
+"117
 }
 [e :U 368 ]
-[; ;modbus_rtu.c: 115: }
-[; ;modbus_rtu.c: 118: }
-"118
+[; ;modbus_rtu.c: 117: }
+[; ;modbus_rtu.c: 120: }
+"120
 [e :UE 367 ]
 }
-"123
+"125
 [v _tx_isr `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 122: void tx_isr(void)
-[; ;modbus_rtu.c: 123: {
+[; ;modbus_rtu.c: 124: void tx_isr(void)
+[; ;modbus_rtu.c: 125: {
 [e :U _tx_isr ]
 [f ]
-"124
+"126
 [v F3879 `uc 1 s current_need_send ]
 [i F3879
 -> -> 0 `i `uc
 ]
-[; ;modbus_rtu.c: 124: static unsigned char current_need_send = 0;
-[; ;modbus_rtu.c: 126: if(TX2IE&&TX2IF)
-"126
-[e $ ! && _TX2IE _TX2IF 375  ]
-[; ;modbus_rtu.c: 127: {
-"127
-{
-[; ;modbus_rtu.c: 128: if(tx_buf.tx_count>0)
+[; ;modbus_rtu.c: 126: static unsigned char current_need_send = 0;
+[; ;modbus_rtu.c: 128: if(TX2IE&&TX2IF)
 "128
-[e $ ! > -> . _tx_buf 0 `i -> 0 `i 376  ]
+[e $ ! && _TX2IE _TX2IF 375  ]
 [; ;modbus_rtu.c: 129: {
 "129
 {
-[; ;modbus_rtu.c: 130: TX2REG = tx_buf.data_buf[current_need_send++];
+[; ;modbus_rtu.c: 130: if(tx_buf.tx_count>0)
 "130
-[e = _TX2REG *U + &U . _tx_buf 1 * -> ++ F3879 -> -> 1 `i `uc `ux -> -> # *U &U . _tx_buf 1 `ui `ux ]
-[; ;modbus_rtu.c: 131: if(current_need_send==tx_buf.tx_count)
+[e $ ! > -> . _tx_buf 0 `i -> 0 `i 376  ]
+[; ;modbus_rtu.c: 131: {
 "131
-[e $ ! == -> F3879 `i -> . _tx_buf 0 `i 377  ]
-[; ;modbus_rtu.c: 132: {
-"132
 {
-[; ;modbus_rtu.c: 133: TX2IE = 0;
+[; ;modbus_rtu.c: 132: TX2REG = tx_buf.data_buf[current_need_send++];
+"132
+[e = _TX2REG *U + &U . _tx_buf 1 * -> ++ F3879 -> -> 1 `i `uc `ux -> -> # *U &U . _tx_buf 1 `ui `ux ]
+[; ;modbus_rtu.c: 133: if(current_need_send==tx_buf.tx_count)
 "133
-[e = _TX2IE -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 134: current_need_send = 0;
+[e $ ! == -> F3879 `i -> . _tx_buf 0 `i 377  ]
+[; ;modbus_rtu.c: 134: {
 "134
-[e = F3879 -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 135: tx_buf.tx_count = 0;
+{
+[; ;modbus_rtu.c: 135: TX2IE = 0;
 "135
-[e = . _tx_buf 0 -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 136: rx_buf.rec_count = 0;
+[e = _TX2IE -> -> 0 `i `b ]
+[; ;modbus_rtu.c: 136: current_need_send = 0;
 "136
-[e = . _rx_buf 2 -> -> 0 `i `uc ]
+[e = F3879 -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 137: tx_buf.tx_count = 0;
+"137
+[e = . _tx_buf 0 -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 138: rx_buf.rec_count = 0;
 "138
-}
-[e :U 377 ]
-"139
-}
-[e :U 376 ]
+[e = . _rx_buf 2 -> -> 0 `i `uc ]
 "140
 }
+[e :U 377 ]
+"141
+}
+[e :U 376 ]
+"142
+}
 [e :U 375 ]
-[; ;modbus_rtu.c: 138: }
-[; ;modbus_rtu.c: 139: }
 [; ;modbus_rtu.c: 140: }
 [; ;modbus_rtu.c: 141: }
-"141
+[; ;modbus_rtu.c: 142: }
+[; ;modbus_rtu.c: 143: }
+"143
 [e :UE 374 ]
 }
-"148
+"150
 [v _init_timer35 `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 147: void init_timer35(void)
-[; ;modbus_rtu.c: 148: {
+[; ;modbus_rtu.c: 149: void init_timer35(void)
+[; ;modbus_rtu.c: 150: {
 [e :U _init_timer35 ]
 [f ]
-[; ;modbus_rtu.c: 149: TMR1ON = 0;
-"149
-[e = _TMR1ON -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 150: TMR1CS0 = 1;
-"150
-[e = _TMR1CS0 -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 151: TMR1CS1 = 0;
+[; ;modbus_rtu.c: 151: TMR1ON = 0;
 "151
-[e = _TMR1CS1 -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 152: T1CKPS0 = 0;
+[e = _TMR1ON -> -> 0 `i `b ]
+[; ;modbus_rtu.c: 152: TMR1CS0 = 1;
 "152
-[e = _T1CKPS0 -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 153: T1CKPS1 = 0;
+[e = _TMR1CS0 -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 153: TMR1CS1 = 0;
 "153
-[e = _T1CKPS1 -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 155: TMR1 = 65535-40320;
+[e = _TMR1CS1 -> -> 0 `i `b ]
+[; ;modbus_rtu.c: 154: T1CKPS0 = 0;
+"154
+[e = _T1CKPS0 -> -> 0 `i `b ]
+[; ;modbus_rtu.c: 155: T1CKPS1 = 0;
 "155
-[e = _TMR1 -> - -> 65535 `l -> 40320 `l `ui ]
-[; ;modbus_rtu.c: 156: TMR1IF=0;
-"156
-[e = _TMR1IF -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 157: TMR1IE=1;
+[e = _T1CKPS1 -> -> 0 `i `b ]
+[; ;modbus_rtu.c: 157: TMR1 = 65535-40320;
 "157
-[e = _TMR1IE -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 158: restart_timer35();
+[e = _TMR1 -> - -> 65535 `l -> 40320 `l `ui ]
+[; ;modbus_rtu.c: 158: TMR1IF=0;
 "158
-[e ( _restart_timer35 ..  ]
-[; ;modbus_rtu.c: 160: }
+[e = _TMR1IF -> -> 0 `i `b ]
+[; ;modbus_rtu.c: 159: TMR1IE=1;
+"159
+[e = _TMR1IE -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 160: restart_timer35();
 "160
+[e ( _restart_timer35 ..  ]
+[; ;modbus_rtu.c: 162: }
+"162
 [e :UE 378 ]
 }
-"166
+"168
 [v _init_uart `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 165: void init_uart(void)
-[; ;modbus_rtu.c: 166: {
+[; ;modbus_rtu.c: 167: void init_uart(void)
+[; ;modbus_rtu.c: 168: {
 [e :U _init_uart ]
 [f ]
-[; ;modbus_rtu.c: 167: SPEN2 = 1;
-"167
-[e = _SPEN2 -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 168: SYNC2 = 0;
-"168
-[e = _SYNC2 -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 169: SPBRG2 = 11059200/64*(1*3+1)/9600-1;
+[; ;modbus_rtu.c: 169: SPEN2 = 1;
 "169
-[e = _SPBRG2 -> - / * / -> 11059200 `l -> -> 64 `i `l -> + * -> 1 `i -> 3 `i -> 1 `i `l -> -> 9600 `i `l -> -> 1 `i `l `uc ]
-[; ;modbus_rtu.c: 170: BRGH2 = 1;
+[e = _SPEN2 -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 170: SYNC2 = 0;
 "170
-[e = _BRGH2 -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 171: CREN2 = 1;
+[e = _SYNC2 -> -> 0 `i `b ]
+[; ;modbus_rtu.c: 171: SPBRG2 = 11059200/64*(1*3+1)/9600-1;
 "171
-[e = _CREN2 -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 172: TXEN2 = 1;
+[e = _SPBRG2 -> - / * / -> 11059200 `l -> -> 64 `i `l -> + * -> 1 `i -> 3 `i -> 1 `i `l -> -> 9600 `i `l -> -> 1 `i `l `uc ]
+[; ;modbus_rtu.c: 172: BRGH2 = 1;
 "172
-[e = _TXEN2 -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 173: RC2IE = 1;
+[e = _BRGH2 -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 173: CREN2 = 1;
 "173
-[e = _RC2IE -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 174: }
+[e = _CREN2 -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 174: TXEN2 = 1;
 "174
+[e = _TXEN2 -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 175: RC2IE = 1;
+"175
+[e = _RC2IE -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 176: }
+"176
 [e :UE 379 ]
 }
-"180
+"182
 [v _restart_timer35 `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 179: void restart_timer35(void)
-[; ;modbus_rtu.c: 180: {
+[; ;modbus_rtu.c: 181: void restart_timer35(void)
+[; ;modbus_rtu.c: 182: {
 [e :U _restart_timer35 ]
 [f ]
-[; ;modbus_rtu.c: 181: TMR1ON = 0;
-"181
-[e = _TMR1ON -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 182: TMR1 = 65535-40320;
-"182
-[e = _TMR1 -> - -> 65535 `l -> 40320 `l `ui ]
-[; ;modbus_rtu.c: 183: TMR1IF=0;
+[; ;modbus_rtu.c: 183: TMR1ON = 0;
 "183
-[e = _TMR1IF -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 184: TMR1IE=1;
+[e = _TMR1ON -> -> 0 `i `b ]
+[; ;modbus_rtu.c: 184: TMR1 = 65535-40320;
 "184
-[e = _TMR1IE -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 185: TMR1ON = 1;
+[e = _TMR1 -> - -> 65535 `l -> 40320 `l `ui ]
+[; ;modbus_rtu.c: 185: TMR1IF=0;
 "185
-[e = _TMR1ON -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 186: }
+[e = _TMR1IF -> -> 0 `i `b ]
+[; ;modbus_rtu.c: 186: TMR1IE=1;
 "186
+[e = _TMR1IE -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 187: TMR1ON = 1;
+"187
+[e = _TMR1ON -> -> 1 `i `b ]
+[; ;modbus_rtu.c: 188: }
+"188
 [e :UE 380 ]
 }
-"192
+"194
 [v _disable_timer35 `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 191: void disable_timer35(void)
-[; ;modbus_rtu.c: 192: {
+[; ;modbus_rtu.c: 193: void disable_timer35(void)
+[; ;modbus_rtu.c: 194: {
 [e :U _disable_timer35 ]
 [f ]
-[; ;modbus_rtu.c: 193: TMR1ON = 0;
-"193
+[; ;modbus_rtu.c: 195: TMR1ON = 0;
+"195
 [e = _TMR1ON -> -> 0 `i `b ]
-[; ;modbus_rtu.c: 194: }
-"194
+[; ;modbus_rtu.c: 196: }
+"196
 [e :UE 381 ]
 }
-"197
+"199
 [v _modbus_receive `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 196: void modbus_receive(void)
-[; ;modbus_rtu.c: 197: {
+[; ;modbus_rtu.c: 198: void modbus_receive(void)
+[; ;modbus_rtu.c: 199: {
 [e :U _modbus_receive ]
 [f ]
-[; ;modbus_rtu.c: 198: if(rx_buf.frame_ok==1)
-"198
-[e $ ! == -> . _rx_buf 0 `i -> 1 `i 383  ]
-[; ;modbus_rtu.c: 199: {
-"199
-{
-[; ;modbus_rtu.c: 200: rx_buf.frame_ok = 0;
+[; ;modbus_rtu.c: 200: if(rx_buf.frame_ok==1)
 "200
-[e = . _rx_buf 0 -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 202: if(modbus_crc16(rx_buf.data_buf,rx_buf.rec_count)==0)
-"202
-[e $ ! == ( _modbus_crc16 (2 , &U . _rx_buf 3 -> . _rx_buf 2 `ui -> -> 0 `i `ui 384  ]
-[; ;modbus_rtu.c: 203: {
-"203
+[e $ ! == -> . _rx_buf 0 `i -> 1 `i 383  ]
+[; ;modbus_rtu.c: 201: {
+"201
 {
-[; ;modbus_rtu.c: 204: if((1 ==rx_buf.data_buf[0])||(255==rx_buf.data_buf[0]))
+[; ;modbus_rtu.c: 202: rx_buf.frame_ok = 0;
+"202
+[e = . _rx_buf 0 -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 204: if(modbus_crc16(rx_buf.data_buf,rx_buf.rec_count)==0)
 "204
-[e $ ! || == -> 1 `i -> *U + &U . _rx_buf 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i == -> 255 `i -> *U + &U . _rx_buf 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i 385  ]
+[e $ ! == ( _modbus_crc16 (2 , &U . _rx_buf 3 -> . _rx_buf 2 `ui -> -> 0 `i `ui 384  ]
 [; ;modbus_rtu.c: 205: {
 "205
 {
-[; ;modbus_rtu.c: 206: rx_buf.data_valid = 1;
+[; ;modbus_rtu.c: 206: if((1 ==rx_buf.data_buf[0])||(255==rx_buf.data_buf[0]))
 "206
-[e = . _rx_buf 1 -> -> 1 `i `uc ]
+[e $ ! || == -> 1 `i -> *U + &U . _rx_buf 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i == -> 255 `i -> *U + &U . _rx_buf 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i 385  ]
+[; ;modbus_rtu.c: 207: {
 "207
-}
-[; ;modbus_rtu.c: 207: }
-[e $U 386  ]
-"208
-[e :U 385 ]
-[; ;modbus_rtu.c: 208: else
-[; ;modbus_rtu.c: 209: {
-"209
 {
-[; ;modbus_rtu.c: 210: rx_buf.rec_count = 0;
+[; ;modbus_rtu.c: 208: rx_buf.data_valid = 1;
+"208
+[e = . _rx_buf 1 -> -> 1 `i `uc ]
+"209
+}
+[; ;modbus_rtu.c: 209: }
+[e $U 386  ]
 "210
-[e = . _rx_buf 2 -> -> 0 `i `uc ]
+[e :U 385 ]
+[; ;modbus_rtu.c: 210: else
+[; ;modbus_rtu.c: 211: {
 "211
+{
+[; ;modbus_rtu.c: 212: rx_buf.rec_count = 0;
+"212
+[e = . _rx_buf 2 -> -> 0 `i `uc ]
+"213
 }
 [e :U 386 ]
-"212
-}
-[; ;modbus_rtu.c: 211: }
-[; ;modbus_rtu.c: 212: }
-[e $U 387  ]
-"213
-[e :U 384 ]
-[; ;modbus_rtu.c: 213: else
-[; ;modbus_rtu.c: 214: {
 "214
-{
-[; ;modbus_rtu.c: 215: rx_buf.rec_count = 0;
+}
+[; ;modbus_rtu.c: 213: }
+[; ;modbus_rtu.c: 214: }
+[e $U 387  ]
 "215
-[e = . _rx_buf 2 -> -> 0 `i `uc ]
+[e :U 384 ]
+[; ;modbus_rtu.c: 215: else
+[; ;modbus_rtu.c: 216: {
 "216
+{
+[; ;modbus_rtu.c: 217: rx_buf.rec_count = 0;
+"217
+[e = . _rx_buf 2 -> -> 0 `i `uc ]
+"218
 }
 [e :U 387 ]
-"217
+"219
 }
 [e :U 383 ]
-[; ;modbus_rtu.c: 216: }
-[; ;modbus_rtu.c: 217: }
-[; ;modbus_rtu.c: 219: if(rx_buf.data_valid)
-"219
-[e $ ! != -> . _rx_buf 1 `i -> -> -> 0 `i `uc `i 388  ]
-[; ;modbus_rtu.c: 220: {
-"220
-{
-[; ;modbus_rtu.c: 221: rx_buf.data_valid = 0;
+[; ;modbus_rtu.c: 218: }
+[; ;modbus_rtu.c: 219: }
+[; ;modbus_rtu.c: 221: if(rx_buf.data_valid)
 "221
-[e = . _rx_buf 1 -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 222: switch(rx_buf.data_buf[1])
+[e $ ! != -> . _rx_buf 1 `i -> -> -> 0 `i `uc `i 388  ]
+[; ;modbus_rtu.c: 222: {
 "222
-[e $U 390  ]
-[; ;modbus_rtu.c: 223: {
-"223
 {
-[; ;modbus_rtu.c: 224: case 0x03:
-"224
-[e :U 391 ]
-[; ;modbus_rtu.c: 225: read_holding_regs();
-"225
-[e ( _read_holding_regs ..  ]
-[; ;modbus_rtu.c: 226: break;
-"226
-[e $U 389  ]
-[; ;modbus_rtu.c: 227: case 0x06:
-"227
-[e :U 392 ]
-[; ;modbus_rtu.c: 228: write_single_holding_reg();
-"228
-[e ( _write_single_holding_reg ..  ]
-[; ;modbus_rtu.c: 229: break;
-"229
-[e $U 389  ]
-[; ;modbus_rtu.c: 230: case 0x16:
-"230
-[e :U 393 ]
-[; ;modbus_rtu.c: 232: break;
-"232
-[e $U 389  ]
-[; ;modbus_rtu.c: 233: default:
-"233
-[e :U 394 ]
-[; ;modbus_rtu.c: 234: rx_buf.data_valid = 0;
-"234
+[; ;modbus_rtu.c: 223: rx_buf.data_valid = 0;
+"223
 [e = . _rx_buf 1 -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 235: rx_buf.rec_count = 0;
+[; ;modbus_rtu.c: 224: switch(rx_buf.data_buf[1])
+"224
+[e $U 390  ]
+[; ;modbus_rtu.c: 225: {
+"225
+{
+[; ;modbus_rtu.c: 226: case 0x03:
+"226
+[e :U 391 ]
+[; ;modbus_rtu.c: 227: read_holding_regs();
+"227
+[e ( _read_holding_regs ..  ]
+[; ;modbus_rtu.c: 228: break;
+"228
+[e $U 389  ]
+[; ;modbus_rtu.c: 229: case 0x06:
+"229
+[e :U 392 ]
+[; ;modbus_rtu.c: 230: write_single_holding_reg();
+"230
+[e ( _write_single_holding_reg ..  ]
+[; ;modbus_rtu.c: 231: break;
+"231
+[e $U 389  ]
+[; ;modbus_rtu.c: 232: case 0x16:
+"232
+[e :U 393 ]
+[; ;modbus_rtu.c: 234: break;
+"234
+[e $U 389  ]
+[; ;modbus_rtu.c: 235: default:
 "235
-[e = . _rx_buf 2 -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 236: rx_buf.frame_ok = 0;
+[e :U 394 ]
+[; ;modbus_rtu.c: 236: rx_buf.data_valid = 0;
 "236
-[e = . _rx_buf 0 -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 237: break;
+[e = . _rx_buf 1 -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 237: rx_buf.rec_count = 0;
 "237
-[e $U 389  ]
+[e = . _rx_buf 2 -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 238: rx_buf.frame_ok = 0;
 "238
-}
-[; ;modbus_rtu.c: 238: }
+[e = . _rx_buf 0 -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 239: break;
+"239
 [e $U 389  ]
-"222
+"240
+}
+[; ;modbus_rtu.c: 240: }
+[e $U 389  ]
+"224
 [e :U 390 ]
 [e [\ *U + &U . _rx_buf 3 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux , $ -> -> 3 `i `uc 391
  , $ -> -> 6 `i `uc 392
  , $ -> -> 22 `i `uc 393
  394 ]
-"238
+"240
 [e :U 389 ]
-"239
+"241
 }
 [e :U 388 ]
-[; ;modbus_rtu.c: 239: }
-[; ;modbus_rtu.c: 240: }
-"240
+[; ;modbus_rtu.c: 241: }
+[; ;modbus_rtu.c: 242: }
+"242
 [e :UE 382 ]
 }
-"243
+"245
 [v _read_holding_regs `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 242: void read_holding_regs(void)
-[; ;modbus_rtu.c: 243: {
+[; ;modbus_rtu.c: 244: void read_holding_regs(void)
+[; ;modbus_rtu.c: 245: {
 [e :U _read_holding_regs ]
 [f ]
-"244
-[v _num `ui 1 a ]
-[; ;modbus_rtu.c: 244: unsigned int num = 0;
-[e = _num -> -> 0 `i `ui ]
-"245
-[v _start_addr `ui 1 a ]
 "246
-[v _data_crc `ui 1 a ]
-[; ;modbus_rtu.c: 245: unsigned int start_addr;
-[; ;modbus_rtu.c: 246: unsigned int data_crc=0;
-[e = _data_crc -> -> 0 `i `ui ]
+[v _num `ui 1 a ]
+[; ;modbus_rtu.c: 246: unsigned int num = 0;
+[e = _num -> -> 0 `i `ui ]
 "247
-[v _i `uc 1 a ]
-[; ;modbus_rtu.c: 247: unsigned char i = 0 ;
-[e = _i -> -> 0 `i `uc ]
-[; ;modbus_rtu.c: 249: start_addr = ((rx_buf.data_buf[2])<<8)|(rx_buf.data_buf[3]);
+[v _start_addr `ui 1 a ]
+"248
+[v _data_crc `ui 1 a ]
+[; ;modbus_rtu.c: 247: unsigned int start_addr;
+[; ;modbus_rtu.c: 248: unsigned int data_crc=0;
+[e = _data_crc -> -> 0 `i `ui ]
 "249
-[e = _start_addr -> | << -> *U + &U . _rx_buf 3 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i -> 8 `i -> *U + &U . _rx_buf 3 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i `ui ]
-[; ;modbus_rtu.c: 251: num = ((rx_buf.data_buf[4])<<8)|(rx_buf.data_buf[5]);
+[v _i `uc 1 a ]
+[; ;modbus_rtu.c: 249: unsigned char i = 0 ;
+[e = _i -> -> 0 `i `uc ]
+[; ;modbus_rtu.c: 251: start_addr = ((rx_buf.data_buf[2])<<8)|(rx_buf.data_buf[3]);
 "251
-[e = _num -> | << -> *U + &U . _rx_buf 3 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i -> 8 `i -> *U + &U . _rx_buf 3 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i `ui ]
-[; ;modbus_rtu.c: 253: tx_buf.data_buf[0] = 1;
+[e = _start_addr -> | << -> *U + &U . _rx_buf 3 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i -> 8 `i -> *U + &U . _rx_buf 3 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i `ui ]
+[; ;modbus_rtu.c: 253: num = ((rx_buf.data_buf[4])<<8)|(rx_buf.data_buf[5]);
 "253
-[e = *U + &U . _tx_buf 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> -> 1 `i `uc ]
-[; ;modbus_rtu.c: 254: tx_buf.data_buf[1] = 0x03;
-"254
-[e = *U + &U . _tx_buf 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> -> 3 `i `uc ]
-[; ;modbus_rtu.c: 255: tx_buf.data_buf[2] = 2*num;
+[e = _num -> | << -> *U + &U . _rx_buf 3 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i -> 8 `i -> *U + &U . _rx_buf 3 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i `ui ]
+[; ;modbus_rtu.c: 255: tx_buf.data_buf[0] = 1;
 "255
-[e = *U + &U . _tx_buf 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> * -> -> 2 `i `ui _num `uc ]
-[; ;modbus_rtu.c: 257: for(i=0;i<num;i++)
+[e = *U + &U . _tx_buf 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> -> 1 `i `uc ]
+[; ;modbus_rtu.c: 256: tx_buf.data_buf[1] = 0x03;
+"256
+[e = *U + &U . _tx_buf 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> -> 3 `i `uc ]
+[; ;modbus_rtu.c: 257: tx_buf.data_buf[2] = 2*num;
 "257
+[e = *U + &U . _tx_buf 1 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> * -> -> 2 `i `ui _num `uc ]
+[; ;modbus_rtu.c: 259: for(i=0;i<num;i++)
+"259
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 399  ]
-"258
-[e :U 396 ]
-[; ;modbus_rtu.c: 258: {
-{
-[; ;modbus_rtu.c: 259: tx_buf.data_buf[3+2*i] = modbus_reg[i+start_addr]>>8;
-"259
-[e = *U + &U . _tx_buf 1 * -> -> + -> 3 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> >> *U + &U _modbus_reg * -> + -> _i `ui _start_addr `ux -> -> # *U &U _modbus_reg `ui `ux -> 8 `i `uc ]
-[; ;modbus_rtu.c: 260: tx_buf.data_buf[3+2*i+1] = modbus_reg[i+start_addr];
 "260
-[e = *U + &U . _tx_buf 1 * -> -> + + -> 3 `i * -> 2 `i -> _i `i -> 1 `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> *U + &U _modbus_reg * -> + -> _i `ui _start_addr `ux -> -> # *U &U _modbus_reg `ui `ux `uc ]
+[e :U 396 ]
+[; ;modbus_rtu.c: 260: {
+{
+[; ;modbus_rtu.c: 261: tx_buf.data_buf[3+2*i] = modbus_reg[i+start_addr]>>8;
 "261
+[e = *U + &U . _tx_buf 1 * -> -> + -> 3 `i * -> 2 `i -> _i `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> >> *U + &U _modbus_reg * -> + -> _i `ui _start_addr `ux -> -> # *U &U _modbus_reg `ui `ux -> 8 `i `uc ]
+[; ;modbus_rtu.c: 262: tx_buf.data_buf[3+2*i+1] = modbus_reg[i+start_addr];
+"262
+[e = *U + &U . _tx_buf 1 * -> -> + + -> 3 `i * -> 2 `i -> _i `i -> 1 `i `ui `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> *U + &U _modbus_reg * -> + -> _i `ui _start_addr `ux -> -> # *U &U _modbus_reg `ui `ux `uc ]
+"263
 }
-"257
+"259
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 399 ]
 [e $ < -> _i `ui _num 396  ]
 [e :U 397 ]
-"261
+"263
 }
-[; ;modbus_rtu.c: 261: }
-[; ;modbus_rtu.c: 262: data_crc = modbus_crc16(tx_buf.data_buf,(2*num+3));
-"262
-[e = _data_crc ( _modbus_crc16 (2 , &U . _tx_buf 1 + * -> -> 2 `i `ui _num -> -> 3 `i `ui ]
-[; ;modbus_rtu.c: 264: tx_buf.data_buf[3+2*num] = data_crc;
+[; ;modbus_rtu.c: 263: }
+[; ;modbus_rtu.c: 264: data_crc = modbus_crc16(tx_buf.data_buf,(2*num+3));
 "264
-[e = *U + &U . _tx_buf 1 * -> + -> -> 3 `i `ui * -> -> 2 `i `ui _num `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> _data_crc `uc ]
-[; ;modbus_rtu.c: 265: tx_buf.data_buf[4+2*num] = data_crc>>8;
-"265
-[e = *U + &U . _tx_buf 1 * -> + -> -> 4 `i `ui * -> -> 2 `i `ui _num `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> >> _data_crc -> 8 `i `uc ]
-[; ;modbus_rtu.c: 266: tx_buf.tx_count = 5+2*num;
+[e = _data_crc ( _modbus_crc16 (2 , &U . _tx_buf 1 + * -> -> 2 `i `ui _num -> -> 3 `i `ui ]
+[; ;modbus_rtu.c: 266: tx_buf.data_buf[3+2*num] = data_crc;
 "266
-[e = . _tx_buf 0 -> + -> -> 5 `i `ui * -> -> 2 `i `ui _num `uc ]
-[; ;modbus_rtu.c: 268: TX2IE = 1;
+[e = *U + &U . _tx_buf 1 * -> + -> -> 3 `i `ui * -> -> 2 `i `ui _num `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> _data_crc `uc ]
+[; ;modbus_rtu.c: 267: tx_buf.data_buf[4+2*num] = data_crc>>8;
+"267
+[e = *U + &U . _tx_buf 1 * -> + -> -> 4 `i `ui * -> -> 2 `i `ui _num `ux -> -> # *U &U . _tx_buf 1 `ui `ux -> >> _data_crc -> 8 `i `uc ]
+[; ;modbus_rtu.c: 268: tx_buf.tx_count = 5+2*num;
 "268
+[e = . _tx_buf 0 -> + -> -> 5 `i `ui * -> -> 2 `i `ui _num `uc ]
+[; ;modbus_rtu.c: 270: TX2IE = 1;
+"270
 [e = _TX2IE -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 269: }
-"269
+[; ;modbus_rtu.c: 271: }
+"271
 [e :UE 395 ]
 }
-"272
+"274
 [v _write_single_holding_reg `(v 1 ef ]
 {
-[; ;modbus_rtu.c: 271: void write_single_holding_reg(void)
-[; ;modbus_rtu.c: 272: {
+[; ;modbus_rtu.c: 273: void write_single_holding_reg(void)
+[; ;modbus_rtu.c: 274: {
 [e :U _write_single_holding_reg ]
 [f ]
-"273
+"275
 [v _start_addr `ui 1 a ]
-"274
-[v _i `uc 1 a ]
-[; ;modbus_rtu.c: 273: unsigned int start_addr;
-[; ;modbus_rtu.c: 274: unsigned char i;
-[; ;modbus_rtu.c: 276: start_addr = ((rx_buf.data_buf[2])<<8)|(rx_buf.data_buf[3]);
 "276
-[e = _start_addr -> | << -> *U + &U . _rx_buf 3 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i -> 8 `i -> *U + &U . _rx_buf 3 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i `ui ]
-[; ;modbus_rtu.c: 278: modbus_reg[start_addr] = (rx_buf.data_buf[5])|((rx_buf.data_buf[4])<<8);
+[v _i `uc 1 a ]
+[; ;modbus_rtu.c: 275: unsigned int start_addr;
+[; ;modbus_rtu.c: 276: unsigned char i;
+[; ;modbus_rtu.c: 278: start_addr = ((rx_buf.data_buf[2])<<8)|(rx_buf.data_buf[3]);
 "278
-[e = *U + &U _modbus_reg * -> _start_addr `ux -> -> # *U &U _modbus_reg `ui `ux -> | -> *U + &U . _rx_buf 3 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i << -> *U + &U . _rx_buf 3 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i -> 8 `i `ui ]
-[; ;modbus_rtu.c: 280: for(i=0;i<rx_buf.rec_count;i++)
+[e = _start_addr -> | << -> *U + &U . _rx_buf 3 * -> -> -> 2 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i -> 8 `i -> *U + &U . _rx_buf 3 * -> -> -> 3 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i `ui ]
+[; ;modbus_rtu.c: 280: modbus_reg[start_addr] = (rx_buf.data_buf[5])|((rx_buf.data_buf[4])<<8);
 "280
+[e = *U + &U _modbus_reg * -> _start_addr `ux -> -> # *U &U _modbus_reg `ui `ux -> | -> *U + &U . _rx_buf 3 * -> -> -> 5 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i << -> *U + &U . _rx_buf 3 * -> -> -> 4 `i `ui `ux -> -> # *U &U . _rx_buf 3 `ui `ux `i -> 8 `i `ui ]
+[; ;modbus_rtu.c: 282: for(i=0;i<rx_buf.rec_count;i++)
+"282
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 404  ]
-"281
-[e :U 401 ]
-[; ;modbus_rtu.c: 281: {
-{
-[; ;modbus_rtu.c: 282: tx_buf.data_buf[i] = rx_buf.data_buf[i];
-"282
-[e = *U + &U . _tx_buf 1 * -> _i `ux -> -> # *U &U . _tx_buf 1 `ui `ux *U + &U . _rx_buf 3 * -> _i `ux -> -> # *U &U . _rx_buf 3 `ui `ux ]
 "283
+[e :U 401 ]
+[; ;modbus_rtu.c: 283: {
+{
+[; ;modbus_rtu.c: 284: tx_buf.data_buf[i] = rx_buf.data_buf[i];
+"284
+[e = *U + &U . _tx_buf 1 * -> _i `ux -> -> # *U &U . _tx_buf 1 `ui `ux *U + &U . _rx_buf 3 * -> _i `ux -> -> # *U &U . _rx_buf 3 `ui `ux ]
+"285
 }
-"280
+"282
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 404 ]
 [e $ < -> _i `i -> . _rx_buf 2 `i 401  ]
 [e :U 402 ]
-"283
+"285
 }
-[; ;modbus_rtu.c: 283: }
-[; ;modbus_rtu.c: 284: tx_buf.tx_count = rx_buf.rec_count;
-"284
+[; ;modbus_rtu.c: 285: }
+[; ;modbus_rtu.c: 286: tx_buf.tx_count = rx_buf.rec_count;
+"286
 [e = . _tx_buf 0 . _rx_buf 2 ]
-[; ;modbus_rtu.c: 287: TX2IE = 1;
-"287
+[; ;modbus_rtu.c: 289: TX2IE = 1;
+"289
 [e = _TX2IE -> -> 1 `i `b ]
-[; ;modbus_rtu.c: 288: }
-"288
+[; ;modbus_rtu.c: 290: }
+"290
 [e :UE 400 ]
 }
-"291
+"293
 [v F3895 `(v 1 tf ]
 [v _my_isr `IF3895 1 e ]
 {
-[; ;modbus_rtu.c: 290: void interrupt my_isr(void)
-[; ;modbus_rtu.c: 291: {
+[; ;modbus_rtu.c: 292: void interrupt my_isr(void)
+[; ;modbus_rtu.c: 293: {
 [e :U _my_isr ]
 [f ]
-[; ;modbus_rtu.c: 292: rec_isr();
-"292
-[e ( _rec_isr ..  ]
-[; ;modbus_rtu.c: 293: tx_isr();
-"293
-[e ( _tx_isr ..  ]
-[; ;modbus_rtu.c: 294: timer35_isr();
+[; ;modbus_rtu.c: 294: rec_isr();
 "294
-[e ( _timer35_isr ..  ]
-[; ;modbus_rtu.c: 295: }
+[e ( _rec_isr ..  ]
+[; ;modbus_rtu.c: 295: tx_isr();
 "295
+[e ( _tx_isr ..  ]
+[; ;modbus_rtu.c: 296: timer35_isr();
+"296
+[e ( _timer35_isr ..  ]
+[; ;modbus_rtu.c: 297: }
+"297
 [e :UE 405 ]
 }
