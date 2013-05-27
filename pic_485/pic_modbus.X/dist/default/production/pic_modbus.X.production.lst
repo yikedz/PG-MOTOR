@@ -1,0 +1,3306 @@
+
+
+HI-TECH Software LITE Macro Assembler (PIC18) V9.66 build 8870 
+                                                       Mon May 27 14:45:42 2013
+
+HI-TECH Software Omniscient Code Generator build 8870
+     1  000000                     opt subtitle "HI-TECH Software Omniscient Code G
+                                 enerator build 8870"
+     2                           
+     3                           	processor	18F25K22
+     4  000000                     porta	equ	0F80h
+     5  000000                     portb	equ	0F81h
+     6  000000                     portc	equ	0F82h
+     7  000000                     portd	equ	0F83h
+     8  000000                     porte	equ	0F84h
+     9  000000                     lata	equ	0F89h
+    10  000000                     latb	equ	0F8Ah
+    11  000000                     latc	equ	0F8Bh
+    12  000000                     latd	equ	0F8Ch
+    13  000000                     late	equ	0F8Dh
+    14  000000                     trisa	equ	0F92h
+    15  000000                     trisb	equ	0F93h
+    16  000000                     trisc	equ	0F94h
+    17  000000                     trisd	equ	0F95h
+    18  000000                     trise	equ	0F96h
+    19  000000                     pie1	equ	0F9Dh
+    20  000000                     pir1	equ	0F9Eh
+    21  000000                     ipr1	equ	0F9Fh
+    22  000000                     pie2	equ	0FA0h
+    23  000000                     pir2	equ	0FA1h
+    24  000000                     ipr2	equ	0FA2h
+    25  000000                     t3con	equ	0FB1h
+    26  000000                     tmr3l	equ	0FB2h
+    27  000000                     tmr3h	equ	0FB3h
+    28  000000                     ccp1con	equ	0FBDh
+    29  000000                     ccpr1l	equ	0FBEh
+    30  000000                     ccpr1h	equ	0FBFh
+    31  000000                     adcon1	equ	0FC1h
+    32  000000                     adcon0	equ	0FC2h
+    33  000000                     adresl	equ	0FC3h
+    34  000000                     adresh	equ	0FC4h
+    35  000000                     sspcon2	equ	0FC5h
+    36  000000                     sspcon1	equ	0FC6h
+    37  000000                     sspstat	equ	0FC7h
+    38  000000                     sspadd	equ	0FC8h
+    39  000000                     sspbuf	equ	0FC9h
+    40  000000                     t2con	equ	0FCAh
+    41  000000                     pr2	equ	0FCBh
+    42  000000                     tmr2	equ	0FCCh
+    43  000000                     t1con	equ	0FCDh
+    44  000000                     tmr1l	equ	0FCEh
+    45  000000                     tmr1h	equ	0FCFh
+    46  000000                     rcon	equ	0FD0h
+    47  000000                     wdtcon	equ	0FD1h
+    48  000000                     lvdcon	equ	0FD2h
+    49  000000                     osccon	equ	0FD3h
+    50  000000                     t0con	equ	0FD5h
+    51  000000                     tmr0l	equ	0FD6h
+    52  000000                     tmr0h	equ	0FD7h
+    53  000000                     status	equ	0FD8h
+    54  000000                     fsr2	equ	0FD9h
+    55  000000                     fsr2l	equ	0FD9h
+    56  000000                     fsr2h	equ	0FDAh
+    57  000000                     plusw2	equ	0FDBh
+    58  000000                     preinc2	equ	0FDCh
+    59  000000                     postdec2	equ	0FDDh
+    60  000000                     postinc2	equ	0FDEh
+    61  000000                     indf2	equ	0FDFh
+    62  000000                     bsr	equ	0FE0h
+    63  000000                     fsr1	equ	0FE1h
+    64  000000                     fsr1l	equ	0FE1h
+    65  000000                     fsr1h	equ	0FE2h
+    66  000000                     plusw1	equ	0FE3h
+    67  000000                     preinc1	equ	0FE4h
+    68  000000                     postdec1	equ	0FE5h
+    69  000000                     postinc1	equ	0FE6h
+    70  000000                     indf1	equ	0FE7h
+    71  000000                     wreg	equ	0FE8h
+    72  000000                     fsr0	equ	0FE9h
+    73  000000                     fsr0l	equ	0FE9h
+    74  000000                     fsr0h	equ	0FEAh
+    75  000000                     plusw0	equ	0FEBh
+    76  000000                     preinc0	equ	0FECh
+    77  000000                     postdec0	equ	0FEDh
+    78  000000                     postinc0	equ	0FEEh
+    79  000000                     indf0	equ	0FEFh
+    80  000000                     intcon3	equ	0FF0h
+    81  000000                     intcon2	equ	0FF1h
+    82  000000                     intcon	equ	0FF2h
+    83  000000                     prod	equ	0FF3h
+    84  000000                     prodl	equ	0FF3h
+    85  000000                     prodh	equ	0FF4h
+    86  000000                     tablat	equ	0FF5h
+    87  000000                     tblptr	equ	0FF6h
+    88  000000                     tblptrl	equ	0FF6h
+    89  000000                     tblptrh	equ	0FF7h
+    90  000000                     tblptru	equ	0FF8h
+    91  000000                     pcl	equ	0FF9h
+    92  000000                     pclat	equ	0FFAh
+    93  000000                     pclath	equ	0FFAh
+    94  000000                     pclatu	equ	0FFBh
+    95  000000                     stkptr	equ	0FFCh
+    96  000000                     tosl	equ	0FFDh
+    97  000000                     tosh	equ	0FFEh
+    98  000000                     tosu	equ	0FFFh
+    99                           	global	__ramtop
+   100                           	global	__accesstop
+   101                           	GLOBAL	__activetblptr
+   102  000000                     __activetblptr	EQU	2
+   103                           	GLOBAL	__smallconst,__Lsmallconst
+   104  000000                     __smallconst	EQU	__Lsmallconst
+   105                           	GLOBAL	__mediumconst,__Lmediumconst
+   106  000000                     __mediumconst	EQU	__Lmediumconst
+   107                           	GLOBAL	__Ldata
+   108  000000                     __Ldata	EQU	0
+   109  000000                     main@md_keep	equ	??_main+0
+   110                           	global	main@md_keep
+   111  000000                     read_holding_regs@i	equ	??_read_holding_regs+0
+   112                           	global	read_holding_regs@i
+   113  000000                     read_holding_regs@start_addr	equ	??_read_holding
+                                 _regs+1
+   114                           	global	read_holding_regs@start_addr
+   115  000000                     read_holding_regs@data_crc	equ	??_read_holding_r
+                                 egs+3
+   116                           	global	read_holding_regs@data_crc
+   117  000000                     read_holding_regs@num	equ	??_read_holding_regs+5
+   118                           	global	read_holding_regs@num
+   119  000000                     write_single_holding_reg@i	equ	??_write_single_h
+                                 olding_reg+0
+   120                           	global	write_single_holding_reg@i
+   121  000000                     write_single_holding_reg@start_addr	equ	??_write
+                                 _single_holding_reg+1
+   122                           	global	write_single_holding_reg@start_addr
+   123  000000                     modbus_crc16@ucCRCHi	equ	??_modbus_crc16+0
+   124                           	global	modbus_crc16@ucCRCHi
+   125  000000                     modbus_crc16@ucCRCLo	equ	??_modbus_crc16+1
+   126                           	global	modbus_crc16@ucCRCLo
+   127  000000                     modbus_crc16@iIndex	equ	??_modbus_crc16+2
+   128                           	global	modbus_crc16@iIndex
+   129  000000                     modbus_crc16@pucFrame	equ	?_modbus_crc16+0
+   130                           	global	modbus_crc16@pucFrame
+   131  000000                     modbus_crc16@usLen	equ	?_modbus_crc16+2
+   132                           	global	modbus_crc16@usLen
+   133  000000                     rec_isr@rec_data	equ	??_rec_isr+0
+   134                           	global	rec_isr@rec_data
+   135                           ;Data sizes: Strings 0, constant 512, data 0, bs
+                                 s 0, persistent 0 stack 42
+   136                           	global	_main
+   137                           	global	??_main
+   138                           	global	?_main
+   139                           
+   140                           ; *************** function _main ***************
+                                 **
+   141                           ; Defined at:
+   142                           ;		line 29 in file "../modbus_rtu.c"
+   143                           ; Parameters:
+   144                           ;		None
+   145                           ; Auto variables:
+   146                           ;		md_keep     	       	type: unsigned int 
+   147                           ; Return value:
+   148                           ;		type: void 
+   149                           ;		size: 0
+   150                           ; Registers used:
+   151                           ;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, s
+                                 tatus,0, tblptrl, tblptrh, tblptru, tablat, prod
+                                 l, prodh, cstack
+   152                           ; Tracked objects:
+   153                           ;		On entry : 0/0
+   154                           ;		On exit  : 0/0
+   155                           ;		Unchanged: 0/0
+   156                           ; Data sizes:
+   157                           ;		Autos:    2
+   158                           ;		Params:   0
+   159                           ;		Temp:     0
+   160                           ;		Total:    2
+   161                           ; This function calls:
+   162                           ;		_init_timer35
+   163                           ;		_init_uart
+   164                           ;		_modbus_receive
+   165                           ; This function is called by:
+   166                           ;		Startup code after reset
+   167                           ; This function uses a non-reentrant model
+   168                           ; 
+   169                                   psect   text0,class=CODE,space=0,reloc=2
+   170                           
+   171                           	opt lm
+   172                           	file	"../modbus_rtu.c"
+   173                           	line	29
+   174  000000                     	__size_of_main	equ	__end_of_main-_main
+   175                           ;modbus_rtu.c: 23: RX_STATE rx_state = RX_STATE_
+                                 INIT;
+   176                           ;modbus_rtu.c: 25: unsigned int modbus_reg[100];
+   177                           ;modbus_rtu.c: 28: void main(void)
+   178                           ;modbus_rtu.c: 29: {
+   179                           	
+   180  000796                     _main:		; BSR set to: ?
+   181                           
+   182                           	opt stack 28
+   183                           	line	32
+   184                           ;modbus_rtu.c: 30: unsigned int md_keep;
+   185                           ;modbus_rtu.c: 32: ANSELC = 0;
+   186  000796  0E00               	movlw	low(0)
+   187  000798  010F               	movlb	15	; () banked
+   188  00079A  010F               	movlb	15	; () banked
+   189  00079C  6F3A               	movwf	((3898))&0ffh	;volatile
+   190                           	line	33
+   191                           ;modbus_rtu.c: 33: TRISC = 0x00;
+   192  00079E  0E00               	movlw	low(0)
+   193  0007A0  6E94               	movwf	((c:3988)),c	;volatile
+   194                           	line	34
+   195                           ;modbus_rtu.c: 34: PORTC = 0xc0;
+   196  0007A2  0EC0               	movlw	low(0C0h)
+   197  0007A4  6E82               	movwf	((c:3970)),c	;volatile
+   198                           	line	36
+   199                           ;modbus_rtu.c: 36: init_timer35();
+   200  0007A6  ECF5  F003         	call	_init_timer35	;wreg free
+   201                           	line	37
+   202                           ;modbus_rtu.c: 37: PEIE = 1;
+   203  0007AA  8CF2               	bsf	c:(32662/8),(32662)&7	;volatile
+   204                           	line	38
+   205                           ;modbus_rtu.c: 38: GIE = 1;
+   206  0007AC  8EF2               	bsf	c:(32663/8),(32663)&7	;volatile
+   207                           	line	39
+   208                           ;modbus_rtu.c: 39: init_uart();
+   209  0007AE  EC03  F004         	call	_init_uart	;wreg free
+   210                           	line	40
+   211                           ;modbus_rtu.c: 40: while(1)
+   212                           	
+   213  0007B2                     l358:		; BSR set to: ?
+   214                           
+   215                           	line	42
+   216                           ;modbus_rtu.c: 41: {
+   217                           ;modbus_rtu.c: 42: modbus_receive();
+   218  0007B2  EC50  F001         	call	_modbus_receive	;wreg free
+   219                           	line	43
+   220                           ;modbus_rtu.c: 43: if(modbus_reg[0]!=md_keep)
+   221  0007B6  0102               	movlb	2	; () banked
+   222  0007B8  0102               	movlb	2	; () banked
+   223  0007BA  5101               	movf	((main@md_keep+1))&0ffh,w
+   224  0007BC  1836               	xorwf	((c:53+1)),c,w
+   225  0007BE  E104               	bnz	u1055
+   226  0007C0  0102               	movlb	2	; () banked
+   227  0007C2  0102               	movlb	2	; () banked
+   228  0007C4  5100               	movf	((main@md_keep))&0ffh,w
+   229  0007C6  1835               	xorwf	((c:53)),c,w
+   230  0007C8                     u1055:
+   231                           
+   232  0007C8  B4D8               	btfsc	status,2
+   233  0007CA  EFE9  F003         	goto	u1051
+   234  0007CE  EFEB  F003         	goto	u1050
+   235  0007D2                     u1051:
+   236  0007D2  EFF1  F003         	goto	l357
+   237  0007D6                     u1050:
+   238                           	line	45
+   239                           ;modbus_rtu.c: 44: {
+   240                           ;modbus_rtu.c: 45: md_keep = modbus_reg[0];
+   241  0007D6  C035 F200          	movff	(c:53),(main@md_keep)
+   242  0007DA  C036 F201          	movff	(c:53+1),(main@md_keep+1)
+   243                           	line	46
+   244                           ;modbus_rtu.c: 46: PORTC = md_keep;
+   245  0007DE  C200  FF82         	movff	(main@md_keep),(c:3970)	;volatile
+   246                           	line	47
+   247                           	
+   248  0007E2                     l360:		; BSR set to: ?
+   249                           
+   250                           	line	48
+   251                           	
+   252  0007E2                     l357:		; BSR set to: ?
+   253                           
+   254                           	line	40
+   255  0007E2  EFD9  F003         	goto	l358
+   256                           	global	start
+   257  0007E6  EF0C  F000         	goto	start
+   258                           	opt stack 0
+   259                           GLOBAL __end_of_main
+   260  0007EA                     	__end_of_main:
+   261                           	FNSIZE	_main,2,0
+   262                           ; =============== function _main ends ==========
+                                 ==
+   263                           
+   264                                   psect   text1,class=CODE,space=0,reloc=2
+   265                           	line	49
+   266                           
+   267                           	opt lm
+   268                           	signat	_main,88
+   269                           	global	_init_uart
+   270                           	global	??_init_uart
+   271                           	global	?_init_uart
+   272                           
+   273                           ; *************** function _init_uart **********
+                                 *******
+   274                           ; Defined at:
+   275                           ;		line 166 in file "../modbus_rtu.c"
+   276                           ; Parameters:
+   277                           ;		None
+   278                           ; Auto variables:
+   279                           ;		None
+   280                           ; Return value:
+   281                           ;		type: void 
+   282                           ;		size: 0
+   283                           ; Registers used:
+   284                           ;		wreg, status,2
+   285                           ; Tracked objects:
+   286                           ;		On entry : 0/0
+   287                           ;		On exit  : 0/0
+   288                           ;		Unchanged: 0/0
+   289                           ; Data sizes:
+   290                           ;		Autos:    0
+   291                           ;		Params:   0
+   292                           ;		Temp:     0
+   293                           ;		Total:    0
+   294                           ; This function calls:
+   295                           ;		Nothing
+   296                           ; This function is called by:
+   297                           ;		_main
+   298                           ; This function uses a non-reentrant model
+   299                           ; 
+   300                           	file	"../modbus_rtu.c"
+   301                           	line	166
+   302  000000                     	__size_of_init_uart	equ	__end_of_init_uart-_ini
+                                 t_uart
+   303                           ;modbus_rtu.c: 165: void init_uart(void)
+   304                           ;modbus_rtu.c: 166: {
+   305                           	
+   306  000806                     _init_uart:		; BSR set to: ?
+   307                           
+   308                           	opt stack 27
+   309                           	line	167
+   310                           ;modbus_rtu.c: 167: SPEN2 = 1;
+   311  000806  8E71               	bsf	c:(31631/8),(31631)&7	;volatile
+   312                           	line	168
+   313                           ;modbus_rtu.c: 168: SYNC2 = 0;
+   314  000808  9872               	bcf	c:(31636/8),(31636)&7	;volatile
+   315                           	line	169
+   316                           ;modbus_rtu.c: 169: SPBRG2 = 11059200/64*(1*3+1)
+                                 /9600-1;
+   317  00080A  0E47               	movlw	low(047h)
+   318  00080C  6E75               	movwf	((c:3957)),c	;volatile
+   319                           	line	170
+   320                           ;modbus_rtu.c: 170: BRGH2 = 1;
+   321  00080E  8472               	bsf	c:(31634/8),(31634)&7	;volatile
+   322                           	line	171
+   323                           ;modbus_rtu.c: 171: CREN2 = 1;
+   324  000810  8871               	bsf	c:(31628/8),(31628)&7	;volatile
+   325                           	line	172
+   326                           ;modbus_rtu.c: 172: TXEN2 = 1;
+   327  000812  8A72               	bsf	c:(31637/8),(31637)&7	;volatile
+   328                           	line	173
+   329                           ;modbus_rtu.c: 173: RC2IE = 1;
+   330  000814  8AA3               	bsf	c:(32029/8),(32029)&7	;volatile
+   331                           	line	174
+   332                           ;modbus_rtu.c: 174: }
+   333  000816                     l383:
+   334                           			; BSR set to: ?
+   335                           
+   336  000816  0012               	return
+   337                           	opt stack 0
+   338                           GLOBAL __end_of_init_uart
+   339  000818                     	__end_of_init_uart:
+   340                           	FNSIZE	_init_uart,0,0
+   341                           ; =============== function _init_uart ends =====
+                                 =======
+   342                           
+   343                           	signat	_init_uart,88
+   344                           	global	_modbus_receive
+   345                           	global	??_modbus_receive
+   346                           	global	?_modbus_receive
+   347                           
+   348                           ; *************** function _modbus_receive *****
+                                 ************
+   349                           ; Defined at:
+   350                           ;		line 197 in file "../modbus_rtu.c"
+   351                           ; Parameters:
+   352                           ;		None
+   353                           ; Auto variables:
+   354                           ;		None
+   355                           ; Return value:
+   356                           ;		type: void 
+   357                           ;		size: 0
+   358                           ; Registers used:
+   359                           ;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, s
+                                 tatus,0, tblptrl, tblptrh, tblptru, tablat, prod
+                                 l, prodh, cstack
+   360                           ; Tracked objects:
+   361                           ;		On entry : 0/0
+   362                           ;		On exit  : 0/0
+   363                           ;		Unchanged: 0/0
+   364                           ; Data sizes:
+   365                           ;		Autos:    0
+   366                           ;		Params:   0
+   367                           ;		Temp:     1
+   368                           ;		Total:    1
+   369                           ; This function calls:
+   370                           ;		_modbus_crc16
+   371                           ;		_read_holding_regs
+   372                           ;		_write_single_holding_reg
+   373                           ; This function is called by:
+   374                           ;		_main
+   375                           ; This function uses a non-reentrant model
+   376                           ; 
+   377                                   psect   text2,class=CODE,space=0,reloc=2
+   378                           
+   379                           	opt lm
+   380                           	file	"../modbus_rtu.c"
+   381                           	line	197
+   382  000000                     	__size_of_modbus_receive	equ	__end_of_modbus_re
+                                 ceive-_modbus_receive
+   383+                          ;modbus_rtu.c: 196: void modbus_receive(void)
+   384+                          ;modbus_rtu.c: 197: {
+   385+                          	
+   386+ 0002A0                     _modbus_receive:		; BSR set to: ?
+   387                           
+   388                           	opt stack 27
+   389                           	line	198
+   390                           ;modbus_rtu.c: 198: if(rx_buf.frame_ok==1)
+   391  0002A0  0400               	decf	((c:0)),c,w
+   392                           
+   393  0002A2  A4D8               	btfss	status,2
+   394  0002A4  EF56  F001         	goto	u1101
+   395  0002A8  EF58  F001         	goto	u1100
+   396  0002AC                     u1101:
+   397  0002AC  EF9D  F001         	goto	l387
+   398  0002B0                     u1100:
+   399                           	line	200
+   400                           ;modbus_rtu.c: 199: {
+   401                           ;modbus_rtu.c: 200: rx_buf.frame_ok = 0;
+   402  0002B0  0102               	movlb	2	; () banked
+   403  0002B2  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
+   404  0002B4  0E00               	movlw	low(0)
+   405  0002B6  6E00               	movwf	((c:0)),c
+   406  0002B8  0102               	movlb	2	; () banked
+   407  0002BA  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
+   408                           	line	202
+   409                           ;modbus_rtu.c: 202: if(modbus_crc16(rx_buf.data_
+                                 buf,rx_buf.rec_count)==0)
+   410  0002BC  0102               	movlb	2	; () banked
+   411  0002BE  C002 F213          	movff	0+((c:0)+02h),0+(?_modbus_crc16+02h)
+   412  0002C2  0102               	movlb	2	; () banked
+   413  0002C4  0102               	movlb	2	; () banked
+   414  0002C6  6B14               	clrf	(1+(?_modbus_crc16+02h))&0ffh
+   415  0002C8  0E03               	movlw	low((c:0)+03h)
+   416  0002CA  0102               	movlb	2	; () banked
+   417  0002CC  0102               	movlb	2	; () banked
+   418  0002CE  6F11               	movwf	((?_modbus_crc16))&0ffh
+   419  0002D0  0E00               	movlw	high((c:0)+03h)
+   420  0002D2  0102               	movlb	2	; () banked
+   421  0002D4  6F12               	movwf	((?_modbus_crc16+1))&0ffh
+   422  0002D6  ECB1  F002         	call	_modbus_crc16	;wreg free
+   423  0002DA  0102               	movlb	2	; () banked
+   424  0002DC  5112               	movf	(1+?_modbus_crc16)&0ffh,w
+   425  0002DE  1111               	iorwf (0+?_modbus_crc16)&0ffh,w
+   426                           
+   427  0002E0  A4D8               	btfss	status,2
+   428  0002E2  EF75  F001         	goto	u1111
+   429  0002E6  EF77  F001         	goto	u1110
+   430  0002EA                     u1111:
+   431  0002EA  EF97  F001         	goto	l388
+   432  0002EE                     u1110:
+   433                           	line	204
+   434                           ;modbus_rtu.c: 203: {
+   435                           ;modbus_rtu.c: 204: if((1 ==rx_buf.data_buf[0])|
+                                 |(255==rx_buf.data_buf[0]))
+   436  0002EE  0403               	decf	(0+((c:0)+03h)),c,w
+   437                           
+   438  0002F0  B4D8               	btfsc	status,2
+   439  0002F2  EF7D  F001         	goto	u1121
+   440  0002F6  EF7F  F001         	goto	u1120
+   441  0002FA                     u1121:
+   442  0002FA  EF87  F001         	goto	l600000198
+   443  0002FE                     u1120:
+   444  0002FE  2803               	incf	(0+((c:0)+03h)),c,w
+   445                           
+   446  000300  A4D8               	btfss	status,2
+   447  000302  EF85  F001         	goto	u1131
+   448  000306  EF87  F001         	goto	u1130
+   449  00030A                     u1131:
+   450  00030A  EF8F  F001         	goto	l389
+   451  00030E                     u1130:
+   452                           	
+   453  00030E                     l600000198:		; BSR set to: ?
+   454                           
+   455                           	line	206
+   456                           ;modbus_rtu.c: 205: {
+   457                           ;modbus_rtu.c: 206: rx_buf.data_valid = 1;
+   458  00030E  0102               	movlb	2	; () banked
+   459  000310  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
+   460  000312  0E01               	movlw	low(01h)
+   461  000314  6E01               	movwf	(0+((c:0)+01h)),c
+   462  000316  0102               	movlb	2	; () banked
+   463  000318  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
+   464                           	line	207
+   465                           ;modbus_rtu.c: 207: }
+   466  00031A  EF95  F001         	goto	l390
+   467                           	line	208
+   468                           	
+   469  00031E                     l389:		; BSR set to: ?
+   470                           
+   471                           	line	210
+   472                           ;modbus_rtu.c: 208: else
+   473                           ;modbus_rtu.c: 209: {
+   474                           ;modbus_rtu.c: 210: rx_buf.rec_count = 0;
+   475  00031E  0102               	movlb	2	; () banked
+   476  000320  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
+   477  000322  0E00               	movlw	low(0)
+   478  000324  6E02               	movwf	(0+((c:0)+02h)),c
+   479  000326  0102               	movlb	2	; () banked
+   480  000328  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
+   481                           	line	211
+   482                           	
+   483  00032A                     l390:		; BSR set to: ?
+   484                           
+   485                           	line	212
+   486                           ;modbus_rtu.c: 211: }
+   487                           ;modbus_rtu.c: 212: }
+   488  00032A  EF9D  F001         	goto	l387
+   489                           	line	213
+   490                           	
+   491  00032E                     l388:		; BSR set to: ?
+   492                           
+   493                           	line	215
+   494                           ;modbus_rtu.c: 213: else
+   495                           ;modbus_rtu.c: 214: {
+   496                           ;modbus_rtu.c: 215: rx_buf.rec_count = 0;
+   497  00032E  0102               	movlb	2	; () banked
+   498  000330  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
+   499  000332  0E00               	movlw	low(0)
+   500  000334  6E02               	movwf	(0+((c:0)+02h)),c
+   501  000336  0102               	movlb	2	; () banked
+   502  000338  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
+   503                           	line	216
+   504                           	
+   505  00033A                     l391:		; BSR set to: ?
+   506                           
+   507                           	line	217
+   508                           	
+   509  00033A                     l387:		; BSR set to: ?
+   510                           
+   511                           	line	219
+   512                           ;modbus_rtu.c: 216: }
+   513                           ;modbus_rtu.c: 217: }
+   514                           ;modbus_rtu.c: 219: if(rx_buf.data_valid)
+   515  00033A  5001               	movf	(0+((c:0)+01h)),c,w
+   516  00033C  B4D8               	btfsc	status,2
+   517  00033E  EFA3  F001         	goto	u1141
+   518  000342  EFA5  F001         	goto	u1140
+   519  000346                     u1141:
+   520  000346  EFD4  F001         	goto	l392
+   521  00034A                     u1140:
+   522                           	line	221
+   523                           ;modbus_rtu.c: 220: {
+   524                           ;modbus_rtu.c: 221: rx_buf.data_valid = 0;
+   525  00034A  0102               	movlb	2	; () banked
+   526  00034C  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
+   527  00034E  0E00               	movlw	low(0)
+   528  000350  6E01               	movwf	(0+((c:0)+01h)),c
+   529  000352  0102               	movlb	2	; () banked
+   530  000354  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
+   531                           	line	222
+   532                           ;modbus_rtu.c: 222: switch(rx_buf.data_buf[1])
+   533  000356  EFCB  F001         	goto	l394
+   534                           	line	224
+   535                           ;modbus_rtu.c: 223: {
+   536                           ;modbus_rtu.c: 224: case 0x03:
+   537                           	
+   538  00035A                     l395:		; BSR set to: ?
+   539                           
+   540                           	line	225
+   541                           ;modbus_rtu.c: 225: read_holding_regs();
+   542  00035A  EC23  F000         	call	_read_holding_regs	;wreg free
+   543                           	line	226
+   544                           ;modbus_rtu.c: 226: break;
+   545  00035E  EFD4  F001         	goto	l392
+   546                           	line	227
+   547                           ;modbus_rtu.c: 227: case 0x06:
+   548                           	
+   549  000362                     l396:		; BSR set to: ?
+   550                           
+   551                           	line	228
+   552                           ;modbus_rtu.c: 228: write_single_holding_reg();
+   553  000362  EC53  F002         	call	_write_single_holding_reg	;wreg free
+   554                           	line	229
+   555                           ;modbus_rtu.c: 229: break;
+   556  000366  EFD4  F001         	goto	l392
+   557                           	line	230
+   558                           ;modbus_rtu.c: 230: case 0x16:
+   559                           	
+   560  00036A                     l397:		; BSR set to: ?
+   561                           
+   562                           	line	232
+   563                           ;modbus_rtu.c: 232: break;
+   564  00036A  EFD4  F001         	goto	l392
+   565                           	line	233
+   566                           ;modbus_rtu.c: 233: default:
+   567                           	
+   568  00036E                     l398:		; BSR set to: ?
+   569                           
+   570                           	line	234
+   571                           ;modbus_rtu.c: 234: rx_buf.data_valid = 0;
+   572  00036E  0102               	movlb	2	; () banked
+   573  000370  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
+   574  000372  0E00               	movlw	low(0)
+   575  000374  6E01               	movwf	(0+((c:0)+01h)),c
+   576  000376  0102               	movlb	2	; () banked
+   577  000378  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
+   578                           	line	235
+   579                           ;modbus_rtu.c: 235: rx_buf.rec_count = 0;
+   580  00037A  0102               	movlb	2	; () banked
+   581  00037C  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
+   582  00037E  0E00               	movlw	low(0)
+   583  000380  6E02               	movwf	(0+((c:0)+02h)),c
+   584  000382  0102               	movlb	2	; () banked
+   585  000384  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
+   586                           	line	236
+   587                           ;modbus_rtu.c: 236: rx_buf.frame_ok = 0;
+   588  000386  0102               	movlb	2	; () banked
+   589  000388  6F02               	movwf	(??_modbus_receive+0+0)&0ffh
+   590  00038A  0E00               	movlw	low(0)
+   591  00038C  6E00               	movwf	((c:0)),c
+   592  00038E  0102               	movlb	2	; () banked
+   593  000390  5102               	movf	(??_modbus_receive+0+0)&0ffh,w
+   594                           	line	237
+   595                           ;modbus_rtu.c: 237: break;
+   596  000392  EFD4  F001         	goto	l392
+   597                           	line	222
+   598                           	
+   599  000396                     l394:		; BSR set to: ?
+   600                           
+   601  000396  5004               	movf	(0+((c:0)+04h)),c,w
+   602  000398  0A03               	xorlw	3 ^ 0
+   603  00039A  E0DF               	bz	l395
+   604  00039C  0A05               	xorlw	6 ^ 3
+   605  00039E  E0E1               	bz	l396
+   606  0003A0  0A10               	xorlw	22 ^ 6
+   607  0003A2  E0E3               	bz	l397
+   608  0003A4  EFB7  F001         	goto	l398
+   609                           
+   610                           	line	239
+   611                           	
+   612  0003A8                     l392:		; BSR set to: ?
+   613                           
+   614                           	line	240
+   615                           ;modbus_rtu.c: 239: }
+   616                           ;modbus_rtu.c: 240: }
+   617  0003A8                     l386:
+   618                           			; BSR set to: ?
+   619                           
+   620  0003A8  0012               	return
+   621                           	opt stack 0
+   622                           GLOBAL __end_of_modbus_receive
+   623  0003AA                     	__end_of_modbus_receive:
+   624                           	FNSIZE	_modbus_receive,1,0
+   625                           ; =============== function _modbus_receive ends 
+                                 ============
+   626                           
+   627                           	signat	_modbus_receive,88
+   628                           	global	_init_timer35
+   629                           	global	??_init_timer35
+   630                           	global	?_init_timer35
+   631                           
+   632                           ; *************** function _init_timer35 *******
+                                 **********
+   633                           ; Defined at:
+   634                           ;		line 148 in file "../modbus_rtu.c"
+   635                           ; Parameters:
+   636                           ;		None
+   637                           ; Auto variables:
+   638                           ;		None
+   639                           ; Return value:
+   640                           ;		type: void 
+   641                           ;		size: 0
+   642                           ; Registers used:
+   643                           ;		wreg, status,2, cstack
+   644                           ; Tracked objects:
+   645                           ;		On entry : 0/0
+   646                           ;		On exit  : 0/0
+   647                           ;		Unchanged: 0/0
+   648                           ; Data sizes:
+   649                           ;		Autos:    0
+   650                           ;		Params:   0
+   651                           ;		Temp:     0
+   652                           ;		Total:    0
+   653                           ; This function calls:
+   654                           ;		_restart_timer35
+   655                           ; This function is called by:
+   656                           ;		_main
+   657                           ; This function uses a non-reentrant model
+   658                           ; 
+   659                                   psect   text3,class=CODE,space=0,reloc=2
+   660                           
+   661                           	opt lm
+   662                           	file	"../modbus_rtu.c"
+   663                           	line	148
+   664  000000                     	__size_of_init_timer35	equ	__end_of_init_timer3
+                                 5-_init_timer35
+   665                           ;modbus_rtu.c: 147: void init_timer35(void)
+   666                           ;modbus_rtu.c: 148: {
+   667                           	
+   668  0007EA                     _init_timer35:		; BSR set to: ?
+   669                           
+   670                           	opt stack 27
+   671                           	line	149
+   672                           ;modbus_rtu.c: 149: TMR1ON = 0;
+   673  0007EA  90CD               	bcf	c:(32360/8),(32360)&7	;volatile
+   674                           	line	150
+   675                           ;modbus_rtu.c: 150: TMR1CS0 = 1;
+   676  0007EC  8CCD               	bsf	c:(32366/8),(32366)&7	;volatile
+   677                           	line	151
+   678                           ;modbus_rtu.c: 151: TMR1CS1 = 0;
+   679  0007EE  9ECD               	bcf	c:(32367/8),(32367)&7	;volatile
+   680                           	line	152
+   681                           ;modbus_rtu.c: 152: T1CKPS0 = 0;
+   682  0007F0  98CD               	bcf	c:(32364/8),(32364)&7	;volatile
+   683                           	line	153
+   684                           ;modbus_rtu.c: 153: T1CKPS1 = 0;
+   685  0007F2  9ACD               	bcf	c:(32365/8),(32365)&7	;volatile
+   686                           	line	155
+   687                           ;modbus_rtu.c: 155: TMR1 = 65535-40320;
+   688  0007F4  0E7F               	movlw	low(0627Fh)
+   689  0007F6  6ECE               	movwf	((c:4046)),c	;volatile
+   690  0007F8  0E62               	movlw	high(0627Fh)
+   691  0007FA  6ECF               	movwf	((c:4046+1)),c	;volatile
+   692                           	line	156
+   693                           ;modbus_rtu.c: 156: TMR1IF=0;
+   694  0007FC  909E               	bcf	c:(31984/8),(31984)&7	;volatile
+   695                           	line	157
+   696                           ;modbus_rtu.c: 157: TMR1IE=1;
+   697  0007FE  809D               	bsf	c:(31976/8),(31976)&7	;volatile
+   698                           	line	158
+   699                           ;modbus_rtu.c: 158: restart_timer35();
+   700  000800  EC0C  F004         	call	_restart_timer35	;wreg free
+   701                           	line	160
+   702                           ;modbus_rtu.c: 160: }
+   703  000804                     l382:
+   704                           			; BSR set to: ?
+   705                           
+   706  000804  0012               	return
+   707                           	opt stack 0
+   708                           GLOBAL __end_of_init_timer35
+   709  000806                     	__end_of_init_timer35:
+   710                           	FNSIZE	_init_timer35,0,0
+   711                           ; =============== function _init_timer35 ends ==
+                                 ==========
+   712                           
+   713                           	signat	_init_timer35,88
+   714                           	global	_read_holding_regs
+   715                           	global	??_read_holding_regs
+   716                           	global	?_read_holding_regs
+   717                           
+   718                           ; *************** function _read_holding_regs **
+                                 ***************
+   719                           ; Defined at:
+   720                           ;		line 243 in file "../modbus_rtu.c"
+   721                           ; Parameters:
+   722                           ;		None
+   723                           ; Auto variables:
+   724                           ;		i           	       	type: unsigned char 
+   725                           ;		start_addr  	       	type: unsigned int 
+   726                           ;		data_crc    	       	type: unsigned int 
+   727                           ;		num         	       	type: unsigned int 
+   728                           ; Return value:
+   729                           ;		type: void 
+   730                           ;		size: 0
+   731                           ; Registers used:
+   732                           ;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, s
+                                 tatus,0, tblptrl, tblptrh, tblptru, tablat, prod
+                                 l, prodh, cstack
+   733                           ; Tracked objects:
+   734                           ;		On entry : 0/0
+   735                           ;		On exit  : 0/0
+   736                           ;		Unchanged: 0/0
+   737                           ; Data sizes:
+   738                           ;		Autos:    7
+   739                           ;		Params:   0
+   740                           ;		Temp:     7
+   741                           ;		Total:   14
+   742                           ; This function calls:
+   743                           ;		_modbus_crc16
+   744                           ; This function is called by:
+   745                           ;		_modbus_receive
+   746                           ; This function uses a non-reentrant model
+   747                           ; 
+   748                                   psect   text4,class=CODE,space=0,reloc=2
+   749                           
+   750                           	opt lm
+   751                           	file	"../modbus_rtu.c"
+   752                           	line	243
+   753  000000                     	__size_of_read_holding_regs	equ	__end_of_read_h
+                                 olding_regs-_read_holding_regs
+   754                           ;modbus_rtu.c: 242: void read_holding_regs(void)
+   755                           ;modbus_rtu.c: 243: {
+   756                           	
+   757  000046                     _read_holding_regs:		; BSR set to: ?
+   758                           
+   759                           	opt stack 26
+   760                           	line	244
+   761                           ;modbus_rtu.c: 244: unsigned int num = 0;
+   762  000046  0E00               	movlw	low(0)
+   763  000048  0102               	movlb	2	; () banked
+   764  00004A  0102               	movlb	2	; () banked
+   765  00004C  6F08               	movwf	((read_holding_regs@num))&0ffh
+   766  00004E  0E00               	movlw	high(0)
+   767  000050  0102               	movlb	2	; () banked
+   768  000052  6F09               	movwf	((read_holding_regs@num+1))&0ffh
+   769                           	line	246
+   770                           ;modbus_rtu.c: 245: unsigned int start_addr;
+   771                           ;modbus_rtu.c: 246: unsigned int data_crc=0;
+   772  000054  0E00               	movlw	low(0)
+   773  000056  0102               	movlb	2	; () banked
+   774  000058  0102               	movlb	2	; () banked
+   775  00005A  6F06               	movwf	((read_holding_regs@data_crc))&0ffh
+   776  00005C  0E00               	movlw	high(0)
+   777  00005E  0102               	movlb	2	; () banked
+   778  000060  6F07               	movwf	((read_holding_regs@data_crc+1))&0ffh
+   779                           	line	247
+   780                           ;modbus_rtu.c: 247: unsigned char i = 0 ;
+   781  000062  0102               	movlb	2	; () banked
+   782  000064  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
+   783  000066  0E00               	movlw	low(0)
+   784  000068  0102               	movlb	2	; () banked
+   785  00006A  0102               	movlb	2	; () banked
+   786  00006C  6F03               	movwf	((read_holding_regs@i))&0ffh
+   787  00006E  0102               	movlb	2	; () banked
+   788  000070  510A               	movf	(??_read_holding_regs+7+0)&0ffh,w
+   789                           	line	249
+   790                           ;modbus_rtu.c: 249: start_addr = ((rx_buf.data_b
+                                 uf[2])<<8)|(rx_buf.data_buf[3]);
+   791  000072  5005               	movf	(0+((c:0)+05h)),c,w
+   792  000074  0102               	movlb	2	; () banked
+   793  000076  0102               	movlb	2	; () banked
+   794  000078  6F05               	movwf	((read_holding_regs@start_addr+1))&0ffh
+   795  00007A  5006               	movf	(0+((c:0)+06h)),c,w
+   796  00007C  0102               	movlb	2	; () banked
+   797  00007E  6F04               	movwf	((read_holding_regs@start_addr))&0ffh
+   798                           	line	251
+   799                           ;modbus_rtu.c: 251: num = ((rx_buf.data_buf[4])<
+                                 <8)|(rx_buf.data_buf[5]);
+   800  000080  5007               	movf	(0+((c:0)+07h)),c,w
+   801  000082  0102               	movlb	2	; () banked
+   802  000084  0102               	movlb	2	; () banked
+   803  000086  6F09               	movwf	((read_holding_regs@num+1))&0ffh
+   804  000088  5008               	movf	(0+((c:0)+08h)),c,w
+   805  00008A  0102               	movlb	2	; () banked
+   806  00008C  6F08               	movwf	((read_holding_regs@num))&0ffh
+   807                           	line	253
+   808                           ;modbus_rtu.c: 253: tx_buf.data_buf[0] = 1;
+   809  00008E  0102               	movlb	2	; () banked
+   810  000090  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
+   811  000092  0E01               	movlw	low(01h)
+   812  000094  0101               	movlb	1	; () banked
+   813  000096  0101               	movlb	1	; () banked
+   814  000098  6F01               	movwf	(0+(256+01h))&0ffh
+   815  00009A  0102               	movlb	2	; () banked
+   816  00009C  510A               	movf	(??_read_holding_regs+7+0)&0ffh,w
+   817                           	line	254
+   818                           ;modbus_rtu.c: 254: tx_buf.data_buf[1] = 0x03;
+   819  00009E  0102               	movlb	2	; () banked
+   820  0000A0  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
+   821  0000A2  0E03               	movlw	low(03h)
+   822  0000A4  0101               	movlb	1	; () banked
+   823  0000A6  0101               	movlb	1	; () banked
+   824  0000A8  6F02               	movwf	(0+(256+02h))&0ffh
+   825  0000AA  0102               	movlb	2	; () banked
+   826  0000AC  510A               	movf	(??_read_holding_regs+7+0)&0ffh,w
+   827                           	line	255
+   828                           ;modbus_rtu.c: 255: tx_buf.data_buf[2] = 2*num;
+   829  0000AE  0102               	movlb	2	; () banked
+   830  0000B0  0102               	movlb	2	; () banked
+   831  0000B2  5108               	movf	((read_holding_regs@num))&0ffh,w
+   832  0000B4  0102               	movlb	2	; () banked
+   833  0000B6  2508               	addwf	((read_holding_regs@num))&0ffh,w
+   834  0000B8  0101               	movlb	1	; () banked
+   835  0000BA  0101               	movlb	1	; () banked
+   836  0000BC  6F03               	movwf	(0+(256+03h))&0ffh
+   837                           	line	257
+   838                           ;modbus_rtu.c: 257: for(i=0;i<num;i++)
+   839  0000BE  0102               	movlb	2	; () banked
+   840  0000C0  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
+   841  0000C2  0E00               	movlw	low(0)
+   842  0000C4  0102               	movlb	2	; () banked
+   843  0000C6  0102               	movlb	2	; () banked
+   844  0000C8  6F03               	movwf	((read_holding_regs@i))&0ffh
+   845  0000CA  0102               	movlb	2	; () banked
+   846  0000CC  510A               	movf	(??_read_holding_regs+7+0)&0ffh,w
+   847  0000CE  EFDF  F000         	goto	l403
+   848                           	line	258
+   849                           	
+   850  0000D2                     l400:		; BSR set to: ?
+   851                           
+   852                           	line	259
+   853                           ;modbus_rtu.c: 258: {
+   854                           ;modbus_rtu.c: 259: tx_buf.data_buf[3+2*i] = mod
+                                 bus_reg[i+start_addr]>>8;
+   855  0000D2  0102               	movlb	2	; () banked
+   856  0000D4  0102               	movlb	2	; () banked
+   857  0000D6  5103               	movf	((read_holding_regs@i))&0ffh,w
+   858  0000D8  0D02               	mullw	02h
+   859  0000DA  CFF3 F20A          	movff	prodl,??_read_holding_regs+7+0
+   860  0000DE  0E04               	movlw	04h
+   861  0000E0  0102               	movlb	2	; () banked
+   862  0000E2  270A               	addwf	(??_read_holding_regs+7+0)&0ffh
+   863  0000E4  0101               	movlb	1	; () banked
+   864  0000E6  0E00               	movlw	low(256)
+   865  0000E8  0102               	movlb	2	; () banked
+   866  0000EA  250A               	addwf	(??_read_holding_regs+7+0)&0ffh,w
+   867  0000EC  6EE9               	movwf	c:fsr0l
+   868  0000EE  6AEA               	clrf	1+c:fsr0l
+   869  0000F0  0101               	movlb	1	; () banked
+   870  0000F2  0E01               	movlw	high(256)
+   871  0000F4  22EA               	addwfc	1+c:fsr0l
+   872  0000F6  0102               	movlb	2	; () banked
+   873  0000F8  0102               	movlb	2	; () banked
+   874  0000FA  5103               	movf	((read_holding_regs@i))&0ffh,w
+   875  0000FC  0102               	movlb	2	; () banked
+   876  0000FE  0102               	movlb	2	; () banked
+   877  000100  2504               	addwf	((read_holding_regs@start_addr))&0ffh,w
+   878  000102  0102               	movlb	2	; () banked
+   879  000104  6F0B               	movwf	(??_read_holding_regs+8+0)&0ffh
+   880  000106  0E00               	movlw	0
+   881  000108  0102               	movlb	2	; () banked
+   882  00010A  0102               	movlb	2	; () banked
+   883  00010C  2105               	addwfc	((read_holding_regs@start_addr+1))&0ffh,
+                                 w
+   884  00010E  0102               	movlb	2	; () banked
+   885  000110  6F0C               	movwf	(??_read_holding_regs+8+0+1)&0ffh
+   886  000112  90D8               	bcf	status,0
+   887  000114  0102               	movlb	2	; () banked
+   888  000116  350B               	rlcf	(??_read_holding_regs+8+0)&0ffh,w
+   889  000118  0102               	movlb	2	; () banked
+   890  00011A  6F0D               	movwf	(??_read_holding_regs+10+0)&0ffh
+   891  00011C  0102               	movlb	2	; () banked
+   892  00011E  350C               	rlcf	(??_read_holding_regs+8+1)&0ffh,w
+   893  000120  0102               	movlb	2	; () banked
+   894  000122  6F0E               	movwf	1+(??_read_holding_regs+10+0)&0ffh
+   895  000124  0100               	movlb	0	; () banked
+   896  000126  0E35               	movlw	low(53)
+   897  000128  0102               	movlb	2	; () banked
+   898  00012A  250D               	addwf	(??_read_holding_regs+10+0)&0ffh,w
+   899  00012C  6EE1               	movwf	c:fsr1l
+   900  00012E  0100               	movlb	0	; () banked
+   901  000130  0E00               	movlw	high(53)
+   902  000132  0102               	movlb	2	; () banked
+   903  000134  210E               	addwfc	(??_read_holding_regs+10+1)&0ffh,w
+   904  000136  6EE2               	movwf	1+c:fsr1l
+   905  000138  CFE6 F20F          	movff	postinc1,??_read_holding_regs+12+0
+   906  00013C  CFE5 F210          	movff	postdec1,??_read_holding_regs+12+0+1
+   907  000140  C210  F20F         	movff	??_read_holding_regs+12+1,??_read_holding
+                                 _regs+12+0
+   908  000144  0102               	movlb	2	; () banked
+   909  000146  6B10               	clrf	(??_read_holding_regs+12+1)&0ffh
+   910  000148  0102               	movlb	2	; () banked
+   911  00014A  510F               	movf	(??_read_holding_regs+12+0)&0ffh,w
+   912  00014C  6EEF               	movwf	indf0
+   913                           
+   914                           	line	260
+   915                           ;modbus_rtu.c: 260: tx_buf.data_buf[3+2*i+1] = m
+                                 odbus_reg[i+start_addr];
+   916  00014E  0102               	movlb	2	; () banked
+   917  000150  0102               	movlb	2	; () banked
+   918  000152  5103               	movf	((read_holding_regs@i))&0ffh,w
+   919  000154  0102               	movlb	2	; () banked
+   920  000156  0102               	movlb	2	; () banked
+   921  000158  2504               	addwf	((read_holding_regs@start_addr))&0ffh,w
+   922  00015A  0102               	movlb	2	; () banked
+   923  00015C  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
+   924  00015E  0E00               	movlw	0
+   925  000160  0102               	movlb	2	; () banked
+   926  000162  0102               	movlb	2	; () banked
+   927  000164  2105               	addwfc	((read_holding_regs@start_addr+1))&0ffh,
+                                 w
+   928  000166  0102               	movlb	2	; () banked
+   929  000168  6F0B               	movwf	(??_read_holding_regs+7+0+1)&0ffh
+   930  00016A  90D8               	bcf	status,0
+   931  00016C  0102               	movlb	2	; () banked
+   932  00016E  350A               	rlcf	(??_read_holding_regs+7+0)&0ffh,w
+   933  000170  0102               	movlb	2	; () banked
+   934  000172  6F0C               	movwf	(??_read_holding_regs+9+0)&0ffh
+   935  000174  0102               	movlb	2	; () banked
+   936  000176  350B               	rlcf	(??_read_holding_regs+7+1)&0ffh,w
+   937  000178  0102               	movlb	2	; () banked
+   938  00017A  6F0D               	movwf	1+(??_read_holding_regs+9+0)&0ffh
+   939  00017C  0100               	movlb	0	; () banked
+   940  00017E  0E35               	movlw	low(53)
+   941  000180  0102               	movlb	2	; () banked
+   942  000182  250C               	addwf	(??_read_holding_regs+9+0)&0ffh,w
+   943  000184  6EE9               	movwf	c:fsr0l
+   944  000186  0100               	movlb	0	; () banked
+   945  000188  0E00               	movlw	high(53)
+   946  00018A  0102               	movlb	2	; () banked
+   947  00018C  210D               	addwfc	(??_read_holding_regs+9+1)&0ffh,w
+   948  00018E  6EEA               	movwf	1+c:fsr0l
+   949  000190  0102               	movlb	2	; () banked
+   950  000192  0102               	movlb	2	; () banked
+   951  000194  5103               	movf	((read_holding_regs@i))&0ffh,w
+   952  000196  0D02               	mullw	02h
+   953  000198  CFF3 F20E          	movff	prodl,??_read_holding_regs+11+0
+   954  00019C  0E05               	movlw	05h
+   955  00019E  0102               	movlb	2	; () banked
+   956  0001A0  270E               	addwf	(??_read_holding_regs+11+0)&0ffh
+   957  0001A2  0101               	movlb	1	; () banked
+   958  0001A4  0E00               	movlw	low(256)
+   959  0001A6  0102               	movlb	2	; () banked
+   960  0001A8  250E               	addwf	(??_read_holding_regs+11+0)&0ffh,w
+   961  0001AA  6EE1               	movwf	c:fsr1l
+   962  0001AC  6AE2               	clrf	1+c:fsr1l
+   963  0001AE  0101               	movlb	1	; () banked
+   964  0001B0  0E01               	movlw	high(256)
+   965  0001B2  22E2               	addwfc	1+c:fsr1l
+   966  0001B4  CFEF FFE7          	movff	indf0,indf1
+   967                           	line	257
+   968  0001B8  0102               	movlb	2	; () banked
+   969  0001BA  0102               	movlb	2	; () banked
+   970  0001BC  2B03               	incf	((read_holding_regs@i))&0ffh
+   971                           	
+   972  0001BE                     l403:		; BSR set to: ?
+   973                           
+   974  0001BE  0102               	movlb	2	; () banked
+   975  0001C0  C203  F20A         	movff	(read_holding_regs@i),??_read_holding_reg
+                                 s+7+0
+   976  0001C4  0102               	movlb	2	; () banked
+   977  0001C6  6B0B               	clrf	(??_read_holding_regs+7+0+1)&0ffh
+   978  0001C8  0102               	movlb	2	; () banked
+   979  0001CA  0102               	movlb	2	; () banked
+   980  0001CC  5108               	movf	((read_holding_regs@num))&0ffh,w
+   981  0001CE  0102               	movlb	2	; () banked
+   982  0001D0  5D0A               	subwf	(??_read_holding_regs+7+0)&0ffh,w
+   983  0001D2  0102               	movlb	2	; () banked
+   984  0001D4  0102               	movlb	2	; () banked
+   985  0001D6  5109               	movf	((read_holding_regs@num+1))&0ffh,w
+   986  0001D8  0102               	movlb	2	; () banked
+   987  0001DA  590B               	subwfb	(??_read_holding_regs+7+1)&0ffh,w
+   988  0001DC  A0D8               	btfss	status,0
+   989  0001DE  EFF3  F000         	goto	u1151
+   990  0001E2  EFF5  F000         	goto	u1150
+   991  0001E6                     u1151:
+   992  0001E6  EF69  F000         	goto	l400
+   993  0001EA                     u1150:
+   994                           	
+   995  0001EA                     l401:		; BSR set to: ?
+   996                           
+   997                           	line	262
+   998                           ;modbus_rtu.c: 261: }
+   999                           ;modbus_rtu.c: 262: data_crc = modbus_crc16(tx_b
+                                 uf.data_buf,(2*num+3));
+  1000  0001EA  90D8               	bcf	status,0
+  1001  0001EC  0102               	movlb	2	; () banked
+  1002  0001EE  0102               	movlb	2	; () banked
+  1003  0001F0  3508               	rlcf	((read_holding_regs@num))&0ffh,w
+  1004  0001F2  0102               	movlb	2	; () banked
+  1005  0001F4  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
+  1006  0001F6  0102               	movlb	2	; () banked
+  1007  0001F8  0102               	movlb	2	; () banked
+  1008  0001FA  3509               	rlcf	((read_holding_regs@num+1))&0ffh,w
+  1009  0001FC  0102               	movlb	2	; () banked
+  1010  0001FE  6F0B               	movwf	1+(??_read_holding_regs+7+0)&0ffh
+  1011  000200  0E03               	movlw	low(03h)
+  1012  000202  0102               	movlb	2	; () banked
+  1013  000204  250A               	addwf	(??_read_holding_regs+7+0)&0ffh,w
+  1014  000206  0102               	movlb	2	; () banked
+  1015                           	
+  1016  000208  0102               	movlb	2	; () banked
+  1017  00020A  6F13               	movwf	(0+(?_modbus_crc16+02h))&0ffh
+  1018  00020C  0E00               	movlw	high(03h)
+  1019  00020E  0102               	movlb	2	; () banked
+  1020  000210  210B               	addwfc	(??_read_holding_regs+7+1)&0ffh,w
+  1021  000212  0102               	movlb	2	; () banked
+  1022  000214  6F14               	movwf	1+(0+(?_modbus_crc16+02h))&0ffh
+  1023  000216  0101               	movlb	1	; () banked
+  1024  000218  0E01               	movlw	low(256+01h)
+  1025  00021A  0102               	movlb	2	; () banked
+  1026  00021C  0102               	movlb	2	; () banked
+  1027  00021E  6F11               	movwf	((?_modbus_crc16))&0ffh
+  1028  000220  0101               	movlb	1	; () banked
+  1029  000222  0E01               	movlw	high(256+01h)
+  1030  000224  0102               	movlb	2	; () banked
+  1031  000226  6F12               	movwf	((?_modbus_crc16+1))&0ffh
+  1032  000228  ECB1  F002         	call	_modbus_crc16	;wreg free
+  1033  00022C  C211  F206         	movff	0+?_modbus_crc16,(read_holding_regs@data_
+                                 crc)
+  1034  000230  C212  F207         	movff	1+?_modbus_crc16,(read_holding_regs@data_
+                                 crc+1)
+  1035                           	line	264
+  1036                           ;modbus_rtu.c: 264: tx_buf.data_buf[3+2*num] = d
+                                 ata_crc;
+  1037  000234  0102               	movlb	2	; () banked
+  1038  000236  90D8               	bcf	status,0
+  1039  000238  0102               	movlb	2	; () banked
+  1040  00023A  3508               	rlcf	((read_holding_regs@num))&0ffh,w
+  1041  00023C  0102               	movlb	2	; () banked
+  1042  00023E  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
+  1043  000240  0E04               	movlw	04h
+  1044  000242  0102               	movlb	2	; () banked
+  1045  000244  270A               	addwf	(??_read_holding_regs+7+0)&0ffh
+  1046  000246  0101               	movlb	1	; () banked
+  1047  000248  0E00               	movlw	low(256)
+  1048  00024A  0102               	movlb	2	; () banked
+  1049  00024C  250A               	addwf	(??_read_holding_regs+7+0)&0ffh,w
+  1050  00024E  6EE9               	movwf	c:fsr0l
+  1051  000250  6AEA               	clrf	1+c:fsr0l
+  1052  000252  0101               	movlb	1	; () banked
+  1053  000254  0E01               	movlw	high(256)
+  1054  000256  22EA               	addwfc	1+c:fsr0l
+  1055  000258  0102               	movlb	2	; () banked
+  1056  00025A  C206  FFEF         	movff	(read_holding_regs@data_crc),indf0
+  1057                           
+  1058                           	line	265
+  1059                           ;modbus_rtu.c: 265: tx_buf.data_buf[4+2*num] = d
+                                 ata_crc>>8;
+  1060  00025E  0102               	movlb	2	; () banked
+  1061  000260  90D8               	bcf	status,0
+  1062  000262  0102               	movlb	2	; () banked
+  1063  000264  3508               	rlcf	((read_holding_regs@num))&0ffh,w
+  1064  000266  0102               	movlb	2	; () banked
+  1065  000268  6F0A               	movwf	(??_read_holding_regs+7+0)&0ffh
+  1066  00026A  0E05               	movlw	05h
+  1067  00026C  0102               	movlb	2	; () banked
+  1068  00026E  270A               	addwf	(??_read_holding_regs+7+0)&0ffh
+  1069  000270  0101               	movlb	1	; () banked
+  1070  000272  0E00               	movlw	low(256)
+  1071  000274  0102               	movlb	2	; () banked
+  1072  000276  250A               	addwf	(??_read_holding_regs+7+0)&0ffh,w
+  1073  000278  6EE9               	movwf	c:fsr0l
+  1074  00027A  6AEA               	clrf	1+c:fsr0l
+  1075  00027C  0101               	movlb	1	; () banked
+  1076  00027E  0E01               	movlw	high(256)
+  1077  000280  22EA               	addwfc	1+c:fsr0l
+  1078  000282  0102               	movlb	2	; () banked
+  1079  000284  0102               	movlb	2	; () banked
+  1080  000286  5107               	movf	((read_holding_regs@data_crc+1))&0ffh,w
+  1081  000288  6EEF               	movwf	indf0
+  1082                           
+  1083                           	line	266
+  1084                           ;modbus_rtu.c: 266: tx_buf.tx_count = 5+2*num;
+  1085  00028A  0102               	movlb	2	; () banked
+  1086  00028C  0102               	movlb	2	; () banked
+  1087  00028E  5108               	movf	((read_holding_regs@num))&0ffh,w
+  1088  000290  0102               	movlb	2	; () banked
+  1089  000292  2508               	addwf	((read_holding_regs@num))&0ffh,w
+  1090  000294  0F05               	addlw	low(05h)
+  1091  000296  0101               	movlb	1	; () banked
+  1092  000298  0101               	movlb	1	; () banked
+  1093  00029A  6F00               	movwf	((256))&0ffh
+  1094                           	line	268
+  1095                           ;modbus_rtu.c: 268: TX2IE = 1;
+  1096  00029C  88A3               	bsf	c:(32028/8),(32028)&7	;volatile
+  1097                           	line	269
+  1098                           ;modbus_rtu.c: 269: }
+  1099  00029E                     l399:
+  1100                           			; BSR set to: ?
+  1101                           
+  1102  00029E  0012               	return
+  1103                           	opt stack 0
+  1104                           GLOBAL __end_of_read_holding_regs
+  1105  0002A0                     	__end_of_read_holding_regs:
+  1106                           	FNSIZE	_read_holding_regs,14,0
+  1107                           ; =============== function _read_holding_regs en
+                                 ds ============
+  1108                           
+  1109                           	signat	_read_holding_regs,88
+  1110                           	global	_write_single_holding_reg
+  1111                           	global	??_write_single_holding_reg
+  1112                           	global	?_write_single_holding_reg
+  1113                           
+  1114                           ; *************** function _write_single_holding
+                                 _reg *****************
+  1115                           ; Defined at:
+  1116                           ;		line 272 in file "../modbus_rtu.c"
+  1117                           ; Parameters:
+  1118                           ;		None
+  1119                           ; Auto variables:
+  1120                           ;		i           	       	type: unsigned char 
+  1121                           ;		start_addr  	       	type: unsigned int 
+  1122                           ; Return value:
+  1123                           ;		type: void 
+  1124                           ;		size: 0
+  1125                           ; Registers used:
+  1126                           ;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, s
+                                 tatus,0
+  1127                           ; Tracked objects:
+  1128                           ;		On entry : 0/0
+  1129                           ;		On exit  : 0/0
+  1130                           ;		Unchanged: 0/0
+  1131                           ; Data sizes:
+  1132                           ;		Autos:    3
+  1133                           ;		Params:   0
+  1134                           ;		Temp:     4
+  1135                           ;		Total:    7
+  1136                           ; This function calls:
+  1137                           ;		Nothing
+  1138                           ; This function is called by:
+  1139                           ;		_modbus_receive
+  1140                           ; This function uses a non-reentrant model
+  1141                           ; 
+  1142                                   psect   text5,class=CODE,space=0,reloc=2
+  1143                           
+  1144                           	opt lm
+  1145                           	file	"../modbus_rtu.c"
+  1146                           	line	272
+  1147  000000                     	__size_of_write_single_holding_reg	equ	__end_of
+                                 _write_single_holding_reg-_write_single_holding_
+                                 reg
+  1148                           ;modbus_rtu.c: 271: void write_single_holding_re
+                                 g(void)
+  1149                           ;modbus_rtu.c: 272: {
+  1150                           	
+  1151  0004A6                     _write_single_holding_reg:		; BSR set to: ?
+  1152                           
+  1153                           	opt stack 26
+  1154                           	line	276
+  1155                           ;modbus_rtu.c: 273: unsigned int start_addr;
+  1156                           ;modbus_rtu.c: 274: unsigned char i;
+  1157                           ;modbus_rtu.c: 276: start_addr = ((rx_buf.data_b
+                                 uf[2])<<8)|(rx_buf.data_buf[3]);
+  1158  0004A6  5005               	movf	(0+((c:0)+05h)),c,w
+  1159  0004A8  0102               	movlb	2	; () banked
+  1160  0004AA  0102               	movlb	2	; () banked
+  1161  0004AC  6F05               	movwf	((write_single_holding_reg@start_addr+1))
+                                 &0ffh
+  1162  0004AE  5006               	movf	(0+((c:0)+06h)),c,w
+  1163  0004B0  0102               	movlb	2	; () banked
+  1164  0004B2  6F04               	movwf	((write_single_holding_reg@start_addr))&0
+                                 ffh
+  1165                           	line	278
+  1166                           ;modbus_rtu.c: 278: modbus_reg[start_addr] = (rx
+                                 _buf.data_buf[5])|((rx_buf.data_buf[4])<<8);
+  1167  0004B4  5007               	movf	(0+((c:0)+07h)),c,w
+  1168  0004B6  0102               	movlb	2	; () banked
+  1169  0004B8  6F07               	movwf	(??_write_single_holding_reg+3+0+1)&0ffh
+  1170  0004BA  5008               	movf	(0+((c:0)+08h)),c,w
+  1171  0004BC  0102               	movlb	2	; () banked
+  1172  0004BE  6F06               	movwf	(??_write_single_holding_reg+3+0)&0ffh
+  1173  0004C0  90D8               	bcf	status,0
+  1174  0004C2  0102               	movlb	2	; () banked
+  1175  0004C4  0102               	movlb	2	; () banked
+  1176  0004C6  3504               	rlcf	((write_single_holding_reg@start_addr))&0f
+                                 fh,w
+  1177  0004C8  0102               	movlb	2	; () banked
+  1178  0004CA  6F08               	movwf	(??_write_single_holding_reg+5+0)&0ffh
+  1179  0004CC  0102               	movlb	2	; () banked
+  1180  0004CE  0102               	movlb	2	; () banked
+  1181  0004D0  3505               	rlcf	((write_single_holding_reg@start_addr+1))&
+                                 0ffh,w
+  1182  0004D2  0102               	movlb	2	; () banked
+  1183  0004D4  6F09               	movwf	1+(??_write_single_holding_reg+5+0)&0ffh
+  1184  0004D6  0100               	movlb	0	; () banked
+  1185  0004D8  0E35               	movlw	low(53)
+  1186  0004DA  0102               	movlb	2	; () banked
+  1187  0004DC  2508               	addwf	(??_write_single_holding_reg+5+0)&0ffh,w
+  1188  0004DE  6EE9               	movwf	c:fsr0l
+  1189  0004E0  0100               	movlb	0	; () banked
+  1190  0004E2  0E00               	movlw	high(53)
+  1191  0004E4  0102               	movlb	2	; () banked
+  1192  0004E6  2109               	addwfc	(??_write_single_holding_reg+5+1)&0ffh,w
+  1193  0004E8  6EEA               	movwf	1+c:fsr0l
+  1194  0004EA  C206  FFEE         	movff	??_write_single_holding_reg+3+0,postinc0
+  1195  0004EE  C207  FFED         	movff	??_write_single_holding_reg+3+1,postdec0
+  1196                           
+  1197                           	line	280
+  1198                           ;modbus_rtu.c: 280: for(i=0;i<rx_buf.rec_count;i
+                                 ++)
+  1199  0004F2  0102               	movlb	2	; () banked
+  1200  0004F4  6F06               	movwf	(??_write_single_holding_reg+3+0)&0ffh
+  1201  0004F6  0E00               	movlw	low(0)
+  1202  0004F8  0102               	movlb	2	; () banked
+  1203  0004FA  0102               	movlb	2	; () banked
+  1204  0004FC  6F03               	movwf	((write_single_holding_reg@i))&0ffh
+  1205  0004FE  0102               	movlb	2	; () banked
+  1206  000500  5106               	movf	(??_write_single_holding_reg+3+0)&0ffh,w
+  1207  000502  EFA2  F002         	goto	l408
+  1208                           	line	281
+  1209                           	
+  1210  000506                     l405:		; BSR set to: ?
+  1211                           
+  1212                           	line	282
+  1213                           ;modbus_rtu.c: 281: {
+  1214                           ;modbus_rtu.c: 282: tx_buf.data_buf[i] = rx_buf.
+                                 data_buf[i];
+  1215  000506  C203  F206         	movff	(write_single_holding_reg@i),??_write_sin
+                                 gle_holding_reg+3+0
+  1216  00050A  0E03               	movlw	03h
+  1217  00050C  0102               	movlb	2	; () banked
+  1218  00050E  2706               	addwf	(??_write_single_holding_reg+3+0)&0ffh
+  1219  000510  0E00               	movlw	low((c:0))
+  1220  000512  0102               	movlb	2	; () banked
+  1221  000514  2506               	addwf	(??_write_single_holding_reg+3+0)&0ffh,w
+  1222  000516  6EE9               	movwf	c:fsr0l
+  1223  000518  6AEA               	clrf	1+c:fsr0l
+  1224  00051A  0E00               	movlw	high((c:0))
+  1225  00051C  22EA               	addwfc	1+c:fsr0l
+  1226  00051E  C203  F207         	movff	(write_single_holding_reg@i),??_write_sin
+                                 gle_holding_reg+4+0
+  1227  000522  0E01               	movlw	01h
+  1228  000524  0102               	movlb	2	; () banked
+  1229  000526  2707               	addwf	(??_write_single_holding_reg+4+0)&0ffh
+  1230  000528  0101               	movlb	1	; () banked
+  1231  00052A  0E00               	movlw	low(256)
+  1232  00052C  0102               	movlb	2	; () banked
+  1233  00052E  2507               	addwf	(??_write_single_holding_reg+4+0)&0ffh,w
+  1234  000530  6EE1               	movwf	c:fsr1l
+  1235  000532  6AE2               	clrf	1+c:fsr1l
+  1236  000534  0101               	movlb	1	; () banked
+  1237  000536  0E01               	movlw	high(256)
+  1238  000538  22E2               	addwfc	1+c:fsr1l
+  1239  00053A  CFEF FFE7          	movff	indf0,indf1
+  1240                           	line	280
+  1241  00053E  0102               	movlb	2	; () banked
+  1242  000540  0102               	movlb	2	; () banked
+  1243  000542  2B03               	incf	((write_single_holding_reg@i))&0ffh
+  1244                           	
+  1245  000544                     l408:		; BSR set to: ?
+  1246                           
+  1247  000544  5002               	movf	(0+((c:0)+02h)),c,w
+  1248  000546  0102               	movlb	2	; () banked
+  1249  000548  0102               	movlb	2	; () banked
+  1250  00054A  5D03               	subwf	((write_single_holding_reg@i))&0ffh,w
+  1251  00054C  A0D8               	btfss	status,0
+  1252  00054E  EFAB  F002         	goto	u1161
+  1253  000552  EFAD  F002         	goto	u1160
+  1254  000556                     u1161:
+  1255  000556  EF83  F002         	goto	l405
+  1256  00055A                     u1160:
+  1257                           	
+  1258  00055A                     l406:		; BSR set to: ?
+  1259                           
+  1260                           	line	284
+  1261                           ;modbus_rtu.c: 283: }
+  1262                           ;modbus_rtu.c: 284: tx_buf.tx_count = rx_buf.rec
+                                 _count;
+  1263  00055A  C002 F100          	movff	0+((c:0)+02h),(256)
+  1264                           	line	287
+  1265                           ;modbus_rtu.c: 287: TX2IE = 1;
+  1266  00055E  88A3               	bsf	c:(32028/8),(32028)&7	;volatile
+  1267                           	line	288
+  1268                           ;modbus_rtu.c: 288: }
+  1269  000560                     l404:
+  1270                           			; BSR set to: ?
+  1271                           
+  1272  000560  0012               	return
+  1273                           	opt stack 0
+  1274                           GLOBAL __end_of_write_single_holding_reg
+  1275  000562                     	__end_of_write_single_holding_reg:
+  1276                           	FNSIZE	_write_single_holding_reg,7,0
+  1277                           ; =============== function _write_single_holding
+                                 _reg ends ============
+  1278                           
+  1279                           	signat	_write_single_holding_reg,88
+  1280                           	global	_restart_timer35
+  1281                           	global	??_restart_timer35
+  1282                           	global	?_restart_timer35
+  1283                           
+  1284                           ; *************** function _restart_timer35 ****
+                                 *************
+  1285                           ; Defined at:
+  1286                           ;		line 180 in file "../modbus_rtu.c"
+  1287                           ; Parameters:
+  1288                           ;		None
+  1289                           ; Auto variables:
+  1290                           ;		None
+  1291                           ; Return value:
+  1292                           ;		type: void 
+  1293                           ;		size: 0
+  1294                           ; Registers used:
+  1295                           ;		wreg, status,2
+  1296                           ; Tracked objects:
+  1297                           ;		On entry : 0/0
+  1298                           ;		On exit  : 0/0
+  1299                           ;		Unchanged: 0/0
+  1300                           ; Data sizes:
+  1301                           ;		Autos:    0
+  1302                           ;		Params:   0
+  1303                           ;		Temp:     0
+  1304                           ;		Total:    0
+  1305                           ; This function calls:
+  1306                           ;		Nothing
+  1307                           ; This function is called by:
+  1308                           ;		_rec_isr
+  1309                           ;		_init_timer35
+  1310                           ; This function uses a non-reentrant model
+  1311                           ; 
+  1312                                   psect   text6,class=CODE,space=0,reloc=2
+  1313                           
+  1314                           	opt lm
+  1315                           	file	"../modbus_rtu.c"
+  1316                           	line	180
+  1317  000000                     	__size_of_restart_timer35	equ	__end_of_restart_
+                                 timer35-_restart_timer35
+  1318                           ;modbus_rtu.c: 179: void restart_timer35(void)
+  1319                           ;modbus_rtu.c: 180: {
+  1320                           	
+  1321  000818                     _restart_timer35:		; BSR set to: ?
+  1322                           
+  1323                           	opt stack 26
+  1324                           	line	181
+  1325  000818  90CD               	bcf	c:(32360/8),(32360)&7	;volatile
+  1326                           	line	182
+  1327                           ;modbus_rtu.c: 182: TMR1 = 65535-40320;
+  1328  00081A  0E7F               	movlw	low(0627Fh)
+  1329  00081C  6ECE               	movwf	((c:4046)),c	;volatile
+  1330  00081E  0E62               	movlw	high(0627Fh)
+  1331  000820  6ECF               	movwf	((c:4046+1)),c	;volatile
+  1332                           	line	183
+  1333                           ;modbus_rtu.c: 183: TMR1IF=0;
+  1334  000822  909E               	bcf	c:(31984/8),(31984)&7	;volatile
+  1335                           	line	184
+  1336                           ;modbus_rtu.c: 184: TMR1IE=1;
+  1337  000824  809D               	bsf	c:(31976/8),(31976)&7	;volatile
+  1338                           	line	185
+  1339                           ;modbus_rtu.c: 185: TMR1ON = 1;
+  1340  000826  80CD               	bsf	c:(32360/8),(32360)&7	;volatile
+  1341                           	line	186
+  1342                           ;modbus_rtu.c: 186: }
+  1343  000828                     l384:
+  1344                           			; BSR set to: ?
+  1345                           
+  1346  000828  0012               	return
+  1347                           	opt stack 0
+  1348                           GLOBAL __end_of_restart_timer35
+  1349  00082A                     	__end_of_restart_timer35:
+  1350                           	FNSIZE	_restart_timer35,0,0
+  1351                           ; =============== function _restart_timer35 ends
+                                  ============
+  1352                           
+  1353                           	signat	_restart_timer35,88
+  1354                           	global	_modbus_crc16
+  1355                           	global	??_modbus_crc16
+  1356                           	global	?_modbus_crc16
+  1357                           
+  1358                           ; *************** function _modbus_crc16 *******
+                                 **********
+  1359                           ; Defined at:
+  1360                           ;		line 53 in file "../mbcrc.c"
+  1361                           ; Parameters:
+  1362                           ;		pucFrame       size:   2offs:   0	type: PTR u
+                                 nsigned char ; Largest target is 53
+  1363                           ;		 -> tx_buf(51), rx_buf(53), 
+  1364                           ;		usLen          size:   2offs:   2	type: unsig
+                                 ned int 
+  1365                           ; Auto variables:
+  1366                           ;		ucCRCHi     	       	type: unsigned char 
+  1367                           ;		ucCRCLo     	       	type: unsigned char 
+  1368                           ;		iIndex      	       	type: int 
+  1369                           ; Return value:
+  1370                           ;		type: unsigned int 
+  1371                           ;		size: 2
+  1372                           ; Registers used:
+  1373                           ;		wreg, fsr0l, fsr0h, status,2, status,0, tblpt
+                                 rl, tblptrh, tblptru, tablat
+  1374                           ; Tracked objects:
+  1375                           ;		On entry : 0/0
+  1376                           ;		On exit  : 0/0
+  1377                           ;		Unchanged: 0/0
+  1378                           ; Data sizes:
+  1379                           ;		Autos:    4
+  1380                           ;		Params:   4
+  1381                           ;		Temp:     1
+  1382                           ;		Total:    9
+  1383                           ; This function calls:
+  1384                           ;		Nothing
+  1385                           ; This function is called by:
+  1386                           ;		_modbus_receive
+  1387                           ;		_read_holding_regs
+  1388                           ; This function uses a non-reentrant model
+  1389                           ; 
+  1390                                   psect   text7,class=CODE,space=0,reloc=2
+  1391                           
+  1392                           	opt lm
+  1393                           	file	"../mbcrc.c"
+  1394                           	line	53
+  1395  000000                     	__size_of_modbus_crc16	equ	__end_of_modbus_crc1
+                                 6-_modbus_crc16
+  1396                           ;mbcrc.h: 34: unsigned int modbus_crc16( unsigne
+                                 d char * pucFrame, unsigned int usLen );
+  1397                           ;mbcrc.c: 2: static const unsigned char aucCRCHi
+                                 [] = {
+  1398                           ;mbcrc.c: 3: 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+                                  0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  1399                           ;mbcrc.c: 4: 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+                                  0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+  1400                           ;mbcrc.c: 5: 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+                                  0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  1401                           ;mbcrc.c: 6: 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1,
+                                  0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+  1402                           ;mbcrc.c: 7: 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+                                  0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+  1403                           	
+  1404  000562                     _modbus_crc16:		; BSR set to: ?
+  1405                           
+  1406                           	opt stack 25
+  1407                           	line	54
+  1408  000562  0102               	movlb	2	; () banked
+  1409  000564  0102               	movlb	2	; () banked
+  1410  000566  6915               	setf	((modbus_crc16@ucCRCHi))&0ffh
+  1411                           	line	55
+  1412                           ;mbcrc.c: 55: unsigned char ucCRCLo = 0xFF;
+  1413  000568  0102               	movlb	2	; () banked
+  1414  00056A  0102               	movlb	2	; () banked
+  1415  00056C  6916               	setf	((modbus_crc16@ucCRCLo))&0ffh
+  1416                           	line	58
+  1417                           ;mbcrc.c: 56: int iIndex;
+  1418                           ;mbcrc.c: 58: while( usLen-- )
+  1419  00056E  EFEC  F002         	goto	l2
+  1420                           	
+  1421  000572                     l3:		; BSR set to: ?
+  1422                           
+  1423                           	line	60
+  1424  000572  C211  FFE9         	movff	(modbus_crc16@pucFrame),fsr0l
+  1425  000576  C212  FFEA         	movff	(modbus_crc16@pucFrame+1),fsr0h
+  1426  00057A  50EF               	movf	indf0,w
+  1427  00057C  0102               	movlb	2	; () banked
+  1428  00057E  0102               	movlb	2	; () banked
+  1429  000580  1916               	xorwf	((modbus_crc16@ucCRCLo))&0ffh,w
+  1430  000582  0102               	movlb	2	; () banked
+  1431  000584  6F19               	movwf	(??_modbus_crc16+4+0)&0ffh
+  1432  000586  0102               	movlb	2	; () banked
+  1433  000588  5119               	movf	((??_modbus_crc16+4+0))&0ffh,w
+  1434  00058A  0102               	movlb	2	; () banked
+  1435  00058C  0102               	movlb	2	; () banked
+  1436  00058E  6F17               	movwf	((modbus_crc16@iIndex))&0ffh
+  1437  000590  0102               	movlb	2	; () banked
+  1438  000592  6B18               	clrf	((modbus_crc16@iIndex+1))&0ffh
+  1439                           ;mbcrc.c: 59: {
+  1440                           ;mbcrc.c: 60: iIndex = ucCRCLo ^ *( pucFrame++ )
+                                 ;
+  1441  000594  0102               	movlb	2	; () banked
+  1442  000596  0102               	movlb	2	; () banked
+  1443  000598  4B11               	infsnz	((modbus_crc16@pucFrame))&0ffh
+  1444  00059A  2B12               	incf	((modbus_crc16@pucFrame+1))&0ffh
+  1445                           	line	61
+  1446                           ;mbcrc.c: 61: ucCRCLo = ( unsigned char )( ucCRC
+                                 Hi ^ aucCRCHi[iIndex] );
+  1447  00059C  0EFE               	movlw	low((_aucCRCHi))
+  1448  00059E  0102               	movlb	2	; () banked
+  1449  0005A0  0102               	movlb	2	; () banked
+  1450  0005A2  2517               	addwf	((modbus_crc16@iIndex))&0ffh,w
+  1451  0005A4  6EF6               	movwf	tblptrl
+  1452  0005A6  0E7D               	movlw	high((_aucCRCHi))
+  1453  0005A8  0102               	movlb	2	; () banked
+  1454  0005AA  2118               	addwfc	((modbus_crc16@iIndex+1))&0ffh,w
+  1455  0005AC  6EF7               	movwf	tblptrh
+  1456  0005AE  0008               	tblrd	*
+  1457                           	
+  1458  0005B0  50F5               	movf	tablat,w
+  1459                           
+  1460  0005B2  0102               	movlb	2	; () banked
+  1461  0005B4  0102               	movlb	2	; () banked
+  1462  0005B6  1915               	xorwf	((modbus_crc16@ucCRCHi))&0ffh,w
+  1463  0005B8  0102               	movlb	2	; () banked
+  1464  0005BA  0102               	movlb	2	; () banked
+  1465  0005BC  6F16               	movwf	((modbus_crc16@ucCRCLo))&0ffh
+  1466                           	line	62
+  1467                           ;mbcrc.c: 62: ucCRCHi = aucCRCLo[iIndex];
+  1468  0005BE  0EFE               	movlw	low((_aucCRCLo))
+  1469  0005C0  0102               	movlb	2	; () banked
+  1470  0005C2  0102               	movlb	2	; () banked
+  1471  0005C4  2517               	addwf	((modbus_crc16@iIndex))&0ffh,w
+  1472  0005C6  6EF6               	movwf	tblptrl
+  1473  0005C8  0E7E               	movlw	high((_aucCRCLo))
+  1474  0005CA  0102               	movlb	2	; () banked
+  1475  0005CC  2118               	addwfc	((modbus_crc16@iIndex+1))&0ffh,w
+  1476  0005CE  6EF7               	movwf	tblptrh
+  1477  0005D0  0008               	tblrd	*
+  1478                           	
+  1479  0005D2  0102               	movlb	2	; () banked
+  1480  0005D4  CFF5 F215          	movff	tablat,(modbus_crc16@ucCRCHi)
+  1481                           	line	63
+  1482                           	
+  1483  0005D8                     l2:		; BSR set to: ?
+  1484                           
+  1485                           	line	58
+  1486  0005D8  0102               	movlb	2	; () banked
+  1487  0005DA  0102               	movlb	2	; () banked
+  1488  0005DC  0713               	decf	((modbus_crc16@usLen))&0ffh
+  1489  0005DE  A0D8               	btfss	status,0
+  1490  0005E0  0714               	decf	((modbus_crc16@usLen+1))&0ffh
+  1491  0005E2  0102               	movlb	2	; () banked
+  1492  0005E4  2913               	incf	((modbus_crc16@usLen))&0ffh,w
+  1493  0005E6  B4D8               	btfsc	status,2
+  1494  0005E8  2914               	incf ((modbus_crc16@usLen+1))&0ffh,w
+  1495                           
+  1496  0005EA  A4D8               	btfss	status,2
+  1497  0005EC  EFFA  F002         	goto	u1171
+  1498  0005F0  EFFC  F002         	goto	u1170
+  1499  0005F4                     u1171:
+  1500  0005F4  EFB9  F002         	goto	l3
+  1501  0005F8                     u1170:
+  1502                           	
+  1503  0005F8                     l4:		; BSR set to: ?
+  1504                           
+  1505                           	line	64
+  1506  0005F8  0102               	movlb	2	; () banked
+  1507  0005FA  0102               	movlb	2	; () banked
+  1508  0005FC  5115               	movf	((modbus_crc16@ucCRCHi))&0ffh,w
+  1509  0005FE  0102               	movlb	2	; () banked
+  1510  000600  0102               	movlb	2	; () banked
+  1511  000602  6F12               	movwf	((?_modbus_crc16+1))&0ffh
+  1512  000604  0102               	movlb	2	; () banked
+  1513  000606  0102               	movlb	2	; () banked
+  1514  000608  5116               	movf	((modbus_crc16@ucCRCLo))&0ffh,w
+  1515  00060A  0102               	movlb	2	; () banked
+  1516  00060C  6F11               	movwf	((?_modbus_crc16))&0ffh
+  1517  00060E  EF09  F003         	goto	l1
+  1518                           	line	65
+  1519                           ;mbcrc.c: 65: }
+  1520  000612                     l1:
+  1521                           			; BSR set to: ?
+  1522                           
+  1523  000612  0012               	return
+  1524                           	opt stack 0
+  1525                           GLOBAL __end_of_modbus_crc16
+  1526  000614                     	__end_of_modbus_crc16:
+  1527                           	FNSIZE	_modbus_crc16,5,4
+  1528                           ; =============== function _modbus_crc16 ends ==
+                                 ==========
+  1529                           
+  1530                           	signat	_modbus_crc16,8314
+  1531                           	global	_my_isr
+  1532                           	global	??_my_isr
+  1533                           	global	?_my_isr
+  1534                           
+  1535                           ; *************** function _my_isr *************
+                                 ****
+  1536                           ; Defined at:
+  1537                           ;		line 291 in file "../modbus_rtu.c"
+  1538                           ; Parameters:
+  1539                           ;		None
+  1540                           ; Auto variables:
+  1541                           ;		None
+  1542                           ; Return value:
+  1543                           ;		type: void 
+  1544                           ;		size: 0
+  1545                           ; Registers used:
+  1546                           ;		wreg, fsr0l, fsr0h, status,2, status,0, cstac
+                                 k
+  1547                           ; Tracked objects:
+  1548                           ;		On entry : 0/0
+  1549                           ;		On exit  : 0/0
+  1550                           ;		Unchanged: 0/0
+  1551                           ; Data sizes:
+  1552                           ;		Autos:    0
+  1553                           ;		Params:   0
+  1554                           ;		Temp:    14
+  1555                           ;		Total:   14
+  1556                           ; This function calls:
+  1557                           ;		_rec_isr
+  1558                           ;		_tx_isr
+  1559                           ;		_timer35_isr
+  1560                           ; This function is called by:
+  1561                           ;		Interrupt level 2
+  1562                           ; This function uses a non-reentrant model
+  1563                           ; 
+  1564                                   psect   text8,class=CODE,space=0,reloc=2
+  1565                           
+  1566                           	opt lm
+  1567                           	file	"../modbus_rtu.c"
+  1568                           	line	291
+  1569  000000                     	__size_of_my_isr	equ	__end_of_my_isr-_my_isr
+  1570                           ;modbus_rtu.c: 290: void interrupt my_isr(void)
+  1571                           ;modbus_rtu.c: 291: {
+  1572                           	
+  1573  000724                     _my_isr:		; BSR set to: ?
+  1574                           
+  1575                           	opt stack 31
+  1576                                   psect   intcode,class=CODE,space=0,reloc
+                                 =2
+  1577                           	global	int_func
+  1578  000008                     int_func:
+  1579                                   psect   intcode
+  1580  000008  CFFA F21A          	movff	pclat+0,??_my_isr+0
+  1581  00000C  CFFB F21B          	movff	pclat+1,??_my_isr+1
+  1582  000010  CFE9 F21C          	movff	fsr0l+0,??_my_isr+2
+  1583  000014  EF92  F003         	goto	_my_isr
+  1584                                   psect   text8
+  1585  000724  CFEA F21D          	movff	fsr0h+0,??_my_isr+3
+  1586  000728  CFE1 F21E          	movff	fsr1l+0,??_my_isr+4
+  1587  00072C  CFE2 F21F          	movff	fsr1h+0,??_my_isr+5
+  1588  000730  CFD9 F220          	movff	fsr2l+0,??_my_isr+6
+  1589  000734  CFDA F221          	movff	fsr2h+0,??_my_isr+7
+  1590  000738  CFF3 F222          	movff	prodl+0,??_my_isr+8
+  1591  00073C  CFF4 F223          	movff	prodh+0,??_my_isr+9
+  1592  000740  CFF6 F224          	movff	tblptrl+0,??_my_isr+10
+  1593  000744  CFF7 F225          	movff	tblptrh+0,??_my_isr+11
+  1594  000748  CFF8 F226          	movff	tblptru+0,??_my_isr+12
+  1595  00074C  CFF5 F227          	movff	tablat+0,??_my_isr+13
+  1596                           	line	292
+  1597                           ;modbus_rtu.c: 292: rec_isr();
+  1598  000750  ECD5  F001         	call	_rec_isr	;wreg free
+  1599                           	line	293
+  1600                           ;modbus_rtu.c: 293: tx_isr();
+  1601  000754  EC0A  F003         	call	_tx_isr	;wreg free
+  1602                           	line	294
+  1603                           ;modbus_rtu.c: 294: timer35_isr();
+  1604  000758  EC59  F003         	call	_timer35_isr	;wreg free
+  1605                           	line	295
+  1606                           ;modbus_rtu.c: 295: }
+  1607  00075C                     i2l409:
+  1608                           			; BSR set to: ?
+  1609                           
+  1610  00075C  C227  FFF5         	movff	??_my_isr+13,tablat+0
+  1611  000760  C226  FFF8         	movff	??_my_isr+12,tblptru+0
+  1612  000764  C225  FFF7         	movff	??_my_isr+11,tblptrh+0
+  1613  000768  C224  FFF6         	movff	??_my_isr+10,tblptrl+0
+  1614  00076C  C223  FFF4         	movff	??_my_isr+9,prodh+0
+  1615  000770  C222  FFF3         	movff	??_my_isr+8,prodl+0
+  1616  000774  C221  FFDA         	movff	??_my_isr+7,fsr2h+0
+  1617  000778  C220  FFD9         	movff	??_my_isr+6,fsr2l+0
+  1618  00077C  C21F  FFE2         	movff	??_my_isr+5,fsr1h+0
+  1619  000780  C21E  FFE1         	movff	??_my_isr+4,fsr1l+0
+  1620  000784  C21D  FFEA         	movff	??_my_isr+3,fsr0h+0
+  1621  000788  C21C  FFE9         	movff	??_my_isr+2,fsr0l+0
+  1622  00078C  C21B  FFFB         	movff	??_my_isr+1,pclat+1
+  1623  000790  C21A  FFFA         	movff	??_my_isr+0,pclat+0
+  1624  000794  0011               	retfie f
+  1625                           	opt stack 0
+  1626                           GLOBAL __end_of_my_isr
+  1627  000796                     	__end_of_my_isr:
+  1628                           	FNSIZE	_my_isr,14,0
+  1629                           ; =============== function _my_isr ends ========
+                                 ====
+  1630                           
+  1631                           	signat	_my_isr,88
+  1632                                   psect   text9,class=CODE,space=0,reloc=2
+  1633                           	global	intlevel2
+  1634                           
+  1635                           	opt lm
+  1636                           	FNBREAK _tx_isr,intlevel2
+  1637                           	global	_tx_isr
+  1638                           	global	??_tx_isr
+  1639                           	global	?_tx_isr
+  1640                           
+  1641                           ; *************** function _tx_isr *************
+                                 ****
+  1642                           ; Defined at:
+  1643                           ;		line 123 in file "../modbus_rtu.c"
+  1644                           ; Parameters:
+  1645                           ;		None
+  1646                           ; Auto variables:
+  1647                           ;		None
+  1648                           ; Return value:
+  1649                           ;		type: void 
+  1650                           ;		size: 0
+  1651                           ; Registers used:
+  1652                           ;		wreg, fsr0l, fsr0h, status,2, status,0
+  1653                           ; Tracked objects:
+  1654                           ;		On entry : 0/0
+  1655                           ;		On exit  : 0/0
+  1656                           ;		Unchanged: 0/0
+  1657                           ; Data sizes:
+  1658                           ;		Autos:    0
+  1659                           ;		Params:   0
+  1660                           ;		Temp:     1
+  1661                           ;		Total:    1
+  1662                           ; This function calls:
+  1663                           ;		Nothing
+  1664                           ; This function is called by:
+  1665                           ;		_my_isr
+  1666                           ; This function uses a non-reentrant model
+  1667                           ; 
+  1668                           	file	"../modbus_rtu.c"
+  1669                           	line	123
+  1670  000000                     	__size_of_tx_isr	equ	__end_of_tx_isr-_tx_isr
+  1671                           ;modbus_rtu.c: 122: void tx_isr(void)
+  1672                           ;modbus_rtu.c: 123: {
+  1673                           	
+  1674  000614                     _tx_isr:		; BSR set to: ?
+  1675                           
+  1676                           	opt stack 30
+  1677                           	line	126
+  1678                           ;modbus_rtu.c: 124: static unsigned char current
+                                 _need_send = 0;
+  1679                           ;modbus_rtu.c: 126: if(TX2IE&&TX2IF)
+  1680  000614  A8A3               	btfss	c:(32028/8),(32028)&7	;volatile
+  1681  000616  EF0F  F003         	goto	i2u1061
+  1682  00061A  EF11  F003         	goto	i2u1060
+  1683  00061E                     i2u1061:
+  1684  00061E  EF58  F003         	goto	i2l379
+  1685  000622                     i2u1060:
+  1686  000622  A8A4               	btfss	c:(32036/8),(32036)&7	;volatile
+  1687  000624  EF16  F003         	goto	i2u1071
+  1688  000628  EF18  F003         	goto	i2u1070
+  1689  00062C                     i2u1071:
+  1690  00062C  EF58  F003         	goto	i2l379
+  1691  000630                     i2u1070:
+  1692                           	line	128
+  1693                           ;modbus_rtu.c: 127: {
+  1694                           ;modbus_rtu.c: 128: if(tx_buf.tx_count>0)
+  1695  000630  0101               	movlb	1	; () banked
+  1696  000632  0101               	movlb	1	; () banked
+  1697  000634  5100               	movf	((256))&0ffh,w
+  1698  000636  B4D8               	btfsc	status,2
+  1699  000638  EF20  F003         	goto	i2u1081
+  1700  00063C  EF22  F003         	goto	i2u1080
+  1701  000640                     i2u1081:
+  1702  000640  EF58  F003         	goto	i2l379
+  1703  000644                     i2u1080:
+  1704                           	line	130
+  1705  000644  C0FE F228          	movff	(254),??_tx_isr+0+0
+  1706  000648  0E01               	movlw	01h
+  1707  00064A  0102               	movlb	2	; () banked
+  1708  00064C  2728               	addwf	(??_tx_isr+0+0)&0ffh
+  1709  00064E  0101               	movlb	1	; () banked
+  1710  000650  0E00               	movlw	low(256)
+  1711  000652  0102               	movlb	2	; () banked
+  1712  000654  2528               	addwf	(??_tx_isr+0+0)&0ffh,w
+  1713  000656  6EE9               	movwf	c:fsr0l
+  1714  000658  6AEA               	clrf	1+c:fsr0l
+  1715  00065A  0101               	movlb	1	; () banked
+  1716  00065C  0E01               	movlw	high(256)
+  1717  00065E  22EA               	addwfc	1+c:fsr0l
+  1718  000660  50EF               	movf	indf0,w
+  1719  000662  6E73               	movwf	((c:3955)),c	;volatile
+  1720                           ;modbus_rtu.c: 129: {
+  1721                           ;modbus_rtu.c: 130: TX2REG = tx_buf.data_buf[cur
+                                 rent_need_send++];
+  1722  000664  0100               	movlb	0	; () banked
+  1723  000666  0100               	movlb	0	; () banked
+  1724  000668  2BFE               	incf	((254))&0ffh
+  1725                           	line	131
+  1726                           ;modbus_rtu.c: 131: if(current_need_send==tx_buf
+                                 .tx_count)
+  1727  00066A  0101               	movlb	1	; () banked
+  1728  00066C  0101               	movlb	1	; () banked
+  1729  00066E  5100               	movf	((256))&0ffh,w
+  1730  000670  0100               	movlb	0	; () banked
+  1731  000672  0100               	movlb	0	; () banked
+  1732  000674  63FE               	cpfseq	((254))&0ffh
+  1733  000676  EF3F  F003         	goto	i2u1091
+  1734  00067A  EF41  F003         	goto	i2u1090
+  1735  00067E                     i2u1091:
+  1736  00067E  EF58  F003         	goto	i2l379
+  1737  000682                     i2u1090:
+  1738                           	line	133
+  1739                           ;modbus_rtu.c: 132: {
+  1740                           ;modbus_rtu.c: 133: TX2IE = 0;
+  1741  000682  98A3               	bcf	c:(32028/8),(32028)&7	;volatile
+  1742                           	line	134
+  1743                           ;modbus_rtu.c: 134: current_need_send = 0;
+  1744  000684  0102               	movlb	2	; () banked
+  1745  000686  6F28               	movwf	(??_tx_isr+0+0)&0ffh
+  1746  000688  0E00               	movlw	low(0)
+  1747  00068A  0100               	movlb	0	; () banked
+  1748  00068C  0100               	movlb	0	; () banked
+  1749  00068E  6FFE               	movwf	((254))&0ffh
+  1750  000690  0102               	movlb	2	; () banked
+  1751  000692  5128               	movf	(??_tx_isr+0+0)&0ffh,w
+  1752                           	line	135
+  1753                           ;modbus_rtu.c: 135: tx_buf.tx_count = 0;
+  1754  000694  0102               	movlb	2	; () banked
+  1755  000696  6F28               	movwf	(??_tx_isr+0+0)&0ffh
+  1756  000698  0E00               	movlw	low(0)
+  1757  00069A  0101               	movlb	1	; () banked
+  1758  00069C  0101               	movlb	1	; () banked
+  1759  00069E  6F00               	movwf	((256))&0ffh
+  1760  0006A0  0102               	movlb	2	; () banked
+  1761  0006A2  5128               	movf	(??_tx_isr+0+0)&0ffh,w
+  1762                           	line	136
+  1763                           ;modbus_rtu.c: 136: rx_buf.rec_count = 0;
+  1764  0006A4  0102               	movlb	2	; () banked
+  1765  0006A6  6F28               	movwf	(??_tx_isr+0+0)&0ffh
+  1766  0006A8  0E00               	movlw	low(0)
+  1767  0006AA  6E02               	movwf	(0+((c:0)+02h)),c
+  1768  0006AC  0102               	movlb	2	; () banked
+  1769  0006AE  5128               	movf	(??_tx_isr+0+0)&0ffh,w
+  1770                           	line	138
+  1771                           	
+  1772  0006B0                     i2l381:		; BSR set to: ?
+  1773                           
+  1774                           	line	139
+  1775                           	
+  1776  0006B0                     i2l380:		; BSR set to: ?
+  1777                           
+  1778                           	line	140
+  1779                           	
+  1780  0006B0                     i2l379:		; BSR set to: ?
+  1781                           
+  1782                           	line	141
+  1783                           ;modbus_rtu.c: 138: }
+  1784                           ;modbus_rtu.c: 139: }
+  1785                           ;modbus_rtu.c: 140: }
+  1786                           ;modbus_rtu.c: 141: }
+  1787  0006B0                     i2l378:
+  1788                           			; BSR set to: ?
+  1789                           
+  1790  0006B0  0012               	return
+  1791                           	opt stack 0
+  1792                           GLOBAL __end_of_tx_isr
+  1793  0006B2                     	__end_of_tx_isr:
+  1794                           	FNSIZE	_tx_isr,1,0
+  1795                           ; =============== function _tx_isr ends ========
+                                 ====
+  1796                           
+  1797                           	signat	_tx_isr,88
+  1798                                   psect   text10,class=CODE,space=0,reloc=
+                                 2
+  1799                           	global	intlevel2
+  1800                           
+  1801                           	opt lm
+  1802                           	FNBREAK _timer35_isr,intlevel2
+  1803                           	global	_timer35_isr
+  1804                           	global	??_timer35_isr
+  1805                           	global	?_timer35_isr
+  1806                           
+  1807                           ; *************** function _timer35_isr ********
+                                 *********
+  1808                           ; Defined at:
+  1809                           ;		line 96 in file "../modbus_rtu.c"
+  1810                           ; Parameters:
+  1811                           ;		None
+  1812                           ; Auto variables:
+  1813                           ;		None
+  1814                           ; Return value:
+  1815                           ;		type: void 
+  1816                           ;		size: 0
+  1817                           ; Registers used:
+  1818                           ;		wreg, status,2, status,0, cstack
+  1819                           ; Tracked objects:
+  1820                           ;		On entry : 0/0
+  1821                           ;		On exit  : 0/0
+  1822                           ;		Unchanged: 0/0
+  1823                           ; Data sizes:
+  1824                           ;		Autos:    0
+  1825                           ;		Params:   0
+  1826                           ;		Temp:     1
+  1827                           ;		Total:    1
+  1828                           ; This function calls:
+  1829                           ;		_disable_timer35
+  1830                           ; This function is called by:
+  1831                           ;		_my_isr
+  1832                           ; This function uses a non-reentrant model
+  1833                           ; 
+  1834                           	file	"../modbus_rtu.c"
+  1835                           	line	96
+  1836  000000                     	__size_of_timer35_isr	equ	__end_of_timer35_isr-
+                                 _timer35_isr
+  1837                           ;modbus_rtu.c: 95: void timer35_isr(void)
+  1838                           ;modbus_rtu.c: 96: {
+  1839                           	
+  1840  0006B2                     _timer35_isr:		; BSR set to: ?
+  1841                           
+  1842                           	opt stack 30
+  1843                           	line	97
+  1844                           ;modbus_rtu.c: 97: if(TMR1IF&&TMR1IE)
+  1845  0006B2  A09E               	btfss	c:(31984/8),(31984)&7	;volatile
+  1846  0006B4  EF5E  F003         	goto	i2u1181
+  1847  0006B8  EF60  F003         	goto	i2u1180
+  1848  0006BC                     i2u1181:
+  1849  0006BC  EF91  F003         	goto	i2l372
+  1850  0006C0                     i2u1180:
+  1851  0006C0  A09D               	btfss	c:(31976/8),(31976)&7	;volatile
+  1852  0006C2  EF65  F003         	goto	i2u1191
+  1853  0006C6  EF67  F003         	goto	i2u1190
+  1854  0006CA                     i2u1191:
+  1855  0006CA  EF91  F003         	goto	i2l372
+  1856  0006CE                     i2u1190:
+  1857                           	line	100
+  1858                           ;modbus_rtu.c: 98: {
+  1859                           ;modbus_rtu.c: 100: switch(rx_state)
+  1860  0006CE  EF85  F003         	goto	i2l374
+  1861                           	line	102
+  1862                           ;modbus_rtu.c: 101: {
+  1863                           ;modbus_rtu.c: 102: case RX_STATE_INIT:
+  1864                           	
+  1865  0006D2                     i2l375:		; BSR set to: ?
+  1866                           
+  1867                           	line	103
+  1868                           ;modbus_rtu.c: 103: rx_state = RX_STATE_IDLE;
+  1869  0006D2  0102               	movlb	2	; () banked
+  1870  0006D4  6F28               	movwf	(??_timer35_isr+0+0)&0ffh
+  1871  0006D6  0E01               	movlw	low(01h)
+  1872  0006D8  0100               	movlb	0	; () banked
+  1873  0006DA  0100               	movlb	0	; () banked
+  1874  0006DC  6FFD               	movwf	((253))&0ffh
+  1875  0006DE  0102               	movlb	2	; () banked
+  1876  0006E0  5128               	movf	(??_timer35_isr+0+0)&0ffh,w
+  1877                           	line	104
+  1878                           ;modbus_rtu.c: 104: break;
+  1879  0006E2  EF8E  F003         	goto	i2l373
+  1880                           	line	105
+  1881                           ;modbus_rtu.c: 105: case RX_STATE_RECEIVE:
+  1882                           	
+  1883  0006E6                     i2l376:		; BSR set to: ?
+  1884                           
+  1885                           	line	106
+  1886                           ;modbus_rtu.c: 106: rx_state = RX_STATE_IDLE;
+  1887  0006E6  0102               	movlb	2	; () banked
+  1888  0006E8  6F28               	movwf	(??_timer35_isr+0+0)&0ffh
+  1889  0006EA  0E01               	movlw	low(01h)
+  1890  0006EC  0100               	movlb	0	; () banked
+  1891  0006EE  0100               	movlb	0	; () banked
+  1892  0006F0  6FFD               	movwf	((253))&0ffh
+  1893  0006F2  0102               	movlb	2	; () banked
+  1894  0006F4  5128               	movf	(??_timer35_isr+0+0)&0ffh,w
+  1895                           	line	107
+  1896                           ;modbus_rtu.c: 107: rx_buf.frame_ok = 1;
+  1897  0006F6  0102               	movlb	2	; () banked
+  1898  0006F8  6F28               	movwf	(??_timer35_isr+0+0)&0ffh
+  1899  0006FA  0E01               	movlw	low(01h)
+  1900  0006FC  6E00               	movwf	((c:0)),c
+  1901  0006FE  0102               	movlb	2	; () banked
+  1902  000700  5128               	movf	(??_timer35_isr+0+0)&0ffh,w
+  1903                           	line	108
+  1904                           ;modbus_rtu.c: 108: break;
+  1905  000702  EF8E  F003         	goto	i2l373
+  1906                           	line	109
+  1907                           ;modbus_rtu.c: 109: default:
+  1908                           	
+  1909  000706                     i2l377:		; BSR set to: ?
+  1910                           
+  1911                           	line	110
+  1912                           ;modbus_rtu.c: 110: break;
+  1913  000706  EF8E  F003         	goto	i2l373
+  1914                           	line	100
+  1915                           	
+  1916  00070A                     i2l374:		; BSR set to: ?
+  1917                           
+  1918  00070A  0100               	movlb	0	; () banked
+  1919  00070C  0100               	movlb	0	; () banked
+  1920  00070E  51FD               	movf	((253))&0ffh,w
+  1921  000710  0A00               	xorlw	0 ^ 0
+  1922  000712  E0DF               	bz	i2l375
+  1923  000714  0A02               	xorlw	2 ^ 0
+  1924  000716  E0E7               	bz	i2l376
+  1925  000718  EF83  F003         	goto	i2l377
+  1926                           
+  1927                           	line	111
+  1928                           	
+  1929  00071C                     i2l373:		; BSR set to: ?
+  1930                           
+  1931                           	line	112
+  1932                           ;modbus_rtu.c: 112: disable_timer35();
+  1933  00071C  EC1E  F004         	call	_disable_timer35	;wreg free
+  1934                           	line	114
+  1935                           ;modbus_rtu.c: 114: TMR1IF=0;
+  1936  000720  909E               	bcf	c:(31984/8),(31984)&7	;volatile
+  1937                           	line	115
+  1938                           	
+  1939  000722                     i2l372:		; BSR set to: ?
+  1940                           
+  1941                           	line	118
+  1942                           ;modbus_rtu.c: 115: }
+  1943                           ;modbus_rtu.c: 118: }
+  1944  000722                     i2l371:
+  1945                           			; BSR set to: ?
+  1946                           
+  1947  000722  0012               	return
+  1948                           	opt stack 0
+  1949                           GLOBAL __end_of_timer35_isr
+  1950  000724                     	__end_of_timer35_isr:
+  1951                           	FNSIZE	_timer35_isr,1,0
+  1952                           ; =============== function _timer35_isr ends ===
+                                 =========
+  1953                           
+  1954                           	signat	_timer35_isr,88
+  1955                                   psect   text11,class=CODE,space=0,reloc=
+                                 2
+  1956                           	global	intlevel2
+  1957                           
+  1958                           	opt lm
+  1959                           	FNBREAK _rec_isr,intlevel2
+  1960                           	global	_rec_isr
+  1961                           	global	??_rec_isr
+  1962                           	global	?_rec_isr
+  1963                           
+  1964                           ; *************** function _rec_isr ************
+                                 *****
+  1965                           ; Defined at:
+  1966                           ;		line 57 in file "../modbus_rtu.c"
+  1967                           ; Parameters:
+  1968                           ;		None
+  1969                           ; Auto variables:
+  1970                           ;		rec_data    	       	type: unsigned char 
+  1971                           ; Return value:
+  1972                           ;		type: void 
+  1973                           ;		size: 0
+  1974                           ; Registers used:
+  1975                           ;		wreg, fsr0l, fsr0h, status,2, status,0, cstac
+                                 k
+  1976                           ; Tracked objects:
+  1977                           ;		On entry : 0/0
+  1978                           ;		On exit  : 0/0
+  1979                           ;		Unchanged: 0/0
+  1980                           ; Data sizes:
+  1981                           ;		Autos:    1
+  1982                           ;		Params:   0
+  1983                           ;		Temp:     1
+  1984                           ;		Total:    2
+  1985                           ; This function calls:
+  1986                           ;		i2_restart_timer35
+  1987                           ; This function is called by:
+  1988                           ;		_my_isr
+  1989                           ; This function uses a non-reentrant model
+  1990                           ; 
+  1991                           	file	"../modbus_rtu.c"
+  1992                           	line	57
+  1993  000000                     	__size_of_rec_isr	equ	__end_of_rec_isr-_rec_isr
+  1994                           ;modbus_rtu.c: 56: void rec_isr(void)
+  1995                           ;modbus_rtu.c: 57: {
+  1996                           	
+  1997  0003AA                     _rec_isr:		; BSR set to: ?
+  1998                           
+  1999                           	opt stack 30
+  2000                           	line	58
+  2001                           ;modbus_rtu.c: 58: unsigned char rec_data = 0;
+  2002  0003AA  0102               	movlb	2	; () banked
+  2003  0003AC  6F29               	movwf	(??_rec_isr+1+0)&0ffh
+  2004  0003AE  0E00               	movlw	low(0)
+  2005  0003B0  0102               	movlb	2	; () banked
+  2006  0003B2  0102               	movlb	2	; () banked
+  2007  0003B4  6F28               	movwf	((rec_isr@rec_data))&0ffh
+  2008  0003B6  0102               	movlb	2	; () banked
+  2009  0003B8  5129               	movf	(??_rec_isr+1+0)&0ffh,w
+  2010                           	line	59
+  2011                           ;modbus_rtu.c: 59: if((RC2IE)&&(RC2IF))
+  2012  0003BA  AAA3               	btfss	c:(32029/8),(32029)&7	;volatile
+  2013  0003BC  EFE2  F001         	goto	i2u1021
+  2014  0003C0  EFE4  F001         	goto	i2u1020
+  2015  0003C4                     i2u1021:
+  2016  0003C4  EF52  F002         	goto	i2l362
+  2017  0003C8                     i2u1020:
+  2018  0003C8  AAA4               	btfss	c:(32037/8),(32037)&7	;volatile
+  2019  0003CA  EFE9  F001         	goto	i2u1031
+  2020  0003CE  EFEB  F001         	goto	i2u1030
+  2021  0003D2                     i2u1031:
+  2022  0003D2  EF52  F002         	goto	i2l362
+  2023  0003D6                     i2u1030:
+  2024                           	line	61
+  2025                           ;modbus_rtu.c: 60: {
+  2026                           ;modbus_rtu.c: 61: rec_data = RC2REG;
+  2027  0003D6  CF74 F228          	movff	(c:3956),(rec_isr@rec_data)	;volatile
+  2028                           	line	62
+  2029                           ;modbus_rtu.c: 62: switch(rx_state)
+  2030  0003DA  EF47  F002         	goto	i2l364
+  2031                           	line	64
+  2032                           ;modbus_rtu.c: 63: {
+  2033                           ;modbus_rtu.c: 64: case RX_STATE_INIT:
+  2034                           	
+  2035  0003DE                     i2l365:		; BSR set to: ?
+  2036                           
+  2037                           	line	65
+  2038                           ;modbus_rtu.c: 65: restart_timer35();
+  2039  0003DE  EC15  F004         	call	i2_restart_timer35	;wreg free
+  2040                           	line	66
+  2041                           ;modbus_rtu.c: 66: rx_buf.rec_count = 0;
+  2042  0003E2  0102               	movlb	2	; () banked
+  2043  0003E4  6F29               	movwf	(??_rec_isr+1+0)&0ffh
+  2044  0003E6  0E00               	movlw	low(0)
+  2045  0003E8  6E02               	movwf	(0+((c:0)+02h)),c
+  2046  0003EA  0102               	movlb	2	; () banked
+  2047  0003EC  5129               	movf	(??_rec_isr+1+0)&0ffh,w
+  2048                           	line	67
+  2049                           ;modbus_rtu.c: 67: rx_buf.frame_ok = 0;
+  2050  0003EE  0102               	movlb	2	; () banked
+  2051  0003F0  6F29               	movwf	(??_rec_isr+1+0)&0ffh
+  2052  0003F2  0E00               	movlw	low(0)
+  2053  0003F4  6E00               	movwf	((c:0)),c
+  2054  0003F6  0102               	movlb	2	; () banked
+  2055  0003F8  5129               	movf	(??_rec_isr+1+0)&0ffh,w
+  2056                           	line	68
+  2057                           ;modbus_rtu.c: 68: break;
+  2058  0003FA  EF52  F002         	goto	i2l362
+  2059                           	line	69
+  2060                           ;modbus_rtu.c: 69: case RX_STATE_IDLE:
+  2061                           	
+  2062  0003FE                     i2l366:		; BSR set to: ?
+  2063                           
+  2064                           	line	70
+  2065                           ;modbus_rtu.c: 70: rx_buf.data_buf[rx_buf.rec_co
+                                 unt++] = rec_data;
+  2066  0003FE  EE00 F002          	lfsr	0,(c:0)+02h
+  2067  000402  CFEF F229          	movff	indf0,??_rec_isr+1+0
+  2068  000406  0E01               	movlw	01h
+  2069  000408  26EF               	addwf	indf0
+  2070  00040A  0E03               	movlw	03h
+  2071  00040C  0102               	movlb	2	; () banked
+  2072  00040E  2729               	addwf	(??_rec_isr+1+0)&0ffh
+  2073  000410  0E00               	movlw	low((c:0))
+  2074  000412  0102               	movlb	2	; () banked
+  2075  000414  2529               	addwf	(??_rec_isr+1+0)&0ffh,w
+  2076  000416  6EE9               	movwf	c:fsr0l
+  2077  000418  6AEA               	clrf	1+c:fsr0l
+  2078  00041A  0E00               	movlw	high((c:0))
+  2079  00041C  22EA               	addwfc	1+c:fsr0l
+  2080  00041E  0102               	movlb	2	; () banked
+  2081  000420  C228  FFEF         	movff	(rec_isr@rec_data),indf0
+  2082                           
+  2083                           	line	71
+  2084                           ;modbus_rtu.c: 71: rx_state = RX_STATE_RECEIVE;
+  2085  000424  0102               	movlb	2	; () banked
+  2086  000426  6F29               	movwf	(??_rec_isr+1+0)&0ffh
+  2087  000428  0E02               	movlw	low(02h)
+  2088  00042A  0100               	movlb	0	; () banked
+  2089  00042C  0100               	movlb	0	; () banked
+  2090  00042E  6FFD               	movwf	((253))&0ffh
+  2091  000430  0102               	movlb	2	; () banked
+  2092  000432  5129               	movf	(??_rec_isr+1+0)&0ffh,w
+  2093                           	line	72
+  2094                           ;modbus_rtu.c: 72: restart_timer35();
+  2095  000434  EC15  F004         	call	i2_restart_timer35	;wreg free
+  2096                           	line	73
+  2097                           ;modbus_rtu.c: 73: break;
+  2098  000438  EF52  F002         	goto	i2l362
+  2099                           	line	74
+  2100                           ;modbus_rtu.c: 74: case RX_STATE_RECEIVE:
+  2101                           	
+  2102  00043C                     i2l367:		; BSR set to: ?
+  2103                           
+  2104                           	line	75
+  2105                           ;modbus_rtu.c: 75: if(rx_buf.rec_count<250)
+  2106  00043C  0EFA               	movlw	(0FAh)&0ffh
+  2107  00043E  6002               	cpfslt	(0+((c:0)+02h)),c
+  2108  000440  EF24  F002         	goto	i2u1041
+  2109  000444  EF26  F002         	goto	i2u1040
+  2110  000448                     i2u1041:
+  2111  000448  EF3D  F002         	goto	i2l368
+  2112  00044C                     i2u1040:
+  2113                           	line	77
+  2114                           ;modbus_rtu.c: 76: {
+  2115                           ;modbus_rtu.c: 77: rx_buf.data_buf[rx_buf.rec_co
+                                 unt++] = rec_data;
+  2116  00044C  EE00 F002          	lfsr	0,(c:0)+02h
+  2117  000450  CFEF F229          	movff	indf0,??_rec_isr+1+0
+  2118  000454  0E01               	movlw	01h
+  2119  000456  26EF               	addwf	indf0
+  2120  000458  0E03               	movlw	03h
+  2121  00045A  0102               	movlb	2	; () banked
+  2122  00045C  2729               	addwf	(??_rec_isr+1+0)&0ffh
+  2123  00045E  0E00               	movlw	low((c:0))
+  2124  000460  0102               	movlb	2	; () banked
+  2125  000462  2529               	addwf	(??_rec_isr+1+0)&0ffh,w
+  2126  000464  6EE9               	movwf	c:fsr0l
+  2127  000466  6AEA               	clrf	1+c:fsr0l
+  2128  000468  0E00               	movlw	high((c:0))
+  2129  00046A  22EA               	addwfc	1+c:fsr0l
+  2130  00046C  0102               	movlb	2	; () banked
+  2131  00046E  C228  FFEF         	movff	(rec_isr@rec_data),indf0
+  2132                           
+  2133                           	line	78
+  2134                           ;modbus_rtu.c: 78: restart_timer35();
+  2135  000472  EC15  F004         	call	i2_restart_timer35	;wreg free
+  2136                           	line	79
+  2137                           ;modbus_rtu.c: 79: }
+  2138  000476  EF45  F002         	goto	i2l369
+  2139                           	line	80
+  2140                           	
+  2141  00047A                     i2l368:		; BSR set to: ?
+  2142                           
+  2143                           	line	82
+  2144                           ;modbus_rtu.c: 80: else
+  2145                           ;modbus_rtu.c: 81: {
+  2146                           ;modbus_rtu.c: 82: rx_state = RX_STATE_INIT;
+  2147  00047A  0102               	movlb	2	; () banked
+  2148  00047C  6F29               	movwf	(??_rec_isr+1+0)&0ffh
+  2149  00047E  0E00               	movlw	low(0)
+  2150  000480  0100               	movlb	0	; () banked
+  2151  000482  0100               	movlb	0	; () banked
+  2152  000484  6FFD               	movwf	((253))&0ffh
+  2153  000486  0102               	movlb	2	; () banked
+  2154  000488  5129               	movf	(??_rec_isr+1+0)&0ffh,w
+  2155                           	line	83
+  2156                           	
+  2157  00048A                     i2l369:		; BSR set to: ?
+  2158                           
+  2159                           	line	84
+  2160                           ;modbus_rtu.c: 83: }
+  2161                           ;modbus_rtu.c: 84: break;
+  2162  00048A  EF52  F002         	goto	i2l362
+  2163                           	line	62
+  2164                           	
+  2165  00048E                     i2l364:		; BSR set to: ?
+  2166                           
+  2167  00048E  0100               	movlb	0	; () banked
+  2168  000490  0100               	movlb	0	; () banked
+  2169  000492  51FD               	movf	((253))&0ffh,w
+  2170  000494  0A00               	xorlw	0 ^ 0
+  2171  000496  E0A3               	bz	i2l365
+  2172  000498  0A01               	xorlw	1 ^ 0
+  2173  00049A  E0B1               	bz	i2l366
+  2174  00049C  0A03               	xorlw	2 ^ 1
+  2175  00049E  E0CE               	bz	i2l367
+  2176  0004A0  EF45  F002         	goto	i2l369
+  2177                           
+  2178                           	line	88
+  2179                           	
+  2180  0004A4                     i2l362:		; BSR set to: ?
+  2181                           
+  2182                           	line	91
+  2183                           ;modbus_rtu.c: 88: }
+  2184                           ;modbus_rtu.c: 91: }
+  2185  0004A4                     i2l361:
+  2186                           			; BSR set to: ?
+  2187                           
+  2188  0004A4  0012               	return
+  2189                           	opt stack 0
+  2190                           GLOBAL __end_of_rec_isr
+  2191  0004A6                     	__end_of_rec_isr:
+  2192                           	FNSIZE	_rec_isr,2,0
+  2193                           ; =============== function _rec_isr ends =======
+                                 =====
+  2194                           
+  2195                           	signat	_rec_isr,88
+  2196                                   psect   text12,class=CODE,space=0,reloc=
+                                 2
+  2197                           	global	intlevel2
+  2198                           
+  2199                           	opt lm
+  2200                           	FNBREAK _disable_timer35,intlevel2
+  2201                           	global	_disable_timer35
+  2202                           	global	??_disable_timer35
+  2203                           	global	?_disable_timer35
+  2204                           
+  2205                           ; *************** function _disable_timer35 ****
+                                 *************
+  2206                           ; Defined at:
+  2207                           ;		line 192 in file "../modbus_rtu.c"
+  2208                           ; Parameters:
+  2209                           ;		None
+  2210                           ; Auto variables:
+  2211                           ;		None
+  2212                           ; Return value:
+  2213                           ;		type: void 
+  2214                           ;		size: 0
+  2215                           ; Registers used:
+  2216                           ;		None
+  2217                           ; Tracked objects:
+  2218                           ;		On entry : 0/0
+  2219                           ;		On exit  : 0/0
+  2220                           ;		Unchanged: 0/0
+  2221                           ; Data sizes:
+  2222                           ;		Autos:    0
+  2223                           ;		Params:   0
+  2224                           ;		Temp:     0
+  2225                           ;		Total:    0
+  2226                           ; This function calls:
+  2227                           ;		Nothing
+  2228                           ; This function is called by:
+  2229                           ;		_timer35_isr
+  2230                           ; This function uses a non-reentrant model
+  2231                           ; 
+  2232                           	file	"../modbus_rtu.c"
+  2233                           	line	192
+  2234  000000                     	__size_of_disable_timer35	equ	__end_of_disable_
+                                 timer35-_disable_timer35
+  2235                           ;modbus_rtu.c: 191: void disable_timer35(void)
+  2236                           ;modbus_rtu.c: 192: {
+  2237                           	
+  2238  00083C                     _disable_timer35:		; BSR set to: ?
+  2239                           
+  2240                           	opt stack 29
+  2241                           	line	193
+  2242                           ;modbus_rtu.c: 193: TMR1ON = 0;
+  2243  00083C  90CD               	bcf	c:(32360/8),(32360)&7	;volatile
+  2244                           	line	194
+  2245                           ;modbus_rtu.c: 194: }
+  2246  00083E                     i2l385:
+  2247                           			; BSR set to: ?
+  2248                           
+  2249  00083E  0012               	return
+  2250                           	opt stack 0
+  2251                           GLOBAL __end_of_disable_timer35
+  2252  000840                     	__end_of_disable_timer35:
+  2253                           	FNSIZE	_disable_timer35,0,0
+  2254                           ; =============== function _disable_timer35 ends
+                                  ============
+  2255                           
+  2256                           	signat	_disable_timer35,88
+  2257                                   psect   text13,class=CODE,space=0,reloc=
+                                 2
+  2258                           	global	intlevel2
+  2259                           
+  2260                           	opt lm
+  2261                           	FNBREAK i2_restart_timer35,intlevel2
+  2262                           	global	i2_restart_timer35
+  2263                           	global	i2_restart_timer35
+  2264                           	global	??i2_restart_timer35
+  2265                           	global	?i2_restart_timer35
+  2266                           
+  2267                           ; *************** function i2_restart_timer35 **
+                                 ***************
+  2268                           ; Defined at:
+  2269                           ;		line 180 in file "../modbus_rtu.c"
+  2270                           ; Parameters:
+  2271                           ;		None
+  2272                           ; Auto variables:
+  2273                           ;		None
+  2274                           ; Return value:
+  2275                           ;		type: void 
+  2276                           ;		size: 0
+  2277                           ; Registers used:
+  2278                           ;		wreg, status,2
+  2279                           ; Tracked objects:
+  2280                           ;		On entry : 0/0
+  2281                           ;		On exit  : 0/0
+  2282                           ;		Unchanged: 0/0
+  2283                           ; Data sizes:
+  2284                           ;		Autos:    0
+  2285                           ;		Params:   0
+  2286                           ;		Temp:     0
+  2287                           ;		Total:    0
+  2288                           ; This function calls:
+  2289                           ;		Nothing
+  2290                           ; This function is called by:
+  2291                           ;		_rec_isr
+  2292                           ;		i2_init_timer35
+  2293                           ; This function uses a non-reentrant model
+  2294                           ; 
+  2295                           	file	"../modbus_rtu.c"
+  2296                           	line	180
+  2297  000000                     	__size_ofi2_restart_timer35	equ	__end_ofi2_rest
+                                 art_timer35-i2_restart_timer35
+  2298                           ;modbus_rtu.c: 179: void restart_timer35(void)
+  2299                           ;modbus_rtu.c: 180: {
+  2300                           	
+  2301  00082A                     i2_restart_timer35:		; BSR set to: ?
+  2302                           
+  2303                           	opt stack 29
+  2304                           	line	181
+  2305  00082A  90CD               	bcf	c:(32360/8),(32360)&7	;volatile
+  2306                           	line	182
+  2307  00082C  0E7F               	movlw	low(0627Fh)
+  2308  00082E  6ECE               	movwf	((c:4046)),c	;volatile
+  2309  000830  0E62               	movlw	high(0627Fh)
+  2310  000832  6ECF               	movwf	((c:4046+1)),c	;volatile
+  2311                           	line	183
+  2312  000834  909E               	bcf	c:(31984/8),(31984)&7	;volatile
+  2313                           	line	184
+  2314  000836  809D               	bsf	c:(31976/8),(31976)&7	;volatile
+  2315                           	line	185
+  2316  000838  80CD               	bsf	c:(32360/8),(32360)&7	;volatile
+  2317                           	line	186
+  2318  00083A                     i2l384:
+  2319                           			; BSR set to: ?
+  2320                           
+  2321  00083A  0012               	return
+  2322                           	opt stack 0
+  2323                           GLOBAL __end_ofi2_restart_timer35
+  2324  00083C                     	__end_ofi2_restart_timer35:
+  2325                           	FNSIZE	i2_restart_timer35,0,0
+  2326                           ; =============== function i2_restart_timer35 en
+                                 ds ============
+  2327                           
+  2328                           	signat	i2_restart_timer35,88
+  2329                           	FNCALL	_main,_init_timer35
+  2330                           	FNCALL	_main,_init_uart
+  2331                           	FNCALL	_main,_modbus_receive
+  2332                           	FNCALL	_modbus_receive,_modbus_crc16
+  2333                           	FNCALL	_modbus_receive,_read_holding_regs
+  2334                           	FNCALL	_modbus_receive,_write_single_holding_re
+                                 g
+  2335                           	FNCALL	_init_timer35,_restart_timer35
+  2336                           	FNCALL	_read_holding_regs,_modbus_crc16
+  2337                           	FNROOT	_main
+  2338                           	FNCALL	_my_isr,_rec_isr
+  2339                           	FNCALL	_my_isr,_tx_isr
+  2340                           	FNCALL	_my_isr,_timer35_isr
+  2341                           	FNCALL	_timer35_isr,_disable_timer35
+  2342                           	FNCALL	_rec_isr,i2_restart_timer35
+  2343                           	FNCALL	intlevel2,_my_isr
+  2344                           	global	intlevel2
+  2345                           	FNROOT	intlevel2
+  2346                                   psect   mediumconst,class=MEDIUMCONST,sp
+                                 ace=0,reloc=2
+  2347                           	global	_aucCRCHi
+  2348                           	file	"../mbcrc.c"
+  2349                           	line	2
+  2350  007DFE                     _aucCRCHi:
+  2351  007DFE  00                 	db	low(0)
+  2352  007DFF  C1                 	db	low(0C1h)
+  2353  007E00  81                 	db	low(081h)
+  2354  007E01  40                 	db	low(040h)
+  2355  007E02  01                 	db	low(01h)
+  2356  007E03  C0                 	db	low(0C0h)
+  2357  007E04  80                 	db	low(080h)
+  2358  007E05  41                 	db	low(041h)
+  2359  007E06  01                 	db	low(01h)
+  2360  007E07  C0                 	db	low(0C0h)
+  2361  007E08  80                 	db	low(080h)
+  2362  007E09  41                 	db	low(041h)
+  2363  007E0A  00                 	db	low(0)
+  2364  007E0B  C1                 	db	low(0C1h)
+  2365  007E0C  81                 	db	low(081h)
+  2366  007E0D  40                 	db	low(040h)
+  2367  007E0E  01                 	db	low(01h)
+  2368  007E0F  C0                 	db	low(0C0h)
+  2369  007E10  80                 	db	low(080h)
+  2370  007E11  41                 	db	low(041h)
+  2371  007E12  00                 	db	low(0)
+  2372  007E13  C1                 	db	low(0C1h)
+  2373  007E14  81                 	db	low(081h)
+  2374  007E15  40                 	db	low(040h)
+  2375  007E16  00                 	db	low(0)
+  2376  007E17  C1                 	db	low(0C1h)
+  2377  007E18  81                 	db	low(081h)
+  2378  007E19  40                 	db	low(040h)
+  2379  007E1A  01                 	db	low(01h)
+  2380  007E1B  C0                 	db	low(0C0h)
+  2381  007E1C  80                 	db	low(080h)
+  2382  007E1D  41                 	db	low(041h)
+  2383  007E1E  01                 	db	low(01h)
+  2384  007E1F  C0                 	db	low(0C0h)
+  2385  007E20  80                 	db	low(080h)
+  2386  007E21  41                 	db	low(041h)
+  2387  007E22  00                 	db	low(0)
+  2388  007E23  C1                 	db	low(0C1h)
+  2389  007E24  81                 	db	low(081h)
+  2390  007E25  40                 	db	low(040h)
+  2391  007E26  00                 	db	low(0)
+  2392  007E27  C1                 	db	low(0C1h)
+  2393  007E28  81                 	db	low(081h)
+  2394  007E29  40                 	db	low(040h)
+  2395  007E2A  01                 	db	low(01h)
+  2396  007E2B  C0                 	db	low(0C0h)
+  2397  007E2C  80                 	db	low(080h)
+  2398  007E2D  41                 	db	low(041h)
+  2399  007E2E  00                 	db	low(0)
+  2400  007E2F  C1                 	db	low(0C1h)
+  2401  007E30  81                 	db	low(081h)
+  2402  007E31  40                 	db	low(040h)
+  2403  007E32  01                 	db	low(01h)
+  2404  007E33  C0                 	db	low(0C0h)
+  2405  007E34  80                 	db	low(080h)
+  2406  007E35  41                 	db	low(041h)
+  2407  007E36  01                 	db	low(01h)
+  2408  007E37  C0                 	db	low(0C0h)
+  2409  007E38  80                 	db	low(080h)
+  2410  007E39  41                 	db	low(041h)
+  2411  007E3A  00                 	db	low(0)
+  2412  007E3B  C1                 	db	low(0C1h)
+  2413  007E3C  81                 	db	low(081h)
+  2414  007E3D  40                 	db	low(040h)
+  2415  007E3E  01                 	db	low(01h)
+  2416  007E3F  C0                 	db	low(0C0h)
+  2417  007E40  80                 	db	low(080h)
+  2418  007E41  41                 	db	low(041h)
+  2419  007E42  00                 	db	low(0)
+  2420  007E43  C1                 	db	low(0C1h)
+  2421  007E44  81                 	db	low(081h)
+  2422  007E45  40                 	db	low(040h)
+  2423  007E46  00                 	db	low(0)
+  2424  007E47  C1                 	db	low(0C1h)
+  2425  007E48  81                 	db	low(081h)
+  2426  007E49  40                 	db	low(040h)
+  2427  007E4A  01                 	db	low(01h)
+  2428  007E4B  C0                 	db	low(0C0h)
+  2429  007E4C  80                 	db	low(080h)
+  2430  007E4D  41                 	db	low(041h)
+  2431  007E4E  00                 	db	low(0)
+  2432  007E4F  C1                 	db	low(0C1h)
+  2433  007E50  81                 	db	low(081h)
+  2434  007E51  40                 	db	low(040h)
+  2435  007E52  01                 	db	low(01h)
+  2436  007E53  C0                 	db	low(0C0h)
+  2437  007E54  80                 	db	low(080h)
+  2438  007E55  41                 	db	low(041h)
+  2439  007E56  01                 	db	low(01h)
+  2440  007E57  C0                 	db	low(0C0h)
+  2441  007E58  80                 	db	low(080h)
+  2442  007E59  41                 	db	low(041h)
+  2443  007E5A  00                 	db	low(0)
+  2444  007E5B  C1                 	db	low(0C1h)
+  2445  007E5C  81                 	db	low(081h)
+  2446  007E5D  40                 	db	low(040h)
+  2447  007E5E  00                 	db	low(0)
+  2448  007E5F  C1                 	db	low(0C1h)
+  2449  007E60  81                 	db	low(081h)
+  2450  007E61  40                 	db	low(040h)
+  2451  007E62  01                 	db	low(01h)
+  2452  007E63  C0                 	db	low(0C0h)
+  2453  007E64  80                 	db	low(080h)
+  2454  007E65  41                 	db	low(041h)
+  2455  007E66  01                 	db	low(01h)
+  2456  007E67  C0                 	db	low(0C0h)
+  2457  007E68  80                 	db	low(080h)
+  2458  007E69  41                 	db	low(041h)
+  2459  007E6A  00                 	db	low(0)
+  2460  007E6B  C1                 	db	low(0C1h)
+  2461  007E6C  81                 	db	low(081h)
+  2462  007E6D  40                 	db	low(040h)
+  2463  007E6E  01                 	db	low(01h)
+  2464  007E6F  C0                 	db	low(0C0h)
+  2465  007E70  80                 	db	low(080h)
+  2466  007E71  41                 	db	low(041h)
+  2467  007E72  00                 	db	low(0)
+  2468  007E73  C1                 	db	low(0C1h)
+  2469  007E74  81                 	db	low(081h)
+  2470  007E75  40                 	db	low(040h)
+  2471  007E76  00                 	db	low(0)
+  2472  007E77  C1                 	db	low(0C1h)
+  2473  007E78  81                 	db	low(081h)
+  2474  007E79  40                 	db	low(040h)
+  2475  007E7A  01                 	db	low(01h)
+  2476  007E7B  C0                 	db	low(0C0h)
+  2477  007E7C  80                 	db	low(080h)
+  2478  007E7D  41                 	db	low(041h)
+  2479  007E7E  01                 	db	low(01h)
+  2480  007E7F  C0                 	db	low(0C0h)
+  2481  007E80  80                 	db	low(080h)
+  2482  007E81  41                 	db	low(041h)
+  2483  007E82  00                 	db	low(0)
+  2484  007E83  C1                 	db	low(0C1h)
+  2485  007E84  81                 	db	low(081h)
+  2486  007E85  40                 	db	low(040h)
+  2487  007E86  00                 	db	low(0)
+  2488  007E87  C1                 	db	low(0C1h)
+  2489  007E88  81                 	db	low(081h)
+  2490  007E89  40                 	db	low(040h)
+  2491  007E8A  01                 	db	low(01h)
+  2492  007E8B  C0                 	db	low(0C0h)
+  2493  007E8C  80                 	db	low(080h)
+  2494  007E8D  41                 	db	low(041h)
+  2495  007E8E  00                 	db	low(0)
+  2496  007E8F  C1                 	db	low(0C1h)
+  2497  007E90  81                 	db	low(081h)
+  2498  007E91  40                 	db	low(040h)
+  2499  007E92  01                 	db	low(01h)
+  2500  007E93  C0                 	db	low(0C0h)
+  2501  007E94  80                 	db	low(080h)
+  2502  007E95  41                 	db	low(041h)
+  2503  007E96  01                 	db	low(01h)
+  2504  007E97  C0                 	db	low(0C0h)
+  2505  007E98  80                 	db	low(080h)
+  2506  007E99  41                 	db	low(041h)
+  2507  007E9A  00                 	db	low(0)
+  2508  007E9B  C1                 	db	low(0C1h)
+  2509  007E9C  81                 	db	low(081h)
+  2510  007E9D  40                 	db	low(040h)
+  2511  007E9E  00                 	db	low(0)
+  2512  007E9F  C1                 	db	low(0C1h)
+  2513  007EA0  81                 	db	low(081h)
+  2514  007EA1  40                 	db	low(040h)
+  2515  007EA2  01                 	db	low(01h)
+  2516  007EA3  C0                 	db	low(0C0h)
+  2517  007EA4  80                 	db	low(080h)
+  2518  007EA5  41                 	db	low(041h)
+  2519  007EA6  01                 	db	low(01h)
+  2520  007EA7  C0                 	db	low(0C0h)
+  2521  007EA8  80                 	db	low(080h)
+  2522  007EA9  41                 	db	low(041h)
+  2523  007EAA  00                 	db	low(0)
+  2524  007EAB  C1                 	db	low(0C1h)
+  2525  007EAC  81                 	db	low(081h)
+  2526  007EAD  40                 	db	low(040h)
+  2527  007EAE  01                 	db	low(01h)
+  2528  007EAF  C0                 	db	low(0C0h)
+  2529  007EB0  80                 	db	low(080h)
+  2530  007EB1  41                 	db	low(041h)
+  2531  007EB2  00                 	db	low(0)
+  2532  007EB3  C1                 	db	low(0C1h)
+  2533  007EB4  81                 	db	low(081h)
+  2534  007EB5  40                 	db	low(040h)
+  2535  007EB6  00                 	db	low(0)
+  2536  007EB7  C1                 	db	low(0C1h)
+  2537  007EB8  81                 	db	low(081h)
+  2538  007EB9  40                 	db	low(040h)
+  2539  007EBA  01                 	db	low(01h)
+  2540  007EBB  C0                 	db	low(0C0h)
+  2541  007EBC  80                 	db	low(080h)
+  2542  007EBD  41                 	db	low(041h)
+  2543  007EBE  00                 	db	low(0)
+  2544  007EBF  C1                 	db	low(0C1h)
+  2545  007EC0  81                 	db	low(081h)
+  2546  007EC1  40                 	db	low(040h)
+  2547  007EC2  01                 	db	low(01h)
+  2548  007EC3  C0                 	db	low(0C0h)
+  2549  007EC4  80                 	db	low(080h)
+  2550  007EC5  41                 	db	low(041h)
+  2551  007EC6  01                 	db	low(01h)
+  2552  007EC7  C0                 	db	low(0C0h)
+  2553  007EC8  80                 	db	low(080h)
+  2554  007EC9  41                 	db	low(041h)
+  2555  007ECA  00                 	db	low(0)
+  2556  007ECB  C1                 	db	low(0C1h)
+  2557  007ECC  81                 	db	low(081h)
+  2558  007ECD  40                 	db	low(040h)
+  2559  007ECE  01                 	db	low(01h)
+  2560  007ECF  C0                 	db	low(0C0h)
+  2561  007ED0  80                 	db	low(080h)
+  2562  007ED1  41                 	db	low(041h)
+  2563  007ED2  00                 	db	low(0)
+  2564  007ED3  C1                 	db	low(0C1h)
+  2565  007ED4  81                 	db	low(081h)
+  2566  007ED5  40                 	db	low(040h)
+  2567  007ED6  00                 	db	low(0)
+  2568  007ED7  C1                 	db	low(0C1h)
+  2569  007ED8  81                 	db	low(081h)
+  2570  007ED9  40                 	db	low(040h)
+  2571  007EDA  01                 	db	low(01h)
+  2572  007EDB  C0                 	db	low(0C0h)
+  2573  007EDC  80                 	db	low(080h)
+  2574  007EDD  41                 	db	low(041h)
+  2575  007EDE  01                 	db	low(01h)
+  2576  007EDF  C0                 	db	low(0C0h)
+  2577  007EE0  80                 	db	low(080h)
+  2578  007EE1  41                 	db	low(041h)
+  2579  007EE2  00                 	db	low(0)
+  2580  007EE3  C1                 	db	low(0C1h)
+  2581  007EE4  81                 	db	low(081h)
+  2582  007EE5  40                 	db	low(040h)
+  2583  007EE6  00                 	db	low(0)
+  2584  007EE7  C1                 	db	low(0C1h)
+  2585  007EE8  81                 	db	low(081h)
+  2586  007EE9  40                 	db	low(040h)
+  2587  007EEA  01                 	db	low(01h)
+  2588  007EEB  C0                 	db	low(0C0h)
+  2589  007EEC  80                 	db	low(080h)
+  2590  007EED  41                 	db	low(041h)
+  2591  007EEE  00                 	db	low(0)
+  2592  007EEF  C1                 	db	low(0C1h)
+  2593  007EF0  81                 	db	low(081h)
+  2594  007EF1  40                 	db	low(040h)
+  2595  007EF2  01                 	db	low(01h)
+  2596  007EF3  C0                 	db	low(0C0h)
+  2597  007EF4  80                 	db	low(080h)
+  2598  007EF5  41                 	db	low(041h)
+  2599  007EF6  01                 	db	low(01h)
+  2600  007EF7  C0                 	db	low(0C0h)
+  2601  007EF8  80                 	db	low(080h)
+  2602  007EF9  41                 	db	low(041h)
+  2603  007EFA  00                 	db	low(0)
+  2604  007EFB  C1                 	db	low(0C1h)
+  2605  007EFC  81                 	db	low(081h)
+  2606  007EFD  40                 	db	low(040h)
+  2607                           	global	_aucCRCLo
+  2608                           	line	27
+  2609  007EFE                     _aucCRCLo:
+  2610  007EFE  00                 	db	low(0)
+  2611  007EFF  C0                 	db	low(0C0h)
+  2612  007F00  C1                 	db	low(0C1h)
+  2613  007F01  01                 	db	low(01h)
+  2614  007F02  C3                 	db	low(0C3h)
+  2615  007F03  03                 	db	low(03h)
+  2616  007F04  02                 	db	low(02h)
+  2617  007F05  C2                 	db	low(0C2h)
+  2618  007F06  C6                 	db	low(0C6h)
+  2619  007F07  06                 	db	low(06h)
+  2620  007F08  07                 	db	low(07h)
+  2621  007F09  C7                 	db	low(0C7h)
+  2622  007F0A  05                 	db	low(05h)
+  2623  007F0B  C5                 	db	low(0C5h)
+  2624  007F0C  C4                 	db	low(0C4h)
+  2625  007F0D  04                 	db	low(04h)
+  2626  007F0E  CC                 	db	low(0CCh)
+  2627  007F0F  0C                 	db	low(0Ch)
+  2628  007F10  0D                 	db	low(0Dh)
+  2629  007F11  CD                 	db	low(0CDh)
+  2630  007F12  0F                 	db	low(0Fh)
+  2631  007F13  CF                 	db	low(0CFh)
+  2632  007F14  CE                 	db	low(0CEh)
+  2633  007F15  0E                 	db	low(0Eh)
+  2634  007F16  0A                 	db	low(0Ah)
+  2635  007F17  CA                 	db	low(0CAh)
+  2636  007F18  CB                 	db	low(0CBh)
+  2637  007F19  0B                 	db	low(0Bh)
+  2638  007F1A  C9                 	db	low(0C9h)
+  2639  007F1B  09                 	db	low(09h)
+  2640  007F1C  08                 	db	low(08h)
+  2641  007F1D  C8                 	db	low(0C8h)
+  2642  007F1E  D8                 	db	low(0D8h)
+  2643  007F1F  18                 	db	low(018h)
+  2644  007F20  19                 	db	low(019h)
+  2645  007F21  D9                 	db	low(0D9h)
+  2646  007F22  1B                 	db	low(01Bh)
+  2647  007F23  DB                 	db	low(0DBh)
+  2648  007F24  DA                 	db	low(0DAh)
+  2649  007F25  1A                 	db	low(01Ah)
+  2650  007F26  1E                 	db	low(01Eh)
+  2651  007F27  DE                 	db	low(0DEh)
+  2652  007F28  DF                 	db	low(0DFh)
+  2653  007F29  1F                 	db	low(01Fh)
+  2654  007F2A  DD                 	db	low(0DDh)
+  2655  007F2B  1D                 	db	low(01Dh)
+  2656  007F2C  1C                 	db	low(01Ch)
+  2657  007F2D  DC                 	db	low(0DCh)
+  2658  007F2E  14                 	db	low(014h)
+  2659  007F2F  D4                 	db	low(0D4h)
+  2660  007F30  D5                 	db	low(0D5h)
+  2661  007F31  15                 	db	low(015h)
+  2662  007F32  D7                 	db	low(0D7h)
+  2663  007F33  17                 	db	low(017h)
+  2664  007F34  16                 	db	low(016h)
+  2665  007F35  D6                 	db	low(0D6h)
+  2666  007F36  D2                 	db	low(0D2h)
+  2667  007F37  12                 	db	low(012h)
+  2668  007F38  13                 	db	low(013h)
+  2669  007F39  D3                 	db	low(0D3h)
+  2670  007F3A  11                 	db	low(011h)
+  2671  007F3B  D1                 	db	low(0D1h)
+  2672  007F3C  D0                 	db	low(0D0h)
+  2673  007F3D  10                 	db	low(010h)
+  2674  007F3E  F0                 	db	low(0F0h)
+  2675  007F3F  30                 	db	low(030h)
+  2676  007F40  31                 	db	low(031h)
+  2677  007F41  F1                 	db	low(0F1h)
+  2678  007F42  33                 	db	low(033h)
+  2679  007F43  F3                 	db	low(0F3h)
+  2680  007F44  F2                 	db	low(0F2h)
+  2681  007F45  32                 	db	low(032h)
+  2682  007F46  36                 	db	low(036h)
+  2683  007F47  F6                 	db	low(0F6h)
+  2684  007F48  F7                 	db	low(0F7h)
+  2685  007F49  37                 	db	low(037h)
+  2686  007F4A  F5                 	db	low(0F5h)
+  2687  007F4B  35                 	db	low(035h)
+  2688  007F4C  34                 	db	low(034h)
+  2689  007F4D  F4                 	db	low(0F4h)
+  2690  007F4E  3C                 	db	low(03Ch)
+  2691  007F4F  FC                 	db	low(0FCh)
+  2692  007F50  FD                 	db	low(0FDh)
+  2693  007F51  3D                 	db	low(03Dh)
+  2694  007F52  FF                 	db	low(0FFh)
+  2695  007F53  3F                 	db	low(03Fh)
+  2696  007F54  3E                 	db	low(03Eh)
+  2697  007F55  FE                 	db	low(0FEh)
+  2698  007F56  FA                 	db	low(0FAh)
+  2699  007F57  3A                 	db	low(03Ah)
+  2700  007F58  3B                 	db	low(03Bh)
+  2701  007F59  FB                 	db	low(0FBh)
+  2702  007F5A  39                 	db	low(039h)
+  2703  007F5B  F9                 	db	low(0F9h)
+  2704  007F5C  F8                 	db	low(0F8h)
+  2705  007F5D  38                 	db	low(038h)
+  2706  007F5E  28                 	db	low(028h)
+  2707  007F5F  E8                 	db	low(0E8h)
+  2708  007F60  E9                 	db	low(0E9h)
+  2709  007F61  29                 	db	low(029h)
+  2710  007F62  EB                 	db	low(0EBh)
+  2711  007F63  2B                 	db	low(02Bh)
+  2712  007F64  2A                 	db	low(02Ah)
+  2713  007F65  EA                 	db	low(0EAh)
+  2714  007F66  EE                 	db	low(0EEh)
+  2715  007F67  2E                 	db	low(02Eh)
+  2716  007F68  2F                 	db	low(02Fh)
+  2717  007F69  EF                 	db	low(0EFh)
+  2718  007F6A  2D                 	db	low(02Dh)
+  2719  007F6B  ED                 	db	low(0EDh)
+  2720  007F6C  EC                 	db	low(0ECh)
+  2721  007F6D  2C                 	db	low(02Ch)
+  2722  007F6E  E4                 	db	low(0E4h)
+  2723  007F6F  24                 	db	low(024h)
+  2724  007F70  25                 	db	low(025h)
+  2725  007F71  E5                 	db	low(0E5h)
+  2726  007F72  27                 	db	low(027h)
+  2727  007F73  E7                 	db	low(0E7h)
+  2728  007F74  E6                 	db	low(0E6h)
+  2729  007F75  26                 	db	low(026h)
+  2730  007F76  22                 	db	low(022h)
+  2731  007F77  E2                 	db	low(0E2h)
+  2732  007F78  E3                 	db	low(0E3h)
+  2733  007F79  23                 	db	low(023h)
+  2734  007F7A  E1                 	db	low(0E1h)
+  2735  007F7B  21                 	db	low(021h)
+  2736  007F7C  20                 	db	low(020h)
+  2737  007F7D  E0                 	db	low(0E0h)
+  2738  007F7E  A0                 	db	low(0A0h)
+  2739  007F7F  60                 	db	low(060h)
+  2740  007F80  61                 	db	low(061h)
+  2741  007F81  A1                 	db	low(0A1h)
+  2742  007F82  63                 	db	low(063h)
+  2743  007F83  A3                 	db	low(0A3h)
+  2744  007F84  A2                 	db	low(0A2h)
+  2745  007F85  62                 	db	low(062h)
+  2746  007F86  66                 	db	low(066h)
+  2747  007F87  A6                 	db	low(0A6h)
+  2748  007F88  A7                 	db	low(0A7h)
+  2749  007F89  67                 	db	low(067h)
+  2750  007F8A  A5                 	db	low(0A5h)
+  2751  007F8B  65                 	db	low(065h)
+  2752  007F8C  64                 	db	low(064h)
+  2753  007F8D  A4                 	db	low(0A4h)
+  2754  007F8E  6C                 	db	low(06Ch)
+  2755  007F8F  AC                 	db	low(0ACh)
+  2756  007F90  AD                 	db	low(0ADh)
+  2757  007F91  6D                 	db	low(06Dh)
+  2758  007F92  AF                 	db	low(0AFh)
+  2759  007F93  6F                 	db	low(06Fh)
+  2760  007F94  6E                 	db	low(06Eh)
+  2761  007F95  AE                 	db	low(0AEh)
+  2762  007F96  AA                 	db	low(0AAh)
+  2763  007F97  6A                 	db	low(06Ah)
+  2764  007F98  6B                 	db	low(06Bh)
+  2765  007F99  AB                 	db	low(0ABh)
+  2766  007F9A  69                 	db	low(069h)
+  2767  007F9B  A9                 	db	low(0A9h)
+  2768  007F9C  A8                 	db	low(0A8h)
+  2769  007F9D  68                 	db	low(068h)
+  2770  007F9E  78                 	db	low(078h)
+  2771  007F9F  B8                 	db	low(0B8h)
+  2772  007FA0  B9                 	db	low(0B9h)
+  2773  007FA1  79                 	db	low(079h)
+  2774  007FA2  BB                 	db	low(0BBh)
+  2775  007FA3  7B                 	db	low(07Bh)
+  2776  007FA4  7A                 	db	low(07Ah)
+  2777  007FA5  BA                 	db	low(0BAh)
+  2778  007FA6  BE                 	db	low(0BEh)
+  2779  007FA7  7E                 	db	low(07Eh)
+  2780  007FA8  7F                 	db	low(07Fh)
+  2781  007FA9  BF                 	db	low(0BFh)
+  2782  007FAA  7D                 	db	low(07Dh)
+  2783  007FAB  BD                 	db	low(0BDh)
+  2784  007FAC  BC                 	db	low(0BCh)
+  2785  007FAD  7C                 	db	low(07Ch)
+  2786  007FAE  B4                 	db	low(0B4h)
+  2787  007FAF  74                 	db	low(074h)
+  2788  007FB0  75                 	db	low(075h)
+  2789  007FB1  B5                 	db	low(0B5h)
+  2790  007FB2  77                 	db	low(077h)
+  2791  007FB3  B7                 	db	low(0B7h)
+  2792  007FB4  B6                 	db	low(0B6h)
+  2793  007FB5  76                 	db	low(076h)
+  2794  007FB6  72                 	db	low(072h)
+  2795  007FB7  B2                 	db	low(0B2h)
+  2796  007FB8  B3                 	db	low(0B3h)
+  2797  007FB9  73                 	db	low(073h)
+  2798  007FBA  B1                 	db	low(0B1h)
+  2799  007FBB  71                 	db	low(071h)
+  2800  007FBC  70                 	db	low(070h)
+  2801  007FBD  B0                 	db	low(0B0h)
+  2802  007FBE  50                 	db	low(050h)
+  2803  007FBF  90                 	db	low(090h)
+  2804  007FC0  91                 	db	low(091h)
+  2805  007FC1  51                 	db	low(051h)
+  2806  007FC2  93                 	db	low(093h)
+  2807  007FC3  53                 	db	low(053h)
+  2808  007FC4  52                 	db	low(052h)
+  2809  007FC5  92                 	db	low(092h)
+  2810  007FC6  96                 	db	low(096h)
+  2811  007FC7  56                 	db	low(056h)
+  2812  007FC8  57                 	db	low(057h)
+  2813  007FC9  97                 	db	low(097h)
+  2814  007FCA  55                 	db	low(055h)
+  2815  007FCB  95                 	db	low(095h)
+  2816  007FCC  94                 	db	low(094h)
+  2817  007FCD  54                 	db	low(054h)
+  2818  007FCE  9C                 	db	low(09Ch)
+  2819  007FCF  5C                 	db	low(05Ch)
+  2820  007FD0  5D                 	db	low(05Dh)
+  2821  007FD1  9D                 	db	low(09Dh)
+  2822  007FD2  5F                 	db	low(05Fh)
+  2823  007FD3  9F                 	db	low(09Fh)
+  2824  007FD4  9E                 	db	low(09Eh)
+  2825  007FD5  5E                 	db	low(05Eh)
+  2826  007FD6  5A                 	db	low(05Ah)
+  2827  007FD7  9A                 	db	low(09Ah)
+  2828  007FD8  9B                 	db	low(09Bh)
+  2829  007FD9  5B                 	db	low(05Bh)
+  2830  007FDA  99                 	db	low(099h)
+  2831  007FDB  59                 	db	low(059h)
+  2832  007FDC  58                 	db	low(058h)
+  2833  007FDD  98                 	db	low(098h)
+  2834  007FDE  88                 	db	low(088h)
+  2835  007FDF  48                 	db	low(048h)
+  2836  007FE0  49                 	db	low(049h)
+  2837  007FE1  89                 	db	low(089h)
+  2838  007FE2  4B                 	db	low(04Bh)
+  2839  007FE3  8B                 	db	low(08Bh)
+  2840  007FE4  8A                 	db	low(08Ah)
+  2841  007FE5  4A                 	db	low(04Ah)
+  2842  007FE6  4E                 	db	low(04Eh)
+  2843  007FE7  8E                 	db	low(08Eh)
+  2844  007FE8  8F                 	db	low(08Fh)
+  2845  007FE9  4F                 	db	low(04Fh)
+  2846  007FEA  8D                 	db	low(08Dh)
+  2847  007FEB  4D                 	db	low(04Dh)
+  2848  007FEC  4C                 	db	low(04Ch)
+  2849  007FED  8C                 	db	low(08Ch)
+  2850  007FEE  44                 	db	low(044h)
+  2851  007FEF  84                 	db	low(084h)
+  2852  007FF0  85                 	db	low(085h)
+  2853  007FF1  45                 	db	low(045h)
+  2854  007FF2  87                 	db	low(087h)
+  2855  007FF3  47                 	db	low(047h)
+  2856  007FF4  46                 	db	low(046h)
+  2857  007FF5  86                 	db	low(086h)
+  2858  007FF6  82                 	db	low(082h)
+  2859  007FF7  42                 	db	low(042h)
+  2860  007FF8  43                 	db	low(043h)
+  2861  007FF9  83                 	db	low(083h)
+  2862  007FFA  41                 	db	low(041h)
+  2863  007FFB  81                 	db	low(081h)
+  2864  007FFC  80                 	db	low(080h)
+  2865  007FFD  40                 	db	low(040h)
+  2866                           	global	_aucCRCHi
+  2867                           	global	_aucCRCLo
+  2868                           	global	_modbus_reg
+  2869                           	global	_modbus_reg
+  2870  000000                     _modbus_reg  equ     53
+  2871                           
+  2872                           	DABS	1,53,200	;_modbus_reg
+  2873                           	global	_rx_buf
+  2874                           	global	_rx_buf
+  2875  000000                     _rx_buf  equ     0
+  2876                           
+  2877                           	DABS	1,0,53	;_rx_buf
+  2878                           	global	_tx_buf
+  2879                           	global	_tx_buf
+  2880  000000                     _tx_buf  equ     256
+  2881                           
+  2882                           	DABS	1,256,51	;_tx_buf
+  2883                           	global	F3879
+  2884  000000                     F3879  equ     254
+  2885                           
+  2886                           	DABS	1,254,1	;F3879
+  2887                           	global	_rx_state
+  2888                           	global	_rx_state
+  2889  000000                     _rx_state  equ     253
+  2890                           
+  2891                           	DABS	1,253,1	;_rx_state
+  2892                           	global	_TMR1
+  2893  000000                     _TMR1	equ	0xFCE
+  2894                           	global	_ANSELC
+  2895  000000                     _ANSELC	equ	0xF3A
+  2896                           	global	_PORTC
+  2897  000000                     _PORTC	equ	0xF82
+  2898                           	global	_RC2REG
+  2899  000000                     _RC2REG	equ	0xF74
+  2900                           	global	_SPBRG2
+  2901  000000                     _SPBRG2	equ	0xF75
+  2902                           	global	_TRISC
+  2903  000000                     _TRISC	equ	0xF94
+  2904                           	global	_TX2REG
+  2905  000000                     _TX2REG	equ	0xF73
+  2906                           	global	_BRGH2
+  2907  000000                     _BRGH2	equ	0x7B92
+  2908                           	global	_CREN2
+  2909  000000                     _CREN2	equ	0x7B8C
+  2910                           	global	_GIE
+  2911  000000                     _GIE	equ	0x7F97
+  2912                           	global	_PEIE
+  2913  000000                     _PEIE	equ	0x7F96
+  2914                           	global	_RC2IE
+  2915  000000                     _RC2IE	equ	0x7D1D
+  2916                           	global	_RC2IF
+  2917  000000                     _RC2IF	equ	0x7D25
+  2918                           	global	_SPEN2
+  2919  000000                     _SPEN2	equ	0x7B8F
+  2920                           	global	_SYNC2
+  2921  000000                     _SYNC2	equ	0x7B94
+  2922                           	global	_T1CKPS0
+  2923  000000                     _T1CKPS0	equ	0x7E6C
+  2924                           	global	_T1CKPS1
+  2925  000000                     _T1CKPS1	equ	0x7E6D
+  2926                           	global	_TMR1CS0
+  2927  000000                     _TMR1CS0	equ	0x7E6E
+  2928                           	global	_TMR1CS1
+  2929  000000                     _TMR1CS1	equ	0x7E6F
+  2930                           	global	_TMR1IE
+  2931  000000                     _TMR1IE	equ	0x7CE8
+  2932                           	global	_TMR1IF
+  2933  000000                     _TMR1IF	equ	0x7CF0
+  2934                           	global	_TMR1ON
+  2935  000000                     _TMR1ON	equ	0x7E68
+  2936                           	global	_TX2IE
+  2937  000000                     _TX2IE	equ	0x7D1C
+  2938                           	global	_TX2IF
+  2939  000000                     _TX2IF	equ	0x7D24
+  2940                           	global	_TXEN2
+  2941  000000                     _TXEN2	equ	0x7B95
+  2942  007FFE  00                 	db 0	; dummy byte at the end
+  2943                           	psect	intsave_regs,class=BIGRAM,space=1
+  2944                           	PSECT	param2,class=BANK2,space=1
+  2945                           	GLOBAL	__Lparam2
+  2946                           	FNCONF	param2,??,?
+  2947                           	GLOBAL	__Labsbss0
+  2948  000000                     __Labsbss0	EQU	0
+  2949                           	GLOBAL	__Habsbss0
+  2950  000000                     __Habsbss0	EQU	255
+  2951                           	GLOBAL	__Labsbss1
+  2952  000000                     __Labsbss1	EQU	256
+  2953                           	GLOBAL	__Habsbss1
+  2954  000000                     __Habsbss1	EQU	307
+  2955                           GLOBAL	__Lparam, __Hparam
+  2956                           GLOBAL	__Lparam2, __Hparam2
+  2957  000000                     __Lparam	EQU	__Lparam2
+  2958  000000                     __Hparam	EQU	__Hparam2
+
+
+HI-TECH Software PICC-18 Macro Assembler V9.66 build 8870 
+Symbol Table                                           Mon May 27 14:45:42 2013
+
+                                 l1 0612  
+                                 l2 05D8  
+                                 l3 0572  
+                                 l4 05F8  
+                 ??_restart_timer35 0202  
+            __end_of_modbus_receive 03AA  
+                               l400 00D2  
+                               l401 01EA  
+                               l403 01BE  
+                               l404 0560  
+                               l405 0506  
+                               l406 055A  
+                               l408 0544  
+                               l360 07E2  
+                               l357 07E2  
+                               l382 0804  
+                               l390 032A  
+                               l358 07B2  
+                               l391 033A  
+                               l383 0816  
+                               l384 0828  
+                               l392 03A8  
+                               l386 03A8  
+                               l394 0396  
+                               l395 035A  
+                               l387 033A  
+                               l396 0362  
+                               l388 032E  
+                               l397 036A  
+                               l389 031E  
+                               l398 036E  
+                               l399 029E  
+                               _GIE 007F97  
+                 ??_disable_timer35 0229  
+                              F3879 0000FE  
+          _write_single_holding_reg 04A6  
+         read_holding_regs@data_crc 0206  
+                       main@md_keep 0200  
+                              u1100 02B0  
+                              u1101 02AC  
+                              u1110 02EE  
+                              u1111 02EA  
+                              u1120 02FE  
+                              u1121 02FA  
+                              u1130 030E  
+                              u1050 07D6  
+                              u1131 030A  
+                              u1051 07D2  
+                              u1140 034A  
+                              u1141 0346  
+                              u1150 01EA  
+                              u1151 01E6  
+                              u1055 07C8  
+                              u1160 055A  
+                              u1161 0556  
+                              u1170 05F8  
+                              u1171 05F4  
+                              _PEIE 007F96  
+                              _TMR1 000FCE  
+                              _main 0796  
+                              fsr0h 000FEA  
+                              fsr1h 000FE2  
+                              indf0 000FEF  
+                              fsr0l 000FE9  
+                              fsr2h 000FDA  
+                              indf1 000FE7  
+                              fsr1l 000FE1  
+                              fsr2l 000FD9  
+                              pclat 000FFA  
+                              prodh 000FF4  
+                              prodl 000FF3  
+                              start 0018  
+                   ?_modbus_receive 0202  
+                             ?_main 0200  
+                             _BRGH2 007B92  
+                             _CREN2 007B8C  
+                             _RC2IE 007D1D  
+                             _RC2IF 007D25  
+                             i2l361 04A4  
+                             i2l409 075C  
+                             i2l362 04A4  
+                             i2l371 0722  
+                             i2l364 048E  
+                             i2l372 0722  
+                             i2l380 06B0  
+                             i2l365 03DE  
+                             i2l373 071C  
+                             i2l381 06B0  
+                             i2l366 03FE  
+                             i2l374 070A  
+                             i2l367 043C  
+                             i2l375 06D2  
+                             i2l384 083A  
+                             i2l368 047A  
+                             i2l376 06E6  
+                             i2l385 083E  
+                             i2l369 048A  
+                             i2l377 0706  
+                             i2l378 06B0  
+                             i2l379 06B0  
+                             _SPEN2 007B8F  
+                             _TX2IE 007D1C  
+                             _TX2IF 007D24  
+                             _PORTC 000F82  
+                             _TRISC 000F94  
+                             _TXEN2 007B95  
+                             _SYNC2 007B94  
+                   __end_of_rec_isr 04A6  
+                             tablat 000FF5  
+                             status 000FD8  
+                   rec_isr@rec_data 0228  
+                      __end_of_main 07EA  
+                            ??_main 0200  
+                     __activetblptr 000002  
+               modbus_crc16@ucCRCHi 0215  
+               modbus_crc16@ucCRCLo 0216  
+                            _ANSELC 000F3A  
+                            _RC2REG 000F74  
+                            i2u1020 03C8  
+                            i2u1021 03C4  
+                            i2u1030 03D6  
+                            i2u1031 03D2  
+                            i2u1040 044C  
+                            i2u1041 0448  
+                            i2u1060 0622  
+                            i2u1061 061E  
+                            i2u1070 0630  
+                            i2u1071 062C  
+                            i2u1080 0644  
+                            i2u1081 0640  
+                            i2u1090 0682  
+                            i2u1091 067E  
+                            i2u1180 06C0  
+                            i2u1181 06BC  
+                            i2u1190 06CE  
+                            i2u1191 06CA  
+                            _SPBRG2 000F75  
+                            _TMR1IE 007CE8  
+                            _TMR1IF 007CF0  
+                            _TMR1ON 007E68  
+                            _TX2REG 000F73  
+                     ?_init_timer35 0202  
+                            __Ldata 000000  
+                      ?_timer35_isr 0228  
+                            _my_isr 0724  
+                            _rx_buf 000000  
+                            _tx_buf 000100  
+                            _tx_isr 0614  
+                         ??_rec_isr 0228  
+                      __mediumconst 7DFE  
+                            tblptrh 000FF7  
+                            tblptrl 000FF6  
+                            tblptru 000FF8  
+                        __accesstop 0060  
+                    ??_init_timer35 0202  
+                   _restart_timer35 0818  
+                     ?_modbus_crc16 0211  
+                   _disable_timer35 083C  
+        ??_write_single_holding_reg 0203  
+              read_holding_regs@num 0208  
+                 modbus_crc16@usLen 0213  
+                    ??_modbus_crc16 0215  
+                  ??_modbus_receive 0202  
+                         l600000198 030E  
+                           ?_my_isr 021A  
+                           ?_tx_isr 0228  
+                           _T1CKPS0 007E6C  
+                           _T1CKPS1 007E6D  
+                           _TMR1CS0 007E6E  
+                           _TMR1CS1 007E6F  
+              modbus_crc16@pucFrame 0211  
+           __end_of_restart_timer35 082A  
+           __end_of_disable_timer35 0840  
+                           __Hparam 022A  
+                           __Lparam 0200  
+                           __ramtop 0600  
+              __end_of_init_timer35 0806  
+                           _rec_isr 03AA  
+                 __end_of_init_uart 0818  
+                        _modbus_reg 000035  
+                     __Lmediumconst 7DFE  
+                           int_func 0008  
+                           postdec0 000FED  
+                           postdec1 000FE5  
+                           postinc0 000FEE  
+                           postinc1 000FE6  
+  __end_of_write_single_holding_reg 0562  
+                 _read_holding_regs 0046  
+                ?_read_holding_regs 0203  
+              __end_of_modbus_crc16 0614  
+               ??_read_holding_regs 0203  
+                  ?_restart_timer35 0202  
+                  ?_disable_timer35 0229  
+       read_holding_regs@start_addr 0204  
+write_single_holding_reg@start_addr 0204  
+         __end_of_read_holding_regs 02A0  
+                    __end_of_my_isr 0796  
+                    __end_of_tx_isr 06B2  
+                         __Habsbss0 0000FF  
+                         __Habsbss1 000133  
+                read_holding_regs@i 0203  
+                         __Labsbss0 000000  
+                         __Labsbss1 000100  
+                modbus_crc16@iIndex 0217  
+                          ??_my_isr 021A  
+                          ??_tx_isr 0228  
+         ?_write_single_holding_reg 0203  
+                      _init_timer35 07EA  
+                       __smallconst 0600  
+                          ?_rec_isr 0228  
+                         _init_uart 0806  
+                     ??_timer35_isr 0228  
+                      _modbus_crc16 0562  
+                        ?_init_uart 0202  
+                          __Hparam2 022A  
+                          __Lparam2 0200  
+                      __Lsmallconst 0600  
+               __end_of_timer35_isr 0724  
+                          _aucCRCHi 7DFE  
+                          _aucCRCLo 7EFE  
+                          _rx_state 0000FD  
+                       ??_init_uart 0202  
+                          intlevel2 0840  
+                       _timer35_isr 06B2  
+                 i2_restart_timer35 082A  
+                ?i2_restart_timer35 022A  
+                    _modbus_receive 02A0  
+               ??i2_restart_timer35 022A  
+         write_single_holding_reg@i 0203  
+         __end_ofi2_restart_timer35 083C  

@@ -1,0 +1,15 @@
+_init_uart: CODE, 2054 0 18
+_timer35_isr: CODE, 1714 0 114
+_modbus_crc16: CODE, 1378 0 178
+_init_timer35: CODE, 2026 0 28
+i2_restart_timer35: CODE, 2090 0 18
+_modbus_receive: CODE, 672 0 266
+_restart_timer35: CODE, 2072 0 18
+_main: CODE, 1942 0 84
+_rec_isr: CODE, 938 0 252
+_disable_timer35: CODE, 2108 0 4
+_write_single_holding_reg: CODE, 1190 0 188
+_read_holding_regs: CODE, 70 0 602
+_my_isr: CODE, 1828 0 114
+_tx_isr: CODE, 1556 0 158
+Total: 2042
