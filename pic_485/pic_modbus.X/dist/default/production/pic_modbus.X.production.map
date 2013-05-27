@@ -2,7 +2,7 @@ HI-TECH Software C Compiler
 
 Linker command line:
 
---edf=D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\dat\en_msgs.txt \
+--edf=d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\dat\en_msgs.txt \
   -cs -h+dist/default/production\pic_modbus.X.production.sym -z -Q18F25K22 \
   -ol.obj -Mdist/default/production/pic_modbus.X.production.map -E1 \
   -ACODE=00h-07FFFh -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -19,7 +19,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
-  C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s6mc.obj \
+  C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s3ss.obj \
   dist/default/production\pic_modbus.X.production.obj 
 
 Object code version is 3.10
@@ -29,9 +29,6 @@ Machine type is 18F25K22
 Call graph: (short form)
 
 *_main size 0,2 offset 0
-     _init_timer35 size 0,0 offset 2
-         _restart_timer35 size 0,0 offset 2
-     _init_uart size 0,0 offset 2
 *    _modbus_receive size 0,1 offset 2
 *        _modbus_crc16 size 4,5 offset 17
 *        _read_holding_regs size 0,14 offset 3
@@ -43,36 +40,29 @@ Estimated maximum call depth: 3
 *intlevel2 size 0,0 offset 26
 *    _my_isr size 0,14 offset 26
 *        _rec_isr size 0,2 offset 40
-*            i2_restart_timer35 size 0,0 offset 42
          _tx_isr size 0,1 offset 40
          _timer35_isr size 0,1 offset 40
-             _disable_timer35 size 0,0 offset 41
 
-Estimated maximum call depth: 3
+Estimated maximum call depth: 2
 
 
                 Name          Link     Load   Length Selector Space Scale
-C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s6mc.obj
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s3ss.obj
                 init            18       18       18       4     0
                 reset_vec        0        0        4       0     0
                 end_init        30       30       16       4     0
 dist/default/production\pic_modbus.X.production.obj
                 intcode          8        8       10       4     0
                 mediumcon     7DFE     7DFE      202    3EFF     0
-                text10         6B2      6B2       72       4     0
-                text11         3AA      3AA       FC       4     0
-                text9          614      614       9E       4     0
-                text12         83C      83C        4       4     0
-                text13         82A      82A       12       4     0
-                text8          724      724       72       4     0
-                text1          806      806       12       4     0
-                text2          2A0      2A0      10A       4     0
-                text0          796      796       54       4     0
-                text3          7EA      7EA       1C       4     0
-                text6          818      818       12       4     0
-                text7          562      562       B2       4     0
-                text4           46       46      25A       4     0
-                text5          4A6      4A6       BC       4     0
+                text7          638      638       9E       4     0
+                text6          7BC      7BC       70       4     0
+                text8          2A0      2A0      120       4     0
+                text1          3C0      3C0      10A       4     0
+                text0          6D6      6D6       74       4     0
+                text2           46       46      25A       4     0
+                text5          74A      74A       72       4     0
+                text4          586      586       B2       4     0
+                text3          4CA      4CA       BC       4     0
 
 COMMON          param2         200      200       2A     200     1
 
@@ -82,20 +72,15 @@ TOTAL           Name          Link     Load   Length  Space
                 intcode          8        8       10     0
                 reset_vec        0        0        4     0
                 end_init        30       30       16     0
-                text10         6B2      6B2       72     0
-                text11         3AA      3AA       FC     0
-                text9          614      614       9E     0
-                text12         83C      83C        4     0
-                text13         82A      82A       12     0
-                text8          724      724       72     0
-                text1          806      806       12     0
-                text2          2A0      2A0      10A     0
-                text0          796      796       54     0
-                text3          7EA      7EA       1C     0
-                text6          818      818       12     0
-                text7          562      562       B2     0
-                text4           46       46      25A     0
-                text5          4A6      4A6       BC     0
+                text7          638      638       9E     0
+                text6          7BC      7BC       70     0
+                text8          2A0      2A0      120     0
+                text1          3C0      3C0      10A     0
+                text0          6D6      6D6       74     0
+                text2           46       46      25A     0
+                text5          74A      74A       72     0
+                text4          586      586       B2     0
+                text3          4CA      4CA       BC     0
 
         CLASS   CONST          
 
@@ -142,7 +127,7 @@ TOTAL           Name          Link     Load   Length  Space
 SEGMENTS        Name           Load    Length   Top     Selector    Space Class
 
                 reset_vec       000000  000004  000004         0       0  CODE    
-                intcode         000008  000838  000840         4       0  CODE    
+                intcode         000008  000824  00082C         4       0  CODE    
                 param2          000200  00002A  00022A       200       1  BANK2   
                 mediumconst     007DFE  000202  008000      3EFF       0  MEDIUMCO
 
@@ -159,62 +144,52 @@ UNUSED ADDRESS RANGES
                          000133-0001FF
                          00022A-00059F
         CODE             000004-000007
-                         000840-007DFD
+                         00082C-007DFD
         CONFIG           300000-30000D
         CONST            000004-000007
-                         000840-007DFD
+                         00082C-007DFD
         EEDATA           F00000-F000FF
         IDLOC            200000-200007
-        MEDIUMCONST      000840-007DFD
+        MEDIUMCONST      00082C-007DFD
         NVRAM            000500-00059F
         RAM              0000FF-0000FF
                          000133-0001FF
                          00022A-00059F
-        SMALLCONST       000840-007DFD
+        SMALLCONST       00082C-007DFD
 
                                   Symbol Table
 
-??_disable_timer35                  param2       000229
-??_init_timer35                     param2       000202
-??_init_uart                        param2       000202
 ??_main                             param2       000200
 ??_modbus_crc16                     param2       000215
 ??_modbus_receive                   param2       000202
 ??_my_isr                           param2       00021A
 ??_read_holding_regs                param2       000203
 ??_rec_isr                          param2       000228
-??_restart_timer35                  param2       000202
 ??_timer35_isr                      param2       000228
 ??_tx_isr                           param2       000228
 ??_write_single_holding_reg         param2       000203
-??i2_restart_timer35                param2       00022A
-?_disable_timer35                   param2       000229
-?_init_timer35                      param2       000202
-?_init_uart                         param2       000202
 ?_main                              param2       000200
 ?_modbus_crc16                      param2       000211
 ?_modbus_receive                    param2       000202
 ?_my_isr                            param2       00021A
 ?_read_holding_regs                 param2       000203
 ?_rec_isr                           param2       000228
-?_restart_timer35                   param2       000202
 ?_timer35_isr                       param2       000228
 ?_tx_isr                            param2       000228
 ?_write_single_holding_reg          param2       000203
-?i2_restart_timer35                 param2       00022A
-F3879                               (abs)        0000FE
+F3904                               (abs)        0000FE
 _ANSELC                             (abs)        000F3A
-_BRGH2                              (abs)        007B92
-_CREN2                              (abs)        007B8C
+_BRGH1                              (abs)        007D62
+_CREN1                              (abs)        007D5C
 _GIE                                (abs)        007F97
 _PEIE                               (abs)        007F96
 _PORTC                              (abs)        000F82
-_RC2IE                              (abs)        007D1D
-_RC2IF                              (abs)        007D25
-_RC2REG                             (abs)        000F74
-_SPBRG2                             (abs)        000F75
-_SPEN2                              (abs)        007B8F
-_SYNC2                              (abs)        007B94
+_RC1IE                              (abs)        007CED
+_RC1IF                              (abs)        007CF5
+_RC1REG                             (abs)        000FAE
+_SPBRG1                             (abs)        000FAF
+_SPEN1                              (abs)        007D5F
+_SYNC1                              (abs)        007D64
 _T1CKPS0                            (abs)        007E6C
 _T1CKPS1                            (abs)        007E6D
 _TMR1                               (abs)        000FCE
@@ -224,10 +199,10 @@ _TMR1IE                             (abs)        007CE8
 _TMR1IF                             (abs)        007CF0
 _TMR1ON                             (abs)        007E68
 _TRISC                              (abs)        000F94
-_TX2IE                              (abs)        007D1C
-_TX2IF                              (abs)        007D24
-_TX2REG                             (abs)        000F73
-_TXEN2                              (abs)        007B95
+_TX1IE                              (abs)        007CEC
+_TX1IF                              (abs)        007CF4
+_TX1REG                             (abs)        000FAD
+_TXEN1                              (abs)        007D65
 __HRAM                              (abs)        000000
 __Habsbss0                          (abs)        0000FF
 __Habsbss1                          (abs)        000133
@@ -277,10 +252,6 @@ __Htemp                             temp         000000
 __Htext                             text         000046
 __Htext0                            text0        000046
 __Htext1                            text1        000046
-__Htext10                           text10       000046
-__Htext11                           text11       000046
-__Htext12                           text12       000046
-__Htext13                           text13       000046
 __Htext2                            text2        000046
 __Htext3                            text3        000046
 __Htext4                            text4        000046
@@ -288,7 +259,6 @@ __Htext5                            text5        000046
 __Htext6                            text6        000046
 __Htext7                            text7        000046
 __Htext8                            text8        000046
-__Htext9                            text9        000046
 __LRAM                              (abs)        000001
 __Labsbss0                          (abs)        000000
 __Labsbss1                          (abs)        000100
@@ -338,10 +308,6 @@ __Ltemp                             temp         000000
 __Ltext                             text         000046
 __Ltext0                            text0        000046
 __Ltext1                            text1        000046
-__Ltext10                           text10       000046
-__Ltext11                           text11       000046
-__Ltext12                           text12       000046
-__Ltext13                           text13       000046
 __Ltext2                            text2        000046
 __Ltext3                            text3        000046
 __Ltext4                            text4        000046
@@ -349,54 +315,43 @@ __Ltext5                            text5        000046
 __Ltext6                            text6        000046
 __Ltext7                            text7        000046
 __Ltext8                            text8        000046
-__Ltext9                            text9        000046
 __S0                                (abs)        F00000
 __S1                                (abs)        000500
 __accesstop                         (abs)        000060
 __activetblptr                      (abs)        000002
-__end_of_disable_timer35            text12       000840
-__end_of_init_timer35               text3        000806
-__end_of_init_uart                  text1        000818
-__end_of_main                       text0        0007EA
-__end_of_modbus_crc16               text7        000614
-__end_of_modbus_receive             text2        0003AA
-__end_of_my_isr                     text8        000796
-__end_of_read_holding_regs          text4        0002A0
-__end_of_rec_isr                    text11       0004A6
-__end_of_restart_timer35            text6        00082A
-__end_of_timer35_isr                text10       000724
-__end_of_tx_isr                     text9        0006B2
-__end_of_write_single_holding_reg   text5        000562
-__end_ofi2_restart_timer35          text13       00083C
+__end_of_main                       text0        00074A
+__end_of_modbus_crc16               text4        000638
+__end_of_modbus_receive             text1        0004CA
+__end_of_my_isr                     text5        0007BC
+__end_of_read_holding_regs          text2        0002A0
+__end_of_rec_isr                    text8        0003C0
+__end_of_timer35_isr                text6        00082C
+__end_of_tx_isr                     text7        0006D6
+__end_of_write_single_holding_reg   text3        000586
 __mediumconst                       mediumconst  007DFE
 __ramtop                            ramtop       000600
 __smallconst                        smallconst   000600
 _aucCRCHi                           mediumconst  007DFE
 _aucCRCLo                           mediumconst  007EFE
-_disable_timer35                    text12       00083C
 _exit                               init         000018
-_init_timer35                       text3        0007EA
-_init_uart                          text1        000806
-_main                               text0        000796
-_modbus_crc16                       text7        000562
-_modbus_receive                     text2        0002A0
+_main                               text0        0006D6
+_modbus_crc16                       text4        000586
+_modbus_receive                     text1        0003C0
 _modbus_reg                         (abs)        000035
-_my_isr                             text8        000724
-_read_holding_regs                  text4        000046
-_rec_isr                            text11       0003AA
-_restart_timer35                    text6        000818
+_my_isr                             text5        00074A
+_read_holding_regs                  text2        000046
+_rec_isr                            text8        0002A0
 _rx_buf                             (abs)        000000
 _rx_state                           (abs)        0000FD
-_timer35_isr                        text10       0006B2
+_timer35_isr                        text6        0007BC
 _tx_buf                             (abs)        000100
-_tx_isr                             text9        000614
-_write_single_holding_reg           text5        0004A6
-i2_restart_timer35                  text13       00082A
+_tx_isr                             text7        000638
+_write_single_holding_reg           text3        0004CA
 int_func                            intcode      000008
-intlevel0                           text         000840
-intlevel1                           text         000840
-intlevel2                           text         000840
-intlevel3                           text         000840
+intlevel0                           text         00082C
+intlevel1                           text         00082C
+intlevel2                           text         00082C
+intlevel3                           text         00082C
 main@md_keep                        param2       000200
 modbus_crc16@iIndex                 param2       000217
 modbus_crc16@pucFrame               param2       000211

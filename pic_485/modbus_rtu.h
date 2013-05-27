@@ -27,10 +27,10 @@
     void init_uart(void);
     void rec_isr(void);
     void tx_isr(void);
-    void init_timer35(void);
+    //void init_timer35(void);
+    //void restart_timer35(void);
+    //void disable_timer35(void);
     void timer35_isr(void);
-    void restart_timer35(void);
-    void disable_timer35(void);
     void modbus_receive(void);
     void read_holding_regs(void);
     void write_single_holding_reg(void);
