@@ -45,11 +45,11 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/mbcrc.p1 ${OBJECTDIR}/_ext/1472/modbus_rtu.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/mbcrc.p1.d ${OBJECTDIR}/_ext/1472/modbus_rtu.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/mbcrc.p1 ${OBJECTDIR}/_ext/1472/modbus_rtu.p1 ${OBJECTDIR}/_ext/1472/main.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/mbcrc.p1.d ${OBJECTDIR}/_ext/1472/modbus_rtu.p1.d ${OBJECTDIR}/_ext/1472/main.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1472/mbcrc.p1 ${OBJECTDIR}/_ext/1472/modbus_rtu.p1
+OBJECTFILES=${OBJECTDIR}/_ext/1472/mbcrc.p1 ${OBJECTDIR}/_ext/1472/modbus_rtu.p1 ${OBJECTDIR}/_ext/1472/main.p1
 
 
 CFLAGS=
@@ -94,6 +94,14 @@ ${OBJECTDIR}/_ext/1472/modbus_rtu.p1: ../modbus_rtu.c  nbproject/Makefile-${CND_
 	@cat ${OBJECTDIR}/_ext/1472/modbus_rtu.dep >> ${OBJECTDIR}/_ext/1472/modbus_rtu.p1.d
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/modbus_rtu.p1.d" $(SILENT) -ht  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/_ext/1472/main.p1: ../main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
+	${MP_CC} --pass1 ../main.c $(MP_EXTRA_CC_PRE) -q --chip=$(MP_PROCESSOR_OPTION) -P  --outdir="${OBJECTDIR}\_ext\1472" -N31 --warn=0 --runtime=default,+clear,+init,-keep,-download,+stackwarn,-config,+clib,-plib --opt=default,+asm,-asmfile,-speed,+space,9 -D__DEBUG --debugger=realice --cp=16 -Blarge --double=24  --mode=lite -g --asmlist "--errformat=%%f:%%l: error: %%s" "--msgformat=%%f:%%l: advisory: %%s" "--warnformat=%%f:%%l warning: %%s"  
+	@${MP_CC} --scandep  ../main.c $(MP_EXTRA_CC_PRE) -q --chip=$(MP_PROCESSOR_OPTION) -P  --outdir="${OBJECTDIR}\_ext\1472" -N31 --warn=0 --runtime=default,+clear,+init,-keep,-download,+stackwarn,-config,+clib,-plib --opt=default,+asm,-asmfile,-speed,+space,9 -D__DEBUG --debugger=realice --cp=16 -Blarge --double=24  --mode=lite -g --asmlist "--errformat=%%f:%%l: error: %%s" "--msgformat=%%f:%%l: advisory: %%s" "--warnformat=%%f:%%l warning: %%s"  
+	@echo ${OBJECTDIR}/_ext/1472/main.p1: > ${OBJECTDIR}/_ext/1472/main.p1.d
+	@cat ${OBJECTDIR}/_ext/1472/main.dep >> ${OBJECTDIR}/_ext/1472/main.p1.d
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/main.p1.d" $(SILENT) -ht  -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/_ext/1472/mbcrc.p1: ../mbcrc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/_ext/1472 
@@ -110,6 +118,14 @@ ${OBJECTDIR}/_ext/1472/modbus_rtu.p1: ../modbus_rtu.c  nbproject/Makefile-${CND_
 	@echo ${OBJECTDIR}/_ext/1472/modbus_rtu.p1: > ${OBJECTDIR}/_ext/1472/modbus_rtu.p1.d
 	@cat ${OBJECTDIR}/_ext/1472/modbus_rtu.dep >> ${OBJECTDIR}/_ext/1472/modbus_rtu.p1.d
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/modbus_rtu.p1.d" $(SILENT) -ht  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1472/main.p1: ../main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/1472 
+	${MP_CC} --pass1 ../main.c $(MP_EXTRA_CC_PRE) -q --chip=$(MP_PROCESSOR_OPTION) -P  --outdir="${OBJECTDIR}\_ext\1472" -N31 --warn=0 --runtime=default,+clear,+init,-keep,-download,+stackwarn,-config,+clib,-plib --opt=default,+asm,-asmfile,-speed,+space,9 --cp=16 -Blarge --double=24  --mode=lite -g --asmlist "--errformat=%%f:%%l: error: %%s" "--msgformat=%%f:%%l: advisory: %%s" "--warnformat=%%f:%%l warning: %%s"  
+	@${MP_CC} --scandep  ../main.c $(MP_EXTRA_CC_PRE) -q --chip=$(MP_PROCESSOR_OPTION) -P  --outdir="${OBJECTDIR}\_ext\1472" -N31 --warn=0 --runtime=default,+clear,+init,-keep,-download,+stackwarn,-config,+clib,-plib --opt=default,+asm,-asmfile,-speed,+space,9 --cp=16 -Blarge --double=24  --mode=lite -g --asmlist "--errformat=%%f:%%l: error: %%s" "--msgformat=%%f:%%l: advisory: %%s" "--warnformat=%%f:%%l warning: %%s"  
+	@echo ${OBJECTDIR}/_ext/1472/main.p1: > ${OBJECTDIR}/_ext/1472/main.p1.d
+	@cat ${OBJECTDIR}/_ext/1472/main.dep >> ${OBJECTDIR}/_ext/1472/main.p1.d
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/main.p1.d" $(SILENT) -ht  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

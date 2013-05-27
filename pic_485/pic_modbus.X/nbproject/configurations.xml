@@ -13,6 +13,7 @@
                    projectFiles="true">
       <itemPath>../mbcrc.c</itemPath>
       <itemPath>../modbus_rtu.c</itemPath>
+      <itemPath>../main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

@@ -3770,7 +3770,7 @@ unsigned char tx_count;
 unsigned char data_buf[50];
 } TX_BUF;
 
-void init_uart(void);
+
 void rec_isr(void);
 void tx_isr(void);
 
@@ -3781,37 +3781,14 @@ void modbus_receive(void);
 void read_holding_regs(void);
 void write_single_holding_reg(void);
 
-# 19 "../modbus_rtu.c"
+# 20 "../modbus_rtu.c"
 TX_BUF tx_buf;
 RX_BUF rx_buf;
 RX_STATE rx_state = RX_STATE_INIT;
+
 unsigned int modbus_reg[100];
 
-
-void main(void)
-{
-unsigned int md_keep;
-ANSELC = 0;
-TRISC = 0x00;
-PORTC = 0xc0;
-
-TMR1ON = 0; TMR1CS0 = 1; TMR1CS1 = 0; T1CKPS0 = 0; T1CKPS1 = 0; TMR1 = 65535-40320; TMR1IF=0; TMR1IE=1; TMR1ON = 1;
-PEIE = 1;
-GIE = 1;
-SPEN1 = 1; SYNC1 = 0; SPBRG1 = 11059200/64*(1*3+1)/9600-1; BRGH1 = 1; CREN1 = 1; TXEN1 = 1; RC1IE = 1;
-while(1)
-{
-modbus_receive();
-
-if(modbus_reg[0]!=md_keep)
-{
-md_keep = modbus_reg[0];
-PORTC = md_keep;
-}
-}
-}
-
-# 53
+# 29
 void rec_isr(void)
 {
 unsigned char rec_data = 0;
@@ -3991,9 +3968,3 @@ tx_buf.tx_count = rx_buf.rec_count;
 (TX1IE) = 1;
 }
 
-void interrupt my_isr(void)
-{
-rec_isr();
-tx_isr();
-timer35_isr();
-}

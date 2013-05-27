@@ -3,49 +3,49 @@
 [d edition pro ]
 [d chip 18F25K22 ]
 [s S29 . 51 `uc 1 tx_count 1 0 `[50]uc 1 data_buf 50 1 ]
-"19 ../modbus_rtu.c
+"20 ../modbus_rtu.c
 [s S33 . 53 `uc 1 frame_ok 1 0 `uc 1 data_valid 1 1 `uc 1 rec_count 1 2 `[50]uc 1 data_buf 50 3 ]
-"20
+"21
 [e E3864 . `uc
 RX_STATE_INIT 0
 RX_STATE_IDLE 1
 RX_STATE_RECEIVE 2
 RX_STATE_DONE 3
 ]
-"233
-[v F3917 `(v  1 t 0 ]
+"35 ../main.c
+[v F3895 `(v  1 t 0 ]
+"10
+[v _main `(v  1 e 0 0 ]
+"35
+[v _my_isr `I(v  1 e 0 0 ]
 "53 ../mbcrc.c
 [v _modbus_crc16 `(ui  1 e 2 0 ]
-"26 ../modbus_rtu.c
-[v _main `(v  1 e 0 0 ]
-"54
+"30 ../modbus_rtu.c
 [v _rec_isr `(v  1 e 0 0 ]
-"93
+"69
 [v _tx_isr `(v  1 e 0 0 ]
-"114
+"90
 [v _timer35_isr `(v  1 e 0 0 ]
-"137
+"113
 [v _modbus_receive `(v  1 e 0 0 ]
-"184
+"160
 [v _read_holding_regs `(v  1 e 0 0 ]
-"213
+"189
 [v _write_single_holding_reg `(v  1 e 0 0 ]
-"233
-[v _my_isr `I(v  1 e 0 0 ]
 "2 ../mbcrc.c
 [v _aucCRCHi `DC[256]uc  1 s 256 _aucCRCHi ]
 "27
 [v _aucCRCLo `DC[256]uc  1 s 256 _aucCRCLo ]
-"19 ../modbus_rtu.c
+"20 ../modbus_rtu.c
 [v _tx_buf `S29  1 e 51 @256 ]
-"20
-[v _rx_buf `S33  1 e 53 @0 ]
 "21
-[v _rx_state `E3864  1 e 1 @253 ]
+[v _rx_buf `S33  1 e 53 @0 ]
 "22
+[v _rx_state `E3864  1 e 1 @253 ]
+"24
 [v _modbus_reg `[100]ui  1 e 200 @53 ]
-"94
-[v F3904 `uc  1 s 1 @254 ]
+"70
+[v F3899 `uc  1 s 1 @254 ]
 "367 d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _ANSELC `Vuc  1 e 1 @3898 ]
 "2013
@@ -96,39 +96,39 @@ RX_STATE_DONE 3
 [v _PEIE `Vb  1 e 0 @32662 ]
 "3955
 [v _GIE `Vb  1 e 0 @32663 ]
-"26 ../modbus_rtu.c
+"10 ../main.c
 [v _main `(v  1 e 0 0 ]
 {
-"27
+"11
 [v _md_keep `ui  1 a 2 0 ]
-"46
+"32
 } 2
-"137
+"113 ../modbus_rtu.c
 [v _modbus_receive `(v  1 e 0 0 ]
 {
-"181
+"157
 } 0
-"184
+"160
 [v _read_holding_regs `(v  1 e 0 0 ]
 {
-"188
+"164
 [v _i `uc  1 a 1 0 ]
-"186
+"162
 [v _start_addr `ui  1 a 2 1 ]
-"187
+"163
 [v _data_crc `ui  1 a 2 3 ]
-"185
+"161
 [v _num `ui  1 a 2 5 ]
-"210
+"186
 } 7
-"213
+"189
 [v _write_single_holding_reg `(v  1 e 0 0 ]
 {
-"215
+"191
 [v _i `uc  1 a 1 0 ]
-"214
+"190
 [v _start_addr `ui  1 a 2 1 ]
-"230
+"206
 } 3
 "53 ../mbcrc.c
 [v _modbus_crc16 `(ui  1 e 2 0 ]
@@ -144,25 +144,25 @@ RX_STATE_DONE 3
 [v _usLen `ui  1 p 2 2 ]
 "65
 } 4
-"233 ../modbus_rtu.c
+"35 ../main.c
 [v _my_isr `I(v  1 e 0 0 ]
 {
-"237
+"39
 } 0
-"114
+"90 ../modbus_rtu.c
 [v _timer35_isr `(v  1 e 0 0 ]
 {
-"135
+"111
 } 0
-"93
+"69
 [v _tx_isr `(v  1 e 0 0 ]
 {
-"112
+"88
 } 0
-"54
+"30
 [v _rec_isr `(v  1 e 0 0 ]
 {
-"55
+"31
 [v _rec_data `uc  1 a 1 0 ]
-"90
+"66
 } 1

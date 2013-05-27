@@ -10,8 +10,6 @@
         //¼Ä´æÆ÷Æ«ÒÆµØÖ·
 	#define HOLDING_START_ADDR 10
 
-	#define DEBUG 1
-
 #if USE_UART==1
         #define RXD_INTERRUPT_REQ_FLAG ((RC1IE)&&(RC1IF))
 	#define CLEAR_RXD_INTERRUPT_REQ_FLAG 

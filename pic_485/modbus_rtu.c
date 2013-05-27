@@ -12,6 +12,7 @@
 
 //#include<pic18f25k22.h>
 #include<htc.h>
+
 #include "mbcrc.h"
 #include"modbus_rtu.h"
 #include"modbus_rtu_config.h"
@@ -19,33 +20,8 @@
 TX_BUF tx_buf;
 RX_BUF rx_buf;
 RX_STATE rx_state = RX_STATE_INIT;
+
 unsigned int modbus_reg[MODBUS_REG_NUM];
-
-#if DEBUG
-void main(void)
-{
-    unsigned int md_keep;
-    ANSELC = 0;
-    TRISC = 0x00;//输出
-    PORTC = 0xc0;
-    
-    init_timer35();
-    PEIE = 1;
-    GIE = 1;
-    init_uart();
-    while(1)
-	{
-            modbus_receive();
-
-            if(modbus_reg[0]!=md_keep)
-            {
-                md_keep = modbus_reg[0];
-                PORTC = md_keep;
-            }
-	}
-}
-#endif
-
 /*
  * 接收中断函数中调用
  * 该函数可以直接移植到其他系统
@@ -229,9 +205,4 @@ void write_single_holding_reg(void)
 	TXD_INTERRUPT_EN = 1;//发送数据
 }
 
-void interrupt my_isr(void)
-{
-    rec_isr();
-    tx_isr();
-    timer35_isr();
-}
+

@@ -24,7 +24,7 @@
 		unsigned char data_buf[TX_BUF_SIZE];//»º³åÇø
 	} TX_BUF;
         
-    void init_uart(void);
+    //void init_uart(void);
     void rec_isr(void);
     void tx_isr(void);
     //void init_timer35(void);
