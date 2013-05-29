@@ -6,17 +6,17 @@
 "20 ../modbus_rtu.c
 [s S33 . 53 `uc 1 frame_ok 1 0 `uc 1 data_valid 1 1 `uc 1 rec_count 1 2 `[50]uc 1 data_buf 50 3 ]
 "21
-[e E3864 . `uc
+[e E3832 . `uc
 RX_STATE_INIT 0
 RX_STATE_IDLE 1
 RX_STATE_RECEIVE 2
 RX_STATE_DONE 3
 ]
-"35 ../main.c
-[v F3895 `(v  1 t 0 ]
-"10
+"73 ../main.c
+[v F3863 `(v  1 t 0 ]
+"42
 [v _main `(v  1 e 0 0 ]
-"35
+"73
 [v _my_isr `I(v  1 e 0 0 ]
 "53 ../mbcrc.c
 [v _modbus_crc16 `(ui  1 e 2 0 ]
@@ -41,67 +41,67 @@ RX_STATE_DONE 3
 "21
 [v _rx_buf `S33  1 e 53 @0 ]
 "22
-[v _rx_state `E3864  1 e 1 @253 ]
+[v _rx_state `E3832  1 e 1 @253 ]
 "24
 [v _modbus_reg `[100]ui  1 e 200 @53 ]
 "70
-[v F3899 `uc  1 s 1 @254 ]
-"367 d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
+[v F3867 `uc  1 s 1 @254 ]
+"367 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
 [v _ANSELC `Vuc  1 e 1 @3898 ]
 "2013
 [v _PORTC `Vuc  1 e 1 @3970 ]
-"2327
+"2326
 [v _TRISC `Vuc  1 e 1 @3988 ]
-"2465
+"2464
 [v _TMR1IE `Vb  1 e 0 @31976 ]
-"2469
+"2468
 [v _TX1IE `Vb  1 e 0 @31980 ]
-"2470
+"2469
 [v _RC1IE `Vb  1 e 0 @31981 ]
-"2497
+"2496
 [v _TMR1IF `Vb  1 e 0 @31984 ]
-"2501
+"2500
 [v _TX1IF `Vb  1 e 0 @31988 ]
-"2502
+"2501
 [v _RC1IF `Vb  1 e 0 @31989 ]
-"2796
+"2795
 [v _CREN1 `Vb  1 e 0 @32092 ]
-"2799
+"2798
 [v _SPEN1 `Vb  1 e 0 @32095 ]
-"2842
+"2841
 [v _BRGH1 `Vb  1 e 0 @32098 ]
-"2844
+"2843
 [v _SYNC1 `Vb  1 e 0 @32100 ]
-"2845
+"2844
 [v _TXEN1 `Vb  1 e 0 @32101 ]
-"2874
+"2873
 [v _TX1REG `Vuc  1 e 1 @4013 ]
-"2880
+"2879
 [v _RC1REG `Vuc  1 e 1 @4014 ]
-"2884
+"2883
 [v _SPBRG1 `Vuc  1 e 1 @4015 ]
-"3545
+"3544
 [v _TMR1ON `Vb  1 e 0 @32360 ]
-"3552
+"3551
 [v _T1CKPS0 `Vb  1 e 0 @32364 ]
-"3553
+"3552
 [v _T1CKPS1 `Vb  1 e 0 @32365 ]
-"3554
+"3553
 [v _TMR1CS0 `Vb  1 e 0 @32366 ]
-"3555
+"3554
 [v _TMR1CS1 `Vb  1 e 0 @32367 ]
-"3587
+"3586
 [v _TMR1 `Vui  1 e 2 @4046 ]
-"3954
+"3953
 [v _PEIE `Vb  1 e 0 @32662 ]
-"3955
+"3954
 [v _GIE `Vb  1 e 0 @32663 ]
-"10 ../main.c
+"42 ../main.c
 [v _main `(v  1 e 0 0 ]
 {
-"11
+"43
 [v _md_keep `ui  1 a 2 0 ]
-"32
+"70
 } 2
 "113 ../modbus_rtu.c
 [v _modbus_receive `(v  1 e 0 0 ]
@@ -144,10 +144,10 @@ RX_STATE_DONE 3
 [v _usLen `ui  1 p 2 2 ]
 "65
 } 4
-"35 ../main.c
+"73 ../main.c
 [v _my_isr `I(v  1 e 0 0 ]
 {
-"39
+"77
 } 0
 "90 ../modbus_rtu.c
 [v _timer35_isr `(v  1 e 0 0 ]

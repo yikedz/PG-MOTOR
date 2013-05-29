@@ -1,0 +1,10 @@
+_timer35_isr: CODE, 882 0 36
+_modbus_crc16: CODE, 694 0 88
+_modbus_receive: CODE, 604 0 90
+_main: CODE, 834 0 48
+_rec_isr: CODE, 380 0 124
+_write_single_holding_reg: CODE, 504 0 100
+_read_holding_regs: CODE, 64 0 316
+_my_isr: CODE, 918 0 22
+_tx_isr: CODE, 782 0 52
+Total: 876

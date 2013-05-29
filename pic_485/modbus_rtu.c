@@ -10,7 +10,7 @@
  * 有数据需要返回时，使能发送中断，单片机会自动发送所有的数据。
 */
 
-//#include<pic18f25k22.h>
+#include<pic18f25k22.h>
 #include<htc.h>
 
 #include "mbcrc.h"

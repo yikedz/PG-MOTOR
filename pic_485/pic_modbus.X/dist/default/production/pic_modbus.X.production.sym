@@ -1,12 +1,14 @@
 __S0 F00000 0 ABS
 __S1 500 0 ABS
 _GIE 7F97 0 ABS
-F3899 FE 0 ABS
+F3867 FE 0 ABS
 _TMR1 FCE 0 ABS
 _PEIE 7F96 0 ABS
+__config10 FFFF 0 ABS
 _main 6D6 0 CODE
 _exit 18 0 CODE
 start 18 0 CODE
+__config11 FFFF 0 ABS
 _BRGH1 7D62 0 ABS
 _SYNC1 7D64 0 ABS
 _CREN1 7D5C 0 ABS
@@ -23,7 +25,7 @@ __LRAM 1 0 ABS
 _write_single_holding_reg 4CA 0 CODE
 ?_main 200 0 BANK2
 __Hbss FF 0 RAM
-__end_of_timer35_isr 82C 0 CODE
+__end_of_timer35_isr 838 0 CODE
 __Lbss FF 0 RAM
 _SPBRG1 FAF 0 ABS
 read_holding_regs@i 203 0 BANK2
@@ -51,7 +53,7 @@ __Hinit 30 0 CODE
 __Linit 18 0 CODE
 __Hrbss 0 0 COMRAM
 __Lrbss 0 0 COMRAM
-_my_isr 74A 0 CODE
+_my_isr 756 0 CODE
 _tx_isr 638 0 CODE
 __Htext 46 0 ABS
 __Ltext 46 0 ABS
@@ -90,9 +92,9 @@ __Ltext8 46 0 ABS
 __Habsbss1 133 0 ABS
 __Labsbss1 100 0 ABS
 read_holding_regs@start_addr 204 0 BANK2
-_timer35_isr 7BC 0 CODE
+_timer35_isr 7C8 0 CODE
 ??_read_holding_regs 203 0 BANK2
-__end_of_main 74A 0 CODE
+__end_of_main 756 0 CODE
 __end_of_rec_isr 3C0 0 CODE
 __Hsmallconst 600 0 SMALLCONST
 __Lsmallconst 600 0 SMALLCONST
@@ -125,26 +127,35 @@ __Lconst 46 0 CODE
 _modbus_reg 35 0 ABS
 __end_of_write_single_holding_reg 586 0 CODE
 __end_of_read_holding_regs 2A0 0 CODE
-__end_of_my_isr 7BC 0 CODE
+__end_of_my_isr 7C8 0 CODE
 ?_modbus_crc16 211 0 BANK2
 __end_of_tx_isr 6D6 0 CODE
 ?_modbus_receive 202 0 BANK2
+__config1 F9FF 0 ABS
 __Hparam0 46 0 ABS
 __Lparam0 46 0 ABS
+__config2 FFFF 0 ABS
 __Hparam1 46 0 ABS
 __Lparam1 46 0 ABS
-intlevel0 82C 0 CODE
+__config3 FFFF 0 ABS
+intlevel0 838 0 CODE
 __Hparam2 22A 0 BANK2
 __Lparam2 200 0 BANK2
-intlevel1 82C 0 CODE
+__config4 FFFF 0 ABS
+intlevel1 838 0 CODE
 __Hparam3 46 0 ABS
 __Lparam3 46 0 ABS
-intlevel2 82C 0 CODE
+__config5 FFFF 0 ABS
+intlevel2 838 0 CODE
 __Hparam4 46 0 ABS
 __Lparam4 46 0 ABS
-intlevel3 82C 0 CODE
+__config6 FFFF 0 ABS
+intlevel3 838 0 CODE
 __Hparam5 46 0 ABS
 __Lparam5 46 0 ABS
+__config7 FFFF 0 ABS
+__config8 FFFF 0 ABS
+__config9 FFFF 0 ABS
 __activetblptr 2 0 ABS
 _read_holding_regs 46 0 CODE
 __Heeprom_data F00000 0 EEDATA
@@ -173,7 +184,7 @@ __Lmediumconst 7DFE 0 MEDIUMCONST
 __Hirdata 46 0 CODE
 __Lirdata 46 0 CODE
 read_holding_regs@data_crc 206 0 BANK2
-__Hconfig 300000 0 CONFIG
+__Hconfig 30000E 0 CONFIG
 __Lconfig 300000 0 CONFIG
 ??_rec_isr 228 0 BANK2
 __Hrparam 46 0 ABS
@@ -207,24 +218,27 @@ __Hintentry 46 0 ABS
 __Lintentry 46 0 ABS
 %segments
 reset_vec 0 3 CODE 0
-intcode 8 82B CODE 8
+intcode 8 837 CODE 8
 mediumconst 7DFE 7FFF MEDIUMCONST 7DFE
 param2 200 229 BANK2 200
+config 300000 30000D CONFIG 300000
 %locals
 dist/default/production\pic_modbus.X.production.obj
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s2go.
 ../main.c
-13 6D6 0 CODE
-14 6DE 0 CODE
-15 6E2 0 CODE
-17 6E6 0 CODE
-19 6FE 0 CODE
-20 700 0 CODE
-21 702 0 CODE
-24 712 0 CODE
-26 716 0 CODE
-28 736 0 CODE
-29 73E 0 CODE
-22 742 0 CODE
+45 6D6 0 CODE
+46 6DE 0 CODE
+47 6E2 0 CODE
+48 6E6 0 CODE
+51 6E8 0 CODE
+53 700 0 CODE
+54 702 0 CODE
+55 704 0 CODE
+58 714 0 CODE
+60 718 0 CODE
+64 726 0 CODE
+66 746 0 CODE
+56 74E 0 CODE
 ../modbus_rtu.c
 114 3C0 0 CODE
 116 3D0 0 CODE
@@ -288,25 +302,25 @@ dist/default/production\pic_modbus.X.production.obj
 64 61C 0 CODE
 65 636 0 CODE
 ../main.c
-36 776 0 CODE
-37 77A 0 CODE
-38 77E 0 CODE
-39 782 0 CODE
+74 782 0 CODE
+75 786 0 CODE
+76 78A 0 CODE
+77 78E 0 CODE
 ../main.c
-35 8 0 CODE
+73 8 0 CODE
 ../modbus_rtu.c
-91 7BC 0 CODE
-94 7D8 0 CODE
-97 7DC 0 CODE
-98 7EC 0 CODE
-100 7F0 0 CODE
-101 800 0 CODE
-102 80C 0 CODE
-104 810 0 CODE
-94 814 0 CODE
-106 826 0 CODE
-108 828 0 CODE
-111 82A 0 CODE
+91 7C8 0 CODE
+94 7E4 0 CODE
+97 7E8 0 CODE
+98 7F8 0 CODE
+100 7FC 0 CODE
+101 80C 0 CODE
+102 818 0 CODE
+104 81C 0 CODE
+94 820 0 CODE
+106 832 0 CODE
+108 834 0 CODE
+111 836 0 CODE
 ../modbus_rtu.c
 72 638 0 CODE
 75 654 0 CODE

@@ -1,0 +1,156 @@
+[p GLOBOPT AUTOSTATIC LFSROK SPACEOPT EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F25K22 ]
+"66 E:\PG-MOTOR\pic_485\main.c
+[v F3863 `(v  1 t 0 ]
+[s S50 . 51 `uc 1 tx_count 1 0 `[50]uc 1 data_buf 50 1 ]
+"20 E:\PG-MOTOR\pic_485\modbus_rtu.c
+[s S54 . 53 `uc 1 frame_ok 1 0 `uc 1 data_valid 1 1 `uc 1 rec_count 1 2 `[50]uc 1 data_buf 50 3 ]
+"21
+[e E3832 . `uc
+RX_STATE_INIT 0
+RX_STATE_IDLE 1
+RX_STATE_RECEIVE 2
+RX_STATE_DONE 3
+]
+"39 E:\PG-MOTOR\pic_485\main.c
+[v _main `(v  1 e 0 0 ]
+"66
+[v _my_isr `I(v  1 e 0 0 ]
+"53 E:\PG-MOTOR\pic_485\mbcrc.c
+[v _modbus_crc16 `(ui  1 e 2 0 ]
+"30 E:\PG-MOTOR\pic_485\modbus_rtu.c
+[v _rec_isr `(v  1 e 0 0 ]
+"69
+[v _tx_isr `(v  1 e 0 0 ]
+"90
+[v _timer35_isr `(v  1 e 0 0 ]
+"113
+[v _modbus_receive `(v  1 e 0 0 ]
+"160
+[v _read_holding_regs `(v  1 e 0 0 ]
+"189
+[v _write_single_holding_reg `(v  1 e 0 0 ]
+"367 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
+[v _ANSELC `Vuc  1 e 1 @3898 ]
+"2013
+[v _PORTC `Vuc  1 e 1 @3970 ]
+"2326
+[v _TRISC `Vuc  1 e 1 @3988 ]
+"2464
+[v _TMR1IE `Vb  1 e 0 @31976 ]
+"2468
+[v _TX1IE `Vb  1 e 0 @31980 ]
+"2469
+[v _RC1IE `Vb  1 e 0 @31981 ]
+"2496
+[v _TMR1IF `Vb  1 e 0 @31984 ]
+"2500
+[v _TX1IF `Vb  1 e 0 @31988 ]
+"2501
+[v _RC1IF `Vb  1 e 0 @31989 ]
+"2795
+[v _CREN1 `Vb  1 e 0 @32092 ]
+"2798
+[v _SPEN1 `Vb  1 e 0 @32095 ]
+"2841
+[v _BRGH1 `Vb  1 e 0 @32098 ]
+"2843
+[v _SYNC1 `Vb  1 e 0 @32100 ]
+"2844
+[v _TXEN1 `Vb  1 e 0 @32101 ]
+"2873
+[v _TX1REG `Vuc  1 e 1 @4013 ]
+"2879
+[v _RC1REG `Vuc  1 e 1 @4014 ]
+"2883
+[v _SPBRG1 `Vuc  1 e 1 @4015 ]
+"3544
+[v _TMR1ON `Vb  1 e 0 @32360 ]
+"3551
+[v _T1CKPS0 `Vb  1 e 0 @32364 ]
+"3552
+[v _T1CKPS1 `Vb  1 e 0 @32365 ]
+"3553
+[v _TMR1CS0 `Vb  1 e 0 @32366 ]
+"3554
+[v _TMR1CS1 `Vb  1 e 0 @32367 ]
+"3586
+[v _TMR1 `Vui  1 e 2 @4046 ]
+"3953
+[v _PEIE `Vb  1 e 0 @32662 ]
+"3954
+[v _GIE `Vb  1 e 0 @32663 ]
+"36 E:\PG-MOTOR\pic_485\main.c
+[v _modbus_reg `[100]ui  1 e 200 @256 ]
+"2 E:\PG-MOTOR\pic_485\mbcrc.c
+[v _aucCRCHi `DC[256]uc  1 s 256 _aucCRCHi ]
+"27
+[v _aucCRCLo `DC[256]uc  1 s 256 _aucCRCLo ]
+"20 E:\PG-MOTOR\pic_485\modbus_rtu.c
+[v _tx_buf `S50  1 e 51 @96 ]
+"21
+[v _rx_buf `S54  1 e 53 @0 ]
+"22
+[v _rx_state `E3832  1 e 1 @53 ]
+"70
+[v F3867 `uc  1 s 1 @54 ]
+"39 E:\PG-MOTOR\pic_485\main.c
+[v _main `(v  1 e 0 0 ]
+{
+"40
+[v _md_keep `ui  1 a 2 0 ]
+"63
+} 2
+"113 E:\PG-MOTOR\pic_485\modbus_rtu.c
+[v _modbus_receive `(v  1 e 0 0 ]
+{
+"157
+} 0
+"160
+[v _read_holding_regs `(v  1 e 0 0 ]
+{
+"162
+[v _start_addr `ui  1 a 2 0 ]
+"163
+[v _data_crc `ui  1 a 2 2 ]
+"161
+[v _num `ui  1 a 2 4 ]
+[v _num `ui  1 a 2 4 ]
+"186
+} 6
+"189
+[v _write_single_holding_reg `(v  1 e 0 0 ]
+{
+"206
+} 0
+"53 E:\PG-MOTOR\pic_485\mbcrc.c
+[v _modbus_crc16 `(ui  1 e 2 0 ]
+{
+[v _pucFrame `*.buc  1 p 2 0 ]
+[v _usLen `ui  1 p 2 2 ]
+"65
+} 0
+"66 E:\PG-MOTOR\pic_485\main.c
+[v _my_isr `I(v  1 e 0 0 ]
+{
+"70
+} 0
+"90 E:\PG-MOTOR\pic_485\modbus_rtu.c
+[v _timer35_isr `(v  1 e 0 0 ]
+{
+"111
+} 0
+"69
+[v _tx_isr `(v  1 e 0 0 ]
+{
+"88
+} 0
+"30
+[v _rec_isr `(v  1 e 0 0 ]
+{
+"31
+[v _rec_data `uc  1 a 1 0 ]
+"66
+} 1

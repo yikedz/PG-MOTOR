@@ -1,10 +1,10 @@
-_timer35_isr: CODE, 1980 0 112
+_timer35_isr: CODE, 1992 0 112
 _modbus_crc16: CODE, 1414 0 178
 _modbus_receive: CODE, 960 0 266
-_main: CODE, 1750 0 116
+_main: CODE, 1750 0 128
 _rec_isr: CODE, 672 0 288
 _write_single_holding_reg: CODE, 1226 0 188
 _read_holding_regs: CODE, 70 0 602
-_my_isr: CODE, 1866 0 114
+_my_isr: CODE, 1878 0 114
 _tx_isr: CODE, 1592 0 158
-Total: 2022
+Total: 2034

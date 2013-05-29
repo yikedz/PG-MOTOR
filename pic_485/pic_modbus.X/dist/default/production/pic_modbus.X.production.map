@@ -2,7 +2,7 @@ HI-TECH Software C Compiler
 
 Linker command line:
 
---edf=d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\dat\en_msgs.txt \
+--edf=D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\dat\en_msgs.txt \
   -cs -h+dist/default/production\pic_modbus.X.production.sym -z -Q18F25K22 \
   -ol.obj -Mdist/default/production/pic_modbus.X.production.map -E1 \
   -ACODE=00h-07FFFh -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -19,7 +19,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
-  C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s5no.obj \
+  C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s2go.obj \
   dist/default/production\pic_modbus.X.production.obj 
 
 Object code version is 3.10
@@ -47,20 +47,21 @@ Estimated maximum call depth: 2
 
 
                 Name          Link     Load   Length Selector Space Scale
-C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s5no.obj
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\s2go.obj
                 init            18       18       18       4     0
                 reset_vec        0        0        4       0     0
                 end_init        30       30       16       4     0
+                config      300000   300000        E  300000     0
 dist/default/production\pic_modbus.X.production.obj
                 intcode          8        8       10       4     0
                 mediumcon     7DFE     7DFE      202    3EFF     0
                 text7          638      638       9E       4     0
-                text6          7BC      7BC       70       4     0
+                text6          7C8      7C8       70       4     0
                 text8          2A0      2A0      120       4     0
                 text1          3C0      3C0      10A       4     0
-                text0          6D6      6D6       74       4     0
+                text0          6D6      6D6       80       4     0
                 text2           46       46      25A       4     0
-                text5          74A      74A       72       4     0
+                text5          756      756       72       4     0
                 text4          586      586       B2       4     0
                 text3          4CA      4CA       BC       4     0
 
@@ -73,12 +74,12 @@ TOTAL           Name          Link     Load   Length  Space
                 reset_vec        0        0        4     0
                 end_init        30       30       16     0
                 text7          638      638       9E     0
-                text6          7BC      7BC       70     0
+                text6          7C8      7C8       70     0
                 text8          2A0      2A0      120     0
                 text1          3C0      3C0      10A     0
-                text0          6D6      6D6       74     0
+                text0          6D6      6D6       80     0
                 text2           46       46      25A     0
-                text5          74A      74A       72     0
+                text5          756      756       72     0
                 text4          586      586       B2     0
                 text3          4CA      4CA       BC     0
 
@@ -117,6 +118,7 @@ TOTAL           Name          Link     Load   Length  Space
         CLASS   FARRAM         
 
         CLASS   CONFIG         
+                config      300000   300000        E     0
 
         CLASS   IDLOC          
 
@@ -127,9 +129,10 @@ TOTAL           Name          Link     Load   Length  Space
 SEGMENTS        Name           Load    Length   Top     Selector    Space Class
 
                 reset_vec       000000  000004  000004         0       0  CODE    
-                intcode         000008  000824  00082C         4       0  CODE    
+                intcode         000008  000830  000838         4       0  CODE    
                 param2          000200  00002A  00022A       200       1  BANK2   
                 mediumconst     007DFE  000202  008000      3EFF       0  MEDIUMCO
+                config          300000  00000E  30000E    300000       0  CONFIG  
 
 
 UNUSED ADDRESS RANGES
@@ -144,18 +147,17 @@ UNUSED ADDRESS RANGES
                          000133-0001FF
                          00022A-00059F
         CODE             000004-000007
-                         00082C-007DFD
-        CONFIG           300000-30000D
+                         000838-007DFD
         CONST            000004-000007
-                         00082C-007DFD
+                         000838-007DFD
         EEDATA           F00000-F000FF
         IDLOC            200000-200007
-        MEDIUMCONST      00082C-007DFD
+        MEDIUMCONST      000838-007DFD
         NVRAM            000500-00059F
         RAM              0000FF-0000FF
                          000133-0001FF
                          00022A-00059F
-        SMALLCONST       00082C-007DFD
+        SMALLCONST       000838-007DFD
 
                                   Symbol Table
 
@@ -177,7 +179,7 @@ UNUSED ADDRESS RANGES
 ?_timer35_isr                       param2       000228
 ?_tx_isr                            param2       000228
 ?_write_single_holding_reg          param2       000203
-F3899                               (abs)        0000FE
+F3867                               (abs)        0000FE
 _ANSELC                             (abs)        000F3A
 _BRGH1                              (abs)        007D62
 _CREN1                              (abs)        007D5C
@@ -210,7 +212,7 @@ __Hbigbss                           bigbss       00022A
 __Hbigdata                          bigdata      00022A
 __Hbss                              bss          0000FF
 __Hclrtext                          clrtext      000046
-__Hconfig                           config       300000
+__Hconfig                           config       30000E
 __Hconst                            const        000046
 __Hdata                             data         000046
 __Heeprom_data                      eeprom_data  F00000
@@ -319,13 +321,24 @@ __S0                                (abs)        F00000
 __S1                                (abs)        000500
 __accesstop                         (abs)        000060
 __activetblptr                      (abs)        000002
-__end_of_main                       text0        00074A
+__config1                           (abs)        00F9FF
+__config10                          (abs)        00FFFF
+__config11                          (abs)        00FFFF
+__config2                           (abs)        00FFFF
+__config3                           (abs)        00FFFF
+__config4                           (abs)        00FFFF
+__config5                           (abs)        00FFFF
+__config6                           (abs)        00FFFF
+__config7                           (abs)        00FFFF
+__config8                           (abs)        00FFFF
+__config9                           (abs)        00FFFF
+__end_of_main                       text0        000756
 __end_of_modbus_crc16               text4        000638
 __end_of_modbus_receive             text1        0004CA
-__end_of_my_isr                     text5        0007BC
+__end_of_my_isr                     text5        0007C8
 __end_of_read_holding_regs          text2        0002A0
 __end_of_rec_isr                    text8        0003C0
-__end_of_timer35_isr                text6        00082C
+__end_of_timer35_isr                text6        000838
 __end_of_tx_isr                     text7        0006D6
 __end_of_write_single_holding_reg   text3        000586
 __mediumconst                       mediumconst  007DFE
@@ -338,20 +351,20 @@ _main                               text0        0006D6
 _modbus_crc16                       text4        000586
 _modbus_receive                     text1        0003C0
 _modbus_reg                         (abs)        000035
-_my_isr                             text5        00074A
+_my_isr                             text5        000756
 _read_holding_regs                  text2        000046
 _rec_isr                            text8        0002A0
 _rx_buf                             (abs)        000000
 _rx_state                           (abs)        0000FD
-_timer35_isr                        text6        0007BC
+_timer35_isr                        text6        0007C8
 _tx_buf                             (abs)        000100
 _tx_isr                             text7        000638
 _write_single_holding_reg           text3        0004CA
 int_func                            intcode      000008
-intlevel0                           text         00082C
-intlevel1                           text         00082C
-intlevel2                           text         00082C
-intlevel3                           text         00082C
+intlevel0                           text         000838
+intlevel1                           text         000838
+intlevel2                           text         000838
+intlevel3                           text         000838
 main@md_keep                        param2       000200
 modbus_crc16@iIndex                 param2       000217
 modbus_crc16@pucFrame               param2       000211
