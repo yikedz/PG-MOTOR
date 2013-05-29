@@ -1,7 +1,7 @@
 
 # 1 "../main.c"
 
-# 315 "D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h"
+# 315 "d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h"
 extern volatile unsigned char ANSELA @ 0xF38;
 
 
@@ -1388,7 +1388,14 @@ volatile unsigned : 1;
 
 extern volatile unsigned char PORTA @ 0xF80;
 
-# 1780
+extern volatile bit RA0 @ ((unsigned)&PORTA*8)+0;
+extern volatile bit RA1 @ ((unsigned)&PORTA*8)+1;
+extern volatile bit RA2 @ ((unsigned)&PORTA*8)+2;
+extern volatile bit RA3 @ ((unsigned)&PORTA*8)+3;
+extern volatile bit RA4 @ ((unsigned)&PORTA*8)+4;
+extern volatile bit RA5 @ ((unsigned)&PORTA*8)+5;
+extern volatile bit RA6 @ ((unsigned)&PORTA*8)+6;
+extern volatile bit RA7 @ ((unsigned)&PORTA*8)+7;
 extern volatile bit AN0 @ ((unsigned)&PORTA*8)+0;
 extern volatile bit AN1 @ ((unsigned)&PORTA*8)+1;
 extern volatile bit AN2 @ ((unsigned)&PORTA*8)+2;
@@ -1624,7 +1631,14 @@ volatile unsigned P2B : 1;
 
 extern volatile unsigned char PORTC @ 0xF82;
 
-# 2023
+extern volatile bit RC0 @ ((unsigned)&PORTC*8)+0;
+extern volatile bit RC1 @ ((unsigned)&PORTC*8)+1;
+extern volatile bit RC2 @ ((unsigned)&PORTC*8)+2;
+extern volatile bit RC3 @ ((unsigned)&PORTC*8)+3;
+extern volatile bit RC4 @ ((unsigned)&PORTC*8)+4;
+extern volatile bit RC5 @ ((unsigned)&PORTC*8)+5;
+extern volatile bit RC6 @ ((unsigned)&PORTC*8)+6;
+extern volatile bit RC7 @ ((unsigned)&PORTC*8)+7;
 extern volatile bit T1OSO @ ((unsigned)&PORTC*8)+0;
 extern volatile bit T1OSI @ ((unsigned)&PORTC*8)+1;
 extern volatile bit T5CKI @ ((unsigned)&PORTC*8)+2;
@@ -1867,6 +1881,7 @@ volatile unsigned TRISA6 : 1;
 volatile unsigned TRISA7 : 1;
 };
 struct {
+
 volatile unsigned RA0 : 1;
 volatile unsigned RA1 : 1;
 volatile unsigned RA2 : 1;
@@ -1891,7 +1906,7 @@ extern volatile bit TRISB5 @ ((unsigned)&TRISB*8)+5;
 extern volatile bit TRISB6 @ ((unsigned)&TRISB*8)+6;
 extern volatile bit TRISB7 @ ((unsigned)&TRISB*8)+7;
 
-# 2302
+# 2303
 extern union {
 struct {
 volatile unsigned TRISB0 : 1;
@@ -1928,7 +1943,7 @@ extern volatile bit TRISC5 @ ((unsigned)&TRISC*8)+5;
 extern volatile bit TRISC6 @ ((unsigned)&TRISC*8)+6;
 extern volatile bit TRISC7 @ ((unsigned)&TRISC*8)+7;
 
-# 2345
+# 2346
 extern union {
 struct {
 volatile unsigned TRISC0 : 1;
@@ -2366,7 +2381,7 @@ extern volatile unsigned char RCSTA1 @ 0xFAB;
 extern volatile unsigned char RCSTA @ 0xFAB;
 extern volatile unsigned char RC1STA @ 0xFAB;
 
-# 2791
+# 2792
 extern volatile bit RX9D1 @ ((unsigned)&RCSTA1*8)+0;
 extern volatile bit OERR1 @ ((unsigned)&RCSTA1*8)+1;
 extern volatile bit FERR1 @ ((unsigned)&RCSTA1*8)+2;
@@ -2407,7 +2422,7 @@ extern volatile unsigned char TXSTA1 @ 0xFAC;
 extern volatile unsigned char TXSTA @ 0xFAC;
 extern volatile unsigned char TX1STA @ 0xFAC;
 
-# 2839
+# 2840
 extern volatile bit TX9D1 @ ((unsigned)&TXSTA1*8)+0;
 extern volatile bit TRMT1 @ ((unsigned)&TXSTA1*8)+1;
 extern volatile bit BRGH1 @ ((unsigned)&TXSTA1*8)+2;
@@ -2663,7 +2678,7 @@ extern volatile unsigned char BAUDCON @ 0xFB8;
 extern volatile unsigned char BAUDCTL @ 0xFB8;
 extern volatile unsigned char BAUD1CON @ 0xFB8;
 
-# 3102
+# 3103
 extern union {
 struct {
 volatile unsigned ABDEN : 1;
@@ -2894,7 +2909,7 @@ extern volatile unsigned int ADRES @ 0xFC3;
 extern volatile unsigned char SSP1CON2 @ 0xFC5;
 extern volatile unsigned char SSPCON2 @ 0xFC5;
 
-# 3340
+# 3341
 extern union {
 struct {
 volatile unsigned SEN : 1;
@@ -2912,7 +2927,7 @@ volatile unsigned GCEN : 1;
 extern volatile unsigned char SSP1CON1 @ 0xFC6;
 extern volatile unsigned char SSPCON1 @ 0xFC6;
 
-# 3365
+# 3366
 extern union {
 struct {
 volatile unsigned SSPM : 4;
@@ -2933,7 +2948,7 @@ volatile unsigned SSPM3 : 1;
 extern volatile unsigned char SSP1STAT @ 0xFC7;
 extern volatile unsigned char SSPSTAT @ 0xFC7;
 
-# 3403
+# 3404
 extern union {
 struct {
 volatile unsigned BF : 1;
@@ -2991,7 +3006,7 @@ extern volatile unsigned char SSPBUF @ 0xFC9;
 extern volatile unsigned char SSP1MSK @ 0xFCA;
 extern volatile unsigned char SSPMSK @ 0xFCA;
 
-# 3468
+# 3469
 extern union {
 struct {
 volatile unsigned MSK0 : 1;
@@ -3009,7 +3024,7 @@ volatile unsigned MSK7 : 1;
 extern volatile unsigned char SSP1CON3 @ 0xFCB;
 extern volatile unsigned char SSPCON3 @ 0xFCB;
 
-# 3493
+# 3494
 extern union {
 struct {
 volatile unsigned DHEN : 1;
@@ -3689,7 +3704,7 @@ volatile unsigned InternalTMR : 16;
 
 extern volatile unsigned char TMR3_Prescale @ 0x1009;
 
-# 1376 "D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18.h"
+# 1376 "d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18.h"
 extern unsigned char idloc_read(unsigned char reg_no);
 extern void idloc_write(unsigned char reg_no,unsigned char data);
 
@@ -3730,7 +3745,7 @@ extern void _delay(unsigned long);
 #pragma inline(_delay3)
 extern void _delay3(unsigned char);
 
-# 226 "D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\trace18.h"
+# 226 "d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\trace18.h"
 extern void __it_trace_dc(char id);
 extern void __it_log_dc(char id, char type, ...);
 
@@ -3771,8 +3786,8 @@ void modbus_receive(void);
 void read_holding_regs(void);
 void write_single_holding_reg(void);
 
-# 18 "../main.c"
-asm("\tglobal __config" "1"); asm("\t__config" "1" " equ " "0xF9FF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF");
+# 19 "../main.c"
+asm("\tglobal __config" "1"); asm("\t__config" "1" " equ " "0xF9FF & 0xEFFF & 0xFFFF & 0xFFFF & 0xFFFF");
 
 asm("\tglobal __config" "2"); asm("\t__config" "2" " equ " "0xFFFF & 0xFFFF & 0xFFFF");
 
@@ -3794,7 +3809,38 @@ asm("\tglobal __config" "10"); asm("\t__config" "10" " equ " "0xFFFF & 0xFFFF & 
 
 asm("\tglobal __config" "11"); asm("\t__config" "11" " equ " "0xFFFF");
 extern unsigned int modbus_reg[];
+void start_timer3(void);
+void stop_timer3(void);
+void init_pv1(void);
+void pv1_isr(void);
+unsigned int count_10ms = 0;
+void init_timer3(void)
+{
 
+TMR3ON = 0;
+
+TMR3CS0 = 0;
+TMR3CS1 = 0;
+
+T3CKPS0 = 0;
+T3CKPS1 = 0;
+
+TMR3 = 65535-11059;
+TMR3IF=0;
+TMR3IE=1;
+TMR3ON = 1;
+}
+
+void timer3_isr(void)
+{
+
+if(TMR3IE&&TMR3IF)
+{
+TMR3IF = 0;
+TMR3 = 65535-11059;
+count_10ms++;
+}
+}
 void main(void)
 {
 unsigned int md_keep;
@@ -3802,27 +3848,36 @@ unsigned int md_keep;
 ANSELC = 0;
 TRISC = 0x80;
 PORTC = 0xc0;
-PORTC = 0XFF;
+
+ANSELA = 0;
+TRISA5 =0;
+RA5 = 0;
 
 
-TMR1ON = 0; TMR1CS0 = 1; TMR1CS1 = 0; T1CKPS0 = 0; T1CKPS1 = 0; TMR1 = 65535-40320; TMR1IF=0; TMR1IE=1; TMR1ON = 1;
+TMR1ON = 0; TMR1CS0 = 0; TMR1CS1 = 0; T1CKPS0 = 0; T1CKPS1 = 0; TMR1 = 65535-40320; TMR1IF=0; TMR1IE=1; TMR1ON = 1;
 
 PEIE = 1;
 GIE = 1;
-SPEN1 = 1; SYNC1 = 0; SPBRG1 = 11059200/64*(1*3+1)/9600-1; BRGH1 = 1; CREN1 = 1; TXEN1 = 1; RC1IE = 1;
+SPEN1 = 1; SYNC1 = 0; SPBRG1 = 110592/(96*16)-1; BRGH1 = 0; CREN1 = 1; TXEN1 = 1; RC1IE = 1;
+
+init_timer3();
+init_pv1();
 while(1)
 {
 modbus_receive();
 
-modbus_reg[1] = 100;
 
 
 
-if(modbus_reg[0]!=md_keep)
+if(modbus_reg[3]==1)
 {
-md_keep = modbus_reg[0];
 
 }
+else
+{
+
+}
+
 }
 }
 
@@ -3831,4 +3886,73 @@ void interrupt my_isr(void)
 rec_isr();
 tx_isr();
 timer35_isr();
+timer3_isr();
+pv1_isr();
+}
+void get_speed(void)
+{
+static unsigned int pulse_count = 0;
+static unsigned char sample_step = 1;
+
+switch(sample_step)
+{
+case 1:
+start_timer3();
+pulse_count++;
+sample_step = 2;
+break;
+case 2:
+pulse_count++;
+if(pulse_count==6)
+{
+stop_timer3();
+pulse_count = 0;
+
+stop_timer3();
+
+if(count_10ms>0)
+{
+
+modbus_reg[0] = count_10ms;
+}
+
+count_10ms = 0;
+
+sample_step = 1;
+}
+break;
+
+default:
+sample_step = 1;
+break;
+}
+}
+
+void start_timer3(void)
+{
+TMR3 = 65535-11059;
+TMR3ON = 1;
+}
+void stop_timer3(void)
+{
+TMR3ON = 0;
+TMR3 = 65535-11059;
+}
+void init_pv1(void)
+{
+ANSELB = 0;
+TRISB0=0;
+RB0=1;
+TRISB0=1;
+INTEDG0 = 0;
+INT0IE = 1;
+INT0IF = 0;
+}
+void pv1_isr(void)
+{
+if(INT0IF&&INT0IE)
+{
+INT0IF = 0;
+get_speed();
+}
 }

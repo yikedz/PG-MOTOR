@@ -27,11 +27,12 @@
         /*速度模式：高速*/
         /*接收使能*/
         /*发送使能*/
+    //SPBRG1 = 11059200/64*(1*3+1)/9600-1;
         #define init_uart() \
                         SPEN1 = 1;\
                         SYNC1 = 0;\
-                        SPBRG1 = 11059200/64*(1*3+1)/9600-1;\
-                        BRGH1  = 1;\
+                        SPBRG1 = 110592/(96*16)-1;\
+                        BRGH1  = 0;\
                         CREN1  = 1;\
                         TXEN1  = 1;\
                         RC1IE = 1
@@ -69,7 +70,7 @@
 
         #define init_timer35() \
                           TMR1ON = 0;\
-                          TMR1CS0 = 1;\
+                          TMR1CS0 = 0;\
                           TMR1CS1 = 0;\
                           T1CKPS0 = 0;\
                           T1CKPS1 = 0;\

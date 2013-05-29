@@ -6,18 +6,95 @@
 "20 ../modbus_rtu.c
 [s S33 . 53 `uc 1 frame_ok 1 0 `uc 1 data_valid 1 1 `uc 1 rec_count 1 2 `[50]uc 1 data_buf 50 3 ]
 "21
-[e E3832 . `uc
+[e E3864 . `uc
 RX_STATE_INIT 0
 RX_STATE_IDLE 1
 RX_STATE_RECEIVE 2
 RX_STATE_DONE 3
 ]
-"73 ../main.c
-[v F3863 `(v  1 t 0 ]
-"42
+"43 ../main.c
+[s S107 . 1 `Vuc 1 RC0 1 0 :1:0 
+`Vuc 1 RC1 1 0 :1:1 
+`Vuc 1 RC2 1 0 :1:2 
+`Vuc 1 RC3 1 0 :1:3 
+`Vuc 1 RC4 1 0 :1:4 
+`Vuc 1 RC5 1 0 :1:5 
+`Vuc 1 RC6 1 0 :1:6 
+`Vuc 1 RC7 1 0 :1:7 
+]
+[s S116 . 1 `Vuc 1 T1OSO 1 0 :1:0 
+`Vuc 1 T1OSI 1 0 :1:1 
+`Vuc 1 T5CKI 1 0 :1:2 
+`Vuc 1 SCK 1 0 :1:3 
+`Vuc 1 SDI 1 0 :1:4 
+`Vuc 1 SDO 1 0 :1:5 
+`Vuc 1 TX 1 0 :1:6 
+`Vuc 1 RX 1 0 :1:7 
+]
+[s S125 . 1 `Vuc 1 P2B 1 0 :1:0 
+`Vuc 1 P2A 1 0 :1:1 
+`Vuc 1 P1A 1 0 :1:2 
+`Vuc 1 SCL 1 0 :1:3 
+`Vuc 1 SDA 1 0 :1:4 
+`Vuc 1 . 1 0 :1:5 
+`Vuc 1 CK 1 0 :1:6 
+`Vuc 1 DT 1 0 :1:7 
+]
+[s S134 . 1 `Vuc 1 T1CKI 1 0 :1:0 
+`Vuc 1 CCP2 1 0 :1:1 
+`Vuc 1 CCP1 1 0 :1:2 
+`Vuc 1 SCK1 1 0 :1:3 
+`Vuc 1 SDI1 1 0 :1:4 
+`Vuc 1 SDO1 1 0 :1:5 
+`Vuc 1 TX1 1 0 :1:6 
+`Vuc 1 RX1 1 0 :1:7 
+]
+[s S143 . 1 `Vuc 1 T3CKI 1 0 :1:0 
+`Vuc 1 . 1 0 :1:1 
+`Vuc 1 CTPLS 1 0 :1:2 
+`Vuc 1 SCL1 1 0 :1:3 
+`Vuc 1 SDA1 1 0 :1:4 
+`Vuc 1 . 1 0 :1:5 
+`Vuc 1 CK1 1 0 :1:6 
+`Vuc 1 DT1 1 0 :1:7 
+]
+[s S152 . 1 `Vuc 1 T3G 1 0 :1:0 
+`Vuc 1 . 1 0 :1:1 
+`Vuc 1 AN14 1 0 :1:2 
+`Vuc 1 AN15 1 0 :1:3 
+`Vuc 1 AN16 1 0 :1:4 
+`Vuc 1 AN17 1 0 :1:5 
+`Vuc 1 AN18 1 0 :1:6 
+`Vuc 1 AN19 1 0 :1:7 
+]
+[s S161 . 1 `Vuc 1 . 1 0 :6:0 
+`Vuc 1 CCP3 1 0 :1:6 
+`Vuc 1 P3B 1 0 :1:7 
+]
+[s S165 . 1 `Vuc 1 . 1 0 :6:0 
+`Vuc 1 P3A 1 0 :1:6 
+]
+[u S168 . 1 `S107 1 . 1 0 `S116 1 . 1 0 `S125 1 . 1 0 `S134 1 . 1 0 `S143 1 . 1 0 `S152 1 . 1 0 `S161 1 . 1 0 `S165 1 . 1 0 ]
+"119
+[v F3908 `(v  1 t 0 ]
+"47
+[v _init_timer3 `(v  1 e 0 0 ]
+"64
+[v _timer3_isr `(v  1 e 0 0 ]
+"79
 [v _main `(v  1 e 0 0 ]
-"73
+"119
 [v _my_isr `I(v  1 e 0 0 ]
+"127
+[v _get_speed `(v  1 e 0 0 ]
+"166
+[v _start_timer3 `(v  1 e 0 0 ]
+"171
+[v _stop_timer3 `(v  1 e 0 0 ]
+"176
+[v _init_pv1 `(v  1 e 0 0 ]
+"186
+[v _pv1_isr `(v  1 e 0 0 ]
 "53 ../mbcrc.c
 [v _modbus_crc16 `(ui  1 e 2 0 ]
 "30 ../modbus_rtu.c
@@ -32,6 +109,14 @@ RX_STATE_DONE 3
 [v _read_holding_regs `(v  1 e 0 0 ]
 "189
 [v _write_single_holding_reg `(v  1 e 0 0 ]
+"5 d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\sources\aldiv.c
+[v ___aldiv `(l  1 e 4 0 ]
+"45 ../main.c
+[v _count_10ms `ui  1 e 2 @253 ]
+"128
+[v F3911 `ui  1 s 2 @308 ]
+"129
+[v F3912 `uc  1 s 1 @310 ]
 "2 ../mbcrc.c
 [v _aucCRCHi `DC[256]uc  1 s 256 _aucCRCHi ]
 "27
@@ -41,74 +126,118 @@ RX_STATE_DONE 3
 "21
 [v _rx_buf `S33  1 e 53 @0 ]
 "22
-[v _rx_state `E3832  1 e 1 @253 ]
+[v _rx_state `E3864  1 e 1 @255 ]
 "24
 [v _modbus_reg `[100]ui  1 e 200 @53 ]
 "70
-[v F3867 `uc  1 s 1 @254 ]
-"367 D:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
+[v F3899 `uc  1 s 1 @307 ]
+"315 d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\include\pic18f25k22.h
+[v _ANSELA `Vuc  1 e 1 @3896 ]
+"340
+[v _ANSELB `Vuc  1 e 1 @3897 ]
+"367
 [v _ANSELC `Vuc  1 e 1 @3898 ]
+"1777
+[v _RA5 `Vb  1 e 0 @31749 ]
+"1881
+[v _RB0 `Vb  1 e 0 @31752 ]
 "2013
 [v _PORTC `Vuc  1 e 1 @3970 ]
-"2326
+"2132
+[v _PORTCbits `S168  1 e 1 @3970 ]
+"2248
+[v _TRISA5 `Vb  1 e 0 @31893 ]
+"2287
+[v _TRISB0 `Vb  1 e 0 @31896 ]
+"2327
 [v _TRISC `Vuc  1 e 1 @3988 ]
-"2464
+"2465
 [v _TMR1IE `Vb  1 e 0 @31976 ]
-"2468
-[v _TX1IE `Vb  1 e 0 @31980 ]
 "2469
+[v _TX1IE `Vb  1 e 0 @31980 ]
+"2470
 [v _RC1IE `Vb  1 e 0 @31981 ]
-"2496
+"2497
 [v _TMR1IF `Vb  1 e 0 @31984 ]
-"2500
-[v _TX1IF `Vb  1 e 0 @31988 ]
 "2501
+[v _TX1IF `Vb  1 e 0 @31988 ]
+"2502
 [v _RC1IF `Vb  1 e 0 @31989 ]
-"2795
+"2562
+[v _TMR3IE `Vb  1 e 0 @32001 ]
+"2593
+[v _TMR3IF `Vb  1 e 0 @32009 ]
+"2796
 [v _CREN1 `Vb  1 e 0 @32092 ]
-"2798
+"2799
 [v _SPEN1 `Vb  1 e 0 @32095 ]
-"2841
+"2842
 [v _BRGH1 `Vb  1 e 0 @32098 ]
-"2843
-[v _SYNC1 `Vb  1 e 0 @32100 ]
 "2844
+[v _SYNC1 `Vb  1 e 0 @32100 ]
+"2845
 [v _TXEN1 `Vb  1 e 0 @32101 ]
-"2873
+"2874
 [v _TX1REG `Vuc  1 e 1 @4013 ]
-"2879
+"2880
 [v _RC1REG `Vuc  1 e 1 @4014 ]
-"2883
+"2884
 [v _SPBRG1 `Vuc  1 e 1 @4015 ]
-"3544
+"2898
+[v _TMR3ON `Vb  1 e 0 @32136 ]
+"2903
+[v _T3CKPS0 `Vb  1 e 0 @32140 ]
+"2904
+[v _T3CKPS1 `Vb  1 e 0 @32141 ]
+"2905
+[v _TMR3CS0 `Vb  1 e 0 @32142 ]
+"2906
+[v _TMR3CS1 `Vb  1 e 0 @32143 ]
+"2936
+[v _TMR3 `Vui  1 e 2 @4018 ]
+"3545
 [v _TMR1ON `Vb  1 e 0 @32360 ]
-"3551
-[v _T1CKPS0 `Vb  1 e 0 @32364 ]
 "3552
-[v _T1CKPS1 `Vb  1 e 0 @32365 ]
+[v _T1CKPS0 `Vb  1 e 0 @32364 ]
 "3553
-[v _TMR1CS0 `Vb  1 e 0 @32366 ]
+[v _T1CKPS1 `Vb  1 e 0 @32365 ]
 "3554
+[v _TMR1CS0 `Vb  1 e 0 @32366 ]
+"3555
 [v _TMR1CS1 `Vb  1 e 0 @32367 ]
-"3586
+"3587
 [v _TMR1 `Vui  1 e 2 @4046 ]
-"3953
-[v _PEIE `Vb  1 e 0 @32662 ]
+"3919
+[v _INTEDG0 `Vb  1 e 0 @32654 ]
+"3943
+[v _INT0IF `Vb  1 e 0 @32657 ]
+"3946
+[v _INT0IE `Vb  1 e 0 @32660 ]
 "3954
+[v _PEIE `Vb  1 e 0 @32662 ]
+"3955
 [v _GIE `Vb  1 e 0 @32663 ]
-"42 ../main.c
+"79 ../main.c
 [v _main `(v  1 e 0 0 ]
 {
-"43
-[v _md_keep `ui  1 a 2 0 ]
-"70
-} 2
+"116
+} 0
 "113 ../modbus_rtu.c
 [v _modbus_receive `(v  1 e 0 0 ]
 {
 "157
 } 0
-"160
+"176 ../main.c
+[v _init_pv1 `(v  1 e 0 0 ]
+{
+"184
+} 0
+"47
+[v _init_timer3 `(v  1 e 0 0 ]
+{
+"61
+} 0
+"160 ../modbus_rtu.c
 [v _read_holding_regs `(v  1 e 0 0 ]
 {
 "164
@@ -144,20 +273,25 @@ RX_STATE_DONE 3
 [v _usLen `ui  1 p 2 2 ]
 "65
 } 4
-"73 ../main.c
+"119 ../main.c
 [v _my_isr `I(v  1 e 0 0 ]
 {
+"125
+} 0
+"64
+[v _timer3_isr `(v  1 e 0 0 ]
+{
 "77
+} 0
+"186
+[v _pv1_isr `(v  1 e 0 0 ]
+{
+"192
 } 0
 "90 ../modbus_rtu.c
 [v _timer35_isr `(v  1 e 0 0 ]
 {
 "111
-} 0
-"69
-[v _tx_isr `(v  1 e 0 0 ]
-{
-"88
 } 0
 "30
 [v _rec_isr `(v  1 e 0 0 ]
@@ -166,3 +300,36 @@ RX_STATE_DONE 3
 [v _rec_data `uc  1 a 1 0 ]
 "66
 } 1
+"69
+[v _tx_isr `(v  1 e 0 0 ]
+{
+"88
+} 0
+"127 ../main.c
+[v _get_speed `(v  1 e 0 0 ]
+{
+"163
+} 0
+"5 d:\Program Files\HI-TECH Software\PICC-18\PRO\9.66\sources\aldiv.c
+[v ___aldiv `(l  1 e 4 0 ]
+{
+"7
+[v _counter `uc  1 a 1 0 ]
+[v _sign `uc  1 a 1 1 ]
+"6
+[v _quotient `l  1 a 4 2 ]
+"5
+[v _dividend `l  1 p 4 0 ]
+[v _divisor `l  1 p 4 4 ]
+"37
+} 6
+"171 ../main.c
+[v _stop_timer3 `(v  1 e 0 0 ]
+{
+"174
+} 0
+"166
+[v _start_timer3 `(v  1 e 0 0 ]
+{
+"169
+} 0
