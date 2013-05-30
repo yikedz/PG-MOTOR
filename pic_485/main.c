@@ -40,30 +40,35 @@ __CONFIG(11, EBTRB_OFF);
 #define BEEP (PORTAbits.RA5)
 
 extern unsigned int modbus_reg[];
+
 unsigned int count_1ms = 0;
 unsigned char have_speed = 0;
 unsigned char count_2s_flg = 0;
+
+void init_timer0(void);//初始化timer0 测速使用 速度太低 超时使速度为零
+void init_timer3(void);//测速定时器
+void init_timer5(void);
+
+
+void timer0_isr(void);
+void timer3_isr(void);
+void timer5_isr(void);
 
 //to get speed
 void start_timer3(void);
 void stop_timer3(void);
 
+
+void init_pg_in(void);//初始化RB1,采集过零脉冲信号
 void init_pv1(void);//下降沿中断采集速度
-void pv1_isr(void);
 
-void init_timer0(void);//初始化timer0 测速使用 速度太低 超时使速度为零
-void timer0_isr(void);
-
-void init_pg_in(void);
-void pg_in_isr(void);
-
-void init_timer5(void);
-void timer5_isr(void);
+void pg_in_isr(void);//过零脉冲中断处理
+void pv1_isr(void);//速度采集中断处理
 
 
 void init_timer3(void)//测速定时器
 {
-//11.0592M x 4
+    //11.0592M x 4
      TMR3ON = 0;
 
      TMR3CS0 = 0;
@@ -164,7 +169,8 @@ void interrupt my_isr(void)
 void get_speed(void)
 {
 	static unsigned int pulse_count = 0;//脉冲数量
-        static unsigned char sample_step = 1;
+    static unsigned char sample_step = 1;
+    
 	//采样6个脉冲
         have_speed = 1;
 	switch(sample_step)
@@ -227,15 +233,17 @@ void pv1_isr(void)
 
 void init_timer0(void)//初始化timer0 测速使用 速度太低 超时使速度为零
 {
-    TMR0ON = 0;
-    T08BIT = 0;//16bit reg
-    T0CS = 0;//clock input Fosc/4
-    //4 分频
+    TMR0ON = 0;//turn off timer0
+    T08BIT = 0;//16bit reg mode
+    T0CS = 0;//clock input Fosc/4 if the value=1 as counter
+    //4 分频 (2 4 8 16 32 64 128 256)
     T0PS0 = 1;
     T0PS1 = 0;
     T0PS2 = 0;
 
-    PSA = 0;
+    PSA = 0;//use 分频器
+
+        
     TMR0 = 65535-27648;//10MS
     TMR0IF = 0;
     TMR0IE = 1;
