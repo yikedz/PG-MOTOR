@@ -3763,7 +3763,7 @@ void modbus_receive(void);
 void read_holding_regs(void);
 void write_single_holding_reg(void);
 
-# 19 "../main.c"
+# 15 "../main.c"
 asm("\tglobal __config" "1"); asm("\t__config" "1" " equ " "0xF9FF & 0xEFFF & 0xFFFF & 0xFFFF & 0xFFFF");
 
 asm("\tglobal __config" "2"); asm("\t__config" "2" " equ " "0xFFFF & 0xFFFF & 0xFFFF");
@@ -3786,22 +3786,29 @@ asm("\tglobal __config" "10"); asm("\t__config" "10" " equ " "0xFFFF & 0xFFFF & 
 
 asm("\tglobal __config" "11"); asm("\t__config" "11" " equ " "0xFFFF");
 
-
-
+# 42
 extern unsigned int modbus_reg[];
-void start_timer3(void);
-void stop_timer3(void);
-void init_pv1(void);
-void pv1_isr(void);
-void init_timer0(void);
-void timer0_isr(void);
-void init_pg_in(void);
-void pg_in_isr(void);
-void init_timer5(void);
-void timer5_isr(void);
 unsigned int count_1ms = 0;
 unsigned char have_speed = 0;
 unsigned char count_2s_flg = 0;
+
+
+void start_timer3(void);
+void stop_timer3(void);
+
+void init_pv1(void);
+void pv1_isr(void);
+
+void init_timer0(void);
+void timer0_isr(void);
+
+void init_pg_in(void);
+void pg_in_isr(void);
+
+void init_timer5(void);
+void timer5_isr(void);
+
+
 void init_timer3(void)
 {
 
@@ -3850,17 +3857,29 @@ TRISA5 =0;
 
 TMR1ON = 0; TMR1CS0 = 0; TMR1CS1 = 0; T1CKPS0 = 0; T1CKPS1 = 0; TMR1 = 65535-40320; TMR1IF=0; TMR1IE=1; TMR1ON = 1;
 SPEN1 = 1; SYNC1 = 0; SPBRG1 = 110592/(96*16)-1; BRGH1 = 0; CREN1 = 1; TXEN1 = 1; RC1IE = 1;
+
 init_timer3();
 init_pv1();
 
+init_timer0();
 
-
+init_pg_in();
+init_timer5();
 
 PEIE = 1;
 GIE = 1;
 
 while(1)
 {
+
+if(modbus_reg[3]==1)
+{
+(PORTAbits.RA5) = 1;
+}
+else
+{
+(PORTAbits.RA5) = 0;
+}
 modbus_receive();
 
 if(count_2s_flg)
@@ -3873,7 +3892,7 @@ have_speed = 0;
 }
 else
 {
-modbus_reg[0] = 10;
+modbus_reg[0] = 0;
 }
 }
 }
@@ -3887,8 +3906,8 @@ timer35_isr();
 timer3_isr();
 pv1_isr();
 timer0_isr();
-
-
+pg_in_isr();
+timer5_isr();
 }
 void get_speed(void)
 {
@@ -3983,6 +4002,7 @@ count0_10ms++;
 
 if(count0_10ms==200)
 {
+
 count_2s_flg = 1;
 count0_10ms = 0;
 }
@@ -3991,8 +4011,8 @@ count0_10ms = 0;
 
 void init_pg_in(void)
 {
-ANSELB = 1;
-TRISB0=0;
+
+TRISB1=0;
 RB1=0;
 TRISB1=1;
 INTEDG1 = 1;
@@ -4007,7 +4027,7 @@ if(INT1IE&&INT1IF)
 INT1IF = 0;
 (PORTCbits.RC5) = 0;
 
-TMR5 = 65535-27648;
+TMR5 = 65535-55296;
 TMR5ON = 1;
 }
 }
@@ -4016,7 +4036,7 @@ void init_timer5(void)
 
 TMR5ON = 0;
 
-TMR5CS0 = 1;
+TMR5CS0 = 0;
 TMR5CS1 = 0;
 
 T5CKPS0 = 0;
@@ -4026,13 +4046,16 @@ TMR5 = 65535-55296;
 
 TMR5IF=0;
 TMR5IE=1;
+
 }
 void timer5_isr(void)
 {
 if(TMR5IF&&TMR5IE)
 {
 TMR5IF = 0;
+
 (PORTCbits.RC5) = 1;
 TMR5ON = 0;
+
 }
 }

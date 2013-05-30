@@ -10,10 +10,6 @@
 
 // PIC18F25K22 Configuration Bit Settings
 
-// PIC18F25K22 Configuration Bit Settings
-
-#include <htc.h>
-
 //#define PORTCbits.RC4
 //#pragma config CONFIG1H = 0x23
 __CONFIG(1, FOSC_HSMP & PLLCFG_ON & PRICLKEN_ON & FCMEN_OFF & IESO_OFF);
@@ -39,21 +35,32 @@ __CONFIG(10, EBTR0_OFF & EBTR1_OFF & EBTR2_OFF & EBTR3_OFF);
 __CONFIG(11, EBTRB_OFF);
 //unsigned int PWM_PERCENT[100];
 
+
 #define PG_OUT (PORTCbits.RC5)
+#define BEEP (PORTAbits.RA5)
+
 extern unsigned int modbus_reg[];
-void start_timer3(void);
-void stop_timer3(void);
-void init_pv1(void);//下降沿中断采集速度
-void pv1_isr(void);
-void init_timer0(void);//初始化timer0 测速使用 速度太低 超时使速度为零
-void timer0_isr(void);
-void init_pg_in(void);
-void pg_in_isr(void);
-void init_timer5(void);
-void timer5_isr(void);
 unsigned int count_1ms = 0;
 unsigned char have_speed = 0;
 unsigned char count_2s_flg = 0;
+
+//to get speed
+void start_timer3(void);
+void stop_timer3(void);
+
+void init_pv1(void);//下降沿中断采集速度
+void pv1_isr(void);
+
+void init_timer0(void);//初始化timer0 测速使用 速度太低 超时使速度为零
+void timer0_isr(void);
+
+void init_pg_in(void);
+void pg_in_isr(void);
+
+void init_timer5(void);
+void timer5_isr(void);
+
+
 void init_timer3(void)//测速定时器
 {
 //11.0592M x 4
@@ -100,23 +107,31 @@ void main(void)
    ANSELA = 0;
    TRISA5 =0;
 
-
-    //for rtu
     init_timer35();
     init_uart();
 
     init_timer3();
     init_pv1();
     
-    //init_timer0();
-    //init_pg_in();
-    //init_timer5();
+    init_timer0();
+	
+    init_pg_in();
+    init_timer5();
 
     PEIE = 1;
     GIE = 1;
     
     while(1)
 	{
+
+			if(modbus_reg[3]==1)
+				{
+					BEEP = 1;
+				}
+			else
+				{
+					BEEP = 0;
+				}
             modbus_receive();
             
             if(count_2s_flg)
@@ -129,7 +144,7 @@ void main(void)
                 }
                 else//2s 没有速度
                 {
-                    modbus_reg[0] = 10;
+                    modbus_reg[0] = 0;
                 }
             }
 	}
@@ -143,8 +158,8 @@ void interrupt my_isr(void)
     timer3_isr();
     pv1_isr();
     timer0_isr();
-    //pg_in_isr();
-   // timer5_isr();
+    pg_in_isr();
+    timer5_isr();
 }
 void get_speed(void)
 {
@@ -236,9 +251,10 @@ void timer0_isr(void)
            TMR0 = 65535-27648;//10MS
            TMR0IF = 0;
            count0_10ms++;
-                // PORTCbits.RC4 = ~PORTCbits.RC4;
+
            if(count0_10ms==200)
            {
+                //PORTCbits.RC4 = ~PORTCbits.RC4;
                 count_2s_flg = 1;
                 count0_10ms = 0;
            }
@@ -247,8 +263,8 @@ void timer0_isr(void)
 
 void init_pg_in(void)//下降沿中断采集速度
 {
-    ANSELB = 1;
-    TRISB0=0;
+    //ANSELB = 1;
+    TRISB1=0;
     RB1=0;      //为下降沿创造高电平的初始条件
     TRISB1=1;   //输入模式
       INTEDG1  = 1;//上升边沿
@@ -263,16 +279,16 @@ void pg_in_isr(void)
        INT1IF = 0;
        PG_OUT = 0;//关闭输出
 	   //TMR5 = 65535-PWM_PERCENT[modbus_reg[2]];
-       TMR5 = 65535-27648;
+       TMR5 = 65535-55296;
        TMR5ON = 1;//启动定时器
    }
 }
 void init_timer5(void)//控制pwm调节定时器 最大值10ms (0-10ms) 100us 100等分 Fosc/8
 {
-//11.0592M x 4
+    //11.0592M x 4
      TMR5ON = 0;
 
-     TMR5CS0 = 1;
+     TMR5CS0 = 0;
      TMR5CS1 = 0;
 
      T5CKPS0 = 0;
@@ -282,13 +298,16 @@ void init_timer5(void)//控制pwm调节定时器 最大值10ms (0-10ms) 100us 100等分 Fosc
 	 
      TMR5IF=0;
      TMR5IE=1;
+	//TMR5ON = 1;
 }
 void timer5_isr(void)
 {
        if(TMR5IF&&TMR5IE)
 	   {
 		TMR5IF = 0;
+		 // TMR5 = 65535-55296;
 		PG_OUT = 1;//开始转动
 		TMR5ON = 0;//停止定时器停止
+		//PORTCbits.RC4 = ~PORTCbits.RC4;
 	   }
 }
