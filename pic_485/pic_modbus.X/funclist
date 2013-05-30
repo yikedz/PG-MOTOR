@@ -1,18 +1,19 @@
-_start_timer3: CODE, 3052 0 12
-_timer35_isr: CODE, 2762 0 112
-_init_pv1: CODE, 3030 0 22
-_modbus_crc16: CODE, 2184 0 178
-_init_timer3: CODE, 3004 0 26
-_stop_timer3: CODE, 3064 0 12
-_modbus_receive: CODE, 1480 0 266
-_get_speed: CODE, 1746 0 250
-_main: CODE, 2642 0 120
-_rec_isr: CODE, 1192 0 288
-_write_single_holding_reg: CODE, 1996 0 188
-_read_holding_regs: CODE, 96 0 602
-_my_isr: CODE, 2520 0 122
-_tx_isr: CODE, 2362 0 158
-___aldiv: CODE, 698 0 494
-_timer3_isr: CODE, 2874 0 94
-_pv1_isr: CODE, 2968 0 36
-Total: 2980
+_timer0_isr: CODE, 3050 0 100
+_start_timer3: CODE, 3246 0 12
+_timer35_isr: CODE, 2838 0 112
+_init_pv1: CODE, 3212 0 22
+_modbus_crc16: CODE, 2388 0 178
+_init_timer3: CODE, 3186 0 26
+_stop_timer3: CODE, 3234 0 12
+_modbus_receive: CODE, 1754 0 266
+_get_speed: CODE, 1488 0 266
+_main: CODE, 2208 0 180
+_rec_isr: CODE, 1200 0 288
+_write_single_holding_reg: CODE, 2020 0 188
+_read_holding_regs: CODE, 108 0 598
+_my_isr: CODE, 2712 0 126
+_tx_isr: CODE, 2566 0 146
+___aldiv: CODE, 706 0 494
+_timer3_isr: CODE, 2950 0 100
+_pv1_isr: CODE, 3150 0 36
+Total: 3150

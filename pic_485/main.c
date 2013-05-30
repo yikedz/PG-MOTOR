@@ -37,12 +37,23 @@ __CONFIG(9, WRTC_OFF & WRTB_OFF & WRTD_OFF);
 __CONFIG(10, EBTR0_OFF & EBTR1_OFF & EBTR2_OFF & EBTR3_OFF);
 //#pragma config CONFIG7H = 0x40
 __CONFIG(11, EBTRB_OFF);
+//unsigned int PWM_PERCENT[100];
+
+#define PG_OUT (PORTCbits.RC5)
 extern unsigned int modbus_reg[];
 void start_timer3(void);
 void stop_timer3(void);
 void init_pv1(void);//下降沿中断采集速度
 void pv1_isr(void);
-unsigned int count_10ms = 0;
+void init_timer0(void);//初始化timer0 测速使用 速度太低 超时使速度为零
+void timer0_isr(void);
+void init_pg_in(void);
+void pg_in_isr(void);
+void init_timer5(void);
+void timer5_isr(void);
+unsigned int count_1ms = 0;
+unsigned char have_speed = 0;
+unsigned char count_2s_flg = 0;
 void init_timer3(void)//测速定时器
 {
 //11.0592M x 4
@@ -65,53 +76,62 @@ void timer3_isr(void)
 
 	if(TMR3IE&&TMR3IF)
 	{
-                TMR3IF = 0;
+        TMR3IF = 0;
+		
 		TMR3 = 65535-11059;
-		count_10ms++;
-                if(count_10ms==6000)
+		
+		count_1ms++;
+		
+                if(count_1ms==6000)
                 {
                       modbus_reg[0] = 0;
-                      count_10ms--;
+                      count_1ms--;
                 }
 	}
 }
 void main(void)
 {
-    unsigned int md_keep;
+
     ANSELC = 0;
     TRISC = 0x80;//输出
-   PORTC = 0xc0;
+    PORTC = 0xc0;
 
+   //BEEP
    ANSELA = 0;
    TRISA5 =0;
-   RA5 = 0;
 
 
+    //for rtu
     init_timer35();
-    
-    PEIE = 1;
-    GIE = 1;
     init_uart();
 
     init_timer3();
     init_pv1();
-    PORTCbits.RC5  =  1;
+    
+    //init_timer0();
+    //init_pg_in();
+    //init_timer5();
+
+    PEIE = 1;
+    GIE = 1;
+    
     while(1)
 	{
             modbus_receive();
-
-          //  modbus_reg[0] = 100;//发送给组态王的数据
-
-            //modbus_reg[0] = 200；
-            if(modbus_reg[3]==1)
+            
+            if(count_2s_flg)
             {
-                //RA5 = 1;
+                count_2s_flg = 0;
+                
+                if(have_speed)
+                {
+                    have_speed = 0;
+                }
+                else//2s 没有速度
+                {
+                    modbus_reg[0] = 10;
+                }
             }
-            else
-            {
-                //RA5 = 0;
-            }
-
 	}
 }
 
@@ -122,12 +142,16 @@ void interrupt my_isr(void)
     timer35_isr();
     timer3_isr();
     pv1_isr();
+    timer0_isr();
+    //pg_in_isr();
+   // timer5_isr();
 }
 void get_speed(void)
 {
 	static unsigned int pulse_count = 0;//脉冲数量
         static unsigned char sample_step = 1;
 	//采样6个脉冲
+        have_speed = 1;
 	switch(sample_step)
 	{
 		case 1:
@@ -141,17 +165,12 @@ void get_speed(void)
 			{
 				stop_timer3();
 				pulse_count = 0;
-				//temp_speed  = count_10ms;
                                 stop_timer3();                               
-				//current_speed = count_10ms/250;
-                                if(count_10ms>0)
+                                if(count_1ms>0)
                                 {
-                                     modbus_reg[0] = (unsigned int)(100000/count_10ms);
-                                    //modbus_reg[0] = count_10ms;
+                                     modbus_reg[0] = (unsigned int)(100000/count_1ms);
                                 }
-
-                                 count_10ms = 0;
-				//reset_timer_value();
+                                 count_1ms = 0;
 				sample_step = 1;
 			}
 		break;
@@ -175,9 +194,9 @@ void stop_timer3(void)
 void init_pv1(void)//下降沿中断采集速度
 {
     ANSELB = 0;
-        TRISB0=0;
-        RB0=1;      //为下降沿创造高电平的初始条件
-        TRISB0=1;   //输入模式
+    TRISB0=0;
+    RB0=1;      //为下降沿创造高电平的初始条件
+    TRISB0=1;   //输入模式
       INTEDG0  = 0;
       INT0IE = 1;
       INT0IF = 0;
@@ -186,7 +205,90 @@ void pv1_isr(void)
 {
     if(INT0IF&&INT0IE)
     {
-        INT0IF = 0;
+           INT0IF = 0;
            get_speed();
     }
+}
+
+void init_timer0(void)//初始化timer0 测速使用 速度太低 超时使速度为零
+{
+    TMR0ON = 0;
+    T08BIT = 0;//16bit reg
+    T0CS = 0;//clock input Fosc/4
+    //4 分频
+    T0PS0 = 1;
+    T0PS1 = 0;
+    T0PS2 = 0;
+
+    PSA = 0;
+    TMR0 = 65535-27648;//10MS
+    TMR0IF = 0;
+    TMR0IE = 1;
+    TMR0ON = 1;
+
+}
+void timer0_isr(void)
+{
+    static unsigned char count0_10ms = 0;
+    
+       if(TMR0IF&&TMR0IE)
+       {
+           TMR0 = 65535-27648;//10MS
+           TMR0IF = 0;
+           count0_10ms++;
+                // PORTCbits.RC4 = ~PORTCbits.RC4;
+           if(count0_10ms==200)
+           {
+                count_2s_flg = 1;
+                count0_10ms = 0;
+           }
+       }
+}
+
+void init_pg_in(void)//下降沿中断采集速度
+{
+    ANSELB = 1;
+    TRISB0=0;
+    RB1=0;      //为下降沿创造高电平的初始条件
+    TRISB1=1;   //输入模式
+      INTEDG1  = 1;//上升边沿
+      INT1IE = 1;
+      INT1IF = 0;
+}
+
+void pg_in_isr(void)
+{
+   if(INT1IE&&INT1IF)
+   {
+       INT1IF = 0;
+       PG_OUT = 0;//关闭输出
+	   //TMR5 = 65535-PWM_PERCENT[modbus_reg[2]];
+       TMR5 = 65535-27648;
+       TMR5ON = 1;//启动定时器
+   }
+}
+void init_timer5(void)//控制pwm调节定时器 最大值10ms (0-10ms) 100us 100等分 Fosc/8
+{
+//11.0592M x 4
+     TMR5ON = 0;
+
+     TMR5CS0 = 1;
+     TMR5CS1 = 0;
+
+     T5CKPS0 = 0;
+     T5CKPS1 = 0;
+
+     TMR5 = 65535-55296;
+	 
+     TMR5IF=0;
+     TMR5IE=1;
+}
+void timer5_isr(void)
+{
+       if(TMR5IF&&TMR5IE)
+	   {
+		TMR5IF = 0;
+		PG_OUT = 1;//开始转动
+		TMR5ON = 0;//停止定时器停止
+	   }
 }
